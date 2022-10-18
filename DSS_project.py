@@ -15,40 +15,25 @@ Kieu Chi Huy\n
 Truong Quoc An
 """)
 
-st.sidebar.header('Tranfer Features')
+st.sidebar.header('Squad Selection')
 # selected_year = st.sidebar.selectbox('Year', list(reversed(range(1990,2020))))
 
 # Web scraping of NFL player stats
 # https://www.pro-football-reference.com/years/2019/rushing.htm
 @st.cache
 def load_data():
-#     url = "https://www.pro-football-reference.com/years/" + str(year) + "/rushing.htm"
     url = "https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats"
     html = pd.read_html(url, header = 1)
     playerstats = html[0]
    
     playerstats.drop(playerstats.tail(2).index, inplace = True)
-#     raw = df.drop(df[df.Age == 'Age'].index) # Deletes repeating headers in content
-#     raw = raw.fillna(0)
-#     playerstats = raw.drop(['Rk'], axis=1)
+
     return playerstats
 playerstats = load_data()
-# playerstats = load_data(selected_year)
-
-# Sidebar - Team selection
-# sorted_unique_team = sorted(playerstats.Tm.unique())
-# selected_team = st.sidebar.multiselect('Team', sorted_unique_team, sorted_unique_team)
-
-# Sidebar - Position selection
-# unique_pos = ['RB','QB','WR','FB','TE']
-# selected_pos = st.sidebar.multiselect('Position', unique_pos, unique_pos)
-
-# Filtering data
-# df_selected_team = playerstats[(playerstats.Tm.isin(selected_team)) & (playerstats.Pos.isin(selected_pos))]
-# df_selected_team = playerstats[(playerstats.Tm.isin(selected_team))]
 
 
-st.header('Information of Players')
+
+st.header("Information of Manchester City's Players")
 st.write('Data Dimension: ' + str(playerstats.shape[0]) + ' rows and ' + str(playerstats.shape[1]) + ' columns.')
 st.dataframe(playerstats)
 

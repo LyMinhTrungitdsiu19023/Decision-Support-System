@@ -19,7 +19,7 @@ st.sidebar.header('Squad Selection')
 # Sidebar - Position selection
 unique_pos = ['GK','DF','MF','FW']
 selected_pos = st.sidebar.multiselect('Pos', unique_pos, unique_pos)
-df_selected_position= playerstats[playerstats.Pos.isin(selected_pos)]
+
 
 @st.cache
 def load_data():
@@ -33,7 +33,7 @@ def load_data():
 playerstats = load_data()
 
 
-
+df_selected_position= playerstats[(playerstats.Pos.isin(selected_pos))]
 st.header("Information of Manchester City's Players")
 st.write('Data Dimension: ' + str(playerstats.shape[0]) + ' rows and ' + str(playerstats.shape[1]) + ' columns.')
 st.dataframe(playerstats)

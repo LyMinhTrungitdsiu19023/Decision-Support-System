@@ -69,49 +69,59 @@ with see_pos:
 selected_squad = st.sidebar.selectbox('Squad',('4-4-2', '4-2-3-1', '4-3-3'))
 
  
-def Analysis_Forward(url):
+def Analysis(url):
     #Forward
-    st.header('Analysis of Forward')
-    fw = pd.read_html(url, header = 1)
+    data = pd.read_html(url, header = 1)
     
 
     
     #Shoot
-    fw_shoot = fw[4]
-    fw_shoot.drop(fw_shoot.tail(2).index, inplace = True)
-    fw_shoot = fw_shoot.loc[fw_shoot["Pos"].str.contains("FW")]
-    fw_shoot["Nation"] = fw_shoot["Nation"].str.replace('[a-z]', '')
-    fw_shoot = fw_shoot.drop(['SoT%', 'Sh/90', 'SoT/90', 'G/SoT', 'Dist', 'xG', 'npxG', 'npxG/Sh', 'G-xG', 'np:G-xG', 'Matches'], axis=1)
-    fw_shoot.rename(columns = {'Gls':'Goals', 'Sh':'Shots total', 'SoT':'Shots on Target', 'G/Sh':'Goal per Shot', 'FK':'Freekick','PK':'Penalty Kick','PKatt':'Pentallty Attemp'}, inplace = True)
-    fw_shoot = fw_shoot.reset_index(drop = True)
-    st.write('Stats of Shooting')
-    st.dataframe(fw_shoot) 
+    shoot = data[4]
+    shoot.drop(shoot.tail(2).index, inplace = True)
+    shoot["Nation"] = fw_shoot["Nation"].str.replace('[a-z]', '')
+    shoot = shoot.drop(['SoT%', 'Sh/90', 'SoT/90', 'G/SoT', 'Dist', 'xG', 'npxG', 'npxG/Sh', 'G-xG', 'np:G-xG', 'Matches'], axis=1)
+    shoot.rename(columns = {'Gls':'Goals', 'Sh':'Shots total', 'SoT':'Shots on Target', 'G/Sh':'Goal per Shot', 'FK':'Freekick','PK':'Penalty Kick','PKatt':'Pentallty Attemp'}, inplace = True)
+    shoot = shoot.reset_index(drop = True) 
     
     #Pass
-    fw_pass = fw[5]
-    fw_pass.drop(fw_pass.tail(2).index, inplace = True)
-    fw_pass = fw_pass.loc[fw_pass["Pos"].str.contains("FW")]
-    fw_pass["Nation"] = fw_pass["Nation"].str.replace('[a-z]', '')
-    fw_pass = fw_pass.drop(['xA', 'A-xA', 'KP', '1/3', 'PPA', 'CrsPA', 'Prog','Matches', 'TotDist', 'PrgDist'], axis=1)
-    fw_pass.rename(columns = {'Cmp':'Passed Completed', 'Att':'Passes Attempted', 'Cmp%':'%Completed'}, inplace = True)
-    fw_pass = fw_pass.reset_index(drop = True)
-    st.write('Stats of Passing')
-    st.dataframe(fw_pass) 
-    st.write('*Note\n Cmp.1: Passes Completed in Short Distance - Att.1 Passes Attempted in Short Distance - Cmp%.1: % Passes Completed in Short Distance - .2: Medium Distance - .3:Long Distance')
+    passing = data[5]
+    passing.drop(passing.tail(2).index, inplace = True)
+    passing["Nation"] = passing["Nation"].str.replace('[a-z]', '')
+    passing = passing.drop(['xA', 'A-xA', 'KP', '1/3', 'PPA', 'CrsPA', 'Prog','Matches', 'TotDist', 'PrgDist'], axis=1)
+    passing.rename(columns = {'Cmp':'Passed Completed', 'Att':'Passes Attempted', 'Cmp%':'%Completed'}, inplace = True)
+    passing = passing.reset_index(drop = True)
+    
 
     
     #Defend
-    fw_df = fw[5]
-    fw_df.drop(fw_df.tail(2).index, inplace = True)
-    fw_df = fw_df.loc[fw_df["Pos"].str.contains("FW")]
-    fw_df["Nation"] = fw_df["Nation"].str.replace('[a-z]', '')
-    fw_df = fw_df.drop(['Matches'], axis=1)
+    df = data[5]
+    df.drop(df.tail(2).index, inplace = True)
+    df["Nation"] = df["Nation"].str.replace('[a-z]', '')
+    df = df.drop(['Matches'], axis=1)
 #     fw_df.rename(fw_df = {'Cmp':'Passed Completed', 'Att':'Passes Attempted', 'Cmp%':'%Completed'}, inplace = True)
-    fw_df = fw_df.reset_index(drop = True)
-    st.write('Stats of Defensive')
-    st.dataframe(fw_df) 
+    df = df.reset_index(drop = True)
+ 
     
+    return shoot, passing, df
+ 
+def Analysis_Forward(url):
+    st.header('Analysis of Forward')
+    shoot = Analysis(url)[0]
+    shoot = shoot.loc[shoot["Pos"].str.contains("FW")]
+    st.write('Stats of Shooting')
+    st.dataframe(shoot)
+    
+    passing = Analysis(url)[1]
+    passing = passing.loc[passing["Pos"].str.contains("FW")]
+    st.write('Stats of Passing')
+    st.dataframe(passing) 
+    st.write('*Note\n Cmp.1: Passes Completed in Short Distance - Att.1 Passes Attempted in Short Distance - Cmp%.1: % Passes Completed in Short Distance - .2: Medium Distance - .3:Long Distance')
+    
+    df = Analysis(url)[2]
+    df = df.loc[df["Pos"].str.contains("FW")]
+    st.write('Stats of Defensive')
+    st.dataframe(df)
 #button 
-if st.button('Squad Suggestion'):
+if st.button('Squad Analysis'):
   Analysis_Forward(url)
 

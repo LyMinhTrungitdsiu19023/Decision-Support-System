@@ -121,7 +121,45 @@ def Analysis_Forward(url):
     df = df.loc[df["Pos"].str.contains("FW")]
     st.write('Stats of Defensive')
     st.dataframe(df)
+    
+def Analysis_Mid(url):
+    st.header('Analysis of Midfield')
+    shoot = Analysis(url)[0]
+    shoot = shoot.loc[shoot["Pos"].str.contains("MF")]
+    st.write('Stats of Shooting')
+    st.dataframe(shoot)
+    
+    passing = Analysis(url)[1]
+    passing = passing.loc[passing["Pos"].str.contains("MF")]
+    st.write('Stats of Passing')
+    st.dataframe(passing) 
+    st.write('*Note\n Cmp.1: Passes Completed in Short Distance - Att.1 Passes Attempted in Short Distance - Cmp%.1: % Passes Completed in Short Distance - .2: Medium Distance - .3:Long Distance')
+    
+    df = Analysis(url)[2]
+    df = df.loc[df["Pos"].str.contains("MF")]
+    st.write('Stats of Defensive')
+    st.dataframe(df)
+    
+    
+def Analysis_defend(url):
+    st.header('Analysis of Defensive')
+    shoot = Analysis(url)[0]
+    shoot = shoot.loc[shoot["Pos"].str.contains("DF")]
+    st.write('Stats of Shooting')
+    st.dataframe(shoot)
+    
+    passing = Analysis(url)[1]
+    passing = passing.loc[passing["Pos"].str.contains("DF")]
+    st.write('Stats of Passing')
+    st.dataframe(passing) 
+    st.write('*Note\n Cmp.1: Passes Completed in Short Distance - Att.1 Passes Attempted in Short Distance - Cmp%.1: % Passes Completed in Short Distance - .2: Medium Distance - .3:Long Distance')
+    
+    df = Analysis(url)[2]
+    df = df.loc[df["Pos"].str.contains("DF")]
+    st.write('Stats of Defensive')
+    st.dataframe(df)
 #button 
 if st.button('Squad Analysis'):
   Analysis_Forward(url)
-
+  Analysis_Mid(url)
+  Analysis_defend(url)

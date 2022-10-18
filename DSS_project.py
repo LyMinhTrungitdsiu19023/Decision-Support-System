@@ -40,8 +40,8 @@ with see_data:
     st.dataframe(playerstats)
 
 
-see_pos = st.expander("Players by Nation 👉")
-with see_pos: 
+see_nation = st.expander("Players by Nation 👉")
+with see_nation: 
     st.header('Players by Nation')
     unique_nation = playerstats["Nation"].tolist()
     selected_nation = st.selectbox('Nation', (unique_nation))
@@ -50,13 +50,16 @@ with see_pos:
     st.dataframe(df_selected_nation) 
 
 
-    
-st.header('Players by Position')
 
-unique_pos = playerstats["Pos"].drop_duplicates().tolist()
-selected_pos = st.sidebar.selectbox('Posision',('GK', 'DF', 'MF', 'FW'))
-df_selected_position = playerstats.loc[playerstats["Pos"].str.contains(selected_pos)]
-st.dataframe(df_selected_position) 
+see_pos = st.expander("Players by Posision 👉") 
+with see_pos: 
+
+    st.header('Players by Position')
+
+    unique_pos = playerstats["Pos"].drop_duplicates().tolist()
+    selected_pos = st.sidebar.selectbox('Posision',('GK', 'DF', 'MF', 'FW'))
+    df_selected_position = playerstats.loc[playerstats["Pos"].str.contains(selected_pos)]
+    st.dataframe(df_selected_position) 
 
 # def filter_players():
     

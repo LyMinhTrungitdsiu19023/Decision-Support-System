@@ -16,9 +16,7 @@ st.title('Manchester City Football Club Management Decision Support System')
 st.markdown("""
 Project of Decision Support System course\n
 by\n
-Ly Minh Trung\n
-Kieu Chi Huy\n
-Truong Quoc An
+Ly Minh Trung - Kieu Chi Huy - Truong Quoc An
 """)
 
 st.sidebar.header('Features')

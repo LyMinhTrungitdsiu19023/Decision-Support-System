@@ -27,7 +27,7 @@ def load_data():
     playerstats = html[0]
    
     playerstats.drop(playerstats.tail(2).index, inplace = True)
-
+    playerstats["Nation"] = playerstats["Nation"].str.replace('[a-z]', '')
     return playerstats
 playerstats = load_data()
 

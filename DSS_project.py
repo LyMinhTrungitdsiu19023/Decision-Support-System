@@ -32,8 +32,10 @@ def load_data():
     return playerstats
 playerstats = load_data()
 
+unique_nation = playerstats["Nation"].tolist()
+selected_nation = st.sidebar.multiselect('Nation', unique_nation, unique_nation)
 
-df_selected_position= playerstats[(playerstats.Pos.isin(selected_pos))]
+df_selected_position= playerstats[(playerstats.Pos.isin(selected_pos)) & (playerstats.Nation.isin(selected_nation))]
 
 st.header("Information of Manchester City's Players")
 st.write('Data Dimension: ' + str(playerstats.shape[0]) + ' rows and ' + str(playerstats.shape[1]) + ' columns.')

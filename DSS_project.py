@@ -71,6 +71,7 @@ if st.button('Squad Suggestion'):
     st.header('Analysis of Forward')
     fw = pd.read_html(url, header = 1)
     fw_table = fw[4]
+    fw_table.drop(fw_table.tail(2).index, inplace = True)
 #     fw_table = fw_table.loc[fw_table["Pos"].str.contains("FW")]
     st.write('Shooting')
     st.dataframe(fw_table) 

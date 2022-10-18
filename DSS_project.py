@@ -17,7 +17,7 @@ Truong Quoc An
 """)
 
 st.sidebar.header('Squad Selection')
-# selected_year = st.sidebar.selectbox('Year', list(reversed(range(1990,2020))))
+selected_year = st.sidebar.selectbox('Year', list(reversed(range(1990,2020))))
 
 # Web scraping of NFL player stats
 # https://www.pro-football-reference.com/years/2019/rushing.htm
@@ -30,6 +30,7 @@ def load_data(year):
     raw = df.drop(df[df.Age == 'Age'].index) # Deletes repeating headers in content
     raw = raw.fillna(0)
     playerstats = raw.drop(['Rk'], axis=1)
+    
     return playerstats
 playerstats = load_data(selected_year)
 

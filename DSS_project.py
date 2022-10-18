@@ -5,6 +5,11 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 
+
+st.image(
+    "https://www.google.com/imgres?imgurl=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fvi%2F1%2F1d%2FManchester_City_FC_logo.svg&imgrefurl=https%3A%2F%2Fvi.wikipedia.org%2Fwiki%2FManchester_City_F.C.&tbnid=ObOVXhuQwy11UM&vet=12ahUKEwi-47Pcr-n6AhXOz4sBHaGlDxwQMygAegUIARC2AQ..i&docid=T6O6LcN8Fwog-M&w=410&h=410&q=Man%20city&ved=2ahUKEwi-47Pcr-n6AhXOz4sBHaGlDxwQMygAegUIARC2AQ",
+    width=400, # Manually Adjust the width of the image as per requirement
+)
 st.title('Manchester City Football Club Management Decision Support System')
 
 st.markdown("""

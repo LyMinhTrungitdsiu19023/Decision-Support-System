@@ -40,26 +40,30 @@ with see_data:
     st.dataframe(playerstats)
 
 
-
-see_pos = st.expander("Players by Position 👉")
+see_pos = st.expander("Players by Nation 👉")
 with see_pos: 
-    st.header('Players by Position')
+    st.header('Players by Nation')
+    unique_nation = playerstats["Nation"].tolist()
+    selected_nation = st.selectbox('Nation', (unique_nation))
 
-    unique_pos = playerstats["Pos"].drop_duplicates().tolist()
-    selected_pos = st.selectbox('Posision',('GK', 'DF', 'MF', 'FW'))
-    df_selected_position = playerstats.loc[playerstats["Pos"].str.contains(selected_pos)]
-    st.dataframe(df_selected_position) 
+    df_selected_nation = playerstats.loc[playerstats["Nation"].str.contains(selected_nation)]  
+    st.dataframe(df_selected_nation) 
 
-unique_nation = playerstats["Nation"].tolist()
-selected_nation = st.sidebar.selectbox('Nation', (unique_nation))
 
-df_selected_nation = playerstats.loc[playerstats["Nation"].str.contains(selected_nation)]    
+    
+st.header('Players by Position')
+
+unique_pos = playerstats["Pos"].drop_duplicates().tolist()
+selected_pos = st.sidebar.selectbox('Posision',('GK', 'DF', 'MF', 'FW'))
+df_selected_position = playerstats.loc[playerstats["Pos"].str.contains(selected_pos)]
+st.dataframe(df_selected_position) 
+
 #button
   
-if st.button('View Players by Nation'):
-    st.header('Players by Nation')
+# if st.button('View Players by Nation'):
+#     st.header('Players by Nation')
     
 
-    st.write('Data Dimension: ' + str(df_selected_nation.shape[0]) + ' rows and ' + str(df_selected_nation.shape[1]) + ' columns.')
+#     st.write('Data Dimension: ' + str(df_selected_nation.shape[0]) + ' rows and ' + str(df_selected_nation.shape[1]) + ' columns.')
 
-    st.dataframe(df_selected_nation) 
+#     st.dataframe(df_selected_nation) 

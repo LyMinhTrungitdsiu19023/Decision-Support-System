@@ -34,22 +34,15 @@ playerstats = load_data()
 
 
 df_selected_position= playerstats[(playerstats.Pos.isin(selected_pos))]
+
 st.header("Information of Manchester City's Players")
 st.write('Data Dimension: ' + str(playerstats.shape[0]) + ' rows and ' + str(playerstats.shape[1]) + ' columns.')
 st.dataframe(playerstats)
 
-# Download NBA player stats data
-# https://discuss.streamlit.io/t/how-to-download-file-in-streamlit/1806
-def filedownload(df):
-    csv = df.to_csv(index=False)
-    b64 = base64.b64encode(csv.encode()).decode()  # strings <-> bytes conversions
-    href = f'<a href="data:file/csv;base64,{b64}" download="playerstats.csv">Download CSV File</a>'
-    return href
-
-st.markdown(filedownload(playerstats), unsafe_allow_html=True)
 
 # Heatmap
 if st.button('View Players by Position'):
-    st.header('Players')
-  
+    st.header('Players by Position')
+    st.write('Data Dimension: ' + str(df_selected_position.shape[0]) + ' rows and ' + str(df_selected_position.shape[1]) + ' columns.')
+
     st.dataframe(df_selected_position)

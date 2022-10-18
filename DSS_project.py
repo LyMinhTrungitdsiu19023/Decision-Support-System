@@ -61,22 +61,10 @@ with see_pos:
     df_selected_position = playerstats.loc[playerstats["Pos"].str.contains(selected_pos)]
     st.dataframe(df_selected_position) 
 
-# def filter_players():
-    
-#     df_defend = playerstats.loc[playerstats["Pos"].str.contains("DF")]
-#     df_mid = playerstats.loc[playerstats["Pos"].str.contains("MF")]
-#     df_forward = playerstats.loc[playerstats["Pos"].str.contains("FW")]
 
+selected_squad = st..sidebar.selectbox('Squad',('4-4-2', '4-2-3-1', '4-3-3'))
 
-# def     
-# def squad1():
-#     DF = 4
-#     MF = 4
-#     FW = 2
-#     st.header('Squad: 4-4-2')
-    
-    
-
+ 
 #button 
 # if st.button('View Players by Nation'):
 #     st.header('Players by Nation')

@@ -17,8 +17,7 @@ Truong Quoc An
 
 st.sidebar.header('Squad Selection')
 # Sidebar - Position selection
-unique_pos = ["GK", "DF", "MF", "FW"]
-selected_pos = st.sidebar.multiselect('Posision', unique_pos, unique_pos)
+
 
 
 @st.cache
@@ -31,6 +30,9 @@ def load_data():
     playerstats["Nation"] = playerstats["Nation"].str.replace('[a-z]', '')
     return playerstats
 playerstats = load_data()
+
+unique_pos = playerstats["Pos"].tolist()
+selected_pos = st.sidebar.multiselect('Posision', unique_pos, unique_pos)
 
 unique_nation = playerstats["Nation"].tolist()
 selected_nation = st.sidebar.multiselect('Nation', unique_nation, unique_nation)

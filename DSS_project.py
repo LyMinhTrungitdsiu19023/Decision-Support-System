@@ -10,13 +10,13 @@ st.title('Football Management Decision Support System')
 st.markdown("""
 This app is project in Decision Support System course
 
-by
+by\n
 Ly Minh Trung\n
 Kieu Chi Huy\n
-Truong Quoc An Wibu
+Truong Quoc An 
 """)
 
-st.sidebar.header('User Input Features')
+st.sidebar.header('Squad Selection')
 selected_year = st.sidebar.selectbox('Year', list(reversed(range(1990,2020))))
 
 # Web scraping of NFL player stats

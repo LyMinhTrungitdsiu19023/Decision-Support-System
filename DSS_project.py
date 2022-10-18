@@ -7,7 +7,7 @@ import numpy as np
 
 from PIL import Image
 
-image = Image.open('sunrise.jpg')
+image = Image.open('logo.jpg')
 
 st.image(image, caption='The Citizen')
 

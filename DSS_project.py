@@ -50,15 +50,16 @@ with see_pos:
     df_selected_position = playerstats.loc[playerstats["Pos"].str.contains(selected_pos)]
     st.dataframe(df_selected_position) 
 
+unique_nation = playerstats["Nation"].tolist()
+selected_nation = st.sidebar.selectbox('Nation', (unique_nation))
+
+df_selected_nation = playerstats[(playerstats.Nation.isin(selected_nation))]    
 #button
-    
+  
 if st.button('View Players by Nation'):
     st.header('Players by Nation')
     
-    unique_nation = playerstats["Nation"].tolist()
-    selected_nation = st.sidebar.selectbox('Nation', (unique_nation))
 
-    df_selected_nation = playerstats[(playerstats.Nation.isin(selected_nation))]
     st.write('Data Dimension: ' + str(df_selected_nation.shape[0]) + ' rows and ' + str(df_selected_nation.shape[1]) + ' columns.')
 
     st.dataframe(df_selected_nation) 

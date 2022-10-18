@@ -95,7 +95,7 @@ if st.button('Squad Suggestion'):
     fw_pass = fw_pass.loc[fw_pass["Pos"].str.contains("FW")]
     fw_pass["Nation"] = fw_pass["Nation"].str.replace('[a-z]', '')
     fw_pass = fw_pass.drop(['xA', 'A-xA', 'KP', '1/3', 'PPA', 'CrsPA', 'Prog','Matches', 'TotDist', 'PrgDist'], axis=1)
-#     fw_pass.rename(columns = {'Gls':'Goals', 'Sh':'Shots total', 'SoT':'Shots on Target', 'G/Sh':'Goal per Shot', 'FK':'Freekick','PK':'Penalty Kick','PKatt':'Pentallty Attemp'}, inplace = True)
+    fw_pass.rename(columns = {'Cmp':'Passed Completed', 'Att':'Passes Attempted', 'Cmp%':'%Completed'}, inplace = True)
     fw_pass = fw_pass.reset_index(drop = True)
     st.write('Stats of Passing')
     st.dataframe(fw_pass) 

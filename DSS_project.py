@@ -19,17 +19,17 @@ st.sidebar.header('Features')
 # Sidebar - Position selection
 
 
-
+url = "https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats"
 @st.cache
-def load_data():
-    url = "https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats"
+def load_data(url):
+
     html = pd.read_html(url, header = 1)
     playerstats = html[0]
    
     playerstats.drop(playerstats.tail(2).index, inplace = True)
     playerstats["Nation"] = playerstats["Nation"].str.replace('[a-z]', '')
     return playerstats
-playerstats = load_data()
+playerstats = load_data(url)
 
 
 
@@ -66,5 +66,9 @@ selected_squad = st.sidebar.selectbox('Squad',('4-4-2', '4-2-3-1', '4-3-3'))
 
  
 #button 
-if st.button('View Analysis'):
-    st.header('Manchester City')
+if st.button('Squad Suggestion'):
+  
+    st.header('Analysis of Forward')
+    fw = pd.read_html(url, header = 1)
+    fw_table = html[4]
+    st.dataframe(fw_table) 

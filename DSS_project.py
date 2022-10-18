@@ -77,6 +77,8 @@ def Analysis_Forward(url):
 
     
     #Shoot
+see_shoot = st.expander("Stats of Shooting 👉")
+with see_shoot: 
     fw_shoot = fw[4]
     fw_shoot.drop(fw_shoot.tail(2).index, inplace = True)
     fw_shoot = fw_shoot.loc[fw_shoot["Pos"].str.contains("FW")]
@@ -88,6 +90,8 @@ def Analysis_Forward(url):
     st.dataframe(fw_shoot) 
     
     #Pass
+see_pass = st.expander("Stats of Passing 👉")
+with see_pass:
     fw_pass = fw[5]
     fw_pass.drop(fw_pass.tail(2).index, inplace = True)
     fw_pass = fw_pass.loc[fw_pass["Pos"].str.contains("FW")]
@@ -101,6 +105,8 @@ def Analysis_Forward(url):
 
     
     #Defend
+see_defend = st.expander("Stats of Defensive 👉")
+with see_defend:
     fw_df = fw[5]
     fw_df.drop(fw_df.tail(2).index, inplace = True)
     fw_df = fw_df.loc[fw_df["Pos"].str.contains("FW")]

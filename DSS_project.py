@@ -24,7 +24,7 @@ st.sidebar.header('Features')
 def load_data():
     url = "https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats"
     html = pd.read_html(url, header = 1)
-    playerstats = html[2]
+    playerstats = html[0]
    
     playerstats.drop(playerstats.tail(2).index, inplace = True)
     playerstats["Nation"] = playerstats["Nation"].str.replace('[a-z]', '')

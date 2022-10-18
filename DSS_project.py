@@ -70,5 +70,5 @@ if st.button('Squad Suggestion'):
   
     st.header('Analysis of Forward')
     fw = pd.read_html(url, header = 1)
-    fw_table = html[4]
+    fw_table = fw[4]
     st.dataframe(fw_table) 

@@ -33,7 +33,7 @@ playerstats = load_data()
 
 
 
-see_data = st.expander('You can click here to see all players 👉')
+see_data = st.expander("Information of Manchester City's Players 👉")
 with see_data: 
     st.header("Information of Manchester City's Players")
     st.write('Data Dimension: ' + str(playerstats.shape[0]) + ' rows and ' + str(playerstats.shape[1]) + ' columns.')

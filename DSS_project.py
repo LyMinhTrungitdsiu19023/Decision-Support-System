@@ -24,7 +24,7 @@ st.sidebar.header('Features')
 def load_data():
     url = "https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats"
     html = pd.read_html(url, header = 1)
-    playerstats = html[0]
+    playerstats = html[2]
    
     playerstats.drop(playerstats.tail(2).index, inplace = True)
     playerstats["Nation"] = playerstats["Nation"].str.replace('[a-z]', '')
@@ -58,8 +58,23 @@ selected_pos = st.sidebar.selectbox('Posision',('GK', 'DF', 'MF', 'FW'))
 df_selected_position = playerstats.loc[playerstats["Pos"].str.contains(selected_pos)]
 st.dataframe(df_selected_position) 
 
-#button
-  
+def filter_players():
+    
+    df_defend = playerstats.loc[playerstats["Pos"].str.contains("DF")]
+    df_mid = playerstats.loc[playerstats["Pos"].str.contains("MF")]
+    df_forward = playerstats.loc[playerstats["Pos"].str.contains("FW")]
+
+
+def     
+def squad1():
+    DF = 4
+    MF = 4
+    FW = 2
+    st.header('Squad: 4-4-2')
+    
+    
+
+#button 
 # if st.button('View Players by Nation'):
 #     st.header('Players by Nation')
     

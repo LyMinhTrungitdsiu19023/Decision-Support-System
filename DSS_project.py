@@ -27,7 +27,7 @@ def load_data():
     html = pd.read_html(url, header = 1)
     playerstats = html[0]
    
-    playerstats.drop(playerstats.tail(n).index, inplace = True)
+    playerstats.drop(playerstats.tail(2).index, inplace = True)
 #     raw = df.drop(df[df.Age == 'Age'].index) # Deletes repeating headers in content
 #     raw = raw.fillna(0)
 #     playerstats = raw.drop(['Rk'], axis=1)

@@ -18,7 +18,7 @@ Truong Quoc An
 st.sidebar.header('Squad Selection')
 # Sidebar - Position selection
 unique_pos = ['GK','DF','MF','FW']
-selected_pos = st.sidebar.multiselect('Pos', unique_pos, unique_pos)
+selected_pos = st.sidebar.multiselect('Posision', unique_pos, unique_pos)
 
 
 @st.cache

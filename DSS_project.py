@@ -62,7 +62,7 @@ with see_pos:
     st.dataframe(df_selected_position) 
 
 
-selected_squad = st..sidebar.selectbox('Squad',('4-4-2', '4-2-3-1', '4-3-3'))
+selected_squad = st.sidebar.selectbox('Squad',('4-4-2', '4-2-3-1', '4-3-3'))
 
  
 #button 

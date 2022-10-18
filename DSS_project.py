@@ -69,10 +69,8 @@ with see_pos:
 selected_squad = st.sidebar.selectbox('Squad',('4-4-2', '4-2-3-1', '4-3-3'))
 
  
-#button 
-if st.button('Squad Suggestion'):
-  
-#Forward
+def Analysis_Forward(url):
+    #Forward
     st.header('Analysis of Forward')
     fw = pd.read_html(url, header = 1)
     
@@ -112,3 +110,8 @@ if st.button('Squad Suggestion'):
     fw_df = fw_df.reset_index(drop = True)
     st.write('Stats of Defensive')
     st.dataframe(fw_df) 
+    
+#button 
+if st.button('Squad Suggestion'):
+  Analysis_Forward(url)
+

@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 
-st.title('Football Management Decision Support System')
+st.title('Manchester City Football Club Management Decision Support System')
 
 st.markdown("""
 This app is project of Decision Support System course\n

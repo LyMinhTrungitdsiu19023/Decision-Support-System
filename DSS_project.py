@@ -31,7 +31,7 @@ def load_data():
     return playerstats
 playerstats = load_data()
 
-unique_pos = playerstats["Pos"].tolist()
+unique_pos = playerstats["Pos"].drop_duplicates().tolist()
 selected_pos = st.sidebar.multiselect('Posision', unique_pos, unique_pos)
 
 unique_nation = playerstats["Nation"].tolist()

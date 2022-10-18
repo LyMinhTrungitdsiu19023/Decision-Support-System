@@ -23,17 +23,15 @@ st.sidebar.header('Squad Selection')
 # https://www.pro-football-reference.com/years/2019/rushing.htm
 @st.cache
 def load_data(year):
-#     url = "https://www.pro-football-reference.com/years/" + str(year) + "/rushing.htm"
-    url = "https://github.com/LyMinhTrungitdsiu19023/Decision-Support-System/blob/main/Dataset/Mancity.csv"
+    url = "https://www.pro-football-reference.com/years/" + str(year) + "/rushing.htm"
     html = pd.read_html(url, header = 1)
-#     df = html[0]
-    playerstats = html[0]
+    df = html[0]
 
-#     raw = df.drop(df[df.Age == 'Age'].index) # Deletes repeating headers in content
-#     raw = raw.fillna(0)
-#     playerstats = raw.drop(['Rk'], axis=1)
+    raw = df.drop(df[df.Age == 'Age'].index) # Deletes repeating headers in content
+    raw = raw.fillna(0)
+    playerstats = raw.drop(['Rk'], axis=1)
     return playerstats
-# playerstats = load_data(selected_year)
+playerstats = load_data(selected_year)
 
 # Sidebar - Team selection
 sorted_unique_team = sorted(playerstats.Tm.unique())

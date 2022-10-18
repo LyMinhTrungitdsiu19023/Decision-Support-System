@@ -160,6 +160,12 @@ def Analysis_defend(url):
     st.dataframe(df)
 #button 
 if st.button('Squad Analysis'):
-  Analysis_Forward(url)
-  Analysis_Mid(url)
-  Analysis_defend(url)
+    see_fw = st.expander("Analysis of Forward") 
+    with see_fw: 
+        Analysis_Forward(url)
+    see_mf = st.expander("Analysis of Midfield") 
+    with see_mf: 
+      Analysis_Mid(url)
+    see_df = st.expander("Analysis of Defensive") 
+    with see_df: 
+      Analysis_defend(url)

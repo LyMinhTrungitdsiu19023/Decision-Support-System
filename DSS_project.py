@@ -33,10 +33,10 @@ playerstats = load_data()
 
 # unique_pos = playerstats["Pos"].drop_duplicates().tolist()
 unique_pos = playerstats["Pos"].drop_duplicates().tolist()
-selected_pos = st.sidebar.multiselect('Posision', unique_pos, unique_pos)
+selected_pos = st.sidebar.selectbox('Posision', unique_pos, unique_pos)
 
 unique_nation = playerstats["Nation"].tolist()
-selected_nation = st.sidebar.multiselect('Nation', unique_nation, unique_nation)
+selected_nation = st.sidebar.selectbox('Nation', unique_nation, unique_nation)
 
 df_selected_position = playerstats[(playerstats.Pos.isin(selected_pos))] 
 

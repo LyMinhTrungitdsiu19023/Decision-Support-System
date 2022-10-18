@@ -83,7 +83,7 @@ if st.button('Squad Suggestion'):
     fw_shoot.drop(fw_shoot.tail(2).index, inplace = True)
     fw_shoot = fw_shoot.loc[fw_shoot["Pos"].str.contains("FW")]
     fw_shoot["Nation"] = fw_shoot["Nation"].str.replace('[a-z]', '')
-    fw_shoot = fw_table.drop(['SoT%', 'Sh/90', 'SoT/90', 'G/SoT', 'Dist', 'xG', 'npxG', 'npxG/Sh', 'G-xG', 'np:G-xG', 'Matches'], axis=1)
+    fw_shoot = fw_shoot.drop(['SoT%', 'Sh/90', 'SoT/90', 'G/SoT', 'Dist', 'xG', 'npxG', 'npxG/Sh', 'G-xG', 'np:G-xG', 'Matches'], axis=1)
     fw_shoot.rename(columns = {'Gls':'Goals', 'Sh':'Shots total', 'SoT':'Shots on Target', 'G/Sh':'Goal per Shot', 'FK':'Freekick','PK':'Penalty Kick','PKatt':'Pentallty Attemp'}, inplace = True)
     fw_shoot = fw_shoot.reset_index(drop = True)
     st.write('Stats of Shooting')

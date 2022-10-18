@@ -166,13 +166,13 @@ def Analysis_defend(url):
     st.write('Stats of Defensive')
     st.dataframe(df)
 #button 
-if st.button('Squad Analysis'):
-      fw = st.checkbox("Analysis of Forward")
-      mf = st.checkbox("Analysis of Midfield")
-      df = st.checkbox("Analysis of Defensive")
-      if fw:   
-        Analysis_Forward(url)
-      if mf:
-        Analysis_Mid(url) 
-      if df:
-        Analysis_defend(url)
+# if st.button('Squad Analysis'):
+fw = st.checkbox("Analysis of Forward")
+mf = st.checkbox("Analysis of Midfield")
+df = st.checkbox("Analysis of Defensive")
+if fw:   
+    Analysis_Forward(url)
+if mf:
+    Analysis_Mid(url) 
+if df:
+    Analysis_defend(url)

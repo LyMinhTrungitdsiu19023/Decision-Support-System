@@ -107,24 +107,24 @@ def Analysis(url):
 def Analysis_Forward(url):
     st.header('Analysis of Forward')
     
-    check_shoot = st.checkbox("Stats of Shooting")
-    check_passing = st.checkbox("Stats of Passing")
-    check_defend = st.checkbox("Stats of Defensive")
+    fwcheck_shoot = st.checkbox("Stats of Shooting")
+    fwcheck_passing = st.checkbox("Stats of Passing")
+    fwcheck_defend = st.checkbox("Stats of Defensive")
 
-    if check_shoot:    
+    if fwcheck_shoot:    
         shoot = Analysis(url)[0]
         shoot = shoot.loc[shoot["Pos"].str.contains("FW")]
         st.write('Stats of Shooting')
         st.dataframe(shoot)
     
-    if check_passing:
+    if fwcheck_passing:
         passing = Analysis(url)[1]
         passing = passing.loc[passing["Pos"].str.contains("FW")]
         st.write('Stats of Passing')
         st.dataframe(passing) 
         st.write('*Note\n Cmp.1: Passes Completed in Short Distance - Att.1 Passes Attempted in Short Distance - Cmp%.1: % Passes Completed in Short Distance - .2: Medium Distance - .3:Long Distance')
     
-    if check_defend:
+    if fwcheck_defend:
         df = Analysis(url)[2]
         df = df.loc[df["Pos"].str.contains("FW")]
         st.write('Stats of Defensive')
@@ -132,24 +132,24 @@ def Analysis_Forward(url):
     
 def Analysis_Mid(url):
     st.header('Analysis of Midfield')
-    check_shoot = st.checkbox("Stats of Shooting")
-    check_passing = st.checkbox("Stats of Passing")
-    check_defend = st.checkbox("Stats of Defensive")
+    mfcheck_shoot = st.checkbox("Stats of Shooting")
+    mfcheck_passing = st.checkbox("Stats of Passing")
+    mfcheck_defend = st.checkbox("Stats of Defensive")
 
-    if check_shoot:    
+    if mfcheck_shoot:    
         shoot = Analysis(url)[0]
         shoot = shoot.loc[shoot["Pos"].str.contains("MF")]
         st.write('Stats of Shooting')
         st.dataframe(shoot)
     
-    if check_passing:
+    if mfcheck_passing:
         passing = Analysis(url)[1]
         passing = passing.loc[passing["Pos"].str.contains("MF")]
         st.write('Stats of Passing')
         st.dataframe(passing) 
         st.write('*Note\n Cmp.1: Passes Completed in Short Distance - Att.1 Passes Attempted in Short Distance - Cmp%.1: % Passes Completed in Short Distance - .2: Medium Distance - .3:Long Distance')
     
-    if check_defend:
+    if mfcheck_defend:
         df = Analysis(url)[2]
         df = df.loc[df["Pos"].str.contains("MF")]
         st.write('Stats of Defensive')
@@ -158,24 +158,24 @@ def Analysis_Mid(url):
     
 def Analysis_defend(url):
     st.header('Analysis of Defensive')
-    check_shoot = st.checkbox("Stats of Shooting")
-    check_passing = st.checkbox("Stats of Passing")
-    check_defend = st.checkbox("Stats of Defensive")
+    dfcheck_shoot = st.checkbox("Stats of Shooting")
+    dfcheck_passing = st.checkbox("Stats of Passing")
+    dfcheck_defend = st.checkbox("Stats of Defensive")
 
-    if check_shoot:    
+    if dfcheck_shoot:    
         shoot = Analysis(url)[0]
         shoot = shoot.loc[shoot["Pos"].str.contains("DF")]
         st.write('Stats of Shooting')
         st.dataframe(shoot)
     
-    if check_passing:
+    if dfcheck_passing:
         passing = Analysis(url)[1]
         passing = passing.loc[passing["Pos"].str.contains("DF")]
         st.write('Stats of Passing')
         st.dataframe(passing) 
         st.write('*Note\n Cmp.1: Passes Completed in Short Distance - Att.1 Passes Attempted in Short Distance - Cmp%.1: % Passes Completed in Short Distance - .2: Medium Distance - .3:Long Distance')
     
-    if check_defend:
+    if dfcheck_defend:
         df = Analysis(url)[2]
         df = df.loc[df["Pos"].str.contains("DF")]
         st.write('Stats of Defensive')

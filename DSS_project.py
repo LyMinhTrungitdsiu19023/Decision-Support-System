@@ -99,5 +99,7 @@ if st.button('Squad Suggestion'):
     fw_pass = fw_pass.reset_index(drop = True)
     st.write('Stats of Passing')
     st.dataframe(fw_pass) 
+    st.write('*Note\n Cmp.1: Passes Completed in Short Distance\n Att.1 Passes Attempted in Short Distance\n Cmp%.1: % Passes Completed in Short Distance\n .2: Medium Distance\n .3:Long Distance')
+
     
  

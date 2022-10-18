@@ -45,13 +45,14 @@ with see_data:
 
 # df_selected_nation = playerstats[(playerstats.Pos.isin(selected_pos)) & (playerstats.Nation.isin(selected_nation))]
 
+see_pos = st.expander("Players by Position 👉")
+with see_pos: 
+    st.header('Players by Position')
 
-st.header('Players by Position')
-
-unique_pos = playerstats["Pos"].drop_duplicates().tolist()
-selected_pos = st.selectbox('Posision',('GK', 'DF', 'MF', 'FW'))
-df_selected_position = playerstats.loc[playerstats["Pos"].str.contains(selected_pos)]
-st.dataframe(df_selected_position) 
+    unique_pos = playerstats["Pos"].drop_duplicates().tolist()
+    selected_pos = st.selectbox('Posision',('GK', 'DF', 'MF', 'FW'))
+    df_selected_position = playerstats.loc[playerstats["Pos"].str.contains(selected_pos)]
+    st.dataframe(df_selected_position) 
 
 #button
     

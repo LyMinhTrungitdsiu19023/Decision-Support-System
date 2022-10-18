@@ -72,12 +72,16 @@ selected_squad = st.sidebar.selectbox('Squad',('4-4-2', '4-2-3-1', '4-3-3'))
 #button 
 if st.button('Squad Suggestion'):
   
+#Forward
     st.header('Analysis of Forward')
     fw = pd.read_html(url, header = 1)
     fw_table = fw[4]
     fw_table.drop(fw_table.tail(2).index, inplace = True)
     fw_table = fw_table.loc[fw_table["Pos"].str.contains("FW")]
     fw_table["Nation"] = fw_table["Nation"].str.replace('[a-z]', '')
+    
+    fw_table = fw_table.drop(['SoT%', 'Sh/90', 'SoT/90', 'G/SoT', 'Dist', 'xG', 'npxG', 'npxG/Sh', 'G-xG', 'np:G-xG', 'Matches'], axis=1)
+    
     fw_table = fw_table.reset_index(drop = True)
     st.write('Stats of strikers')
     st.dataframe(fw_table) 

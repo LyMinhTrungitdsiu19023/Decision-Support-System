@@ -66,10 +66,5 @@ selected_squad = st.sidebar.selectbox('Squad',('4-4-2', '4-2-3-1', '4-3-3'))
 
  
 #button 
-# if st.button('View Players by Nation'):
-#     st.header('Players by Nation')
-    
-
-#     st.write('Data Dimension: ' + str(df_selected_nation.shape[0]) + ' rows and ' + str(df_selected_nation.shape[1]) + ' columns.')
-
-#     st.dataframe(df_selected_nation) 
+if st.button('View Analysis'):
+    st.header('Manchester City')

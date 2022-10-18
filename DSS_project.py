@@ -78,7 +78,7 @@ def Analysis(url):
     #Shoot
     shoot = data[4]
     shoot.drop(shoot.tail(2).index, inplace = True)
-    shoot["Nation"] = fw_shoot["Nation"].str.replace('[a-z]', '')
+    shoot["Nation"] = shoot["Nation"].str.replace('[a-z]', '')
     shoot = shoot.drop(['SoT%', 'Sh/90', 'SoT/90', 'G/SoT', 'Dist', 'xG', 'npxG', 'npxG/Sh', 'G-xG', 'np:G-xG', 'Matches'], axis=1)
     shoot.rename(columns = {'Gls':'Goals', 'Sh':'Shots total', 'SoT':'Shots on Target', 'G/Sh':'Goal per Shot', 'FK':'Freekick','PK':'Penalty Kick','PKatt':'Pentallty Attemp'}, inplace = True)
     shoot = shoot.reset_index(drop = True) 

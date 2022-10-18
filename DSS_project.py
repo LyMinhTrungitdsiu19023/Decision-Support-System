@@ -19,6 +19,7 @@ st.sidebar.header('Squad Selection')
 # Sidebar - Position selection
 unique_pos = ['GK','DF','MF','FW']
 selected_pos = st.sidebar.multiselect('Pos', unique_pos, unique_pos)
+df_selected_position= playerstats[playerstats.Pos.isin(selected_pos)]
 
 @st.cache
 def load_data():

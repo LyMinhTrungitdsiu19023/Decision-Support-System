@@ -53,7 +53,7 @@ with see_pos:
 unique_nation = playerstats["Nation"].tolist()
 selected_nation = st.sidebar.selectbox('Nation', (unique_nation))
 
-df_selected_nation = playerstats[(playerstats.Nation.isin(selected_nation))]    
+df_selected_nation = playerstats.loc[playerstats["Nation"].str.contains(selected_nation)]    
 #button
   
 if st.button('View Players by Nation'):

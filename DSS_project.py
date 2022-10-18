@@ -43,23 +43,19 @@ unique_pos = playerstats["Pos"].drop_duplicates().tolist()
 selected_pos = st.selectbox('Posision',(unique_pos))
 
 df_selected_position = playerstats[(playerstats.Pos.isin(selected_pos))] 
+st.dataframe(df_selected_position) 
 
 unique_nation = playerstats["Nation"].tolist()
 selected_nation = st.sidebar.multiselect('Nation', unique_nation, unique_nation)
 
-
-
-
-
-
 df_selected_nation = playerstats[(playerstats.Pos.isin(selected_pos)) & (playerstats.Nation.isin(selected_nation))]
 
 # button
-if st.button('View Players by Position'):
-    st.header('Players by Position')
-    st.write('Data Dimension: ' + str(df_selected_position.shape[0]) + ' rows and ' + str(df_selected_position.shape[1]) + ' columns.')
+# if st.button('View Players by Position'):
+#     st.header('Players by Position')
+#     st.write('Data Dimension: ' + str(df_selected_position.shape[0]) + ' rows and ' + str(df_selected_position.shape[1]) + ' columns.')
 
-    st.dataframe(df_selected_position) 
+#     st.dataframe(df_selected_position) 
     
 if st.button('View Players by Nation'):
     st.header('Players by Nation')

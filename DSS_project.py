@@ -11,8 +11,8 @@ st.markdown("""
 This app is project in Decision Support System course
 
 by
-Ly Minh Trung
-Kieu Chi Huy
+Ly Minh Trung\n
+Kieu Chi Huy\n
 Truong Quoc An Wibu
 """)
 

@@ -57,7 +57,7 @@ if st.button('View Players by Position'):
     unique_pos = playerstats["Pos"].drop_duplicates().tolist()
     selected_pos = st.selectbox('Posision',('GK', 'DF', 'MF', 'FW'))
 #     playerstats1 = pd.DataFrame(playerstats)
-    df_selected_position = playerstats[(playerstats.Pos.isin(selected_pos))]
+    df_selected_position = playerstats.loc[playerstats["Pos"].str.contains(selected_pos)]
 #     st.write('Data Dimension: ' + str(df_selected_position.shape[0]) + ' rows and ' + str(df_selected_position.shape[1]) + ' columns.')
     st.dataframe(df_selected_position) 
     

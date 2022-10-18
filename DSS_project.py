@@ -45,10 +45,10 @@ st.dataframe(playerstats)
 # df_selected_position = playerstats[(playerstats.Pos.isin(selected_pos))] 
 
 
-unique_nation = playerstats["Nation"].tolist()
-selected_nation = st.sidebar.multiselect('Nation', unique_nation, unique_nation)
+# unique_nation = playerstats["Nation"].tolist()
+# selected_nation = st.sidebar.multiselect('Nation', unique_nation, unique_nation)
 
-df_selected_nation = playerstats[(playerstats.Pos.isin(selected_pos)) & (playerstats.Nation.isin(selected_nation))]
+# df_selected_nation = playerstats[(playerstats.Pos.isin(selected_pos)) & (playerstats.Nation.isin(selected_nation))]
 
 #button
 if st.button('View Players by Position'):

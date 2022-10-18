@@ -39,7 +39,7 @@ unique_nation = playerstats["Nation"].tolist()
 selected_nation = st.sidebar.multiselect('Nation', unique_nation, unique_nation)
 
 # df_selected_position = playerstats[(playerstats.Pos.isin(selected_pos))] 
-df_selected_position =  playerstats.loc[playerstats["Pos"].str.contains(unique_pos)]
+df_selected_position =  playerstats.loc[playerstats["Pos"].str.contains(r"GK|DF|MF|FW")]
 
 
 df_selected_nation = playerstats[(playerstats.Pos.isin(selected_pos)) & (playerstats.Nation.isin(selected_nation))]

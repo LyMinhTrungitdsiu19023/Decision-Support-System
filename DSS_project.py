@@ -8,7 +8,7 @@ import numpy as np
 
 st.image(
 "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.teamtalk.com%2Fmanchester-city%2Fpep-guardiola-city-legends-after-premier-league-title-triumph-special-tribute-liverpool&psig=AOvVaw2gJRTChCW6y-YNsM3q1-PW&ust=1666168563979000&source=images&cd=vfe&ved=0CA0QjRxqFwoTCODj5tqv6foCFQAAAAAdAAAAABAJ"
-    width=1600, # Manually Adjust the width of the image as per requirement
+    ,width=1600 # Manually Adjust the width of the image as per requirement
 )
 st.title('Manchester City Football Club Management Decision Support System')
 

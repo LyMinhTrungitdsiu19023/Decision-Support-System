@@ -5,12 +5,15 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 
-st.title('NFL Football Stats (Rushing) Explorer')
+st.title('Football Management Decision Support System')
 
 st.markdown("""
-This app performs simple webscraping of NFL Football player stats data (focusing on Rushing)!
-* **Python libraries:** base64, pandas, streamlit, numpy, matplotlib, seaborn
-* **Data source:** [pro-football-reference.com](https://www.pro-football-reference.com/).
+This app is project in Decision Support System course
+
+by
+Ly Minh Trung
+Kieu Chi Huy
+Truong Quoc An Wibu
 """)
 
 st.sidebar.header('User Input Features')

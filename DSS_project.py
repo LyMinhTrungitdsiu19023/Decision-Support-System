@@ -31,13 +31,16 @@ def load_data():
     return playerstats
 playerstats = load_data()
 
-unique_pos = playerstats["Pos"].drop_duplicates().tolist()
+# unique_pos = playerstats["Pos"].drop_duplicates().tolist()
+unique_pos = ["GK", "DF", "MF", "FW"]
 selected_pos = st.sidebar.multiselect('Posision', unique_pos, unique_pos)
 
 unique_nation = playerstats["Nation"].tolist()
 selected_nation = st.sidebar.multiselect('Nation', unique_nation, unique_nation)
 
-df_selected_position = playerstats[(playerstats.Pos.isin(selected_pos))] 
+# df_selected_position = playerstats[(playerstats.Pos.isin(selected_pos))] 
+df_selected_position =  playerstats.loc[playerstats["Pos"].str.contains(unique_pos)]
+
 
 df_selected_nation = playerstats[(playerstats.Pos.isin(selected_pos)) & (playerstats.Nation.isin(selected_nation))]
 

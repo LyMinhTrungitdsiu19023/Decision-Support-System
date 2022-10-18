@@ -102,4 +102,13 @@ if st.button('Squad Suggestion'):
     st.write('*Note\n Cmp.1: Passes Completed in Short Distance - Att.1 Passes Attempted in Short Distance - Cmp%.1: % Passes Completed in Short Distance - .2: Medium Distance - .3:Long Distance')
 
     
- 
+    #Defend
+    fw_df = fw[5]
+    fw_df.drop(fw_df.tail(2).index, inplace = True)
+    fw_df = fw_df.loc[fw_df["Pos"].str.contains("FW")]
+    fw_df["Nation"] = fw_df["Nation"].str.replace('[a-z]', '')
+#     fw_df = fw_df.drop(['xA', 'A-xA', 'KP', '1/3', 'PPA', 'CrsPA', 'Prog','Matches', 'TotDist', 'PrgDist'], axis=1)
+#     fw_df.rename(fw_df = {'Cmp':'Passed Completed', 'Att':'Passes Attempted', 'Cmp%':'%Completed'}, inplace = True)
+    fw_df = fw_df.reset_index(drop = True)
+    st.write('Stats of Defensive')
+    st.dataframe(fw_df) 

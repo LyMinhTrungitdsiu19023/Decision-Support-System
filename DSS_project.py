@@ -15,7 +15,7 @@ Kieu Chi Huy\n
 Truong Quoc An
 """)
 
-# st.sidebar.header('Squad Selection')
+st.sidebar.header('Features')
 # Sidebar - Position selection
 
 
@@ -40,10 +40,6 @@ with see_data:
     st.dataframe(playerstats)
 
 
-# unique_nation = playerstats["Nation"].tolist()
-# selected_nation = st.sidebar.multiselect('Nation', unique_nation, unique_nation)
-
-# df_selected_nation = playerstats[(playerstats.Pos.isin(selected_pos)) & (playerstats.Nation.isin(selected_nation))]
 
 see_pos = st.expander("Players by Position 👉")
 with see_pos: 
@@ -58,6 +54,11 @@ with see_pos:
     
 if st.button('View Players by Nation'):
     st.header('Players by Nation')
+    
+    unique_nation = playerstats["Nation"].tolist()
+    selected_nation = st.sidebar.selectbox('Nation', (unique_nation))
+
+    df_selected_nation = playerstats[(playerstats.Nation.isin(selected_nation))]
     st.write('Data Dimension: ' + str(df_selected_nation.shape[0]) + ' rows and ' + str(df_selected_nation.shape[1]) + ' columns.')
 
     st.dataframe(df_selected_nation) 

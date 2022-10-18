@@ -16,12 +16,12 @@ Truong Quoc An
 """)
 
 st.sidebar.header('Tranfer Features')
-selected_year = st.sidebar.selectbox('Year', list(reversed(range(1990,2020))))
+# selected_year = st.sidebar.selectbox('Year', list(reversed(range(1990,2020))))
 
 # Web scraping of NFL player stats
 # https://www.pro-football-reference.com/years/2019/rushing.htm
 @st.cache
-def load_data(year):
+def load_data():
 #     url = "https://www.pro-football-reference.com/years/" + str(year) + "/rushing.htm"
     url = "https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats"
     html = pd.read_html(url, header = 1)
@@ -30,6 +30,7 @@ def load_data(year):
 #     raw = raw.fillna(0)
 #     playerstats = raw.drop(['Rk'], axis=1)
     return playerstats
+playerstats = load_data()
 # playerstats = load_data(selected_year)
 
 # Sidebar - Team selection

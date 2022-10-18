@@ -41,11 +41,13 @@ def load_data(year):
 # selected_pos = st.sidebar.multiselect('Position', unique_pos, unique_pos)
 
 # Filtering data
-df_selected_team = playerstats[(playerstats.Tm.isin(selected_team)) & (playerstats.Pos.isin(selected_pos))]
+# df_selected_team = playerstats[(playerstats.Tm.isin(selected_team)) & (playerstats.Pos.isin(selected_pos))]
+# df_selected_team = playerstats[(playerstats.Tm.isin(selected_team))]
+
 
 st.header('Information of Players')
-st.write('Data Dimension: ' + str(df_selected_team.shape[0]) + ' rows and ' + str(df_selected_team.shape[1]) + ' columns.')
-st.dataframe(df_selected_team)
+st.write('Data Dimension: ' + str(playerstats.shape[0]) + ' rows and ' + str(playerstats.shape[1]) + ' columns.')
+st.dataframe(playerstats)
 
 # Download NBA player stats data
 # https://discuss.streamlit.io/t/how-to-download-file-in-streamlit/1806
@@ -55,12 +57,12 @@ def filedownload(df):
     href = f'<a href="data:file/csv;base64,{b64}" download="playerstats.csv">Download CSV File</a>'
     return href
 
-st.markdown(filedownload(df_selected_team), unsafe_allow_html=True)
+st.markdown(filedownload(playerstats), unsafe_allow_html=True)
 
 # Heatmap
 if st.button('Intercorrelation Heatmap'):
     st.header('Intercorrelation Matrix Heatmap')
-    df_selected_team.to_csv('output.csv',index=False)
+    playerstats.to_csv('output.csv',index=False)
     df = pd.read_csv('output.csv')
 
     corr = df.corr()

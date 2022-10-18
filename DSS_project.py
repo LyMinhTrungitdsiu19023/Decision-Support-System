@@ -1,158 +1,71 @@
 import streamlit as st
 import pandas as pd
-import pickle
-from pathlib import Path
+import base64
+import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
 
+st.title('Football Management Decision Support System')
 
-st.set_page_config(
-    page_title="Player Recommender",
-    page_icon=":soccer:"
-)
+st.markdown("""
+This app is project of Decision Support System course
+by\n
+Ly Minh Trung\n
+Kieu Chi Huy\n
+Truong Quoc An
+""")
 
+st.sidebar.header('Tranfer Features')
+selected_year = st.sidebar.selectbox('Year', list(reversed(range(1990,2020))))
 
-@st.cache(show_spinner=False)
-def getData():
-    # loading outfield players' cleaned data and engine
-    player_df = pd.read_pickle(r'data/outfield.pkl')
-    with open(r'data/player_ID.pickle', 'rb') as file:
-        player_ID = pickle.load(file)
-    with open(r'data/engine.pickle', 'rb') as file:
-        engine = pickle.load(file)
+# Web scraping of NFL player stats
+# https://www.pro-football-reference.com/years/2019/rushing.htm
+@st.cache
+def load_data(year):
+    url = "https://www.pro-football-reference.com/years/" + str(year) + "/rushing.htm"
+    html = pd.read_html(url, header = 1)
+    df = html[0]
+    raw = df.drop(df[df.Age == 'Age'].index) # Deletes repeating headers in content
+    raw = raw.fillna(0)
+    playerstats = raw.drop(['Rk'], axis=1)
+    return playerstats
+playerstats = load_data(selected_year)
 
-    # loading gk players' cleaned data and engine
-    gk_df = pd.read_pickle(r'data/gk.pkl')
-    with open(r'data/gk_ID.pickle', 'rb') as file:
-        gk_ID = pickle.load(file)
-    with open(r'data/gk_engine.pickle', 'rb') as file:
-        gk_engine = pickle.load(file)
+# Sidebar - Team selection
+sorted_unique_team = sorted(playerstats.Tm.unique())
+selected_team = st.sidebar.multiselect('Team', sorted_unique_team, sorted_unique_team)
 
-    return [player_df, player_ID, engine], [gk_df, gk_ID, gk_engine]
-    
+# Sidebar - Position selection
+unique_pos = ['RB','QB','WR','FB','TE']
+selected_pos = st.sidebar.multiselect('Position', unique_pos, unique_pos)
 
-outfield_data, gk_data = getData()
+# Filtering data
+df_selected_team = playerstats[(playerstats.Tm.isin(selected_team)) & (playerstats.Pos.isin(selected_pos))]
 
+st.header('Display Player Stats of Selected Team(s)')
+st.write('Data Dimension: ' + str(df_selected_team.shape[0]) + ' rows and ' + str(df_selected_team.shape[1]) + ' columns.')
+st.dataframe(df_selected_team)
 
-header = st.beta_container()
-data_info1 = st.beta_container()
-params = st.beta_container()
-result = st.beta_container()
+# Download NBA player stats data
+# https://discuss.streamlit.io/t/how-to-download-file-in-streamlit/1806
+def filedownload(df):
+    csv = df.to_csv(index=False)
+    b64 = base64.b64encode(csv.encode()).decode()  # strings <-> bytes conversions
+    href = f'<a href="data:file/csv;base64,{b64}" download="playerstats.csv">Download CSV File</a>'
+    return href
 
+st.markdown(filedownload(df_selected_team), unsafe_allow_html=True)
 
-with header:
-    st.title('Player Recommender Tool')
+# Heatmap
+if st.button('Intercorrelation Heatmap'):
+    st.header('Intercorrelation Matrix Heatmap')
+    df_selected_team.to_csv('output.csv',index=False)
+    df = pd.read_csv('output.csv')
 
-
-with data_info1:
-    st.markdown('Based on the 2020/21 season data for the **Big 5** European leagues :soccer:')
-    @st.cache
-    def read_info(path):
-        return Path(path).read_text(encoding='utf8')
-
-    st.markdown(read_info('info.md'), unsafe_allow_html=True)
-
-
-
-with params:
-    st.text(' \n')
-    st.text(' \n')
-    st.header('Tweak the parameters')
-    
-    col1, col2, col3 = st.beta_columns([1, 2.2, 0.8])
-    with col1:
-        radio = st.radio('Player type', ['Outfield players', 'Goal Keepers'])    
-    with col2:
-        if radio=='Outfield players':
-            df, player_ID, engine = outfield_data
-        else:
-            df, player_ID, engine = gk_data
-        players = sorted(list(player_ID.keys()))
-        age_default = (min(df['Age']), max(df['Age']))
-        query = st.selectbox('Player name', players, 
-            help='Type without deleting a character. To search from a specific team, just type in the club\'s name.')
-    with col3:
-        foot = st.selectbox('Preferred foot', ['All', 'Automatic', 'Right', 'Left'], 
-        help='\'Automatic\' matches the preferred foot of the selected player with the players automatically. \
-            \'All\' by default. Preferred foot data is not available for GK\'s.')
-    
-
-    col4, col5, col6, col7 = st.beta_columns([0.7, 1, 1, 1])
-    with col4:
-        if radio=='Outfield players':
-            res, val, step = (5, 20), 10, 5
-        else:
-            res, val, step = (3, 10), 5, 1
-        count = st.slider('Number of results', min_value=res[0], max_value=res[1], value=val, step=step)
-    with col5:
-        comp = st.selectbox('League', ['All', 'Premier League', 'La Liga', 'Serie A', 'Bundesliga', 'Ligue 1'],
-            help='Leagues to get recommendations from. \'All\' leagues by default.')
-    with col6:
-        comparison = st.selectbox('Comparison with', ['All positions', 'Same position'],
-            help='Whether to compare the selected player with all positions or just the same defined position in the dataset. \'All \
-            positions\' by default.')
-    with col7:
-        age = st.slider('Age bracket', min_value=age_default[0], max_value=age_default[1], value=age_default, 
-        help='Age range to get recommendations from. Drag the sliders on either side. \'All\' ages by default.')
-    
-
-    
-with result:
-    st.text(' \n')
-    st.text(' \n')
-    st.text(' \n')
-    st.markdown('_showing recommendations for_ **{}**'.format(query))
-    
-
-    def getRecommendations(metric, df_type, league='All', foot='All', comparison='All positions', age=age_default, count=val):
-        if df_type == 'outfield':
-            df_res = df.iloc[:, [1, 3, 5, 6, 11, -1]].copy()
-        else:
-            df_res = df.iloc[:, [1, 3, 5, 6, 11]].copy()
-        df_res['Player'] = list(player_ID.keys())
-        df_res.insert(1, 'Similarity', metric)
-        df_res = df_res.sort_values(by=['Similarity'], ascending=False)
-        metric = [str(num) + '%' for num in df_res['Similarity']]
-        df_res['Similarity'] = metric
-        df_res = df_res.iloc[1:, :]
-
-        
-        if comparison == 'Same position' and df_type == 'outfield':
-            q_pos = list(df[df['Player']==query.split(' (')[0]].Pos)[0]
-            df_res = df_res[df_res['Pos']==q_pos]
-
-
-        if league=='All':
-            pass
-        else:
-            df_res = df_res[df_res['Comp']==league]
-
-        
-        if age==age_default:
-            pass
-        else:
-            df_res = df_res[(df_res['Age'] >= age[0]) & (df_res['Age'] <= age[1])]
-        
-
-        if foot=='All' or df_type == 'gk':
-            pass
-        elif foot=='Automatic':
-            query_foot = df['Foot'][player_ID[query]]
-            df_res = df_res[df_res['Foot']==query_foot]
-        elif foot=='Left':
-            df_res = df_res[df_res['Foot']=='left']
-        else:
-            df_res = df_res[df_res['Foot']=='right']
-        
-        
-        df_res = df_res.iloc[:count, :].reset_index(drop=True)
-        df_res.index = df_res.index + 1
-        if len(df)==2040:
-            mp90 = [str(round(num, 1)) for num in df_res['90s']]
-            df_res['90s'] = mp90
-        df_res.rename(columns={'Pos':'Position', 'Comp':'League'}, inplace=True)
-        return df_res
-
-
-    sims = engine[query]
-    df_type = 'outfield' if len(df) == 2040 else 'gk'
-    recoms = getRecommendations(sims, df_type=df_type, foot=foot, league=comp, comparison=comparison, age=age, count=count)
-    st.table(recoms)
+    corr = df.corr()
+    mask = np.zeros_like(corr)
+    mask[np.triu_indices_from(mask)] = True
+    with sns.axes_style("white"):
+        f, ax = plt.subplots(figsize=(7, 5))
+        ax = sns.heatmap(corr, mask=mask, vmax=1, square=True)
+    st.pyplot()

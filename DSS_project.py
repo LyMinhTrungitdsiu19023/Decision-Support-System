@@ -74,6 +74,7 @@ if st.button('Squad Suggestion'):
     fw_table.drop(fw_table.tail(2).index, inplace = True)
     fw_table = fw_table.loc[fw_table["Pos"].str.contains("FW")]
     fw_table["Nation"] = fw_table["Nation"].str.replace('[a-z]', '')
+    fw_table = fw_table.reset_index()
     st.write('Stats of strikers')
     st.dataframe(fw_table) 
     

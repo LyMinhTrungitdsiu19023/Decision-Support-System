@@ -17,7 +17,7 @@ Truong Quoc An
 
 st.sidebar.header('Squad Selection')
 # Sidebar - Position selection
-unique_pos = ['GK','DF','MF','FW', 'DF,MF', 'MF,FW', 'FW,DF']
+unique_pos = playerstats["Pos"].tolist()
 selected_pos = st.sidebar.multiselect('Posision', unique_pos, unique_pos)
 
 

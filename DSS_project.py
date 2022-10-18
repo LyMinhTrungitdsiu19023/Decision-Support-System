@@ -51,4 +51,4 @@ st.markdown(filedownload(playerstats), unsafe_allow_html=True)
 # Heatmap
 if st.button('View Players by Position'):
     st.header('Players')
-    st.dataframe(playerstats)
+    st.dataframe(df_selected_position)

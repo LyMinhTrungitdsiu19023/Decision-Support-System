@@ -7,8 +7,8 @@ import numpy as np
 
 
 st.image(
-    "https://www.google.com/imgres?imgurl=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fvi%2F1%2F1d%2FManchester_City_FC_logo.svg&imgrefurl=https%3A%2F%2Fvi.wikipedia.org%2Fwiki%2FManchester_City_F.C.&tbnid=ObOVXhuQwy11UM&vet=12ahUKEwi-47Pcr-n6AhXOz4sBHaGlDxwQMygAegUIARC2AQ..i&docid=T6O6LcN8Fwog-M&w=410&h=410&q=Man%20city&ved=2ahUKEwi-47Pcr-n6AhXOz4sBHaGlDxwQMygAegUIARC2AQ",
-    width=410, # Manually Adjust the width of the image as per requirement
+"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.teamtalk.com%2Fmanchester-city%2Fpep-guardiola-city-legends-after-premier-league-title-triumph-special-tribute-liverpool&psig=AOvVaw2gJRTChCW6y-YNsM3q1-PW&ust=1666168563979000&source=images&cd=vfe&ved=0CA0QjRxqFwoTCODj5tqv6foCFQAAAAAdAAAAABAJ"
+    width=1600, # Manually Adjust the width of the image as per requirement
 )
 st.title('Manchester City Football Club Management Decision Support System')
 

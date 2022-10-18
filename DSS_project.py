@@ -33,16 +33,11 @@ playerstats = load_data()
 
 
 
-
-st.header("Information of Manchester City's Players")
-st.write('Data Dimension: ' + str(playerstats.shape[0]) + ' rows and ' + str(playerstats.shape[1]) + ' columns.')
-st.dataframe(playerstats)
-
-# unique_pos = playerstats["Pos"].drop_duplicates().tolist()
-# unique_pos = playerstats["Pos"].drop_duplicates().tolist()
-# selected_pos = st.selectbox('Posision',(unique_pos))
-
-# df_selected_position = playerstats[(playerstats.Pos.isin(selected_pos))] 
+see_data = st.expander('You can click here to see all players 👉')
+with see_data: 
+    st.header("Information of Manchester City's Players")
+    st.write('Data Dimension: ' + str(playerstats.shape[0]) + ' rows and ' + str(playerstats.shape[1]) + ' columns.')
+    st.dataframe(playerstats)
 
 
 # unique_nation = playerstats["Nation"].tolist()
@@ -59,8 +54,6 @@ df_selected_position = playerstats.loc[playerstats["Pos"].str.contains(selected_
 st.dataframe(df_selected_position) 
 
 #button
-
-
     
 if st.button('View Players by Nation'):
     st.header('Players by Nation')

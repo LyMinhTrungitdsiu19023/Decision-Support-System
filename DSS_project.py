@@ -55,11 +55,11 @@ if st.button('View Players by Position'):
     st.header('Players by Position')
 
     unique_pos = playerstats["Pos"].drop_duplicates().tolist()
-    selected_pos = st.selectbox('Posision',(unique_pos))
-    playerstats1 = pd.DataFrame(playerstats)
-    df_selected_position = playerstats1[(playerstats1.Pos.isin(selected_pos))]
-    st.write('Data Dimension: ' + str(df_selected_position.shape[0]) + ' rows and ' + str(df_selected_position.shape[1]) + ' columns.')
-    st.write(df_selected_position) 
+    selected_pos = st.selectbox('Posision',('GK', 'DF', 'MF', 'FW'))
+#     playerstats1 = pd.DataFrame(playerstats)
+    df_selected_position = playerstats[(playerstats.Pos.isin(selected_pos))]
+#     st.write('Data Dimension: ' + str(df_selected_position.shape[0]) + ' rows and ' + str(df_selected_position.shape[1]) + ' columns.')
+    st.dataframe(df_selected_position) 
     
 if st.button('View Players by Nation'):
     st.header('Players by Nation')

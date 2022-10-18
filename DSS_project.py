@@ -9,7 +9,7 @@ from PIL import Image
 
 image = Image.open('logo.jpg')
 
-st.image(image, caption='The Citizen', width=400)
+st.image(image, caption='The Citizen', width=100)
 
 st.title('Manchester City Football Club Management Decision Support System')
 

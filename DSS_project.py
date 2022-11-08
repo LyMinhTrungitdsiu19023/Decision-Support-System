@@ -6,7 +6,7 @@ import seaborn as sns
 import numpy as np
 
 from PIL import Image
-
+st.set_page_config(layout = 'wide')
 image = Image.open('logo.jpg')
 
 st.image(image, caption='The Citizen', width=None)

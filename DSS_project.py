@@ -178,7 +178,7 @@ if df:
     Analysis_defend(url) 
     
 analysis_bar = st.expander("Analysis Information")
-row_bar1, row_word1 = st.columns((4.4, 2.3))
+row_bar1, row_word1 = st.columns((2.3, 4.4))
 with analysis_bar: 
     st.header('Analysis Information')
     with row_word1:

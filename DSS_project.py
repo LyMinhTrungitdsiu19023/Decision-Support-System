@@ -175,4 +175,8 @@ if fw:
 if mf:
     Analysis_Mid(url) 
 if df:
-    Analysis_defend(url)
+    Analysis_defend(url) 
+    
+analysis_bar = st.expander("Analysis Information")
+with analysis_bar: 
+    

@@ -9,7 +9,7 @@ from PIL import Image
 st.set_page_config(layout = 'wide')
 image = Image.open('logo.jpg')
 
-st.image(image, caption='The Citizen', width=None)
+st.image(image, caption='The Citizen', width=1000)
 
 st.title('Manchester City Football Club Management Decision Support System')
 

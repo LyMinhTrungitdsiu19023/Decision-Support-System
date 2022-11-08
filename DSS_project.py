@@ -185,6 +185,7 @@ with analysis_bar:
     with row_wordy:
         st.markdown('Chua co MARKDOWN')
         st.selectbox('Which attribute do you want to analyze?', ('Goal','Assist','Goal per Shots','Passed Completed','Age'))
+        st.selectbox('Which measure do you want to analyze?', ('Mean','Median','Absolute','Maximum','Minimum'))
     with row_charty:
         st.markdown('HIHI')
     

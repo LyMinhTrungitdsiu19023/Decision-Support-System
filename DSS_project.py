@@ -179,7 +179,7 @@ if df:
     
 analysis_bar = st.expander("Analysis Information")
 row_word1 = st.columns((3.4, 2.3))
-row_chart1 = st.columns((.2, 3.5))
+row_chart1 = st.columns((.2, 3))
 with analysis_bar: 
     st.header('Analysis Information')
     with row_word1:

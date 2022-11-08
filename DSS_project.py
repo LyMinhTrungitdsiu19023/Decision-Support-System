@@ -182,10 +182,10 @@ row_wordx, row_wordy = st.columns((3.4, 2.3))
 row_chartx, row_charty = st.columns((.2, 3))
 with analysis_bar: 
     st.header('Analysis Information')
-    with row_wordy:
-        st.markdown('Chua co MARKDOWN')
-        st.selectbox('Which attribute do you want to analyze?', ('Goal','Assist','Goal per Shots','Passed Completed','Age'))
-        st.selectbox('Which measure do you want to analyze?', ('Mean','Median','Absolute','Maximum','Minimum'))
-    with row_charty:
-        st.markdown('HIHI')
+        with row_wordy:
+            st.markdown('Chua co MARKDOWN')
+            st.selectbox('Which attribute do you want to analyze?', ('Goal','Assist','Goal per Shots','Passed Completed','Age'))
+            st.selectbox('Which measure do you want to analyze?', ('Mean','Median','Absolute','Maximum','Minimum'))
+        with row_charty:
+            st.markdown('HIHI')
     

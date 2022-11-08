@@ -178,5 +178,5 @@ if df:
     Analysis_defend(url) 
     
 analysis_bar = st.expander("Analysis Information")
-with analysis_bar: 
+# with analysis_bar: 
     

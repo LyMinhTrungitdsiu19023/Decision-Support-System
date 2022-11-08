@@ -178,10 +178,11 @@ if df:
     Analysis_defend(url) 
     
 # analysis_bar = st.expander("Analysis Information")
+st.header('Analysis Information')
+
 row_wordx, row_wordy = st.columns((3.4, 2.3))
 row_chartx, row_charty = st.columns((.2, 3))
 # with analysis_bar: 
-st.header('Analysis Information')
 with row_wordy:
     st.markdown('Chua co MARKDOWN')
     st.selectbox('Which attribute do you want to analyze?', ('Goal','Assist','Goal per Shots','Passed Completed','Age'))

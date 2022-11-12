@@ -2,6 +2,7 @@ import streamlit as st
 import streamlit.components.v1 as components
 
 # bootstrap 4 collapse example
+st.set_page_config(layout = 'wide')
 components.html(
     """
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">

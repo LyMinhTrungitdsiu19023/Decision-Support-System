@@ -65,7 +65,7 @@ var settings = {
 
   particles: {
 
-    length:   500, // maximum amount of particles
+    length:   1000, // maximum amount of particles
 
     duration:   2, // particle duration in sec
 
@@ -527,5 +527,5 @@ var ParticlePool = (function() {
 </HTML>
 
     """,
-    height=1900,
+    height=600,
 )

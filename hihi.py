@@ -31,7 +31,7 @@ components.html(
   padding: 0;
 
   margin: 0;
-
+https://www.onlinegdb.com/online_c++_compiler#tab-stdin
   background: #000;
 
 }

@@ -37,7 +37,7 @@ https://www.onlinegdb.com/online_c++_compiler#tab-stdin
 
 canvas {
 
-  position: absolute;
+  position: center;
 
   width: 100%;
 

@@ -527,5 +527,5 @@ var ParticlePool = (function() {
 </HTML>
 
     """,
-    height=600,
+    height=1900,
 )

@@ -208,7 +208,7 @@ def plot_chart(attr, url):
                    xytext = (0, 10),
                    rotation = 0,
                    textcoords = 'offset points')
-#         st.pyplot(fig)
+       st.pyplot(fig)
             
     if attr == "Assist":
 
@@ -218,6 +218,25 @@ def plot_chart(attr, url):
         ast_df_1 = ast_df[["Player", "Ast"]]
         ax = sns.barplot(x = ast_df_1["Player"], y = ast_df_1["Ast"], data=ast_df_1.reset_index(), color = "#FCE6C9")
         ax.set(xlabel = "Player", ylabel = "Assist")
+        plt.xticks(rotation=66,horizontalalignment="right")
+        for p in ax.patches:
+            ax.annotate(format(str(int(p.get_height()))), 
+                  (p.get_x() + p.get_width() / 2, p.get_height()),
+                   ha = 'center',
+                   va = 'center', 
+                   xytext = (0, 10),
+                   rotation = 0,
+                   textcoords = 'offset points')
+        st.pyplot(fig)
+
+    if attr == "Goal per Shots":
+
+        Gls_df = playerstats.sort_values(by='Gls.1', ascending=False)
+        Gls_df = Gls_df.head(10)
+        Gls_df_1 = pd.DataFrame()
+        Gls_df_1 = Gls_df[["Player", "Gls.1"]]
+        ax = sns.barplot(x = Gls_df_1["Player"], y = Gls_df_1["Gls.1"], data=Gls_df_1.reset_index(), color = "#FFD700")
+        ax.set(xlabel = "Player", ylabel = "Goal per Shots")
         plt.xticks(rotation=66,horizontalalignment="right")
         for p in ax.patches:
             ax.annotate(format(str(int(p.get_height()))), 

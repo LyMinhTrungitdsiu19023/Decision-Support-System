@@ -200,7 +200,7 @@ with row_wordy:
 with row_charty:
 #     st.markdown('HIHI')
     
-    st.dataframe(chart_analysis_information_goal(select_attr, measure, playerstats))
+    st.dataframe(chart_analysis_information_goal(select_attr, playerstats))
 
 st.header('Correlation of Game Stats')
     

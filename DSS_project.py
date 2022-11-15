@@ -165,15 +165,36 @@ def Analysis_defend(url):
     df = df.loc[df["Pos"].str.contains("DF")]
     st.write('Stats of Defensive')
     st.dataframe(df) 
-    
-def chart_analysis_information_goal(attr, playerstats):
+
+# def chart_analysis_information_goal(attr, playerstats):
+#     if attr == "Goal":
+#         goal_df = playerstats.sort_values(by='Gls', ascending=False)
+#         goal_df = goal_df.head(10)
+        
+#     return goal_df
+def plot_chart(attr, playerstats):
+    rc = {'figure.figsize':(8,4.5),
+      'axes.facecolor':'#0e1117',
+      'axes.edgecolor': '#0e1117',
+      'axes.labelcolor': 'white',
+      'figure.facecolor': '#0e1117',
+      'patch.edgecolor': '#0e1117',
+      'text.color': 'white',
+      'xtick.color': 'white',
+      'ytick.color': 'white',
+      'grid.color': 'grey',
+      'font.size' : 8,
+      'axes.labelsize': 12,
+      'xtick.labelsize': 8,
+      'ytick.labelsize': 12}
+    plt.rcParams.update(rc)
+    fig, ax = plt.subplots()
     if attr == "Goal":
         goal_df = playerstats.sort_values(by='Gls', ascending=False)
         goal_df = goal_df.head(10)
-    return goal_df
-    
-    
-    
+        goal_df = goal_df[["Player"], ["Gls"]]
+        ax = sns.barplot(x = goal_df["Player"], y = goal_df["Gls"], data=goal_df.reset_index(), color = "#b80606")
+        st.plot(fig)
     
 #button 
 # if st.button('Squad Analysis'):
@@ -200,7 +221,7 @@ with row_wordy:
 with row_charty:
 #     st.markdown('HIHI')
     
-    st.dataframe(chart_analysis_information_goal(select_attr, playerstats))
+    st.dataframe(plot_chart(select_attr, playerstats)
 
 st.header('Correlation of Game Stats')
     

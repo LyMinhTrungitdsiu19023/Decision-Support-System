@@ -220,8 +220,6 @@ with row_wordy:
 #     st.selectbox('Which measure do you want to analyze?', ('Mean','Median','Absolute','Maximum','Minimum'))
 with row_charty:
 #     st.markdown('HIHI')
-    
     st.dataframe(plot_chart(select_attr, playerstats)
 
 # st.header('Correlation of Game Stats')
-    

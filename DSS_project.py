@@ -397,7 +397,7 @@ def prediction(url):
     pre_table = st.dataframe(predic_df, width=2500, height=400)
     
     
-    return pre_table
+    return pre_table, predic_df
 #button 
 # if st.button('Squad Analysis'):
 fw = st.checkbox("Statistics of Forward")
@@ -427,7 +427,7 @@ with row_wordx:
 st.header("Prediction of the player's ability")
 see_predict_table = st.expander("Show prediction table 👉")
 with see_predict_table: 
-    prediction(url)
+    prediction(url)[0]
     
 see_predict_chart = st.expander("Show prediction Chart 👉")
 with see_predict_chart:

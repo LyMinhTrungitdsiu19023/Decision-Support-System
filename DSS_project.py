@@ -172,7 +172,7 @@ def Analysis_defend(url):
 #         goal_df = goal_df.head(10)
         
 #     return goal_df
-def plot_chart(attr, playerstats):
+def plot_chart(attr):
     rc = {'figure.figsize':(8,4.5),
       'axes.facecolor':'#0e1117',
       'axes.edgecolor': '#0e1117',
@@ -189,6 +189,10 @@ def plot_chart(attr, playerstats):
       'ytick.labelsize': 12}
     plt.rcParams.update(rc)
     fig, ax = plt.subplots()
+    
+    html = pd.read_html("https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats", header = 1)
+    playerstats = html[0]
+    
     if attr == "Goal":
 
         goal_df = playerstats.sort_values(by='Gls', ascending=False)

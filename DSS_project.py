@@ -206,7 +206,7 @@ def plot_chart(attr, url):
                   (p.get_x() + p.get_width() / 2, p.get_height()),
                    ha = 'center',
                    va = 'center', 
-                   xytext = (0, 18),
+                   xytext = (0, 10),
                    rotation = 0,
                    textcoords = 'offset points')
         st.pyplot(fig)

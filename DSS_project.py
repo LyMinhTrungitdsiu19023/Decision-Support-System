@@ -296,7 +296,7 @@ def plot_chart(attr, url):
         PKatt_df = PKatt_df.head(10)
         PKatt_df_1 = pd.DataFrame()
         PKatt_df_1 = PKatt_df[["Player", "PKatt"]]
-        ax = sns.barplot(x = PKatt_df_1["Player"], y = PKatt_df_1["CrdR"], data=PKatt_df_1.reset_index(), color = "#CD5B45")
+        ax = sns.barplot(x = PKatt_df_1["Player"], y = PKatt_df_1["PKatt"], data=PKatt_df_1.reset_index(), color = "#53868B")
         ax.set(xlabel = "Player", ylabel = "Total Penalty Goals")
         plt.xticks(rotation=66,horizontalalignment="right")
         for p in ax.patches:
@@ -332,6 +332,6 @@ with row_wordy:
     st.markdown('Investigate a variety of stats for each player. Which player scores the most goals, assist or pass? How does players compare with each others?')
     select_attr = st.selectbox('Which attribute do you want to analyze?', ('Goal','Assist','Goal per 90Mins','Passed per 90Mins', 'Total Yellow Cards', 'Total Red Cards', 'Total Penalty Goals'))
 #     st.selectbox('Which measure do you want to analyze?', ('Mean','Median','Absolute','Maximum','Minimum'))
-with row_charty:
+with row_chartx:
 #     st.dataframe(plot_chart(select_attr))
     plot_chart(select_attr, url)

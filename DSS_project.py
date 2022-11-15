@@ -334,7 +334,7 @@ def plot_chart(attr, url):
         
     if attr == "Number of Tackled":
         tkled = defend_data[8]
-        tkled.drop(tkl.tail(2).index, inplace = True)
+        tkled.drop(tkled.tail(2).index, inplace = True)
         tkled_df = tkled.sort_values(by='Tkl', ascending=False)
         tkled_df = tkled_df.head(10)
         tkled_df_1 = pd.DataFrame()

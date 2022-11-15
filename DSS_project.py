@@ -174,7 +174,7 @@ def Analysis_defend(url):
 #     return goal_df
 def plot_chart(attr, url):
     playerstats = load_data(url)
-    rc = {'figure.figsize':(8,4),
+    rc = {'figure.figsize':(15,4),
       'axes.facecolor':'#0e1117',
       'axes.edgecolor': '#0e1117',
       'axes.labelcolor': 'white',
@@ -260,14 +260,14 @@ def plot_chart(attr, url):
         ax = sns.barplot(x = CrdY_df_1["Player"], y = CrdY_df_1["CrdY"], data=CrdY_df_1.reset_index(), color = "#CD5B45")
         ax.set(xlabel = "Player", ylabel = "Yellow Cards")
         plt.xticks(rotation=66,horizontalalignment="right")
-#         for p in ax.patches:
-#             ax.annotate(format(str(int(p.get_height()))), 
-#                   (p.get_x() + p.get_width() / 2, p.get_height()),
-#                    ha = 'center',
-#                    va = 'center', 
-#                    xytext = (0, 10),
-#                    rotation = 0,
-#                    textcoords = 'offset points')
+        for p in ax.patches:
+            ax.annotate(format(str(int(p.get_height()))), 
+                  (p.get_x() + p.get_width() / 2, p.get_height()),
+                   ha = 'center',
+                   va = 'center', 
+                   xytext = (0, 10),
+                   rotation = 0,
+                   textcoords = 'offset points')
         st.pyplot(fig)
 #         return goal_df_1
     

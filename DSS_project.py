@@ -394,7 +394,7 @@ def prediction(url):
     
     predic_df = pd.merge(exshoot, expassing, on='Player', how='inner')
 
-    st.dataframe(predic_df, width=1024, height=768)
+    st.dataframe(predic_df, width=1400, height=768)
     
 #button 
 # if st.button('Squad Analysis'):

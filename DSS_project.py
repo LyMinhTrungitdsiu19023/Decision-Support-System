@@ -426,9 +426,9 @@ with row_wordx:
 
 st.header("Prediction of the player's ability")
 see_predict_table = st.expander("Show prediction table 👉")
-see_predict_chart = st.expander("Show prediction Chart 👉")
 with see_predict_table: 
     prediction(url)
+see_predict_chart = st.expander("Show prediction Chart 👉")
 with see_predict_chart:
     with row_wordy:
         st.markdown('Investigate a variety of prediction for each player. Top 10 players who predicted to score the most goals, assist, pass, or mistakes? How does players compare with each others?')

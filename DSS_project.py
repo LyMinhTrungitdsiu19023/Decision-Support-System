@@ -210,7 +210,7 @@ def plot_chart(attr, url):
                    textcoords = 'offset points')
         st.pyplot(fig)
         
-     if attr == "Assist":
+    if attr == "Assist":
 
         ast_df = playerstats.sort_values(by='Ast', ascending=False)
         ast_df = ast_df.head(10)

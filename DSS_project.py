@@ -173,10 +173,9 @@ def Analysis_defend(url):
 #         goal_df = goal_df.head(10)
         
 #     return goal_df
-data = pd.read_html(url, header = 1)
-def plot_chart(attr, data):
+def plot_chart(attr, url):
     playerstats = load_data(url)
-#     data = pd.read_html(url, header = 1)
+    data = pd.read_html(url, header = 1)
 
     rc = {'figure.figsize':(8,4),
       'axes.facecolor':'#0e1117',
@@ -392,8 +391,8 @@ def plot_chart(attr, data):
 
         
         
-def prediction(data):
-#     data = pd.read_html(url, header = 1)
+def prediction(url):
+    data = pd.read_html(url, header = 1)
     shoot = data[4]
     shoot.drop(shoot.tail(2).index, inplace = True)
     shoot["Nation"] = shoot["Nation"].str.replace('[a-z]', '')
@@ -492,12 +491,12 @@ with row_wordy:
 #     st.selectbox('Which measure do you want to analyze?', ('Mean','Median','Absolute','Maximum','Minimum'))
 with row_wordx:
 #     st.dataframe(plot_chart(select_attr))
-    plot_chart(select_attr, data)
+    plot_chart(select_attr, url)
 
 st.header("Prediction of the player's ability")
 see_predict_table = st.expander("Show prediction table 👉")
 with see_predict_table: 
-    st.dataframe(prediction(data), width=2500, height=400)
+    st.dataframe(prediction(url), width=2500, height=400)
 
     
 see_predict_chart = st.expander("Show prediction Chart 👉")

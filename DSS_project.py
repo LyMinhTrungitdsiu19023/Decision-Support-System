@@ -449,6 +449,24 @@ def prediction_chart(attr):
                    rotation = 0,
                    textcoords = 'offset points')
         st.pyplot(fig)
+
+    if attr == "Expected Assists":
+        xA = predic_df.sort_values(by='Expected Assists', ascending=False)
+        xA = xA.head(10)
+        xA_1 = pd.DataFrame()
+        xA_1 = xA[["Player", "Expected Assists"]]
+        ax = sns.barplot(x = xA_1["Player"], y = xA_1["Expected Assists"], data=xA_1.reset_index(), color = "#CD5C5C")
+        ax.set(xlabel = "Players with Expected Assists", ylabel = "Expected Assists")
+        plt.xticks(rotation=66,horizontalalignment="right")
+        for p in ax.patches:
+            ax.annotate(format(p.get_height(), '.2f'), 
+                  (p.get_x() + p.get_width() / 2., p.get_height()),
+                   ha = 'center',
+                   va = 'center', 
+                   xytext = (0, 10),
+                   rotation = 0,
+                   textcoords = 'offset points')
+        st.pyplot(fig)
 #button 
 # if st.button('Squad Analysis'):
 fw = st.checkbox("Statistics of Forward")

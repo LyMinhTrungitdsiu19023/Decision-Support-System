@@ -190,17 +190,14 @@ def plot_chart(attr, url):
       'ytick.labelsize': 12}
     plt.rcParams.update(rc)
     fig, ax = plt.subplots()
-    N = 10
-    df_colors = pd.Series(np.random.randint(10,50,N), index = np.arange(1, N+1))
-    cmap = plt.cm.tab10
-    colors = cmap(np.arange(len(df_colors)) % cmap.N)
+
     if attr == "Goal":
 
         goal_df = playerstats.sort_values(by='Gls', ascending=False)
         goal_df = goal_df.head(10)
         goal_df_1 = pd.DataFrame()
         goal_df_1 = goal_df[["Player", "Gls"]]
-        ax = sns.barplot(x = goal_df_1["Player"], y = goal_df_1["Gls"], data=goal_df_1.reset_index(), color = colors)
+        ax = sns.barplot(x = goal_df_1["Player"], y = goal_df_1["Gls"], data=goal_df_1.reset_index(), color = "#00BFFF")
         ax.set(xlabel = "Player", ylabel = "Goal")
         plt.xticks(rotation=66,horizontalalignment="right")
         for p in ax.patches:

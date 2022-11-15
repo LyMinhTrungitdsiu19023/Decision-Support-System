@@ -251,14 +251,14 @@ def plot_chart(attr, url):
         plt.xticks(rotation=66,horizontalalignment="right")
         st.pyplot(fig)
         
-    if attr == "Age":
+    if attr == "Total Yellow Card":
 
-        age_df = playerstats.sort_values(by='Age', ascending=False)
+        age_df = playerstats.sort_values(by='CrdY', ascending=False)
 #         ast_df = ast_df.head(10)
         age_df_1 = pd.DataFrame()
-        age_df_1 = age_df[["Player", "Age"]]
-        ax = sns.barplot(x = age_df_1["Player"], y = age_df_1["Age"], data=age_df_1.reset_index(), color = "#FCE6C9")
-        ax.set(xlabel = "Player", ylabel = "Age")
+        age_df_1 = age_df[["Player", "CrdY"]]
+        ax = sns.barplot(x = age_df_1["Player"], y = age_df_1["CrdY"], data=age_df_1.reset_index(), color = "#CD5B45")
+        ax.set(xlabel = "Player", ylabel = "Yellow Cards")
         plt.xticks(rotation=66,horizontalalignment="right")
         for p in ax.patches:
             ax.annotate(format(str(int(p.get_height()))), 
@@ -291,7 +291,7 @@ row_chartx, row_charty = st.columns((.2, 3))
 # with analysis_bar: 
 with row_wordy:
     st.markdown('Investigate a variety of stats for each player. Which player scores the most goals, assist or pass? How does players compare with each others?')
-    select_attr = st.selectbox('Which attribute do you want to analyze?', ('Goal','Assist','Goal per 90Mins','Passed per 90Mins','Age', 'Total Yellow Card', 'Total Red Card', 'Total Penalty Goals'))
+    select_attr = st.selectbox('Which attribute do you want to analyze?', ('Goal','Assist','Goal per 90Mins','Passed per 90Mins', 'Total Yellow Card', 'Total Red Card', 'Total Penalty Goals'))
 #     st.selectbox('Which measure do you want to analyze?', ('Mean','Median','Absolute','Maximum','Minimum'))
 with row_charty:
 #     st.dataframe(plot_chart(select_attr))

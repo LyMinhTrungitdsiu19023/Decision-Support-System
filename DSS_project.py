@@ -106,7 +106,7 @@ def Analysis(url):
     return shoot, passing, df
  
 def Analysis_Forward(url):
-    st.header('Analysis of Forward')
+    st.header('Statistics of Forward')
     
 
 
@@ -127,7 +127,7 @@ def Analysis_Forward(url):
     st.dataframe(df)
     
 def Analysis_Mid(url):
-    st.header('Analysis of Midfield')
+    st.header('Statistics of Midfield')
 
 
     shoot = Analysis(url)[0]
@@ -148,7 +148,7 @@ def Analysis_Mid(url):
     
     
 def Analysis_defend(url):
-    st.header('Analysis of Defensive')
+    st.header('Statistics of Defensive')
 
 
     shoot = Analysis(url)[0]
@@ -376,9 +376,9 @@ def plot_chart(attr, url):
     
 #button 
 # if st.button('Squad Analysis'):
-fw = st.checkbox("Analysis of Forward")
-mf = st.checkbox("Analysis of Midfield")
-df = st.checkbox("Analysis of Defensive")
+fw = st.checkbox("Statistics of Forward")
+mf = st.checkbox("Statistics of Midfield")
+df = st.checkbox("Statistics of Defensive")
 if fw:   
     Analysis_Forward(url)
 if mf:

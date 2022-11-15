@@ -198,10 +198,10 @@ def plot_chart(attr):
         goal_df = playerstats.sort_values(by='Gls', ascending=False)
         goal_df = goal_df.head(10)
 #         goal_df_1 = pd.DataFrame()
-        goal_df_1 = goal_df[["Player"], ["Gls"]]
+#         goal_df_1 = goal_df[["Player"], ["Gls"]]
 #         ax = sns.barplot(x = goal_df_1["Player"], y = goal_df_1["Gls"], data=goal_df_1.reset_index(), color = "#b80606")
 #         st.plot(fig)
-        return goal_df_1
+        return goal_df
     
 #button 
 # if st.button('Squad Analysis'):

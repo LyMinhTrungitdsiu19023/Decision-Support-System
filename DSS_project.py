@@ -393,7 +393,7 @@ row_wordx, row_wordy = st.columns((3.4, 2.3))
 row_chartx, row_charty = st.columns((.2, 3))
 # with analysis_bar: 
 with row_wordy:
-    st.markdown('Investigate a variety of stats for each player. Which player scores the most goals, assist or pass? How does players compare with each others?')
+    st.markdown('Investigate a variety of stats for each player. Top 10 players who score the most goals, assist, pass, or mistakes? How does players compare with each others?')
     select_attr = st.selectbox('Which attribute do you want to analyze?', ('Goal','Assist','Tackle Completed','Number of Tackled','Mistakes lead to goals','Goal per 90Mins','Passed per 90Mins', 'Total Yellow Cards', 'Total Red Cards', 'Total Penalty Goals'))
 #     st.selectbox('Which measure do you want to analyze?', ('Mean','Median','Absolute','Maximum','Minimum'))
 with row_wordx:

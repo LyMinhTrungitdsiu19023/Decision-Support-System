@@ -215,7 +215,7 @@ def plot_chart(attr, url):
         ast_df = playerstats.sort_values(by='Ast', ascending=False)
         ast_df = ast_df.head(10)
         ast_df_1 = pd.DataFrame()
-        ast_df_1 = ast_df_df[["Player", "Ast"]]
+        ast_df_1 = ast_df[["Player", "Ast"]]
         ax = sns.barplot(x = ast_df_1["Player"], y = ast_df_1["Ast"], data=ast_df_1.reset_index(), color = "#FCE6C9")
         ax.set(xlabel = "Player", ylabel = "Assist")
         plt.xticks(rotation=66,horizontalalignment="right")

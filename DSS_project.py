@@ -30,15 +30,14 @@ def load_data(url):
 
     html = pd.read_html(url, header = 1)
     playerstats = html[0]
-   
-    playerstats.drop(playerstats.tail(2).index, inplace = True)
-    playerstats["Nation"] = playerstats["Nation"].str.replace('[a-z]', '')
-    
     shoot = html[4]
     passing = html[5]
     df = html[8]
+    playerstats.drop(playerstats.tail(2).index, inplace = True)
+    playerstats["Nation"] = playerstats["Nation"].str.replace('[a-z]', '')
+    
 
-    return playerstats, shoot,passing, df
+    return playerstats, shoot, passing, df
 # playerstats = load_data(url)[0]
 
 
@@ -46,8 +45,8 @@ def load_data(url):
 see_data = st.expander("Information of Manchester City's Players 👉")
 with see_data: 
     st.header("Information of Manchester City's Players")
-    st.write('Data Dimension: ' + str(load_data(url)[1].shape[0]) + ' rows and ' + str(load_data(url)[1].shape[1]) + ' columns.')
-    st.dataframe(load_data(url)[1])
+    st.write('Data Dimension: ' + str(load_data(url)[0].shape[0]) + ' rows and ' + str(load_data(url)[0].shape[1]) + ' columns.')
+    st.dataframe(load_data(url)[0])
 
 
 see_nation = st.expander("Players by Nation 👉")

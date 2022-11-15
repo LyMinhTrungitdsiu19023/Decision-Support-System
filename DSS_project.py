@@ -397,7 +397,7 @@ def prediction(url):
     pre_table = st.dataframe(predic_df, width=2500, height=400)
     
     
-    return pre_table, predic_df
+    return pre_table
 #button 
 # if st.button('Squad Analysis'):
 fw = st.checkbox("Statistics of Forward")

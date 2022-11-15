@@ -168,7 +168,7 @@ def Analysis_defend(url):
     
 def chart_analysis_information_goal(attr, playerstats):
     if attr == "Goal":
-        goal_df = playerstats["Gls"].sort(desc)
+        goal_df = playerstats["Gls"].sort_values(desc)
         goal_df = goal_df.head(10)
     return goal_df
     

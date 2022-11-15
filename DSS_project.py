@@ -124,7 +124,7 @@ def Analysis_Forward(url):
     df = Analysis(url)[2]
     df = df.loc[df["Pos"].str.contains("FW")]
     st.write('Stats of Defensive')
-    st.dataframe(df)
+    st.dataframe(df, width=2500, height=400)
     
 def Analysis_Mid(url):
     st.header('Statistics of Midfield')
@@ -144,7 +144,7 @@ def Analysis_Mid(url):
     df = Analysis(url)[2]
     df = df.loc[df["Pos"].str.contains("MF")]
     st.write('Stats of Defensive')
-    st.dataframe(df)
+    st.dataframe(df, width=2500, height=400)
     
     
 def Analysis_defend(url):
@@ -165,7 +165,7 @@ def Analysis_defend(url):
     df = Analysis(url)[2]
     df = df.loc[df["Pos"].str.contains("DF")]
     st.write('Stats of Defensive')
-    st.dataframe(df) 
+    st.dataframe(df, width=2500, height=400) 
 
 # def chart_analysis_information_goal(attr, playerstats):
 #     if attr == "Goal":

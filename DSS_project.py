@@ -87,14 +87,14 @@ def Analysis(url):
     passing = data[5]
     passing.drop(passing.tail(2).index, inplace = True)
     passing["Nation"] = passing["Nation"].str.replace('[a-z]', '')
-    passing = passing.drop(['xA', 'A-xA', 'KP', '1/3', 'PPA', 'CrsPA', 'Prog','Matches', 'TotDist', 'PrgDist'], axis=1)
+    passing = passing.drop(['xA', 'A-xA', 'KP', '1/3', 'PPA', 'CrsPA', 'Prog','Matches'], axis=1)
     passing.rename(columns = {'Cmp':'Passed Completed', 'Att':'Passes Attempted', 'Cmp%':'%Completed'}, inplace = True)
     passing = passing.reset_index(drop = True)
     
 
     
     #Defend
-    df = data[5]
+    df = data[6]
     df.drop(df.tail(2).index, inplace = True)
     df["Nation"] = df["Nation"].str.replace('[a-z]', '')
     df = df.drop(['Matches'], axis=1)

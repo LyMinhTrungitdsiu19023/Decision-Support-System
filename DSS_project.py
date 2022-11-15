@@ -229,7 +229,7 @@ def plot_chart(attr, url):
                    textcoords = 'offset points')
         st.pyplot(fig)
 
-    if attr == "Goal per Shots":
+    if attr == "Goal per 90Mins":
 
         Gls_df = playerstats.sort_values(by='Gls.1', ascending=False)
         Gls_df = Gls_df.head(10)
@@ -240,7 +240,7 @@ def plot_chart(attr, url):
         plt.xticks(rotation=66,horizontalalignment="right")
         st.pyplot(fig)
         
-    if attr == "Passed Completed":
+    if attr == "Passed per 90Mins":
 
         astcom_df = playerstats.sort_values(by='Ast.1', ascending=False)
         astcom_df = astcom_df.head(10)
@@ -272,7 +272,7 @@ row_chartx, row_charty = st.columns((.2, 3))
 # with analysis_bar: 
 with row_wordy:
     st.markdown('Investigate a variety of stats for each player. Which player scores the most goals, assist or pass? How does players compare with each others?')
-    select_attr = st.selectbox('Which attribute do you want to analyze?', ('Goal','Assist','Goal per Shots','Passed Completed','Age'))
+    select_attr = st.selectbox('Which attribute do you want to analyze?', ('Goal','Assist','Goal per 90Mins','Passed per 90Mins','Age', 'Total Yellow Card', 'Total Red Card', 'Total Penalty Goals'))
 #     st.selectbox('Which measure do you want to analyze?', ('Mean','Median','Absolute','Maximum','Minimum'))
 with row_charty:
 #     st.dataframe(plot_chart(select_attr))

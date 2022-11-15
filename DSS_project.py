@@ -376,7 +376,8 @@ def plot_chart(attr, url):
         
         
 def prediction(url):
-    shoot = Analysis(url)[4]
+    data = pd.read_html(url, header = 1)
+    shoot = data[4]
     shoot.drop(shoot.tail(2).index, inplace = True)
     shoot["Nation"] = shoot["Nation"].str.replace('[a-z]', '')
     exshoot = pd.DataFrame()

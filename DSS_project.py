@@ -316,7 +316,7 @@ def plot_chart(attr, url):
         tkl_df = tkl.sort_values(by='Tkl', ascending=False)
         tkl_df = tkl_df.head(10)
         tkl_df_1 = pd.DataFrame()
-        tkl_df_1 = tkl_df_df[["Player", "Tkl"]]
+        tkl_df_1 = tkl_df[["Player", "Tkl"]]
         ax = sns.barplot(x = tkl_df_1["Player"], y = tkl_df_1["Tkl"], data=tkl_df_1.reset_index(), color = "#79CDCD")
         ax.set(xlabel = "Player", ylabel = "Tackle")
         plt.xticks(rotation=66,horizontalalignment="right")

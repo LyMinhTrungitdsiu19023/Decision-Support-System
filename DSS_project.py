@@ -172,7 +172,8 @@ def Analysis_defend(url):
 #         goal_df = goal_df.head(10)
         
 #     return goal_df
-def plot_chart(attr):
+def plot_chart(attr, url):
+    playerstats = load_data(url)
     rc = {'figure.figsize':(8,4.5),
       'axes.facecolor':'#0e1117',
       'axes.edgecolor': '#0e1117',
@@ -190,8 +191,6 @@ def plot_chart(attr):
     plt.rcParams.update(rc)
     fig, ax = plt.subplots()
     
-    html = pd.read_html("https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats", header = 1)
-    playerstats = html[0]
     
     if attr == "Goal":
 
@@ -229,4 +228,4 @@ with row_wordy:
 #     st.selectbox('Which measure do you want to analyze?', ('Mean','Median','Absolute','Maximum','Minimum'))
 with row_charty:
 #     st.dataframe(plot_chart(select_attr))
-    plot_chart(select_attr)
+    plot_chart(select_attr, url)

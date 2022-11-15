@@ -238,14 +238,17 @@ def plot_chart(attr, url):
         ax = sns.barplot(x = Gls_df_1["Player"], y = Gls_df_1["Gls.1"], data=Gls_df_1.reset_index(), color = "#FFD700")
         ax.set(xlabel = "Player", ylabel = "Goal per Shots")
         plt.xticks(rotation=66,horizontalalignment="right")
-#         for p in ax.patches:
-#             ax.annotate(format(str(int(p.get_height()))), 
-#                   (p.get_x() + p.get_width() / 2., p.get_height()),
-#                    ha = 'center',
-#                    va = 'center', 
-#                    xytext = (0, 10),
-#                    rotation = 0,
-#                    textcoords = 'offset points')
+        st.pyplot(fig)
+        
+    if attr == "Passed Completed":
+
+        astcom_df = playerstats.sort_values(by='Ast.1', ascending=False)
+        astcom_df = astcom_df.head(10)
+        astcom_df_1 = pd.DataFrame()
+        astcom_df_1 = astcom_df[["Player", "Ast.1"]]
+        ax = sns.barplot(x = astcom_df_1["Player"], y = astcom_df_1["Ast.1"], data=astcom_df_1.reset_index(), color = "#7FFF00")
+        ax.set(xlabel = "Player", ylabel = "Passed Completed")
+        plt.xticks(rotation=66,horizontalalignment="right")
         st.pyplot(fig)
 #         return goal_df_1
     

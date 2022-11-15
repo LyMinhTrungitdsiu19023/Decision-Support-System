@@ -199,8 +199,9 @@ def plot_chart(attr):
         goal_df = goal_df.head(10)
         goal_df_1 = pd.DataFrame()
         goal_df_1 = goal_df[["Player"], ["Gls"]]
-        ax = sns.barplot(x = goal_df_1["Player"], y = goal_df_1["Gls"], data=goal_df_1.reset_index(), color = "#b80606")
-        st.plot(fig)
+#         ax = sns.barplot(x = goal_df_1["Player"], y = goal_df_1["Gls"], data=goal_df_1.reset_index(), color = "#b80606")
+#         st.plot(fig)
+        return goal_df_1
     
 #button 
 # if st.button('Squad Analysis'):
@@ -225,4 +226,4 @@ with row_wordy:
     select_attr = st.selectbox('Which attribute do you want to analyze?', ('Goal','Assist','Goal per Shots','Passed Completed','Age'))
 #     st.selectbox('Which measure do you want to analyze?', ('Mean','Median','Absolute','Maximum','Minimum'))
 with row_charty:
-    plot_chart(select_attr)
+    st.dataframe(plot_chart(select_attr))

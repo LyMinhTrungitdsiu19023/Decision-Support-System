@@ -24,8 +24,7 @@ st.sidebar.header('Features')
 
 
 url = "https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats"
-# @st.cache
-@st.cache(cache_by_id=[spacy.lang.en.English])
+@st.cache
 def load_data(url):
 
     html = pd.read_html(url, header = 1)

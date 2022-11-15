@@ -94,7 +94,7 @@ def Analysis(url):
 
     
     #Defend
-    df = data[6]
+    df = data[8]
     df.drop(df.tail(2).index, inplace = True)
     df["Nation"] = df["Nation"].str.replace('[a-z]', '')
     df = df.drop(['Matches'], axis=1)

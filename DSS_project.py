@@ -176,6 +176,8 @@ def Analysis_defend(url):
 def plot_chart(attr, url):
     playerstats = load_data(url)
     html = pd.read_html(url, header = 1)
+    defend = html[8] 
+    defend.drop(defend.tail(2).index, inplace = True)
 
     rc = {'figure.figsize':(8,4),
       'axes.facecolor':'#0e1117',
@@ -329,9 +331,8 @@ def plot_chart(attr, url):
         st.pyplot(fig)
 
     if attr == "Tackle Completed":
-        tkl = html[8]
-        tkl.drop(tkl.tail(2).index, inplace = True)
-        tkl_df = tkl.sort_values(by='Tkl.1', ascending=False)
+
+        tkl_df = defend.sort_values(by='Tkl.1', ascending=False)
         tkl_df = tkl_df.head(10)
         tkl_df_1 = pd.DataFrame()
         tkl_df_1 = tkl_df[["Player", "Tkl.1"]]
@@ -350,9 +351,8 @@ def plot_chart(attr, url):
         
         
     if attr == "Number of Tackled":
-        tkled = html[8]
-        tkled.drop(tkled.tail(2).index, inplace = True)
-        tkled_df = tkled.sort_values(by='Tkl', ascending=False)
+
+        tkled_df = defend.sort_values(by='Tkl', ascending=False)
         tkled_df = tkled_df.head(10)
         tkled_df_1 = pd.DataFrame()
         tkled_df_1 = tkled_df[["Player", "Tkl"]]
@@ -370,9 +370,8 @@ def plot_chart(attr, url):
         st.pyplot(fig)
         
     if attr == "Mistakes lead to goals":
-        err = html[8]
-        err.drop(err.tail(2).index, inplace = True)
-        err_df = err.sort_values(by='Err', ascending=False)
+
+        err_df = defend.sort_values(by='Err', ascending=False)
         err_df = err_df.head(10)
         err_df_1 = pd.DataFrame()
         err_df_1 = err_df[["Player", "Err"]]

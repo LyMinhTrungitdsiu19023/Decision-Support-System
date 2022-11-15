@@ -209,6 +209,25 @@ def plot_chart(attr, url):
                    rotation = 0,
                    textcoords = 'offset points')
         st.pyplot(fig)
+        
+     if attr == "Assist":
+
+        goal_df = playerstats.sort_values(by='Ast', ascending=False)
+        goal_df = goal_df.head(10)
+        goal_df_1 = pd.DataFrame()
+        goal_df_1 = goal_df[["Player", "Ast"]]
+        ax = sns.barplot(x = goal_df_1["Player"], y = goal_df_1["Gls"], data=goal_df_1.reset_index(), color = "#FCE6C9")
+        ax.set(xlabel = "Player", ylabel = "Assist")
+        plt.xticks(rotation=66,horizontalalignment="right")
+        for p in ax.patches:
+            ax.annotate(format(str(int(p.get_height()))), 
+                  (p.get_x() + p.get_width() / 2, p.get_height()),
+                   ha = 'center',
+                   va = 'center', 
+                   xytext = (0, 10),
+                   rotation = 0,
+                   textcoords = 'offset points')
+        st.pyplot(fig)
 #         return goal_df_1
     
 #button 

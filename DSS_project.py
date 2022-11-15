@@ -332,6 +332,6 @@ with row_wordy:
     st.markdown('Investigate a variety of stats for each player. Which player scores the most goals, assist or pass? How does players compare with each others?')
     select_attr = st.selectbox('Which attribute do you want to analyze?', ('Goal','Assist','Goal per 90Mins','Passed per 90Mins', 'Total Yellow Cards', 'Total Red Cards', 'Total Penalty Goals'))
 #     st.selectbox('Which measure do you want to analyze?', ('Mean','Median','Absolute','Maximum','Minimum'))
-with row_chartx:
+with row_wordx:
 #     st.dataframe(plot_chart(select_attr))
     plot_chart(select_attr, url)

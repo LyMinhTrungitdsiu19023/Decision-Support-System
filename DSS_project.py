@@ -382,7 +382,6 @@ def prediction(url):
     shoot["Nation"] = shoot["Nation"].str.replace('[a-z]', '')
     exshoot = pd.DataFrame()
     exshoot = shoot[['Player','Nation','Age', 'Pos','xG', 'npxG', 'npxG/Sh', 'G-xG', 'np:G-xG']]
-#     exshoot.rename(columns = {'xG':'Expected Goals', 'npxG':'NonPenalty Expected Goals', 'npxG/Sh':'NonPenalty Expected Goals/shots', 'G-xG':'Goals compare ExGoals', 'np:G-xG':'NonPen Goal compare with expected'}, inplace = True)
     exshoot = exshoot.reset_index(drop = True) 
     
     passing = data[5]
@@ -393,6 +392,7 @@ def prediction(url):
 
     
     predic_df = pd.merge(exshoot, expassing, on='Player', how='inner')
+    predic_df.rename(columns = {'xG':'Expected Goals', 'npxG':'NonPenalty Expected Goals', 'npxG/Sh':'NonPenalty Expected Goals/shots', 'G-xG':'Goals compare ExGoals', 'np:G-xG':'NonPen Goal compare with expected', 'xAG':'Expected Assist Goals', 'xA':'Expected Assist'}, inplace = True)
 
     st.dataframe(predic_df, width=2500, height=400)
     

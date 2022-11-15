@@ -12,7 +12,7 @@ image = Image.open('squad2223.jpg')
 
 st.image(image, caption='The Citizen', width=1000)
 
-st.title('Manchester City Football Club Management Decision Support System')
+st.title('Manchester City Football Club Management Decision Support System - Manage Squad Field')
 
 st.markdown("""
 Project of Decision Support System course\n

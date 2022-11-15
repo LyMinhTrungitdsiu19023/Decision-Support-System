@@ -46,8 +46,8 @@ def load_data(url):
 see_data = st.expander("Information of Manchester City's Players 👉")
 with see_data: 
     st.header("Information of Manchester City's Players")
-    st.write('Data Dimension: ' + str(load_data(url)[0].shape[0]) + ' rows and ' + str(load_data(url)[0].shape[1]) + ' columns.')
-    st.dataframe(load_data(url)[0])
+    st.write('Data Dimension: ' + str(load_data(url)[1].shape[0]) + ' rows and ' + str(load_data(url)[1].shape[1]) + ' columns.')
+    st.dataframe(load_data(url)[1])
 
 
 see_nation = st.expander("Players by Nation 👉")

@@ -164,7 +164,17 @@ def Analysis_defend(url):
     df = Analysis(url)[2]
     df = df.loc[df["Pos"].str.contains("DF")]
     st.write('Stats of Defensive')
-    st.dataframe(df)
+    st.dataframe(df) 
+    
+def chart_analysis_information_goal(attr, playerstats):
+    if attr == "Goal":
+        goal_df = playerstats["Gls"].sort(desc)
+        goal_df = goal_df.head(10)
+    return goal_df
+    
+    
+    
+    
 #button 
 # if st.button('Squad Analysis'):
 fw = st.checkbox("Analysis of Forward")
@@ -185,10 +195,12 @@ row_chartx, row_charty = st.columns((.2, 3))
 # with analysis_bar: 
 with row_wordy:
     st.markdown('Investigate a variety of stats for each player. Which player scores the most goals, assist or pass? How does players compare with each others?')
-    st.selectbox('Which attribute do you want to analyze?', ('Goal','Assist','Goal per Shots','Passed Completed','Age'))
-    st.selectbox('Which measure do you want to analyze?', ('Mean','Median','Absolute','Maximum','Minimum'))
+    select_attr = st.selectbox('Which attribute do you want to analyze?', ('Goal','Assist','Goal per Shots','Passed Completed','Age'))
+#     st.selectbox('Which measure do you want to analyze?', ('Mean','Median','Absolute','Maximum','Minimum'))
 with row_charty:
-    st.markdown('HIHI') 
+#     st.markdown('HIHI')
+    
+    st.dataframe(chart_analysis_information_goal(select_attr, measure, playerstats))
 
 st.header('Correlation of Game Stats')
     

@@ -394,8 +394,10 @@ def prediction(url):
     predic_df = pd.merge(exshoot, expassing, on='Player', how='inner')
     predic_df.rename(columns = {'xG':'Expected Goals', 'npxG':'NonPenalty Expected Goals', 'npxG/Sh':'NonPenalty Expected Goals/shots', 'G-xG':'Goals compare ExGoals', 'np:G-xG':'NonPen Goal compare with expected', 'xAG':'Expected Assist Goals', 'xA':'Expected Assist'}, inplace = True)
 
-    st.dataframe(predic_df, width=2500, height=400)
+    pre_table = st.dataframe(predic_df, width=2500, height=400)
     
+    
+    return pre_table
 #button 
 # if st.button('Squad Analysis'):
 fw = st.checkbox("Statistics of Forward")
@@ -427,3 +429,9 @@ see_predict_table = st.expander("Show prediction table 👉")
 see_prediction_chart = st.expander("Show prediction Chart 👉")
 with see_predict_table: 
     prediction(url)
+with see_predict_chart:
+    with row_wordy:
+        st.markdown('Investigate a variety of prediction for each player. Top 10 players who predicted to score the most goals, assist, pass, or mistakes? How does players compare with each others?')
+        select_pre = st.selectbox('Which attribute do you want to see prediction?', ('Expected Goal','Expected Assist','NonPenalty Expected Goals','NonPenalty Expected Goals/shots','NonPen Goal compare with expected','Goals compare ExGoals','Expected Assist Goals'))
+#     st.selectbox('Which measure do you want to analyze?', ('Mean','Median','Absolute','Maximum','Minimum'))
+

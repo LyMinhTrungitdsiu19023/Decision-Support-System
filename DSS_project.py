@@ -175,7 +175,7 @@ def Analysis_defend(url):
 #     return goal_df
 def plot_chart(attr, url):
     playerstats = load_data(url)
-    data = pd.read_html(url, header = 1)
+#     data = pd.read_html(url, header = 1)
 
     rc = {'figure.figsize':(8,4),
       'axes.facecolor':'#0e1117',
@@ -328,66 +328,66 @@ def plot_chart(attr, url):
                    textcoords = 'offset points')
         st.pyplot(fig)
 
-    if attr == "Tackle Completed":
-        tkl = data[8]
-        tkl.drop(tkl.tail(2).index, inplace = True)
-        tkl_df = tkl.sort_values(by='Tkl.1', ascending=False)
-        tkl_df = tkl_df.head(10)
-        tkl_df_1 = pd.DataFrame()
-        tkl_df_1 = tkl_df[["Player", "Tkl.1"]]
-        ax = sns.barplot(x = tkl_df_1["Player"], y = tkl_df_1["Tkl.1"], data=tkl_df_1.reset_index(), color = "#79CDCD")
-        ax.set(xlabel = "Player", ylabel = "Successful Tackles ")
-        plt.xticks(rotation=66,horizontalalignment="right")
-        for p in ax.patches:
-            ax.annotate(format(str(int(p.get_height()))), 
-                  (p.get_x() + p.get_width() / 2, p.get_height()),
-                   ha = 'center',
-                   va = 'center', 
-                   xytext = (0, 10),
-                   rotation = 0,
-                   textcoords = 'offset points')
-        st.pyplot(fig)
+#     if attr == "Tackle Completed":
+#         tkl = data[8]
+#         tkl.drop(tkl.tail(2).index, inplace = True)
+#         tkl_df = tkl.sort_values(by='Tkl.1', ascending=False)
+#         tkl_df = tkl_df.head(10)
+#         tkl_df_1 = pd.DataFrame()
+#         tkl_df_1 = tkl_df[["Player", "Tkl.1"]]
+#         ax = sns.barplot(x = tkl_df_1["Player"], y = tkl_df_1["Tkl.1"], data=tkl_df_1.reset_index(), color = "#79CDCD")
+#         ax.set(xlabel = "Player", ylabel = "Successful Tackles ")
+#         plt.xticks(rotation=66,horizontalalignment="right")
+#         for p in ax.patches:
+#             ax.annotate(format(str(int(p.get_height()))), 
+#                   (p.get_x() + p.get_width() / 2, p.get_height()),
+#                    ha = 'center',
+#                    va = 'center', 
+#                    xytext = (0, 10),
+#                    rotation = 0,
+#                    textcoords = 'offset points')
+#         st.pyplot(fig)
         
         
-    if attr == "Number of Tackled":
-        tkled = data[8]
-        tkled.drop(tkled.tail(2).index, inplace = True)
-        tkled_df = tkled.sort_values(by='Tkl', ascending=False)
-        tkled_df = tkled_df.head(10)
-        tkled_df_1 = pd.DataFrame()
-        tkled_df_1 = tkled_df[["Player", "Tkl"]]
-        ax = sns.barplot(x = tkled_df_1["Player"], y = tkled_df_1["Tkl"], data=tkled_df_1.reset_index(), color = "#79CDCD")
-        ax.set(xlabel = "Player", ylabel = "Tackled by Competitors")
-        plt.xticks(rotation=66,horizontalalignment="right")
-        for p in ax.patches:
-            ax.annotate(format(str(int(p.get_height()))), 
-                  (p.get_x() + p.get_width() / 2, p.get_height()),
-                   ha = 'center',
-                   va = 'center', 
-                   xytext = (0, 10),
-                   rotation = 0,
-                   textcoords = 'offset points')
-        st.pyplot(fig)
+#     if attr == "Number of Tackled":
+#         tkled = data[8]
+#         tkled.drop(tkled.tail(2).index, inplace = True)
+#         tkled_df = tkled.sort_values(by='Tkl', ascending=False)
+#         tkled_df = tkled_df.head(10)
+#         tkled_df_1 = pd.DataFrame()
+#         tkled_df_1 = tkled_df[["Player", "Tkl"]]
+#         ax = sns.barplot(x = tkled_df_1["Player"], y = tkled_df_1["Tkl"], data=tkled_df_1.reset_index(), color = "#79CDCD")
+#         ax.set(xlabel = "Player", ylabel = "Tackled by Competitors")
+#         plt.xticks(rotation=66,horizontalalignment="right")
+#         for p in ax.patches:
+#             ax.annotate(format(str(int(p.get_height()))), 
+#                   (p.get_x() + p.get_width() / 2, p.get_height()),
+#                    ha = 'center',
+#                    va = 'center', 
+#                    xytext = (0, 10),
+#                    rotation = 0,
+#                    textcoords = 'offset points')
+#         st.pyplot(fig)
         
-    if attr == "Mistakes lead to goals":
-        err = data[8]
-        err.drop(err.tail(2).index, inplace = True)
-        err_df = err.sort_values(by='Err', ascending=False)
-        err_df = err_df.head(10)
-        err_df_1 = pd.DataFrame()
-        err_df_1 = err_df[["Player", "Err"]]
-        ax = sns.barplot(x = err_df_1["Player"], y = err_df_1["Err"], data=err_df_1.reset_index(), color = "#79CDCD")
-        ax.set(xlabel = "Player", ylabel = "Mistakes lead to goals")
-        plt.xticks(rotation=66,horizontalalignment="right")
-        for p in ax.patches:
-            ax.annotate(format(str(int(p.get_height()))), 
-                  (p.get_x() + p.get_width() / 2, p.get_height()),
-                   ha = 'center',
-                   va = 'center', 
-                   xytext = (0, 10),
-                   rotation = 0,
-                   textcoords = 'offset points')
-        st.pyplot(fig)
+#     if attr == "Mistakes lead to goals":
+#         err = data[8]
+#         err.drop(err.tail(2).index, inplace = True)
+#         err_df = err.sort_values(by='Err', ascending=False)
+#         err_df = err_df.head(10)
+#         err_df_1 = pd.DataFrame()
+#         err_df_1 = err_df[["Player", "Err"]]
+#         ax = sns.barplot(x = err_df_1["Player"], y = err_df_1["Err"], data=err_df_1.reset_index(), color = "#79CDCD")
+#         ax.set(xlabel = "Player", ylabel = "Mistakes lead to goals")
+#         plt.xticks(rotation=66,horizontalalignment="right")
+#         for p in ax.patches:
+#             ax.annotate(format(str(int(p.get_height()))), 
+#                   (p.get_x() + p.get_width() / 2, p.get_height()),
+#                    ha = 'center',
+#                    va = 'center', 
+#                    xytext = (0, 10),
+#                    rotation = 0,
+#                    textcoords = 'offset points')
+#         st.pyplot(fig)
 
         
         

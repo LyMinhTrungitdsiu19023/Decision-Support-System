@@ -428,10 +428,10 @@ st.header("Prediction of the player's ability")
 see_predict_table = st.expander("Show prediction table 👉")
 with see_predict_table: 
     prediction(url)
+    
 see_predict_chart = st.expander("Show prediction Chart 👉")
 with see_predict_chart:
-    with row_wordy:
-        st.markdown('Investigate a variety of prediction for each player. Top 10 players who predicted to score the most goals, assist, pass, or mistakes? How does players compare with each others?')
-        select_pre = st.selectbox('Which attribute do you want to see prediction?', ('Expected Goal','Expected Assist','NonPenalty Expected Goals','NonPenalty Expected Goals/shots','NonPen Goal compare with expected','Goals compare ExGoals','Expected Assist Goals'))
+    st.markdown('Investigate a variety of prediction for each player. Top 10 players who predicted to score the most goals, assist, pass, or mistakes? How does players compare with each others?')
+    select_pre = st.selectbox('Which attribute do you want to see prediction?', ('Expected Goal','Expected Assist','NonPenalty Expected Goals','NonPenalty Expected Goals/shots','NonPen Goal compare with expected','Goals compare ExGoals','Expected Assist Goals'))
 #     st.selectbox('Which measure do you want to analyze?', ('Mean','Median','Absolute','Maximum','Minimum'))
 

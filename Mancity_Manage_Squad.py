@@ -74,7 +74,7 @@ with see_pos:
 
 selected_squad = st.sidebar.selectbox('Squad',('4-4-2', '4-2-3-1', '4-3-3'))
 selected_speed = st.sidebar.select_slider('Speed', options = range(101))
-selected_pass = st.sidebar.select_slider('Pass', options = range(101))
+selected_pass = st.sidebar.select_slider('Passing speed', options = range(101))
 selected_style = st.sidebar.selectbox('Style',('Organizing', 'Liberal'))
 
 

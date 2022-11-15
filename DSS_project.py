@@ -27,7 +27,7 @@ url = "https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats"
 @st.cache
 def load_data(url):
 
-    html = pd.read_html(url, header = 1)
+    html = pd.read_html(url, header = None)
     playerstats = html[0]
    
     playerstats.drop(playerstats.tail(2).index, inplace = True)
@@ -71,7 +71,7 @@ selected_squad = st.sidebar.selectbox('Squad',('4-4-2', '4-2-3-1', '4-3-3'))
  
 def Analysis(url):
     #Forward
-    data = pd.read_html(url, header = 1)
+    data = pd.read_html(url, header = None)
     
 
     

@@ -174,7 +174,7 @@ def Analysis_defend(url):
 #     return goal_df
 def plot_chart(attr, url):
     playerstats = load_data(url)
-    rc = {'figure.figsize':(8,4.5),
+    rc = {'figure.figsize':(8,4),
       'axes.facecolor':'#0e1117',
       'axes.edgecolor': '#0e1117',
       'axes.labelcolor': 'white',

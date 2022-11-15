@@ -392,7 +392,7 @@ def prediction(url):
     expassing = passing[['Player','Nation','Age', 'Pos','xAG', 'xA']]
 
     
-    predic_df = pd.merge(exshoot, expassing, on='Player', how='outer')
+    predic_df = pd.merge(exshoot, expassing, on='Player', how='inner')
 
     st.dataframe(predic_df)
     

@@ -21,8 +21,12 @@ Ly Minh Trung - Kieu Chi Huy - Truong Quoc An
 """)
 
 st.sidebar.header('PlayStyle')
-# Sidebar - Position selection
 
+selected_squad = st.sidebar.selectbox('Squad',('4-4-2', '4-2-3-1', '4-3-3'))
+selected_speed = st.sidebar.select_slider('Speed', options = range(101))
+selected_pass = st.sidebar.select_slider('Passing speed', options = range(101))
+selected_style = st.sidebar.selectbox('Style',('Organizing', 'Liberal')) 
+st.sidebar.button('Recommend Squad for next macth')
 
 url = "https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats"
 # @st.cache
@@ -70,14 +74,6 @@ with see_pos:
     selected_pos = st.selectbox('Posision',('GK', 'DF', 'MF', 'FW'))
     df_selected_position = load_data(url)[0].loc[load_data(url)[0]["Pos"].str.contains(selected_pos)]
     st.dataframe(df_selected_position) 
-
-
-selected_squad = st.sidebar.selectbox('Squad',('4-4-2', '4-2-3-1', '4-3-3'))
-selected_speed = st.sidebar.select_slider('Speed', options = range(101))
-selected_pass = st.sidebar.select_slider('Passing speed', options = range(101))
-selected_style = st.sidebar.selectbox('Style',('Organizing', 'Liberal'))
-
-
 
  
 def Analysis(url):

@@ -335,3 +335,5 @@ with row_wordy:
 with row_wordx:
 #     st.dataframe(plot_chart(select_attr))
     plot_chart(select_attr, url)
+
+st.header('Predict the ability to score and assist')

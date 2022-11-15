@@ -201,7 +201,7 @@ def plot_chart(attr, url):
         goal_df_1 = pd.DataFrame()
         goal_df_1 = goal_df[["Player", "Gls"]]
         ax = sns.barplot(x = goal_df_1["Player"], y = goal_df_1["Gls"], data=goal_df_1.reset_index(), color = "#00BFFF")
-        ax.set(xlabel = "Player", ylabel = "Goal")
+        ax.set(xlabel = "Player", ylabel = "Goals")
         plt.xticks(rotation=66,horizontalalignment="right")
         for p in ax.patches:
             ax.annotate(format(str(int(p.get_height()))), 
@@ -220,7 +220,7 @@ def plot_chart(attr, url):
         ast_df_1 = pd.DataFrame()
         ast_df_1 = ast_df[["Player", "Ast"]]
         ax = sns.barplot(x = ast_df_1["Player"], y = ast_df_1["Ast"], data=ast_df_1.reset_index(), color = "#FCE6C9")
-        ax.set(xlabel = "Player", ylabel = "Assist")
+        ax.set(xlabel = "Player", ylabel = "Assists")
         plt.xticks(rotation=66,horizontalalignment="right")
         for p in ax.patches:
             ax.annotate(format(str(int(p.get_height()))), 
@@ -400,4 +400,4 @@ with row_wordx:
 #     st.dataframe(plot_chart(select_attr))
     plot_chart(select_attr, url)
 
-st.header('Predict the ability to score and assist')
+st.header("Prediction of the player's ability")

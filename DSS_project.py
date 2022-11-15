@@ -219,7 +219,4 @@ with row_wordy:
     select_attr = st.selectbox('Which attribute do you want to analyze?', ('Goal','Assist','Goal per Shots','Passed Completed','Age'))
 #     st.selectbox('Which measure do you want to analyze?', ('Mean','Median','Absolute','Maximum','Minimum'))
 with row_charty:
-#     st.markdown('HIHI')
     st.dataframe(plot_chart(select_attr, playerstats)
-
-# st.header('Correlation of Game Stats')

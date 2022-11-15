@@ -392,18 +392,18 @@ def prediction(url):
 
     
     predic_df = pd.merge(exshoot, expassing, on='Player', how='inner')
-    predic_df.rename(columns = {'xG':'Expected Goals', 'npxG':'NonPenalty Expected Goals', 'npxG/Sh':'NonPenalty Expected Goals/shots', 'G-xG':'Goals compare ExGoals', 'np:G-xG':'NonPen Goal compare with expected', 'xAG':'Expected Assist Goals', 'xA':'Expected Assist'}, inplace = True)
+    predic_df.rename(columns = {'xG':'Expected Goals', 'npxG':'NonPenalty Expected Goals', 'npxG/Sh':'NonPenalty Expected Goals/shots', 'G-xG':'Goals compare ExGoals', 'np:G-xG':'NonPen Goal compare with expected', 'xAG':'Expected Assist Goals', 'xA':'Expected Assists'}, inplace = True)
 
     return predic_df 
 
 def prediction_chart(attr):
     predic_df = prediction(url)
-    if attr == "Expected Goal":
-        xG = xG.sort_values(by='Expected Goal', ascending=False)
+    if attr == "Expected Goals":
+        xG = xG.sort_values(by='Expected Goals', ascending=False)
         xG = xG.head(10)
         xG_1 = pd.DataFrame()
-        xG_1 = xG[["Player", "Expected Goal"]]
-        ax = sns.barplot(x = xG_1["Player"], y = xG_1["Expected Goal"], data=xG_1.reset_index(), color = "#EEB422")
+        xG_1 = xG[["Player", "Expected Goals"]]
+        ax = sns.barplot(x = xG_1["Player"], y = xG_1["Expected Goals"], data=xG_1.reset_index(), color = "#EEB422")
         ax.set(xlabel = "Players with Expected Goal", ylabel = "Expected Goals")
         plt.xticks(rotation=66,horizontalalignment="right")
         for p in ax.patches:
@@ -450,5 +450,5 @@ with see_predict_table:
 see_predict_chart = st.expander("Show prediction Chart 👉")
 with see_predict_chart:
     st.markdown('Investigate a variety of prediction for each player. Top 10 players who predicted to score the most goals, assist, pass, or mistakes? How does players compare with each others?')
-    select_pre = st.selectbox('Which attribute do you want to see prediction?', ('Expected Goal','Expected Assist','NonPenalty Expected Goals','NonPenalty Expected Goals/shots','NonPen Goal compare with expected','Goals compare ExGoals','Expected Assist Goals'))
+    select_pre = st.selectbox('Which attribute do you want to see prediction?', ('Expected Goals','Expected Assists','NonPenalty Expected Goals','NonPenalty Expected Goals/shots','NonPen Goal compare with expected','Goals compare ExGoals','Expected Assist Goals'))
     prediction_chart(select_pre)

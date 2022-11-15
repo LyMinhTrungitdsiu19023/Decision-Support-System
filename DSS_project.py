@@ -314,12 +314,12 @@ def plot_chart(attr, url):
     if attr == "Tackle Completed":
         tkl = defend_data[8]
         tkl.drop(tkl.tail(2).index, inplace = True)
-        tkl_df = tkl.sort_values(by='Tkl', ascending=False)
+        tkl_df = tkl.sort_values(by='Tkl.1', ascending=False)
         tkl_df = tkl_df.head(10)
         tkl_df_1 = pd.DataFrame()
-        tkl_df_1 = tkl_df[["Player", "Tkl"]]
-        ax = sns.barplot(x = tkl_df_1["Player"], y = tkl_df_1["Tkl"], data=tkl_df_1.reset_index(), color = "#79CDCD")
-        ax.set(xlabel = "Player", ylabel = "Tackle")
+        tkl_df_1 = tkl_df[["Player", "Tkl.1"]]
+        ax = sns.barplot(x = tkl_df_1["Player"], y = tkl_df_1["Tkl.1"], data=tkl_df_1.reset_index(), color = "#79CDCD")
+        ax.set(xlabel = "Player", ylabel = "Tackles Successful")
         plt.xticks(rotation=66,horizontalalignment="right")
         for p in ax.patches:
             ax.annotate(format(str(int(p.get_height()))), 

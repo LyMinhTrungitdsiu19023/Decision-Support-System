@@ -261,11 +261,11 @@ def plot_chart(attr, url):
         ax.set(xlabel = "Player", ylabel = "Yellow Cards")
         plt.xticks(rotation=66,horizontalalignment="right")
         for p in ax.patches:
-            ax.annotate(format(str(int(p.get_height()))), 
+            ax.annotate(format(int(p.get_height())), 
                   (p.get_x() + p.get_width() / 2, p.get_height()),
                    ha = 'center',
                    va = 'center', 
-                   xytext = (0, 5),
+                   xytext = (0, 10),
                    rotation = 0,
                    textcoords = 'offset points')
         st.pyplot(fig)

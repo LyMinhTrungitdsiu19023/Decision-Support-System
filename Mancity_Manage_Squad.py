@@ -73,7 +73,7 @@ with see_pos:
 
 
 selected_squad = st.sidebar.selectbox('Squad',('4-4-2', '4-2-3-1', '4-3-3'))
-selected_speed = st.sidebar.select_slider('Speed', options = range(100)
+selected_speed = st.sidebar.select_slider('Speed', options = range(100))
 
 
  

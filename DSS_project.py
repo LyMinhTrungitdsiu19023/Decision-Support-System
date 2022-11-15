@@ -426,7 +426,7 @@ with row_wordx:
 
 st.header("Prediction of the player's ability")
 see_predict_table = st.expander("Show prediction table 👉")
-see_prediction_chart = st.expander("Show prediction Chart 👉")
+see_predict_chart = st.expander("Show prediction Chart 👉")
 with see_predict_table: 
     prediction(url)
 with see_predict_chart:

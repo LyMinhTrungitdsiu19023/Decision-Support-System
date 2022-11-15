@@ -477,8 +477,7 @@ fw = st.checkbox("Statistics of Forward")
 mf = st.checkbox("Statistics of Midfield")
 df = st.checkbox("Statistics of Defensive")
 if fw:   
-#     Analysis_Forward(url)
-    Analysis(url)[0]
+    Analysis_Forward(url)
 if mf:
     Analysis_Mid(url) 
 if df:

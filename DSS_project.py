@@ -192,8 +192,8 @@ def plot_chart(attr, playerstats):
     if attr == "Goal":
         goal_df = playerstats.sort_values(by='Gls', ascending=False)
         goal_df = goal_df.head(10)
-        goal_df = goal_df[["Player"], ["Gls"]]
-        ax = sns.barplot(x = goal_df["Player"], y = goal_df["Gls"], data=goal_df.reset_index(), color = "#b80606")
+        goal_df_1 = goal_df[["Player"], ["Gls"]]
+        ax = sns.barplot(x = goal_df_1["Player"], y = goal_df_1["Gls"], data=goal_df_1.reset_index(), color = "#b80606")
         st.plot(fig)
     
 #button 

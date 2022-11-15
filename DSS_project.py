@@ -97,8 +97,7 @@ def Analysis(url):
     df = data[8]
     df.drop(df.tail(2).index, inplace = True)
     df["Nation"] = df["Nation"].str.replace('[a-z]', '')
-    df = df.drop(['Matches'], axis=1)
-#     fw_df.rename(fw_df = {'Cmp':'Passed Completed', 'Att':'Passes Attempted', 'Cmp%':'%Completed'}, inplace = True)
+    df = df.drop(['Def 3rd','Mid 3rd', 'Att 3rd','Att','Past','Sh','Pass','Int','Tkl+Int','Clr','Matches'], axis=1)
     df = df.reset_index(drop = True)
  
     

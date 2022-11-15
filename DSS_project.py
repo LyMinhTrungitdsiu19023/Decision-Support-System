@@ -441,8 +441,8 @@ def prediction_chart(attr):
         ax.set(xlabel = "Players with Expected Goal", ylabel = "Expected Goals")
         plt.xticks(rotation=66,horizontalalignment="right")
         for p in ax.patches:
-            ax.annotate(format(str(int(p.get_height()))), 
-                  (p.get_x() + p.get_width() / 2, p.get_height()),
+            ax.annotate(format(p.get_height(), '.2f'), 
+                  (p.get_x() + p.get_width() / 2., p.get_height()),
                    ha = 'center',
                    va = 'center', 
                    xytext = (0, 10),

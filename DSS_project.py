@@ -7,7 +7,7 @@ import numpy as np
 
 from PIL import Image
 st.set_page_config(layout = 'wide')
-image = Image.open('logo.jpg')
+image = Image.open('squad2223.jpg')
 
 st.image(image, caption='The Citizen', width=1000)
 

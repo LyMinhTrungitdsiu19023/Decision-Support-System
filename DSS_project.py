@@ -76,12 +76,12 @@ selected_squad = st.sidebar.selectbox('Squad',('4-4-2', '4-2-3-1', '4-3-3'))
  
 def Analysis(url):
     #Forward
-#     data = pd.read_html(url, header = 1)
+    data = pd.read_html(url, header = 1)
     
 
     
     #Shoot
-    shoot =  load_data(url)[1]
+    shoot =  data[4]
     shoot.drop(shoot.tail(2).index, inplace = True)
     shoot["Nation"] = shoot["Nation"].str.replace('[a-z]', '')
     shoot = shoot.drop(['SoT%', 'Sh/90', 'SoT/90', 'G/SoT', 'Dist', 'xG', 'npxG', 'npxG/Sh', 'G-xG', 'np:G-xG', 'Matches'], axis=1)

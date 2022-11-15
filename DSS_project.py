@@ -190,8 +190,9 @@ def plot_chart(attr, url):
       'ytick.labelsize': 12}
     plt.rcParams.update(rc)
     fig, ax = plt.subplots()
-    N = 13
+    N = 10
     df_colors = pd.Series(np.random.randint(10,50,N), index = np.arange(1, N+1))
+    cmap = plt.cm.tab10
     colors = cmap(np.arange(len(df_colors)) % cmap.N)
     if attr == "Goal":
 

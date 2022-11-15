@@ -98,6 +98,8 @@ def Analysis(url):
     df.drop(df.tail(2).index, inplace = True)
     df["Nation"] = df["Nation"].str.replace('[a-z]', '')
     df = df.drop(['Def 3rd','Mid 3rd', 'Att 3rd','Att','Past','Sh','Pass','Int','Tkl+Int','Clr','Matches'], axis=1)
+    df.rename(columns = {'Tkl':'Number of Players Tackles', 'Tkl.1':'Number of Tackled by Competitors', 'Err':'Mistakes lead to goals'}, inplace = True)
+
     df = df.reset_index(drop = True)
  
     

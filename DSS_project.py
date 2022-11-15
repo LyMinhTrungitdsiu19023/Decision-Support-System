@@ -28,12 +28,12 @@ url = "https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats"
 def load_data(url):
 
     html = pd.read_html(url, header = 1)
-    playerstats = html[0]
+#     playerstats = html[0]
    
     playerstats.drop(playerstats.tail(2).index, inplace = True)
     playerstats["Nation"] = playerstats["Nation"].str.replace('[a-z]', '')
-    return playerstats
-playerstats = load_data(url)
+    return html
+playerstats = load_data(url)[0]
 
 
 
@@ -71,12 +71,12 @@ selected_squad = st.sidebar.selectbox('Squad',('4-4-2', '4-2-3-1', '4-3-3'))
  
 def Analysis(url):
     #Forward
-    data = pd.read_html(url, header = 1)
+#     data = pd.read_html(url, header = 1)
     
 
     
     #Shoot
-    shoot = data[4]
+    shoot = load_data(url)[4]
     shoot.drop(shoot.tail(2).index, inplace = True)
     shoot["Nation"] = shoot["Nation"].str.replace('[a-z]', '')
     shoot = shoot.drop(['SoT%', 'Sh/90', 'SoT/90', 'G/SoT', 'Dist', 'xG', 'npxG', 'npxG/Sh', 'G-xG', 'np:G-xG', 'Matches'], axis=1)
@@ -84,7 +84,7 @@ def Analysis(url):
     shoot = shoot.reset_index(drop = True) 
     
     #Pass
-    passing = data[5]
+    passing = load_data(url)[5]
     passing.drop(passing.tail(2).index, inplace = True)
     passing["Nation"] = passing["Nation"].str.replace('[a-z]', '')
     passing = passing.drop(['xAG','xA', 'A-xAG', 'KP', '1/3', 'PPA', 'CrsPA', 'Prog','Matches'], axis=1)
@@ -94,7 +94,7 @@ def Analysis(url):
 
     
     #Defend
-    df = data[8]
+    df = load_data(url)[8]
     df.drop(df.tail(2).index, inplace = True)
     df["Nation"] = df["Nation"].str.replace('[a-z]', '')
     df = df.drop(['Def 3rd','Mid 3rd', 'Att 3rd','Att','Past','Sh','Pass','Int','Tkl+Int','Clr','Matches'], axis=1)

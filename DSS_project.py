@@ -203,11 +203,11 @@ def plot_chart(attr, url):
         plt.xticks(rotation=66,horizontalalignment="right")
         for p in ax.patches:
             ax.annotate(format(str(int(p.get_height()))), 
-                  (p.get_x() + p.get_width() / 2., p.get_height()),
+                  (p.get_x() + p.get_width() / 2, p.get_height()),
                    ha = 'center',
                    va = 'center', 
                    xytext = (0, 18),
-                   rotation = 90,
+                   rotation = 0,
                    textcoords = 'offset points')
         st.pyplot(fig)
 #         return goal_df_1

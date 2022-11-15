@@ -200,7 +200,9 @@ def plot_chart(attr):
         goal_df_1 = pd.DataFrame()
         goal_df_1 = goal_df[["Player", "Gls"]]
         ax = sns.barplot(x = goal_df_1["Player"], y = goal_df_1["Gls"], data=goal_df_1.reset_index(), color = "#b80606")
-        st.plot(fig)
+        ax.set(xlabel = "Player", ylabel = "Goal")
+        plt.xticks(rotation=66,horizontalalignment="right")
+        st.pyplot(fig)
 #         return goal_df_1
     
 #button 

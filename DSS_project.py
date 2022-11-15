@@ -403,6 +403,6 @@ with row_wordx:
 st.header("Prediction of the player's ability")
 
 
-html_haland = pd.read_html('https://fbref.com/en/players/1f44ac21/Erling-Haaland', header = 1)
+html_haland = pd.read_html('https://fbref.com/en/players/1f44ac21/Erling-Haaland', header = 0)
 haland = html_haland[0]
 st.dataframe(haland)

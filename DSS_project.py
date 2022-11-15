@@ -382,9 +382,19 @@ def prediction(url):
     shoot["Nation"] = shoot["Nation"].str.replace('[a-z]', '')
     exshoot = pd.DataFrame()
     exshoot = shoot[['Player','Nation','Age', 'Pos','xG', 'npxG', 'npxG/Sh', 'G-xG', 'np:G-xG']]
-    exshoot.rename(columns = {'xG':'Expected Goals', 'npxG':'NonPenalty Expected Goals', 'npxG/Sh':'NonPenalty Expected Goals/shots', 'G-xG':'Goals compare ExGoals', 'np:G-xG':'NonPen Goal compare with expected'}, inplace = True)
+#     exshoot.rename(columns = {'xG':'Expected Goals', 'npxG':'NonPenalty Expected Goals', 'npxG/Sh':'NonPenalty Expected Goals/shots', 'G-xG':'Goals compare ExGoals', 'np:G-xG':'NonPen Goal compare with expected'}, inplace = True)
     exshoot = exshoot.reset_index(drop = True) 
-    st.dataframe(exshoot)
+    
+    passing = data[5]
+    passing.drop(passing.tail(2).index, inplace = True)
+    passing["Nation"] = passing["Nation"].str.replace('[a-z]', '')
+    expassing = pd.DataFrame()
+    expassing = passing[['Player','Nation','Age', 'Pos','xAG', 'xA']]
+
+    
+    predic_df = pd.merge(exshoot, expassing, on='Player', how='outer')
+
+    st.dataframe(predic_df)
     
 #button 
 # if st.button('Squad Analysis'):

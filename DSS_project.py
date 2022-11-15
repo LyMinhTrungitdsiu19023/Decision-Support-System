@@ -308,6 +308,27 @@ def plot_chart(attr, url):
                    rotation = 0,
                    textcoords = 'offset points')
         st.pyplot(fig)
+
+    if attr == "Tackle Completed":
+        defend_data = pd.read_html(url, header = 1)
+        tkl = defend_data[8]
+        
+        tkl_df = tkl.sort_values(by='Tkl', ascending=False)
+        tkl_df = tkl_df.head(10)
+        tkl_df_1 = pd.DataFrame()
+        tkl_df_1 = tkl_df_df[["Player", "Tkl"]]
+        ax = sns.barplot(x = tkl_df_1["Player"], y = tkl_df_1["Tkl"], data=tkl_df_1.reset_index(), color = "#79CDCD")
+        ax.set(xlabel = "Player", ylabel = "Tackle")
+        plt.xticks(rotation=66,horizontalalignment="right")
+        for p in ax.patches:
+            ax.annotate(format(str(int(p.get_height()))), 
+                  (p.get_x() + p.get_width() / 2, p.get_height()),
+                   ha = 'center',
+                   va = 'center', 
+                   xytext = (0, 10),
+                   rotation = 0,
+                   textcoords = 'offset points')
+        st.pyplot(fig)
 #         return goal_df_1
     
 #button 
@@ -330,7 +351,7 @@ row_chartx, row_charty = st.columns((.2, 3))
 # with analysis_bar: 
 with row_wordy:
     st.markdown('Investigate a variety of stats for each player. Which player scores the most goals, assist or pass? How does players compare with each others?')
-    select_attr = st.selectbox('Which attribute do you want to analyze?', ('Goal','Assist','Goal per 90Mins','Passed per 90Mins', 'Total Yellow Cards', 'Total Red Cards', 'Total Penalty Goals'))
+    select_attr = st.selectbox('Which attribute do you want to analyze?', ('Goal','Assist','Tackle Completed','Goal per 90Mins','Passed per 90Mins', 'Total Yellow Cards', 'Total Red Cards', 'Total Penalty Goals'))
 #     st.selectbox('Which measure do you want to analyze?', ('Mean','Median','Absolute','Maximum','Minimum'))
 with row_wordx:
 #     st.dataframe(plot_chart(select_attr))

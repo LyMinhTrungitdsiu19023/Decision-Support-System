@@ -399,7 +399,7 @@ def prediction(url):
 def prediction_chart(attr):
     predic_df = prediction(url)
     if attr == "Expected Goals":
-        xG = xG.sort_values(by='Expected Goals', ascending=False)
+        xG = predic_df.sort_values(by='Expected Goals', ascending=False)
         xG = xG.head(10)
         xG_1 = pd.DataFrame()
         xG_1 = xG[["Player", "Expected Goals"]]
@@ -447,8 +447,8 @@ with see_predict_table:
     st.dataframe(prediction(url), width=2500, height=400)
 
     
-# see_predict_chart = st.expander("Show prediction Chart 👉")
-# with see_predict_chart:
-st.markdown('Investigate a variety of prediction for each player. Top 10 players who predicted to score the most goals, assist, pass, or mistakes? How does players compare with each others?')
-select_pre = st.selectbox('Which attribute do you want to see prediction?', ('Expected Goals','Expected Assists','NonPenalty Expected Goals','NonPenalty Expected Goals/shots','NonPen Goal compare with expected','Goals compare ExGoals','Expected Assist Goals'))
-prediction_chart(select_pre)
+see_predict_chart = st.expander("Show prediction Chart 👉")
+with see_predict_chart:
+    st.markdown('Investigate a variety of prediction for each player. Top 10 players who predicted to score the most goals, assist, pass, or mistakes? How does players compare with each others?')
+    select_pre = st.selectbox('Which attribute do you want to see prediction?', ('Expected Goals','Expected Assists','NonPenalty Expected Goals','NonPenalty Expected Goals/shots','NonPen Goal compare with expected','Goals compare ExGoals','Expected Assist Goals'))
+    prediction_chart(select_pre)

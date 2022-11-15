@@ -190,9 +190,10 @@ def plot_chart(attr, playerstats):
     plt.rcParams.update(rc)
     fig, ax = plt.subplots()
     if attr == "Goal":
-        goal_df = pd.DataFrame()
+
         goal_df = playerstats.sort_values(by='Gls', ascending=False)
         goal_df = goal_df.head(10)
+        goal_df_1 = pd.DataFrame()
         goal_df_1 = goal_df[["Player"], ["Gls"]]
         ax = sns.barplot(x = goal_df_1["Player"], y = goal_df_1["Gls"], data=goal_df_1.reset_index(), color = "#b80606")
         st.plot(fig)

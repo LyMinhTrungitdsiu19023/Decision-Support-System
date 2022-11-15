@@ -223,5 +223,5 @@ with row_charty:
     
     st.dataframe(plot_chart(select_attr, playerstats)
 
-st.header('Correlation of Game Stats')
+# st.header('Correlation of Game Stats')
     

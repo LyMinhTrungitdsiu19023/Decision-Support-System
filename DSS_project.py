@@ -172,7 +172,7 @@ def Analysis_defend(url):
 #         goal_df = goal_df.head(10)
         
 #     return goal_df
-def plot_chart(attr):
+def plot_chart(attr, playerstats):
     rc = {'figure.figsize':(8,4.5),
       'axes.facecolor':'#0e1117',
       'axes.edgecolor': '#0e1117',
@@ -219,4 +219,4 @@ with row_wordy:
     select_attr = st.selectbox('Which attribute do you want to analyze?', ('Goal','Assist','Goal per Shots','Passed Completed','Age'))
 #     st.selectbox('Which measure do you want to analyze?', ('Mean','Median','Absolute','Maximum','Minimum'))
 with row_charty:
-    plot_chart(select_attr)
+    plot_chart(select_attr, playerstats)

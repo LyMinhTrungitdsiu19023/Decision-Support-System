@@ -208,8 +208,7 @@ def plot_chart(attr, url):
                    xytext = (0, 10),
                    rotation = 0,
                    textcoords = 'offset points')
-        st.pyplot(fig)
-        
+            
     if attr == "Assist":
 
         ast_df = playerstats.sort_values(by='Ast', ascending=False)
@@ -227,7 +226,7 @@ def plot_chart(attr, url):
                    xytext = (0, 10),
                    rotation = 0,
                    textcoords = 'offset points')
-        st.pyplot(fig)
+    st.pyplot(fig)
 #         return goal_df_1
     
 #button 

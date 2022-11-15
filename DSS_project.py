@@ -175,10 +175,10 @@ def Analysis_defend(url):
 #     return goal_df
 def plot_chart(attr, url):
     playerstats = load_data(url)
-    html = pd.read_html(url, header = 2)
-    defend = html[8] 
-    defend.drop(defend.tail(2).index, inplace = True)
-
+#     html = pd.read_html(url, header = 1)
+#     defend = html[8] 
+#     defend.drop(defend.tail(2).index, inplace = True)
+    defend = Analysis(url)[2]
     rc = {'figure.figsize':(8,4),
       'axes.facecolor':'#0e1117',
       'axes.edgecolor': '#0e1117',

@@ -190,6 +190,7 @@ def plot_chart(attr, playerstats):
     plt.rcParams.update(rc)
     fig, ax = plt.subplots()
     if attr == "Goal":
+        goal_df = pd.DataFrame()
         goal_df = playerstats.sort_values(by='Gls', ascending=False)
         goal_df = goal_df.head(10)
         goal_df_1 = goal_df[["Player"], ["Gls"]]

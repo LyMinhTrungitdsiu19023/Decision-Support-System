@@ -251,7 +251,7 @@ def plot_chart(attr, url):
         plt.xticks(rotation=66,horizontalalignment="right")
         st.pyplot(fig)
         
-    if attr == "Total Yellow Card":
+    if attr == "Total Yellow Cards":
 
         CrdY_df = playerstats.sort_values(by='CrdY', ascending=False)
         CrdY_df = CrdY_df.head(10)
@@ -259,6 +259,25 @@ def plot_chart(attr, url):
         CrdY_df_1 = CrdY_df[["Player", "CrdY"]]
         ax = sns.barplot(x = CrdY_df_1["Player"], y = CrdY_df_1["CrdY"], data=CrdY_df_1.reset_index(), color = "#CD5B45")
         ax.set(xlabel = "Player", ylabel = "Yellow Cards")
+        plt.xticks(rotation=66,horizontalalignment="right")
+        for p in ax.patches:
+            ax.annotate(format(str(int(p.get_height()))), 
+                  (p.get_x() + p.get_width() / 2, p.get_height()),
+                   ha = 'center',
+                   va = 'center', 
+                   xytext = (0, 10),
+                   rotation = 0,
+                   textcoords = 'offset points')
+        st.pyplot(fig)
+        
+    if attr == "Total Red Cards":
+
+        CrdR_df = playerstats.sort_values(by='CrdR', ascending=False)
+        CrdR_df = CrdR_df.head(10)
+        CrdR_df_1 = pd.DataFrame()
+        CrdR_df_1 = CrdR_df[["Player", "CrdR"]]
+        ax = sns.barplot(x = CrdR_df_1["Player"], y = CrdR_df_1["CrdR"], data=CrdR_df_1.reset_index(), color = "#CD5B45")
+        ax.set(xlabel = "Player", ylabel = "Red Cards")
         plt.xticks(rotation=66,horizontalalignment="right")
         for p in ax.patches:
             ax.annotate(format(str(int(p.get_height()))), 
@@ -291,7 +310,7 @@ row_chartx, row_charty = st.columns((.2, 3))
 # with analysis_bar: 
 with row_wordy:
     st.markdown('Investigate a variety of stats for each player. Which player scores the most goals, assist or pass? How does players compare with each others?')
-    select_attr = st.selectbox('Which attribute do you want to analyze?', ('Goal','Assist','Goal per 90Mins','Passed per 90Mins', 'Total Yellow Card', 'Total Red Card', 'Total Penalty Goals'))
+    select_attr = st.selectbox('Which attribute do you want to analyze?', ('Goal','Assist','Goal per 90Mins','Passed per 90Mins', 'Total Yellow Cards', 'Total Red Cards', 'Total Penalty Goals'))
 #     st.selectbox('Which measure do you want to analyze?', ('Mean','Median','Absolute','Maximum','Minimum'))
 with row_charty:
 #     st.dataframe(plot_chart(select_attr))

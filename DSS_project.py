@@ -254,14 +254,14 @@ def plot_chart(attr, url):
     if attr == "Total Yellow Card":
 
         CrdY_df = playerstats.sort_values(by='CrdY', ascending=False)
-#         ast_df = ast_df.head(10)
+        CrdY_df = CrdY_df.head(10)
         CrdY_df_1 = pd.DataFrame()
         CrdY_df_1 = CrdY_df[["Player", "CrdY"]]
         ax = sns.barplot(x = CrdY_df_1["Player"], y = CrdY_df_1["CrdY"], data=CrdY_df_1.reset_index(), color = "#CD5B45")
         ax.set(xlabel = "Player", ylabel = "Yellow Cards")
         plt.xticks(rotation=66,horizontalalignment="right")
         for p in ax.patches:
-            ax.annotate(format(int(p.get_height())), 
+            ax.annotate(format(str(int(p.get_height()))), 
                   (p.get_x() + p.get_width() / 2, p.get_height()),
                    ha = 'center',
                    va = 'center', 

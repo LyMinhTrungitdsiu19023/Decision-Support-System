@@ -250,6 +250,25 @@ def plot_chart(attr, url):
         ax.set(xlabel = "Player", ylabel = "Passed Completed")
         plt.xticks(rotation=66,horizontalalignment="right")
         st.pyplot(fig)
+        
+    if attr == "Age":
+
+        age_df = playerstats.sort_values(by='Age', ascending=False)
+#         ast_df = ast_df.head(10)
+        age_df_1 = pd.DataFrame()
+        age_df_1 = age_df[["Player", "Age"]]
+        ax = sns.barplot(x = age_df_1["Player"], y = age_df_1["Age"], data=age_df_1.reset_index(), color = "#FCE6C9")
+        ax.set(xlabel = "Player", ylabel = "Age")
+        plt.xticks(rotation=66,horizontalalignment="right")
+        for p in ax.patches:
+            ax.annotate(format(str(int(p.get_height()))), 
+                  (p.get_x() + p.get_width() / 2, p.get_height()),
+                   ha = 'center',
+                   va = 'center', 
+                   xytext = (0, 10),
+                   rotation = 0,
+                   textcoords = 'offset points')
+        st.pyplot(fig)
 #         return goal_df_1
     
 #button 

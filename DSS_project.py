@@ -89,7 +89,7 @@ def Analysis(url):
     shoot = shoot.reset_index(drop = True) 
     
     #Pass
-    passing =  load_data(url)[2]
+    passing =  data(url)[2]
     passing.drop(passing.tail(2).index, inplace = True)
     passing["Nation"] = passing["Nation"].str.replace('[a-z]', '')
     passing = passing.drop(['xAG','xA', 'A-xAG', 'KP', '1/3', 'PPA', 'CrsPA', 'Prog','Matches'], axis=1)
@@ -99,7 +99,7 @@ def Analysis(url):
 
     
     #Defend
-    df =  load_data(url)[3]
+    df =  data(url)[3]
     df.drop(df.tail(2).index, inplace = True)
     df["Nation"] = df["Nation"].str.replace('[a-z]', '')
     df = df.drop(['Def 3rd','Mid 3rd', 'Att 3rd','Att','Past','Sh','Pass','Int','Tkl+Int','Clr','Matches'], axis=1)

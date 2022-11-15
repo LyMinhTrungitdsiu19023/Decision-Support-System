@@ -372,7 +372,17 @@ def plot_chart(attr, url):
                    rotation = 0,
                    textcoords = 'offset points')
         st.pyplot(fig)
-#         return goal_df_1
+
+        
+        
+def prediction(url):
+    shoot = Analysis(url)[0]
+    shoot.drop(shoot.tail(2).index, inplace = True)
+    shoot["Nation"] = shoot["Nation"].str.replace('[a-z]', '')
+    exshoot = shoot[['xG', 'npxG', 'npxG/Sh', 'G-xG', 'np:G-xG']]
+    exshoot.rename(columns = {'xG':'Expected Goals', 'npxG':'NonPenalty Expected Goals', 'npxG/Sh':'NonPenalty Expected Goals/shots', 'G-xG':'Goals compare ExGoals', 'np:G-xG':'NonPen Goal compare with expected'}, inplace = True)
+    exshoot = shoot.reset_index(drop = True) 
+    st.dataframe(exshoot)
     
 #button 
 # if st.button('Squad Analysis'):
@@ -401,8 +411,4 @@ with row_wordx:
     plot_chart(select_attr, url)
 
 st.header("Prediction of the player's ability")
-
-
-html_haland = pd.read_html('https://fbref.com/en/players/1f44ac21/Erling-Haaland', header = 0)
-haland = html_haland
-st.dataframe(haland)
+prediction(url)

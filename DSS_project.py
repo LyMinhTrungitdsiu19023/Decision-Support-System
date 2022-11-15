@@ -389,7 +389,7 @@ def prediction(url):
     passing.drop(passing.tail(2).index, inplace = True)
     passing["Nation"] = passing["Nation"].str.replace('[a-z]', '')
     expassing = pd.DataFrame()
-    expassing = passing[['Player','Nation','Age', 'Pos','xAG', 'xA']]
+    expassing = passing[['Player','xAG', 'xA']]
 
     
     predic_df = pd.merge(exshoot, expassing, on='Player', how='inner')

@@ -203,7 +203,7 @@ def plot_chart(attr, url):
 
     if attr == "Goal":
 
-        goal_df = playerstats.sort_values(by='Gls', ascending=False)
+        goal_df =  load_data(url)[0].sort_values(by='Gls', ascending=False)
         goal_df = goal_df.head(10)
         goal_df_1 = pd.DataFrame()
         goal_df_1 = goal_df[["Player", "Gls"]]
@@ -222,7 +222,7 @@ def plot_chart(attr, url):
             
     if attr == "Assist":
 
-        ast_df = playerstats.sort_values(by='Ast', ascending=False)
+        ast_df =  load_data(url)[0].sort_values(by='Ast', ascending=False)
         ast_df = ast_df.head(10)
         ast_df_1 = pd.DataFrame()
         ast_df_1 = ast_df[["Player", "Ast"]]
@@ -241,7 +241,7 @@ def plot_chart(attr, url):
 
     if attr == "Goal per 90Mins":
 
-        Gls_df = playerstats.sort_values(by='Gls.1', ascending=False)
+        Gls_df =  load_data(url)[0].sort_values(by='Gls.1', ascending=False)
         Gls_df = Gls_df.head(10)
         Gls_df_1 = pd.DataFrame()
         Gls_df_1 = Gls_df[["Player", "Gls.1"]]
@@ -260,7 +260,7 @@ def plot_chart(attr, url):
         
     if attr == "Passed per 90Mins":
 
-        astcom_df = playerstats.sort_values(by='Ast.1', ascending=False)
+        astcom_df =  load_data(url)[0].sort_values(by='Ast.1', ascending=False)
         astcom_df = astcom_df.head(10)
         astcom_df_1 = pd.DataFrame()
         astcom_df_1 = astcom_df[["Player", "Ast.1"]]
@@ -279,7 +279,7 @@ def plot_chart(attr, url):
         
     if attr == "Total Yellow Cards":
 
-        CrdY_df = playerstats.sort_values(by='CrdY', ascending=False)
+        CrdY_df =  load_data(url)[0].sort_values(by='CrdY', ascending=False)
         CrdY_df = CrdY_df.head(10)
         CrdY_df_1 = pd.DataFrame()
         CrdY_df_1 = CrdY_df[["Player", "CrdY"]]
@@ -298,7 +298,7 @@ def plot_chart(attr, url):
         
     if attr == "Total Red Cards":
 
-        CrdR_df = playerstats.sort_values(by='CrdR', ascending=False)
+        CrdR_df =  load_data(url)[0].sort_values(by='CrdR', ascending=False)
         CrdR_df = CrdR_df.head(10)
         CrdR_df_1 = pd.DataFrame()
         CrdR_df_1 = CrdR_df[["Player", "CrdR"]]
@@ -318,7 +318,7 @@ def plot_chart(attr, url):
     
     if attr == "Total Penalty Goals":
 
-        PKatt_df = playerstats.sort_values(by='PKatt', ascending=False)
+        PKatt_df =  load_data(url)[0].sort_values(by='PKatt', ascending=False)
         PKatt_df = PKatt_df.head(10)
         PKatt_df_1 = pd.DataFrame()
         PKatt_df_1 = PKatt_df[["Player", "PKatt"]]

@@ -397,6 +397,24 @@ def prediction(url):
     return predic_df 
 
 def prediction_chart(attr):
+
+    rc = {'figure.figsize':(8,4),
+      'axes.facecolor':'#0e1117',
+      'axes.edgecolor': '#0e1117',
+      'axes.labelcolor': 'white',
+      'figure.facecolor': '#0e1117',
+      'patch.edgecolor': '#0e1117',
+      'text.color': 'white',
+      'xtick.color': 'white',
+      'ytick.color': 'white',
+      'grid.color': 'grey',
+      'font.size' : 8,
+      'axes.labelsize': 12,
+      'xtick.labelsize': 8,
+      'ytick.labelsize': 12}
+    plt.rcParams.update(rc)
+    fig, ax = plt.subplots()
+    
     predic_df = prediction(url)
     if attr == "Expected Goals":
         xG = predic_df.sort_values(by='Expected Goals', ascending=False)

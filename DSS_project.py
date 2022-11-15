@@ -32,7 +32,12 @@ def load_data(url):
    
     playerstats.drop(playerstats.tail(2).index, inplace = True)
     playerstats["Nation"] = playerstats["Nation"].str.replace('[a-z]', '')
-    return playerstats
+    
+    shoot = html[4]
+    passing = html[5]
+    df = html[8]
+
+    return playerstats, shoot,passing, df
 # playerstats = load_data(url)[0]
 
 
@@ -40,17 +45,17 @@ def load_data(url):
 see_data = st.expander("Information of Manchester City's Players 👉")
 with see_data: 
     st.header("Information of Manchester City's Players")
-    st.write('Data Dimension: ' + str(load_data(url).shape[0]) + ' rows and ' + str(load_data(url).shape[1]) + ' columns.')
-    st.dataframe(load_data(url))
+    st.write('Data Dimension: ' + str(load_data(url)[0].shape[0]) + ' rows and ' + str(load_data(url)[0].shape[1]) + ' columns.')
+    st.dataframe(load_data(url)[0])
 
 
 see_nation = st.expander("Players by Nation 👉")
 with see_nation: 
     st.header('Players by Nation')
-    unique_nation = load_data(url)["Nation"].tolist()
+    unique_nation = load_data(url)[0]["Nation"].tolist()
     selected_nation = st.selectbox('Nation', (unique_nation))
 
-    df_selected_nation = load_data(url).loc[load_data(url)["Nation"].str.contains(selected_nation)]  
+    df_selected_nation = load_data(url)[0].loc[load_data(url)[0]["Nation"].str.contains(selected_nation)]  
     st.dataframe(df_selected_nation) 
 
 
@@ -60,9 +65,9 @@ with see_pos:
 
     st.header('Players by Position')
 
-    unique_pos = load_data(url)["Pos"].drop_duplicates().tolist()
+    unique_pos = load_data(url)[0]["Pos"].drop_duplicates().tolist()
     selected_pos = st.selectbox('Posision',('GK', 'DF', 'MF', 'FW'))
-    df_selected_position = load_data(url).loc[load_data(url)["Pos"].str.contains(selected_pos)]
+    df_selected_position = load_data(url)[0].loc[load_data(url)[0]["Pos"].str.contains(selected_pos)]
     st.dataframe(df_selected_position) 
 
 
@@ -71,12 +76,12 @@ selected_squad = st.sidebar.selectbox('Squad',('4-4-2', '4-2-3-1', '4-3-3'))
  
 def Analysis(url):
     #Forward
-    data = pd.read_html(url, header = 1)
+#     data = pd.read_html(url, header = 1)
     
 
     
     #Shoot
-    shoot = data(url)[4]
+    shoot =  load_data(url)[1]
     shoot.drop(shoot.tail(2).index, inplace = True)
     shoot["Nation"] = shoot["Nation"].str.replace('[a-z]', '')
     shoot = shoot.drop(['SoT%', 'Sh/90', 'SoT/90', 'G/SoT', 'Dist', 'xG', 'npxG', 'npxG/Sh', 'G-xG', 'np:G-xG', 'Matches'], axis=1)
@@ -84,7 +89,7 @@ def Analysis(url):
     shoot = shoot.reset_index(drop = True) 
     
     #Pass
-    passing = data(url)[5]
+    passing =  load_data(url)[2]
     passing.drop(passing.tail(2).index, inplace = True)
     passing["Nation"] = passing["Nation"].str.replace('[a-z]', '')
     passing = passing.drop(['xAG','xA', 'A-xAG', 'KP', '1/3', 'PPA', 'CrsPA', 'Prog','Matches'], axis=1)
@@ -94,7 +99,7 @@ def Analysis(url):
 
     
     #Defend
-    df = data(url)[8]
+    df =  load_data(url)[3]
     df.drop(df.tail(2).index, inplace = True)
     df["Nation"] = df["Nation"].str.replace('[a-z]', '')
     df = df.drop(['Def 3rd','Mid 3rd', 'Att 3rd','Att','Past','Sh','Pass','Int','Tkl+Int','Clr','Matches'], axis=1)

@@ -288,6 +288,26 @@ def plot_chart(attr, url):
                    rotation = 0,
                    textcoords = 'offset points')
         st.pyplot(fig)
+       
+    
+    if attr == "Total Penalty Goals":
+
+        PKatt_df = playerstats.sort_values(by='PKatt', ascending=False)
+        PKatt_df = PKatt_df.head(10)
+        PKatt_df_1 = pd.DataFrame()
+        PKatt_df_1 = PKatt_df[["Player", "PKatt"]]
+        ax = sns.barplot(x = PKatt_df_1["Player"], y = PKatt_df_1["CrdR"], data=PKatt_df_1.reset_index(), color = "#CD5B45")
+        ax.set(xlabel = "Player", ylabel = "Total Penalty Goals")
+        plt.xticks(rotation=66,horizontalalignment="right")
+        for p in ax.patches:
+            ax.annotate(format(str(int(p.get_height()))), 
+                  (p.get_x() + p.get_width() / 2, p.get_height()),
+                   ha = 'center',
+                   va = 'center', 
+                   xytext = (0, 10),
+                   rotation = 0,
+                   textcoords = 'offset points')
+        st.pyplot(fig)
 #         return goal_df_1
     
 #button 

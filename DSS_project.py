@@ -383,7 +383,7 @@ def prediction(url):
     exshoot = pd.DataFrame()
     exshoot = shoot[['xG', 'npxG', 'npxG/Sh', 'G-xG', 'np:G-xG']]
     exshoot.rename(columns = {'xG':'Expected Goals', 'npxG':'NonPenalty Expected Goals', 'npxG/Sh':'NonPenalty Expected Goals/shots', 'G-xG':'Goals compare ExGoals', 'np:G-xG':'NonPen Goal compare with expected'}, inplace = True)
-    exshoot = shoot.reset_index(drop = True) 
+    exshoot = exshoot.reset_index(drop = True) 
     st.dataframe(exshoot)
     
 #button 

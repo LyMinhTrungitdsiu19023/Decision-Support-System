@@ -174,6 +174,8 @@ def Analysis_defend(url):
 #     return goal_df
 def plot_chart(attr, url):
     playerstats = load_data(url)
+    defend_data = pd.read_html(url, header = 1)
+
     rc = {'figure.figsize':(8,4),
       'axes.facecolor':'#0e1117',
       'axes.edgecolor': '#0e1117',
@@ -310,9 +312,8 @@ def plot_chart(attr, url):
         st.pyplot(fig)
 
     if attr == "Tackle Completed":
-        defend_data = pd.read_html(url, header = 1)
         tkl = defend_data[8]
-        
+        tkl.drop(tkl.tail(2).index, inplace = True)
         tkl_df = tkl.sort_values(by='Tkl', ascending=False)
         tkl_df = tkl_df.head(10)
         tkl_df_1 = pd.DataFrame()

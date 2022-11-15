@@ -399,7 +399,7 @@ def prediction(url):
 def prediction_chart(attr):
     predic_df = prediction(url)
     if attr == "Expected Goal":
-        xG = err.sort_values(by='Expected Goal', ascending=False)
+        xG = xG.sort_values(by='Expected Goal', ascending=False)
         xG = xG.head(10)
         xG_1 = pd.DataFrame()
         xG_1 = xG[["Player", "Expected Goal"]]

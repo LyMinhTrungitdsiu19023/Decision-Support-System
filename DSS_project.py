@@ -201,6 +201,14 @@ def plot_chart(attr, url):
         ax = sns.barplot(x = goal_df_1["Player"], y = goal_df_1["Gls"], data=goal_df_1.reset_index(), color = "#b80606")
         ax.set(xlabel = "Player", ylabel = "Goal")
         plt.xticks(rotation=66,horizontalalignment="right")
+        for p in ax.patches:
+            ax.annotate(format(str(int(p.get_height()))), 
+                  (p.get_x() + p.get_width() / 2., p.get_height()),
+                   ha = 'center',
+                   va = 'center', 
+                   xytext = (0, 18),
+                   rotation = 90,
+                   textcoords = 'offset points')
         st.pyplot(fig)
 #         return goal_df_1
     

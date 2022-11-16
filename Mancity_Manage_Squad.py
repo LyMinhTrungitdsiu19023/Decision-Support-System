@@ -25,7 +25,8 @@ username = st.sidebar.text_input("Username/coachname")
 password = st.sidebar.text_input("Password", type = "password")
 # if st.sidebar.button("Login"):
 if username == "pepguardiola" and password == "manutd":
-
+    if st.sidebar.button("Log out"):
+        st.header("Log out successfully")
     url = "https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats"
     # @st.cache
     @st.cache(allow_output_mutation=True)

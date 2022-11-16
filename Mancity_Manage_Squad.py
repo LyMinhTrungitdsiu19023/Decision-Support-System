@@ -575,10 +575,10 @@ st.sidebar.markdown('Coach choose the requirements here')
 selected_squad = st.sidebar.selectbox('Squad',('4-4-2', '4-2-3-1', '4-3-3'))
 selected_speed = st.sidebar.select_slider('Speed', options = range(101))
 selected_pass = st.sidebar.select_slider('Passing speed', options = range(101))
+selected_intercept = st.sidebar.select_slider('Intercept', options = range(101))
 selected_style = st.sidebar.selectbox('Style',('Organizing', 'Liberal')) 
 selected_squad_distance = st.sidebar.selectbox('Squad distance',('Narrow', 'Wide')) 
 selected_match_approach = st.sidebar.selectbox('Match approach',('Defend', 'Attack', 'Possession')) 
-selected_intercept = st.sidebar.select_slider('Intercept', options = range(101))
 selected_gk = st.sidebar.selectbox('Select GoalKkeeper',load_data(url)[0].loc[load_data(url)[0]["Pos"].str.contains('GK')]) 
 
 

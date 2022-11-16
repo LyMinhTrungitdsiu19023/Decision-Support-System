@@ -145,7 +145,7 @@ def Analysis_Forward(url):
     st.dataframe(df)
     
     possesion = Analysis(url)[3]
-    possesion = possesion.loc[df["Pos"].str.contains("FW")]
+    possesion = possesion.loc[possesion["Pos"].str.contains("FW")]
     st.write('Stats of Possesion')
     st.dataframe(possesion)
 def Analysis_Mid(url):
@@ -169,7 +169,7 @@ def Analysis_Mid(url):
     st.dataframe(df)
     
     possesion = Analysis(url)[3]
-    possesion = possesion.loc[df["Pos"].str.contains("FW")]
+    possesion = possesion.loc[possesion["Pos"].str.contains("FW")]
     st.write('Stats of Possesion')
     st.dataframe(possesion)
 def Analysis_defend(url):
@@ -193,7 +193,7 @@ def Analysis_defend(url):
     st.dataframe(df) 
 
     possesion = Analysis(url)[3]
-    possesion = possesion.loc[df["Pos"].str.contains("FW")]
+    possesion = possesion.loc[possesion["Pos"].str.contains("FW")]
     st.write('Stats of Possesion')
     st.dataframe(possesion)
 # def chart_analysis_information_goal(attr, playerstats):

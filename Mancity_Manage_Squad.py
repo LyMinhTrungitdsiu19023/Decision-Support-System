@@ -448,6 +448,24 @@ def plot_chart(attr, url):
                    textcoords = 'offset points')
         st.pyplot(fig)
         
+    if attr == "Number of Touches":
+        possesion = Analysis(url)[3]
+        possesion_df = possesion.sort_values(by='Touches', ascending=False)
+        possesion_df = possesion_df.head(10)
+        possesion_df_1 = pd.DataFrame()
+        possesion_df_1 = possesion_df[["Player", "Touches"]]
+        ax = sns.barplot(x = possesion_df_1["Player"], y = possesion_df_1["Int"], data=possesion_df_1.reset_index(), color = "#EE3A8C")
+        ax.set(xlabel = "Player", ylabel = "Number of Touches")
+        plt.xticks(rotation=66,horizontalalignment="right")
+        for p in ax.patches:
+            ax.annotate(format(str(int(p.get_height()))), 
+                  (p.get_x() + p.get_width() / 2, p.get_height()),
+                   ha = 'center',
+                   va = 'center', 
+                   xytext = (0, 10),
+                   rotation = 0,
+                   textcoords = 'offset points')
+        st.pyplot(fig)
         
 def prediction(url):
     data = pd.read_html(url, header = 1)
@@ -545,7 +563,7 @@ row_chartx, row_charty = st.columns((.2, 3))
 # with analysis_bar: 
 with row_wordy:
     st.markdown('Investigate a variety of stats for each player. Top 10 players who score the most goals, assist, pass, or mistakes? How does players compare with each others?')
-    select_attr = st.selectbox('Which attribute do you want to analyze?', ('Goal','Assist','Tackle Completed','Number of Tackled','Done Intercept','Mistakes lead to goals','Goal per 90Mins','Passed per 90Mins', 'Total Yellow Cards', 'Total Red Cards', 'Total Penalty Goals'))
+    select_attr = st.selectbox('Which attribute do you want to analyze?', ('Goal','Assist','Tackle Completed','Number of Tackled','Done Intercept','Number of Touches','Mistakes lead to goals','Goal per 90Mins','Passed per 90Mins', 'Total Yellow Cards', 'Total Red Cards', 'Total Penalty Goals'))
 #     st.selectbox('Which measure do you want to analyze?', ('Mean','Median','Absolute','Maximum','Minimum'))
 with row_wordx:
 #     st.dataframe(plot_chart(select_attr))

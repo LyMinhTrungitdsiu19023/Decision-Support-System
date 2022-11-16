@@ -16,7 +16,7 @@ password = st.sidebar.text_input("Password", type = "password")
 if st.sidebar.button("Login"):
     if username == "pepguardiola" and password == "manutd":
         if st.sidebar.button("Log out"):
-            st.header("Good Bye")
+            st.header("Log out successfully")
         else:
             image = Image.open('squad2223.jpg')
 

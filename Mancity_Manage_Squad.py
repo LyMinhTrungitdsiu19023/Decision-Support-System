@@ -20,12 +20,17 @@ by\n
 Ly Minh Trung - Kieu Chi Huy - Truong Quoc An
 """)
 
-st.sidebar.header('PlayStyle')
+st.sidebar.header('PlayStyle') 
 
 selected_squad = st.sidebar.selectbox('Squad',('4-4-2', '4-2-3-1', '4-3-3'))
 selected_speed = st.sidebar.select_slider('Speed', options = range(101))
 selected_pass = st.sidebar.select_slider('Passing speed', options = range(101))
 selected_style = st.sidebar.selectbox('Style',('Organizing', 'Liberal')) 
+selected_squad_distance = st.sidebar.selectbox('Squad distance',('Narrow', 'Wide')) 
+selected_match_approach = st.sidebar.selectbox('Match approach',('Defend', 'Attack', 'Possession')) 
+selected_intercept = st.sidebar.select_slider('Intercept', options = range(101))
+
+
 st.sidebar.button('Recommendations squad for the next match')
 
 url = "https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats"
@@ -104,8 +109,8 @@ def Analysis(url):
     df =  data[8]
     df.drop(df.tail(2).index, inplace = True)
     df["Nation"] = df["Nation"].str.replace('[a-z]', '')
-    df = df.drop(['Def 3rd','Mid 3rd', 'Att 3rd','Att','Past','Sh','Pass','Int','Tkl+Int','Clr','Matches'], axis=1)
-    df.rename(columns = {'Tkl':'Number of Players Tackles', 'Tkl.1':'Number of Tackled by Competitors', 'Err':'Mistakes lead to goals'}, inplace = True)
+    df = df.drop(['Def 3rd','Mid 3rd', 'Att 3rd','Att','Past','Sh','Pass','Tkl+Int','Clr','Matches'], axis=1)
+    df.rename(columns = {'Tkl':'Number of Players Tackles', 'Tkl.1':'Number of Tackled by Competitors','Int':'Intercept', 'Err':'Mistakes lead to goals'}, inplace = True)
 
     df = df.reset_index(drop = True)
  

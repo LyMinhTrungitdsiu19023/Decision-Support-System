@@ -633,5 +633,5 @@ if st.sidebar.button("Login"):
                 select_pre = st.selectbox('Which attribute do you want to see prediction?', ('Expected Goals','Expected Assists'))
                 prediction_chart(select_pre)
     else:
-        st.warning("Incorrect password/username!")
+        st.sidebar.warning("Incorrect password/username!")
 

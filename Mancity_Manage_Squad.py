@@ -623,4 +623,4 @@ if username == "pep guardiola" and password == "manutd":
         select_pre = st.selectbox('Which attribute do you want to see prediction?', ('Expected Goals','Expected Assists'))
         prediction_chart(select_pre)
 else:
-    st.warning("Incorrect password/username!)
+    st.warning("Incorrect password/username!")

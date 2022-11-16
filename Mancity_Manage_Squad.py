@@ -52,7 +52,6 @@ def load_data(url):
 # playerstats = load_data(url)[0]
 
 
-st.dataframe(Analysis(url)[3])
 see_data = st.expander("Information of Manchester City's Players 👉")
 with see_data: 
     st.header("Information of Manchester City's Players")
@@ -119,11 +118,12 @@ def Analysis(url):
     possesion = data[9]
     possesion.drop(possesion.tail(2).index, inplace = True)
     possesion["Nation"] = possesion["Nation"].str.replace('[a-z]', '')
-    possesion = possesion[['Player','Nation','Pos','Age','90s','Touches','Def Pen','Att Pen','Live', 'Rec']]
-    possesion.rename(columns = {'Def Pen':'Touches in defensive area of team', 'Att Pen':'Touches in attacking area of team', 'Live':'Live-ball touches', 'Rec':'Number of successfully recieved the pass'}, inplace = True)
-    possesion = possesion.reset_index(drop = True)
+    possesion_1 = pd.DataFrame()
+    possesion_1 = possesion[['Player','Nation','Pos','Age','90s','Touches','Def Pen','Att Pen','Live', 'Rec']]
+    possesion_1.rename(columns = {'Def Pen':'Touches in defensive area of team', 'Att Pen':'Touches in attacking area of team', 'Live':'Live-ball touches', 'Rec':'Number of successfully recieved the pass'}, inplace = True)
+    possesion_1 = possesion_1.reset_index(drop = True)
     
-    return shoot, passing, df, possesion
+    return shoot, passing, df, possesion_1
  
 def Analysis_Forward(url):
     st.header('Statistics of Forward')

@@ -402,11 +402,11 @@ def plot_chart(attr, url):
 
     if attr == "Done Intercept":
 
-        int_df = defend.sort_values(by='Intercept', ascending=False)
+        int_df = defend.sort_values(by='Int', ascending=False)
         int_df = int_df.head(10)
         int_df_1 = pd.DataFrame()
-        int_df_1 = int_df[["Player", "Intercept"]]
-        ax = sns.barplot(x = int_df_1["Player"], y = int_df_1["Intercept"], data=int_df_1.reset_index(), color = "#EE3A8C")
+        int_df_1 = int_df[["Player", "Int"]]
+        ax = sns.barplot(x = int_df_1["Player"], y = int_df_1["Int"], data=int_df_1.reset_index(), color = "#EE3A8C")
         ax.set(xlabel = "Player", ylabel = "Done Intercept")
         plt.xticks(rotation=66,horizontalalignment="right")
         for p in ax.patches:

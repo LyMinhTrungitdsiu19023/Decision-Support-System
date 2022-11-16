@@ -10,6 +10,9 @@ from PIL import Image
 st.set_page_config(page_title="Manage Squad", layout = 'wide')
 
 st.title('Welcome to Manchester City Login')
+image_login = Image.open('logo.jpg')
+
+st.image(image_login, caption='The Citizen', width=1000)
 st.sidebar.markdown('Sign in') 
 username = st.sidebar.text_input("Username/coachname")
 password = st.sidebar.text_input("Password", type = "password")

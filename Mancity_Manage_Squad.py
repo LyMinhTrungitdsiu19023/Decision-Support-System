@@ -52,7 +52,7 @@ def load_data(url):
 # playerstats = load_data(url)[0]
 
 
-
+st.dataframe(Analysis(url)[3])
 see_data = st.expander("Information of Manchester City's Players 👉")
 with see_data: 
     st.header("Information of Manchester City's Players")

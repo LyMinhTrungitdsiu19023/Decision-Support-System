@@ -522,7 +522,7 @@ with row_wordx:
 #     st.dataframe(plot_chart(select_attr))
     plot_chart(select_attr, url)
 
-st.header("Prediction of the player's ability")
+st.header("Expected Information of the player")
 see_predict_table = st.expander("Show prediction table 👉")
 with see_predict_table: 
     st.dataframe(prediction(url), width=2500, height=400)

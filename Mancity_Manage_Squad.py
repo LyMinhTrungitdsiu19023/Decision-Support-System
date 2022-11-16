@@ -400,6 +400,24 @@ def plot_chart(attr, url):
                    textcoords = 'offset points')
         st.pyplot(fig)
 
+    if attr == "Done Intercept":
+
+        int_df = defend.sort_values(by='Intercept', ascending=False)
+        int_df = int_df.head(10)
+        int_df_1 = pd.DataFrame()
+        int_df_1 = int_df[["Player", "Intercept"]]
+        ax = sns.barplot(x = int_df_1["Player"], y = int_df_1["Intercept"], data=int_df_1.reset_index(), color = "#EE3A8C")
+        ax.set(xlabel = "Player", ylabel = "Done Intercept")
+        plt.xticks(rotation=66,horizontalalignment="right")
+        for p in ax.patches:
+            ax.annotate(format(str(int(p.get_height()))), 
+                  (p.get_x() + p.get_width() / 2, p.get_height()),
+                   ha = 'center',
+                   va = 'center', 
+                   xytext = (0, 10),
+                   rotation = 0,
+                   textcoords = 'offset points')
+        st.pyplot(fig)
         
         
 def prediction(url):
@@ -498,7 +516,7 @@ row_chartx, row_charty = st.columns((.2, 3))
 # with analysis_bar: 
 with row_wordy:
     st.markdown('Investigate a variety of stats for each player. Top 10 players who score the most goals, assist, pass, or mistakes? How does players compare with each others?')
-    select_attr = st.selectbox('Which attribute do you want to analyze?', ('Goal','Assist','Tackle Completed','Number of Tackled','Mistakes lead to goals','Goal per 90Mins','Passed per 90Mins', 'Total Yellow Cards', 'Total Red Cards', 'Total Penalty Goals'))
+    select_attr = st.selectbox('Which attribute do you want to analyze?', ('Goal','Assist','Tackle Completed','Number of Tackled','Done Intercept','Mistakes lead to goals','Goal per 90Mins','Passed per 90Mins', 'Total Yellow Cards', 'Total Red Cards', 'Total Penalty Goals'))
 #     st.selectbox('Which measure do you want to analyze?', ('Mean','Median','Absolute','Maximum','Minimum'))
 with row_wordx:
 #     st.dataframe(plot_chart(select_attr))

@@ -130,22 +130,26 @@ def Analysis_Forward(url):
     
     shoot = Analysis(url)[0]
     shoot = shoot.loc[shoot["Pos"].str.contains("FW")]
+    shoot = shoot.reset_index(drop = True)
     st.write('Stats of Shooting')
     st.dataframe(shoot)
 
     passing = Analysis(url)[1]
     passing = passing.loc[passing["Pos"].str.contains("FW")]
+    passing = passing.reset_index(drop = True)
     st.write('Stats of Passing')
     st.dataframe(passing) 
     st.write('*Note\n Cmp.1: Passes Completed in Short Distance - Att.1 Passes Attempted in Short Distance - Cmp%.1: % Passes Completed in Short Distance - .2: Medium Distance - .3:Long Distance')
 
     df = Analysis(url)[2]
     df = df.loc[df["Pos"].str.contains("FW")]
+    df = df.reset_index(drop = True)
     st.write('Stats of Defensive')
     st.dataframe(df)
     
     possesion = Analysis(url)[3]
     possesion = possesion.loc[possesion["Pos"].str.contains("FW")]
+    possesion = possesion.reset_index(drop = True)
     st.write('Stats of Possesion')
     st.dataframe(possesion)
 def Analysis_Mid(url):
@@ -154,22 +158,26 @@ def Analysis_Mid(url):
 
     shoot = Analysis(url)[0]
     shoot = shoot.loc[shoot["Pos"].str.contains("MF")]
+    shoot = shoot.reset_index(drop = True)
     st.write('Stats of Shooting')
     st.dataframe(shoot)
 
     passing = Analysis(url)[1]
     passing = passing.loc[passing["Pos"].str.contains("MF")]
+    passing = passing.reset_index(drop = True)
     st.write('Stats of Passing')
     st.dataframe(passing) 
     st.write('*Note\n Cmp.1: Passes Completed in Short Distance - Att.1 Passes Attempted in Short Distance - Cmp%.1: % Passes Completed in Short Distance - .2: Medium Distance - .3:Long Distance')
 
     df = Analysis(url)[2]
     df = df.loc[df["Pos"].str.contains("MF")]
+    df = df.reset_index(drop = True)
     st.write('Stats of Defensive')
     st.dataframe(df)
     
     possesion = Analysis(url)[3]
     possesion = possesion.loc[possesion["Pos"].str.contains("FW")]
+    possesion = possesion.reset_index(drop = True)
     st.write('Stats of Possesion')
     st.dataframe(possesion)
 def Analysis_defend(url):
@@ -178,22 +186,26 @@ def Analysis_defend(url):
 
     shoot = Analysis(url)[0]
     shoot = shoot.loc[shoot["Pos"].str.contains("DF")]
+    shoot = shoot.reset_index(drop = True)
     st.write('Stats of Shooting')
     st.dataframe(shoot)
 
     passing = Analysis(url)[1]
     passing = passing.loc[passing["Pos"].str.contains("DF")]
+    passing = passing.reset_index(drop = True)
     st.write('Stats of Passing')
     st.dataframe(passing) 
     st.write('*Note\n Cmp.1: Passes Completed in Short Distance - Att.1 Passes Attempted in Short Distance - Cmp%.1: % Passes Completed in Short Distance - .2: Medium Distance - .3:Long Distance')
 
     df = Analysis(url)[2]
     df = df.loc[df["Pos"].str.contains("DF")]
+    df = df.reset_index(drop = True)
     st.write('Stats of Defensive')
     st.dataframe(df) 
 
     possesion = Analysis(url)[3]
     possesion = possesion.loc[possesion["Pos"].str.contains("FW")]
+    possesion = possesion.reset_index(drop = True)
     st.write('Stats of Possesion')
     st.dataframe(possesion)
 # def chart_analysis_information_goal(attr, playerstats):

@@ -30,6 +30,7 @@ selected_style = st.sidebar.selectbox('Style',('Organizing', 'Liberal'))
 selected_squad_distance = st.sidebar.selectbox('Squad distance',('Narrow', 'Wide')) 
 selected_match_approach = st.sidebar.selectbox('Match approach',('Defend', 'Attack', 'Possession')) 
 selected_intercept = st.sidebar.select_slider('Intercept', options = range(101))
+selected_gk = st.sidebar.selectbox('Select GoalKkeeper',load_data(url)[0].loc[load_data(url)[0]["Pos"].str.contains('GK')]) 
 
 
 st.sidebar.button('Recommendations squad for the next match')

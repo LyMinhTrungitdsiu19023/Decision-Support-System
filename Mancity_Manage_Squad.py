@@ -454,7 +454,7 @@ def plot_chart(attr, url):
         possesion_df = possesion_df.head(10)
         possesion_df_1 = pd.DataFrame()
         possesion_df_1 = possesion_df[["Player", "Touches"]]
-        ax = sns.barplot(x = possesion_df_1["Player"], y = possesion_df_1["Int"], data=possesion_df_1.reset_index(), color = "#EE3A8C")
+        ax = sns.barplot(x = possesion_df_1["Player"], y = possesion_df_1["Touches"], data=possesion_df_1.reset_index(), color = "#FFFFFF")
         ax.set(xlabel = "Player", ylabel = "Number of Touches")
         plt.xticks(rotation=66,horizontalalignment="right")
         for p in ax.patches:

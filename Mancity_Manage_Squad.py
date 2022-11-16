@@ -467,6 +467,24 @@ def plot_chart(attr, url):
                    textcoords = 'offset points')
         st.pyplot(fig)
         
+    if attr == "Number of Touches in attacking area":
+        attTouches = Analysis(url)[3]
+        attTouches_df = attTouches.sort_values(by='Touches in attacking area of team', ascending=False)
+        attTouches_df = attTouches_df.head(10)
+        attTouches_df_1 = pd.DataFrame()
+        attTouches_df_1 = attTouches_df[["Player", "Touches in attacking area of team"]]
+        ax = sns.barplot(x = attTouches_df_1["Player"], y = attTouches_df_1["Touches in attacking area of team"], data=attTouches_df_1.reset_index(), color = "#FFFFFF")
+        ax.set(xlabel = "Player", ylabel = "Touches in attacking area of team")
+        plt.xticks(rotation=66,horizontalalignment="right")
+        for p in ax.patches:
+            ax.annotate(format(str(int(p.get_height()))), 
+                  (p.get_x() + p.get_width() / 2, p.get_height()),
+                   ha = 'center',
+                   va = 'center', 
+                   xytext = (0, 10),
+                   rotation = 0,
+                   textcoords = 'offset points')
+        st.pyplot(fig)
 def prediction(url):
     data = pd.read_html(url, header = 1)
     shoot = data[4]
@@ -563,7 +581,7 @@ row_chartx, row_charty = st.columns((.2, 3))
 # with analysis_bar: 
 with row_wordy:
     st.markdown('Investigate a variety of stats for each player. Top 10 players who score the most goals, assist, pass, or mistakes? How does players compare with each others?')
-    select_attr = st.selectbox('Which attribute do you want to analyze?', ('Goal','Assist','Tackle Completed','Number of Tackled','Done Intercept','Number of Touches','Mistakes lead to goals','Goal per 90Mins','Passed per 90Mins', 'Total Yellow Cards', 'Total Red Cards', 'Total Penalty Goals'))
+    select_attr = st.selectbox('Which attribute do you want to analyze?', ('Goal','Assist','Tackle Completed','Number of Tackled','Done Intercept','Number of Touches','Number of Touches in attacking area','Mistakes lead to goals','Goal per 90Mins','Passed per 90Mins', 'Total Yellow Cards', 'Total Red Cards', 'Total Penalty Goals'))
 #     st.selectbox('Which measure do you want to analyze?', ('Mean','Median','Absolute','Maximum','Minimum'))
 with row_wordx:
 #     st.dataframe(plot_chart(select_attr))

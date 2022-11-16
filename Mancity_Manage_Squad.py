@@ -13,7 +13,7 @@ st.title('Welcome to Manchester City Login')
 st.sidebar.markdown('Sign in') 
 username = st.sidebar.text_input("Username/coachname")
 password = st.sidebar.text_input("Password", type = "password")
-if st.sidebar.button("Login")
+if st.sidebar.button("Login"):
     if username == "pepguardiola" and password == "manutd":
         image = Image.open('squad2223.jpg')
 

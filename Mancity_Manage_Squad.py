@@ -629,6 +629,6 @@ if st.sidebar.button("Login"):
                 st.markdown('Investigate a variety of prediction for each player. Top 10 players who predicted to score the most goals, assist, pass, or mistakes? How does players compare with each others?')
                 select_pre = st.selectbox('Which attribute do you want to see prediction?', ('Expected Goals','Expected Assists'))
                 prediction_chart(select_pre)
-        else:
-            st.warning("Incorrect password/username!")
+    else:
+        st.warning("Incorrect password/username!")
 

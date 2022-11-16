@@ -9,9 +9,11 @@ from PIL import Image
 
 st.set_page_config(page_title="Manage Squad", layout = 'wide')
 st.title('Welcome to Manchester City Login')
+st.sidebar.markdown('Sign in') 
 username = st.sidebar.text_input("Username/coachname")
-password = st.sidebar.text_input("Password")
-if username == "pep guardiola" and password == "manutd":
+password = st.sidebar.text_input("Password", type = password)
+
+if username == "pepguardiola" and password == "manutd":
     image = Image.open('squad2223.jpg')
 
     st.image(image, caption='The Citizen', width=1000)

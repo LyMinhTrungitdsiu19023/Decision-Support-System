@@ -485,6 +485,25 @@ def plot_chart(attr, url):
                    rotation = 0,
                    textcoords = 'offset points')
         st.pyplot(fig)
+        
+    if attr == "Playing time":
+
+        time_df =  load_data(url)[0].sort_values(by='90s', ascending=False)
+        time_df = time_df.head(10)
+        time_df_1 = pd.DataFrame()
+        time_df_1 = time_df[["Player", "90s"]]
+        ax = sns.barplot(x = time_df_1["Player"], y = time_df_1["90s"], data=time_df_1.reset_index(), color = "#7FFF00")
+        ax.set(xlabel = "Player", ylabel = "Playing time divide by 90")
+        plt.xticks(rotation=66,horizontalalignment="right")
+        for p in ax.patches:
+            ax.annotate(format(p.get_height(), '.2f'), 
+                  (p.get_x() + p.get_width() / 2., p.get_height()),
+                   ha = 'center',
+                   va = 'center', 
+                   xytext = (0, 10),
+                   rotation = 0,
+                   textcoords = 'offset points')
+        st.pyplot(fig)
 def prediction(url):
     data = pd.read_html(url, header = 1)
     shoot = data[4]
@@ -581,7 +600,7 @@ row_chartx, row_charty = st.columns((.2, 3))
 # with analysis_bar: 
 with row_wordy:
     st.markdown('Investigate a variety of stats for each player. Top 10 players who score the most goals, assist, pass, or mistakes? How does players compare with each others?')
-    select_attr = st.selectbox('Which attribute do you want to analyze?', ('Goal','Assist','Tackle Completed','Number of Tackled','Done Intercept','Number of Touches','Number of Touches in attacking area','Mistakes lead to goals','Goal per 90Mins','Passed per 90Mins', 'Total Yellow Cards', 'Total Red Cards', 'Total Penalty Goals'))
+    select_attr = st.selectbox('Which attribute do you want to analyze?', ('Goal','Assist','Playing time','Tackle Completed','Number of Tackled','Done Intercept','Number of Touches','Number of Touches in attacking area','Mistakes lead to goals','Goal per 90Mins','Passed per 90Mins', 'Total Yellow Cards', 'Total Red Cards', 'Total Penalty Goals'))
 #     st.selectbox('Which measure do you want to analyze?', ('Mean','Median','Absolute','Maximum','Minimum'))
 with row_wordx:
 #     st.dataframe(plot_chart(select_attr))

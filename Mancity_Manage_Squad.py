@@ -119,7 +119,7 @@ def Analysis(url):
     possesion = data[9]
     possesion.drop(possesion.tail(2).index, inplace = True)
     possesion["Nation"] = possesion["Nation"].str.replace('[a-z]', '')
-    possesion = possesion[['Touches','Def Pen','Att Pen','Live', 'Rec']]
+    possesion = possesion[['Player','Nation','Age','90s','Touches','Def Pen','Att Pen','Live', 'Rec']]
     possesion.rename(columns = {'Def Pen':'Touches in defensive area of team', 'Att Pen':'Touches in attacking area of team', 'Live':'Live-ball touches', 'Rec':'Number of successfully recieved the pass'}, inplace = True)
     possesion = possesion.reset_index(drop = True)
     

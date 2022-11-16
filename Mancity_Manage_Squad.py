@@ -9,10 +9,17 @@ from PIL import Image
 
 st.set_page_config(page_title="Manage Squad", layout = 'wide')
 
-st.title('Welcome to Manchester City Login')
-image_login = Image.open('logo.jpg')
+image = Image.open('squad2223.jpg')
 
-st.image(image_login, caption='The Citizen', width=1000)
+st.image(image, caption='The Citizen', width=1000)
+
+st.title('Manchester City Football Club Management Decision Support System - Manage Squad Field')
+
+st.markdown("""
+Project of Decision Support System course\n
+by\n
+Ly Minh Trung - Kieu Chi Huy - Truong Quoc An
+""")
 st.sidebar.markdown('Sign in') 
 username = st.sidebar.text_input("Username/coachname")
 password = st.sidebar.text_input("Password", type = "password")
@@ -21,17 +28,6 @@ if st.sidebar.button("Login"):
         if st.sidebar.button("Log out"):
             st.header("Log out successfully")
         else:
-            image = Image.open('squad2223.jpg')
-
-            st.image(image, caption='The Citizen', width=1000)
-
-            st.title('Manchester City Football Club Management Decision Support System - Manage Squad Field')
-
-            st.markdown("""
-            Project of Decision Support System course\n
-            by\n
-            Ly Minh Trung - Kieu Chi Huy - Truong Quoc An
-            """)
 
 
             url = "https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats"

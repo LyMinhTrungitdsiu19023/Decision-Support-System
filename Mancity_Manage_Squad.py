@@ -589,7 +589,12 @@ if username == "pepguardiola" and password == "manutd":
         selected_match_approach = st.sidebar.selectbox('Match approach',('Defend', 'Attack', 'Possession')) 
         selected_gk = st.sidebar.selectbox('Select GoalKkeeper',load_data(url)[0].loc[load_data(url)[0]["Pos"].str.contains('GK')]) 
 
+#         def recommend_defend(selected_squad, selected_speed, selected_pass, selected_intercept):
+#             df = Analysis(url)[2]
+#             df = df.loc[df["Pos"].str.contains("DF")]
+#             df = df.sort_values(by='Tkl%', ascending=False)
 
+        
         st.sidebar.button('Recommendations squad for the next match')
         fw = st.checkbox("Statistics of Forward")
         mf = st.checkbox("Statistics of Midfield")

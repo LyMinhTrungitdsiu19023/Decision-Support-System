@@ -21,7 +21,7 @@ Ly Minh Trung - Kieu Chi Huy - Truong Quoc An
 """)
 
 st.sidebar.header('PlayStyle') 
-st.sidebar.markdown('Coach choose the requirement here') 
+st.sidebar.markdown('Coach choose the requirements here') 
 
 selected_squad = st.sidebar.selectbox('Squad',('4-4-2', '4-2-3-1', '4-3-3'))
 selected_speed = st.sidebar.select_slider('Speed', options = range(101))
@@ -114,15 +114,20 @@ def Analysis(url):
     df.rename(columns = {'Tkl':'Number of Players Tackles', 'Tkl.1':'Number of Tackled by Competitors','Int':'Intercept', 'Err':'Mistakes lead to goals'}, inplace = True)
 
     df = df.reset_index(drop = True)
- 
+
+    #Possesion
+    possesion =  data[9]
+    possesion.drop(possesion.tail(2).index, inplace = True)
+    possesion["Nation"] = possesion["Nation"].str.replace('[a-z]', '')
+    possesion = possesion[['Touches','Touches in defensive area of team','Touches in attacking area of team','Live-ball touches', 'Number of successfully recieved the pass']]
+    possesion.rename(columns = {'Cmp':'Passed Completed', 'Att':'Passes Attempted', 'Cmp%':'%Completed'}, inplace = True)
+    possesion = possesion.reset_index(drop = True)
     
-    return shoot, passing, df
+    return shoot, passing, df, possesion
  
 def Analysis_Forward(url):
     st.header('Statistics of Forward')
     
-
-
     shoot = Analysis(url)[0]
     shoot = shoot.loc[shoot["Pos"].str.contains("FW")]
     st.write('Stats of Shooting')
@@ -139,6 +144,10 @@ def Analysis_Forward(url):
     st.write('Stats of Defensive')
     st.dataframe(df)
     
+    possesion = Analysis(url)[3]
+    possesion = possesion.loc[df["Pos"].str.contains("FW")]
+    st.write('Stats of Possesion')
+    st.dataframe(possesion)
 def Analysis_Mid(url):
     st.header('Statistics of Midfield')
 
@@ -159,7 +168,10 @@ def Analysis_Mid(url):
     st.write('Stats of Defensive')
     st.dataframe(df)
     
-    
+    possesion = Analysis(url)[3]
+    possesion = possesion.loc[df["Pos"].str.contains("FW")]
+    st.write('Stats of Possesion')
+    st.dataframe(possesion)
 def Analysis_defend(url):
     st.header('Statistics of Defensive')
 
@@ -180,6 +192,10 @@ def Analysis_defend(url):
     st.write('Stats of Defensive')
     st.dataframe(df) 
 
+    possesion = Analysis(url)[3]
+    possesion = possesion.loc[df["Pos"].str.contains("FW")]
+    st.write('Stats of Possesion')
+    st.dataframe(possesion)
 # def chart_analysis_information_goal(attr, playerstats):
 #     if attr == "Goal":
 #         goal_df = playerstats.sort_values(by='Gls', ascending=False)

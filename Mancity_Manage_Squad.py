@@ -493,7 +493,7 @@ def plot_chart(attr, url):
         time_df_1 = pd.DataFrame()
         time_df_1 = time_df[["Player", "90s"]]
         ax = sns.barplot(x = time_df_1["Player"], y = time_df_1["90s"], data=time_df_1.reset_index(), color = "#7FFF00")
-        ax.set(xlabel = "Player", ylabel = "Playing time divide by 90")
+        ax.set(xlabel = "Player", ylabel = "Playing time divide by 90 second")
         plt.xticks(rotation=66,horizontalalignment="right")
         for p in ax.patches:
             ax.annotate(format(p.get_height(), '.2f'), 

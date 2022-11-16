@@ -29,7 +29,6 @@ if st.sidebar.button("Login"):
             st.header("Log out successfully")
         else:
 
-
             url = "https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats"
             # @st.cache
             @st.cache(allow_output_mutation=True)
@@ -210,424 +209,424 @@ if st.sidebar.button("Login"):
             #         goal_df = goal_df.head(10)
 
             #     return goal_df
-            def plot_chart(attr, url):
-                playerstats = load_data(url)
-                html = pd.read_html(url, header = 1)
-                defend = html[8] 
-                defend.drop(defend.tail(2).index, inplace = True)
-            #     defend = Analysis(url)[2]
-                rc = {'figure.figsize':(8,4),
-                  'axes.facecolor':'#0e1117',
-                  'axes.edgecolor': '#0e1117',
-                  'axes.labelcolor': 'white',
-                  'figure.facecolor': '#0e1117',
-                  'patch.edgecolor': '#0e1117',
-                  'text.color': 'white',
-                  'xtick.color': 'white',
-                  'ytick.color': 'white',
-                  'grid.color': 'grey',
-                  'font.size' : 8,
-                  'axes.labelsize': 12,
-                  'xtick.labelsize': 8,
-                  'ytick.labelsize': 12}
-                plt.rcParams.update(rc)
-                fig, ax = plt.subplots()
+                def plot_chart(attr, url):
+                    playerstats = load_data(url)
+                    html = pd.read_html(url, header = 1)
+                    defend = html[8] 
+                    defend.drop(defend.tail(2).index, inplace = True)
+                #     defend = Analysis(url)[2]
+                    rc = {'figure.figsize':(8,4),
+                      'axes.facecolor':'#0e1117',
+                      'axes.edgecolor': '#0e1117',
+                      'axes.labelcolor': 'white',
+                      'figure.facecolor': '#0e1117',
+                      'patch.edgecolor': '#0e1117',
+                      'text.color': 'white',
+                      'xtick.color': 'white',
+                      'ytick.color': 'white',
+                      'grid.color': 'grey',
+                      'font.size' : 8,
+                      'axes.labelsize': 12,
+                      'xtick.labelsize': 8,
+                      'ytick.labelsize': 12}
+                    plt.rcParams.update(rc)
+                    fig, ax = plt.subplots()
 
-                if attr == "Goal":
+                    if attr == "Goal":
 
-                    goal_df =  load_data(url)[0].sort_values(by='Gls', ascending=False)
-                    goal_df = goal_df.head(10)
-                    goal_df_1 = pd.DataFrame()
-                    goal_df_1 = goal_df[["Player", "Gls"]]
-                    ax = sns.barplot(x = goal_df_1["Player"], y = goal_df_1["Gls"], data=goal_df_1.reset_index(), color = "#00BFFF")
-                    ax.set(xlabel = "Player", ylabel = "Goals")
-                    plt.xticks(rotation=66,horizontalalignment="right")
-                    for p in ax.patches:
-                        ax.annotate(format(str(int(p.get_height()))), 
-                              (p.get_x() + p.get_width() / 2, p.get_height()),
-                               ha = 'center',
-                               va = 'center', 
-                               xytext = (0, 10),
-                               rotation = 0,
-                               textcoords = 'offset points')
-                    st.pyplot(fig)
+                        goal_df =  load_data(url)[0].sort_values(by='Gls', ascending=False)
+                        goal_df = goal_df.head(10)
+                        goal_df_1 = pd.DataFrame()
+                        goal_df_1 = goal_df[["Player", "Gls"]]
+                        ax = sns.barplot(x = goal_df_1["Player"], y = goal_df_1["Gls"], data=goal_df_1.reset_index(), color = "#00BFFF")
+                        ax.set(xlabel = "Player", ylabel = "Goals")
+                        plt.xticks(rotation=66,horizontalalignment="right")
+                        for p in ax.patches:
+                            ax.annotate(format(str(int(p.get_height()))), 
+                                  (p.get_x() + p.get_width() / 2, p.get_height()),
+                                   ha = 'center',
+                                   va = 'center', 
+                                   xytext = (0, 10),
+                                   rotation = 0,
+                                   textcoords = 'offset points')
+                        st.pyplot(fig)
 
-                if attr == "Assist":
+                    if attr == "Assist":
 
-                    ast_df =  load_data(url)[0].sort_values(by='Ast', ascending=False)
-                    ast_df = ast_df.head(10)
-                    ast_df_1 = pd.DataFrame()
-                    ast_df_1 = ast_df[["Player", "Ast"]]
-                    ax = sns.barplot(x = ast_df_1["Player"], y = ast_df_1["Ast"], data=ast_df_1.reset_index(), color = "#FCE6C9")
-                    ax.set(xlabel = "Player", ylabel = "Assists")
-                    plt.xticks(rotation=66,horizontalalignment="right")
-                    for p in ax.patches:
-                        ax.annotate(format(str(int(p.get_height()))), 
-                              (p.get_x() + p.get_width() / 2, p.get_height()),
-                               ha = 'center',
-                               va = 'center', 
-                               xytext = (0, 10),
-                               rotation = 0,
-                               textcoords = 'offset points')
-                    st.pyplot(fig)
+                        ast_df =  load_data(url)[0].sort_values(by='Ast', ascending=False)
+                        ast_df = ast_df.head(10)
+                        ast_df_1 = pd.DataFrame()
+                        ast_df_1 = ast_df[["Player", "Ast"]]
+                        ax = sns.barplot(x = ast_df_1["Player"], y = ast_df_1["Ast"], data=ast_df_1.reset_index(), color = "#FCE6C9")
+                        ax.set(xlabel = "Player", ylabel = "Assists")
+                        plt.xticks(rotation=66,horizontalalignment="right")
+                        for p in ax.patches:
+                            ax.annotate(format(str(int(p.get_height()))), 
+                                  (p.get_x() + p.get_width() / 2, p.get_height()),
+                                   ha = 'center',
+                                   va = 'center', 
+                                   xytext = (0, 10),
+                                   rotation = 0,
+                                   textcoords = 'offset points')
+                        st.pyplot(fig)
 
-                if attr == "Goal per 90Mins":
+                    if attr == "Goal per 90Mins":
 
-                    Gls_df =  load_data(url)[0].sort_values(by='Gls.1', ascending=False)
-                    Gls_df = Gls_df.head(10)
-                    Gls_df_1 = pd.DataFrame()
-                    Gls_df_1 = Gls_df[["Player", "Gls.1"]]
-                    ax = sns.barplot(x = Gls_df_1["Player"], y = Gls_df_1["Gls.1"], data=Gls_df_1.reset_index(), color = "#FFD700")
-                    ax.set(xlabel = "Player", ylabel = "Goal per Shots")
-                    plt.xticks(rotation=66,horizontalalignment="right")
-                    for p in ax.patches:
-                        ax.annotate(format(p.get_height(), '.2f'), 
-                              (p.get_x() + p.get_width() / 2., p.get_height()),
-                               ha = 'center',
-                               va = 'center', 
-                               xytext = (0, 10),
-                               rotation = 0,
-                               textcoords = 'offset points')
-                    st.pyplot(fig)
+                        Gls_df =  load_data(url)[0].sort_values(by='Gls.1', ascending=False)
+                        Gls_df = Gls_df.head(10)
+                        Gls_df_1 = pd.DataFrame()
+                        Gls_df_1 = Gls_df[["Player", "Gls.1"]]
+                        ax = sns.barplot(x = Gls_df_1["Player"], y = Gls_df_1["Gls.1"], data=Gls_df_1.reset_index(), color = "#FFD700")
+                        ax.set(xlabel = "Player", ylabel = "Goal per Shots")
+                        plt.xticks(rotation=66,horizontalalignment="right")
+                        for p in ax.patches:
+                            ax.annotate(format(p.get_height(), '.2f'), 
+                                  (p.get_x() + p.get_width() / 2., p.get_height()),
+                                   ha = 'center',
+                                   va = 'center', 
+                                   xytext = (0, 10),
+                                   rotation = 0,
+                                   textcoords = 'offset points')
+                        st.pyplot(fig)
 
-                if attr == "Passed per 90Mins":
+                    if attr == "Passed per 90Mins":
 
-                    astcom_df =  load_data(url)[0].sort_values(by='Ast.1', ascending=False)
-                    astcom_df = astcom_df.head(10)
-                    astcom_df_1 = pd.DataFrame()
-                    astcom_df_1 = astcom_df[["Player", "Ast.1"]]
-                    ax = sns.barplot(x = astcom_df_1["Player"], y = astcom_df_1["Ast.1"], data=astcom_df_1.reset_index(), color = "#7FFF00")
-                    ax.set(xlabel = "Player", ylabel = "Passed Completed")
-                    plt.xticks(rotation=66,horizontalalignment="right")
-                    for p in ax.patches:
-                        ax.annotate(format(p.get_height(), '.2f'), 
-                              (p.get_x() + p.get_width() / 2., p.get_height()),
-                               ha = 'center',
-                               va = 'center', 
-                               xytext = (0, 10),
-                               rotation = 0,
-                               textcoords = 'offset points')
-                    st.pyplot(fig)
+                        astcom_df =  load_data(url)[0].sort_values(by='Ast.1', ascending=False)
+                        astcom_df = astcom_df.head(10)
+                        astcom_df_1 = pd.DataFrame()
+                        astcom_df_1 = astcom_df[["Player", "Ast.1"]]
+                        ax = sns.barplot(x = astcom_df_1["Player"], y = astcom_df_1["Ast.1"], data=astcom_df_1.reset_index(), color = "#7FFF00")
+                        ax.set(xlabel = "Player", ylabel = "Passed Completed")
+                        plt.xticks(rotation=66,horizontalalignment="right")
+                        for p in ax.patches:
+                            ax.annotate(format(p.get_height(), '.2f'), 
+                                  (p.get_x() + p.get_width() / 2., p.get_height()),
+                                   ha = 'center',
+                                   va = 'center', 
+                                   xytext = (0, 10),
+                                   rotation = 0,
+                                   textcoords = 'offset points')
+                        st.pyplot(fig)
 
-                if attr == "Total Yellow Cards":
+                    if attr == "Total Yellow Cards":
 
-                    CrdY_df =  load_data(url)[0].sort_values(by='CrdY', ascending=False)
-                    CrdY_df = CrdY_df.head(10)
-                    CrdY_df_1 = pd.DataFrame()
-                    CrdY_df_1 = CrdY_df[["Player", "CrdY"]]
-                    ax = sns.barplot(x = CrdY_df_1["Player"], y = CrdY_df_1["CrdY"], data=CrdY_df_1.reset_index(), color = "#CD5B45")
-                    ax.set(xlabel = "Player", ylabel = "Yellow Cards")
-                    plt.xticks(rotation=66,horizontalalignment="right")
-                    for p in ax.patches:
-                        ax.annotate(format(str(int(p.get_height()))), 
-                              (p.get_x() + p.get_width() / 2, p.get_height()),
-                               ha = 'center',
-                               va = 'center', 
-                               xytext = (0, 10),
-                               rotation = 0,
-                               textcoords = 'offset points')
-                    st.pyplot(fig)
+                        CrdY_df =  load_data(url)[0].sort_values(by='CrdY', ascending=False)
+                        CrdY_df = CrdY_df.head(10)
+                        CrdY_df_1 = pd.DataFrame()
+                        CrdY_df_1 = CrdY_df[["Player", "CrdY"]]
+                        ax = sns.barplot(x = CrdY_df_1["Player"], y = CrdY_df_1["CrdY"], data=CrdY_df_1.reset_index(), color = "#CD5B45")
+                        ax.set(xlabel = "Player", ylabel = "Yellow Cards")
+                        plt.xticks(rotation=66,horizontalalignment="right")
+                        for p in ax.patches:
+                            ax.annotate(format(str(int(p.get_height()))), 
+                                  (p.get_x() + p.get_width() / 2, p.get_height()),
+                                   ha = 'center',
+                                   va = 'center', 
+                                   xytext = (0, 10),
+                                   rotation = 0,
+                                   textcoords = 'offset points')
+                        st.pyplot(fig)
 
-                if attr == "Total Red Cards":
+                    if attr == "Total Red Cards":
 
-                    CrdR_df =  load_data(url)[0].sort_values(by='CrdR', ascending=False)
-                    CrdR_df = CrdR_df.head(10)
-                    CrdR_df_1 = pd.DataFrame()
-                    CrdR_df_1 = CrdR_df[["Player", "CrdR"]]
-                    ax = sns.barplot(x = CrdR_df_1["Player"], y = CrdR_df_1["CrdR"], data=CrdR_df_1.reset_index(), color = "#CD5B45")
-                    ax.set(xlabel = "Player", ylabel = "Red Cards")
-                    plt.xticks(rotation=66,horizontalalignment="right")
-                    for p in ax.patches:
-                        ax.annotate(format(str(int(p.get_height()))), 
-                              (p.get_x() + p.get_width() / 2, p.get_height()),
-                               ha = 'center',
-                               va = 'center', 
-                               xytext = (0, 10),
-                               rotation = 0,
-                               textcoords = 'offset points')
-                    st.pyplot(fig)
-
-
-                if attr == "Total Penalty Goals":
-
-                    PKatt_df =  load_data(url)[0].sort_values(by='PKatt', ascending=False)
-                    PKatt_df = PKatt_df.head(10)
-                    PKatt_df_1 = pd.DataFrame()
-                    PKatt_df_1 = PKatt_df[["Player", "PKatt"]]
-                    ax = sns.barplot(x = PKatt_df_1["Player"], y = PKatt_df_1["PKatt"], data=PKatt_df_1.reset_index(), color = "#53868B")
-                    ax.set(xlabel = "Player", ylabel = "Total Penalty Goals")
-                    plt.xticks(rotation=66,horizontalalignment="right")
-                    for p in ax.patches:
-                        ax.annotate(format(str(int(p.get_height()))), 
-                              (p.get_x() + p.get_width() / 2, p.get_height()),
-                               ha = 'center',
-                               va = 'center', 
-                               xytext = (0, 10),
-                               rotation = 0,
-                               textcoords = 'offset points')
-                    st.pyplot(fig)
-
-                if attr == "Tackle Completed":
-
-                    tkl_df = defend.sort_values(by='Tkl.1', ascending=False)
-                    tkl_df = tkl_df.head(10)
-                    tkl_df_1 = pd.DataFrame()
-                    tkl_df_1 = tkl_df[["Player", "Tkl.1"]]
-                    ax = sns.barplot(x = tkl_df_1["Player"], y = tkl_df_1["Tkl.1"], data=tkl_df_1.reset_index(), color = "#79CDCD")
-                    ax.set(xlabel = "Player", ylabel = "Successful Tackles ")
-                    plt.xticks(rotation=66,horizontalalignment="right")
-                    for p in ax.patches:
-                        ax.annotate(format(str(int(p.get_height()))), 
-                              (p.get_x() + p.get_width() / 2, p.get_height()),
-                               ha = 'center',
-                               va = 'center', 
-                               xytext = (0, 10),
-                               rotation = 0,
-                               textcoords = 'offset points')
-                    st.pyplot(fig)
+                        CrdR_df =  load_data(url)[0].sort_values(by='CrdR', ascending=False)
+                        CrdR_df = CrdR_df.head(10)
+                        CrdR_df_1 = pd.DataFrame()
+                        CrdR_df_1 = CrdR_df[["Player", "CrdR"]]
+                        ax = sns.barplot(x = CrdR_df_1["Player"], y = CrdR_df_1["CrdR"], data=CrdR_df_1.reset_index(), color = "#CD5B45")
+                        ax.set(xlabel = "Player", ylabel = "Red Cards")
+                        plt.xticks(rotation=66,horizontalalignment="right")
+                        for p in ax.patches:
+                            ax.annotate(format(str(int(p.get_height()))), 
+                                  (p.get_x() + p.get_width() / 2, p.get_height()),
+                                   ha = 'center',
+                                   va = 'center', 
+                                   xytext = (0, 10),
+                                   rotation = 0,
+                                   textcoords = 'offset points')
+                        st.pyplot(fig)
 
 
-                if attr == "Number of Tackled":
+                    if attr == "Total Penalty Goals":
 
-                    tkled_df = defend.sort_values(by='Tkl', ascending=False)
-                    tkled_df = tkled_df.head(10)
-                    tkled_df_1 = pd.DataFrame()
-                    tkled_df_1 = tkled_df[["Player", "Tkl"]]
-                    ax = sns.barplot(x = tkled_df_1["Player"], y = tkled_df_1["Tkl"], data=tkled_df_1.reset_index(), color = "#79CDCD")
-                    ax.set(xlabel = "Player", ylabel = "Tackled by Competitors")
-                    plt.xticks(rotation=66,horizontalalignment="right")
-                    for p in ax.patches:
-                        ax.annotate(format(str(int(p.get_height()))), 
-                              (p.get_x() + p.get_width() / 2, p.get_height()),
-                               ha = 'center',
-                               va = 'center', 
-                               xytext = (0, 10),
-                               rotation = 0,
-                               textcoords = 'offset points')
-                    st.pyplot(fig)
+                        PKatt_df =  load_data(url)[0].sort_values(by='PKatt', ascending=False)
+                        PKatt_df = PKatt_df.head(10)
+                        PKatt_df_1 = pd.DataFrame()
+                        PKatt_df_1 = PKatt_df[["Player", "PKatt"]]
+                        ax = sns.barplot(x = PKatt_df_1["Player"], y = PKatt_df_1["PKatt"], data=PKatt_df_1.reset_index(), color = "#53868B")
+                        ax.set(xlabel = "Player", ylabel = "Total Penalty Goals")
+                        plt.xticks(rotation=66,horizontalalignment="right")
+                        for p in ax.patches:
+                            ax.annotate(format(str(int(p.get_height()))), 
+                                  (p.get_x() + p.get_width() / 2, p.get_height()),
+                                   ha = 'center',
+                                   va = 'center', 
+                                   xytext = (0, 10),
+                                   rotation = 0,
+                                   textcoords = 'offset points')
+                        st.pyplot(fig)
 
-                if attr == "Mistakes lead to goals":
+                    if attr == "Tackle Completed":
 
-                    err_df = defend.sort_values(by='Err', ascending=False)
-                    err_df = err_df.head(10)
-                    err_df_1 = pd.DataFrame()
-                    err_df_1 = err_df[["Player", "Err"]]
-                    ax = sns.barplot(x = err_df_1["Player"], y = err_df_1["Err"], data=err_df_1.reset_index(), color = "#79CDCD")
-                    ax.set(xlabel = "Player", ylabel = "Mistakes lead to goals")
-                    plt.xticks(rotation=66,horizontalalignment="right")
-                    for p in ax.patches:
-                        ax.annotate(format(str(int(p.get_height()))), 
-                              (p.get_x() + p.get_width() / 2, p.get_height()),
-                               ha = 'center',
-                               va = 'center', 
-                               xytext = (0, 10),
-                               rotation = 0,
-                               textcoords = 'offset points')
-                    st.pyplot(fig)
-
-                if attr == "Done Intercept":
-
-                    int_df = defend.sort_values(by='Int', ascending=False)
-                    int_df = int_df.head(10)
-                    int_df_1 = pd.DataFrame()
-                    int_df_1 = int_df[["Player", "Int"]]
-                    ax = sns.barplot(x = int_df_1["Player"], y = int_df_1["Int"], data=int_df_1.reset_index(), color = "#EE3A8C")
-                    ax.set(xlabel = "Player", ylabel = "Done Intercept")
-                    plt.xticks(rotation=66,horizontalalignment="right")
-                    for p in ax.patches:
-                        ax.annotate(format(str(int(p.get_height()))), 
-                              (p.get_x() + p.get_width() / 2, p.get_height()),
-                               ha = 'center',
-                               va = 'center', 
-                               xytext = (0, 10),
-                               rotation = 0,
-                               textcoords = 'offset points')
-                    st.pyplot(fig)
-
-                if attr == "Number of Touches":
-                    possesion = Analysis(url)[3]
-                    possesion_df = possesion.sort_values(by='Touches', ascending=False)
-                    possesion_df = possesion_df.head(10)
-                    possesion_df_1 = pd.DataFrame()
-                    possesion_df_1 = possesion_df[["Player", "Touches"]]
-                    ax = sns.barplot(x = possesion_df_1["Player"], y = possesion_df_1["Touches"], data=possesion_df_1.reset_index(), color = "#FFFFFF")
-                    ax.set(xlabel = "Player", ylabel = "Number of Touches")
-                    plt.xticks(rotation=66,horizontalalignment="right")
-                    for p in ax.patches:
-                        ax.annotate(format(str(int(p.get_height()))), 
-                              (p.get_x() + p.get_width() / 2, p.get_height()),
-                               ha = 'center',
-                               va = 'center', 
-                               xytext = (0, 10),
-                               rotation = 0,
-                               textcoords = 'offset points')
-                    st.pyplot(fig)
-
-                if attr == "Number of Touches in attacking area":
-                    attTouches = Analysis(url)[3]
-                    attTouches_df = attTouches.sort_values(by='Touches in attacking area of team', ascending=False)
-                    attTouches_df = attTouches_df.head(10)
-                    attTouches_df_1 = pd.DataFrame()
-                    attTouches_df_1 = attTouches_df[["Player", "Touches in attacking area of team"]]
-                    ax = sns.barplot(x = attTouches_df_1["Player"], y = attTouches_df_1["Touches in attacking area of team"], data=attTouches_df_1.reset_index(), color = "#FFFFFF")
-                    ax.set(xlabel = "Player", ylabel = "Touches in attacking area of team")
-                    plt.xticks(rotation=66,horizontalalignment="right")
-                    for p in ax.patches:
-                        ax.annotate(format(str(int(p.get_height()))), 
-                              (p.get_x() + p.get_width() / 2, p.get_height()),
-                               ha = 'center',
-                               va = 'center', 
-                               xytext = (0, 10),
-                               rotation = 0,
-                               textcoords = 'offset points')
-                    st.pyplot(fig)
-
-                if attr == "Playing time":
-
-                    time_df =  load_data(url)[0].sort_values(by='90s', ascending=False)
-                    time_df = time_df.head(10)
-                    time_df_1 = pd.DataFrame()
-                    time_df_1 = time_df[["Player", "90s"]]
-                    ax = sns.barplot(x = time_df_1["Player"], y = time_df_1["90s"], data=time_df_1.reset_index(), color = "#7FFF00")
-                    ax.set(xlabel = "Player", ylabel = "Playing time divide by 90 second")
-                    plt.xticks(rotation=66,horizontalalignment="right")
-                    for p in ax.patches:
-                        ax.annotate(format(p.get_height(), '.2f'), 
-                              (p.get_x() + p.get_width() / 2., p.get_height()),
-                               ha = 'center',
-                               va = 'center', 
-                               xytext = (0, 10),
-                               rotation = 0,
-                               textcoords = 'offset points')
-                    st.pyplot(fig)
-            def prediction(url):
-                data = pd.read_html(url, header = 1)
-                shoot = data[4]
-                shoot.drop(shoot.tail(2).index, inplace = True)
-                shoot["Nation"] = shoot["Nation"].str.replace('[a-z]', '')
-                exshoot = pd.DataFrame()
-                exshoot = shoot[['Player','Nation','Age', 'Pos','xG', 'npxG', 'npxG/Sh', 'G-xG', 'np:G-xG']]
-                exshoot = exshoot.reset_index(drop = True) 
-
-                passing = data[5]
-                passing.drop(passing.tail(2).index, inplace = True)
-                passing["Nation"] = passing["Nation"].str.replace('[a-z]', '')
-                expassing = pd.DataFrame()
-                expassing = passing[['Player','xAG', 'xA']]
+                        tkl_df = defend.sort_values(by='Tkl.1', ascending=False)
+                        tkl_df = tkl_df.head(10)
+                        tkl_df_1 = pd.DataFrame()
+                        tkl_df_1 = tkl_df[["Player", "Tkl.1"]]
+                        ax = sns.barplot(x = tkl_df_1["Player"], y = tkl_df_1["Tkl.1"], data=tkl_df_1.reset_index(), color = "#79CDCD")
+                        ax.set(xlabel = "Player", ylabel = "Successful Tackles ")
+                        plt.xticks(rotation=66,horizontalalignment="right")
+                        for p in ax.patches:
+                            ax.annotate(format(str(int(p.get_height()))), 
+                                  (p.get_x() + p.get_width() / 2, p.get_height()),
+                                   ha = 'center',
+                                   va = 'center', 
+                                   xytext = (0, 10),
+                                   rotation = 0,
+                                   textcoords = 'offset points')
+                        st.pyplot(fig)
 
 
-                predic_df = pd.merge(exshoot, expassing, on='Player', how='inner')
-                predic_df.rename(columns = {'xG':'Expected Goals', 'npxG':'NonPenalty Expected Goals', 'npxG/Sh':'NonPenalty Expected Goals/shots', 'G-xG':'Goals compare ExGoals', 'np:G-xG':'NonPen Goal compare with expected', 'xAG':'Expected Assist Goals', 'xA':'Expected Assists'}, inplace = True)
+                    if attr == "Number of Tackled":
 
-                return predic_df 
+                        tkled_df = defend.sort_values(by='Tkl', ascending=False)
+                        tkled_df = tkled_df.head(10)
+                        tkled_df_1 = pd.DataFrame()
+                        tkled_df_1 = tkled_df[["Player", "Tkl"]]
+                        ax = sns.barplot(x = tkled_df_1["Player"], y = tkled_df_1["Tkl"], data=tkled_df_1.reset_index(), color = "#79CDCD")
+                        ax.set(xlabel = "Player", ylabel = "Tackled by Competitors")
+                        plt.xticks(rotation=66,horizontalalignment="right")
+                        for p in ax.patches:
+                            ax.annotate(format(str(int(p.get_height()))), 
+                                  (p.get_x() + p.get_width() / 2, p.get_height()),
+                                   ha = 'center',
+                                   va = 'center', 
+                                   xytext = (0, 10),
+                                   rotation = 0,
+                                   textcoords = 'offset points')
+                        st.pyplot(fig)
 
-            def prediction_chart(attr):
+                    if attr == "Mistakes lead to goals":
 
-                rc = {'figure.figsize':(8,4),
-                  'axes.facecolor':'#0e1117',
-                  'axes.edgecolor': '#0e1117',
-                  'axes.labelcolor': 'white',
-                  'figure.facecolor': '#0e1117',
-                  'patch.edgecolor': '#0e1117',
-                  'text.color': 'white',
-                  'xtick.color': 'white',
-                  'ytick.color': 'white',
-                  'grid.color': 'grey',
-                  'font.size' : 8,
-                  'axes.labelsize': 12,
-                  'xtick.labelsize': 8,
-                  'ytick.labelsize': 12}
-                plt.rcParams.update(rc)
-                fig, ax = plt.subplots()
+                        err_df = defend.sort_values(by='Err', ascending=False)
+                        err_df = err_df.head(10)
+                        err_df_1 = pd.DataFrame()
+                        err_df_1 = err_df[["Player", "Err"]]
+                        ax = sns.barplot(x = err_df_1["Player"], y = err_df_1["Err"], data=err_df_1.reset_index(), color = "#79CDCD")
+                        ax.set(xlabel = "Player", ylabel = "Mistakes lead to goals")
+                        plt.xticks(rotation=66,horizontalalignment="right")
+                        for p in ax.patches:
+                            ax.annotate(format(str(int(p.get_height()))), 
+                                  (p.get_x() + p.get_width() / 2, p.get_height()),
+                                   ha = 'center',
+                                   va = 'center', 
+                                   xytext = (0, 10),
+                                   rotation = 0,
+                                   textcoords = 'offset points')
+                        st.pyplot(fig)
 
-                predic_df = prediction(url)
-                if attr == "Expected Goals":
-                    xG = predic_df.sort_values(by='Expected Goals', ascending=False)
-                    xG = xG.head(10)
-                    xG_1 = pd.DataFrame()
-                    xG_1 = xG[["Player", "Expected Goals"]]
-                    ax = sns.barplot(x = xG_1["Player"], y = xG_1["Expected Goals"], data=xG_1.reset_index(), color = "#EEB422")
-                    ax.set(xlabel = "Players with Expected Goal", ylabel = "Expected Goals")
-                    plt.xticks(rotation=66,horizontalalignment="right")
-                    for p in ax.patches:
-                        ax.annotate(format(p.get_height(), '.2f'), 
-                              (p.get_x() + p.get_width() / 2., p.get_height()),
-                               ha = 'center',
-                               va = 'center', 
-                               xytext = (0, 10),
-                               rotation = 0,
-                               textcoords = 'offset points')
-                    st.pyplot(fig)
+                    if attr == "Done Intercept":
 
-                if attr == "Expected Assists":
-                    xA = predic_df.sort_values(by='Expected Assists', ascending=False)
-                    xA = xA.head(10)
-                    xA_1 = pd.DataFrame()
-                    xA_1 = xA[["Player", "Expected Assists"]]
-                    ax = sns.barplot(x = xA_1["Player"], y = xA_1["Expected Assists"], data=xA_1.reset_index(), color = "#CD5C5C")
-                    ax.set(xlabel = "Players with Expected Assists", ylabel = "Expected Assists")
-                    plt.xticks(rotation=66,horizontalalignment="right")
-                    for p in ax.patches:
-                        ax.annotate(format(p.get_height(), '.2f'), 
-                              (p.get_x() + p.get_width() / 2., p.get_height()),
-                               ha = 'center',
-                               va = 'center', 
-                               xytext = (0, 10),
-                               rotation = 0,
-                               textcoords = 'offset points')
-                    st.pyplot(fig)
-            #button 
-            # if st.button('Squad Analysis'):
+                        int_df = defend.sort_values(by='Int', ascending=False)
+                        int_df = int_df.head(10)
+                        int_df_1 = pd.DataFrame()
+                        int_df_1 = int_df[["Player", "Int"]]
+                        ax = sns.barplot(x = int_df_1["Player"], y = int_df_1["Int"], data=int_df_1.reset_index(), color = "#EE3A8C")
+                        ax.set(xlabel = "Player", ylabel = "Done Intercept")
+                        plt.xticks(rotation=66,horizontalalignment="right")
+                        for p in ax.patches:
+                            ax.annotate(format(str(int(p.get_height()))), 
+                                  (p.get_x() + p.get_width() / 2, p.get_height()),
+                                   ha = 'center',
+                                   va = 'center', 
+                                   xytext = (0, 10),
+                                   rotation = 0,
+                                   textcoords = 'offset points')
+                        st.pyplot(fig)
 
-            st.sidebar.header('PlayStyle') 
-            st.sidebar.markdown('Coach choose the requirements here') 
+                    if attr == "Number of Touches":
+                        possesion = Analysis(url)[3]
+                        possesion_df = possesion.sort_values(by='Touches', ascending=False)
+                        possesion_df = possesion_df.head(10)
+                        possesion_df_1 = pd.DataFrame()
+                        possesion_df_1 = possesion_df[["Player", "Touches"]]
+                        ax = sns.barplot(x = possesion_df_1["Player"], y = possesion_df_1["Touches"], data=possesion_df_1.reset_index(), color = "#FFFFFF")
+                        ax.set(xlabel = "Player", ylabel = "Number of Touches")
+                        plt.xticks(rotation=66,horizontalalignment="right")
+                        for p in ax.patches:
+                            ax.annotate(format(str(int(p.get_height()))), 
+                                  (p.get_x() + p.get_width() / 2, p.get_height()),
+                                   ha = 'center',
+                                   va = 'center', 
+                                   xytext = (0, 10),
+                                   rotation = 0,
+                                   textcoords = 'offset points')
+                        st.pyplot(fig)
 
-            selected_squad = st.sidebar.selectbox('Squad',('4-4-2', '4-2-3-1', '4-3-3'))
-            selected_speed = st.sidebar.select_slider('Speed', options = range(101))
-            selected_pass = st.sidebar.select_slider('Passing speed', options = range(101))
-            selected_intercept = st.sidebar.select_slider('Intercept', options = range(101))
-            selected_style = st.sidebar.selectbox('Style',('Organizing', 'Liberal')) 
-            selected_squad_distance = st.sidebar.selectbox('Squad distance',('Narrow', 'Wide')) 
-            selected_match_approach = st.sidebar.selectbox('Match approach',('Defend', 'Attack', 'Possession')) 
-            selected_gk = st.sidebar.selectbox('Select GoalKkeeper',load_data(url)[0].loc[load_data(url)[0]["Pos"].str.contains('GK')]) 
+                    if attr == "Number of Touches in attacking area":
+                        attTouches = Analysis(url)[3]
+                        attTouches_df = attTouches.sort_values(by='Touches in attacking area of team', ascending=False)
+                        attTouches_df = attTouches_df.head(10)
+                        attTouches_df_1 = pd.DataFrame()
+                        attTouches_df_1 = attTouches_df[["Player", "Touches in attacking area of team"]]
+                        ax = sns.barplot(x = attTouches_df_1["Player"], y = attTouches_df_1["Touches in attacking area of team"], data=attTouches_df_1.reset_index(), color = "#FFFFFF")
+                        ax.set(xlabel = "Player", ylabel = "Touches in attacking area of team")
+                        plt.xticks(rotation=66,horizontalalignment="right")
+                        for p in ax.patches:
+                            ax.annotate(format(str(int(p.get_height()))), 
+                                  (p.get_x() + p.get_width() / 2, p.get_height()),
+                                   ha = 'center',
+                                   va = 'center', 
+                                   xytext = (0, 10),
+                                   rotation = 0,
+                                   textcoords = 'offset points')
+                        st.pyplot(fig)
+
+                    if attr == "Playing time":
+
+                        time_df =  load_data(url)[0].sort_values(by='90s', ascending=False)
+                        time_df = time_df.head(10)
+                        time_df_1 = pd.DataFrame()
+                        time_df_1 = time_df[["Player", "90s"]]
+                        ax = sns.barplot(x = time_df_1["Player"], y = time_df_1["90s"], data=time_df_1.reset_index(), color = "#7FFF00")
+                        ax.set(xlabel = "Player", ylabel = "Playing time divide by 90 second")
+                        plt.xticks(rotation=66,horizontalalignment="right")
+                        for p in ax.patches:
+                            ax.annotate(format(p.get_height(), '.2f'), 
+                                  (p.get_x() + p.get_width() / 2., p.get_height()),
+                                   ha = 'center',
+                                   va = 'center', 
+                                   xytext = (0, 10),
+                                   rotation = 0,
+                                   textcoords = 'offset points')
+                        st.pyplot(fig)
+                def prediction(url):
+                    data = pd.read_html(url, header = 1)
+                    shoot = data[4]
+                    shoot.drop(shoot.tail(2).index, inplace = True)
+                    shoot["Nation"] = shoot["Nation"].str.replace('[a-z]', '')
+                    exshoot = pd.DataFrame()
+                    exshoot = shoot[['Player','Nation','Age', 'Pos','xG', 'npxG', 'npxG/Sh', 'G-xG', 'np:G-xG']]
+                    exshoot = exshoot.reset_index(drop = True) 
+
+                    passing = data[5]
+                    passing.drop(passing.tail(2).index, inplace = True)
+                    passing["Nation"] = passing["Nation"].str.replace('[a-z]', '')
+                    expassing = pd.DataFrame()
+                    expassing = passing[['Player','xAG', 'xA']]
 
 
-            st.sidebar.button('Recommendations squad for the next match')
-            fw = st.checkbox("Statistics of Forward")
-            mf = st.checkbox("Statistics of Midfield")
-            df = st.checkbox("Statistics of Defensive")
-            if fw:   
-                Analysis_Forward(url)
-            if mf:
-                Analysis_Mid(url) 
-            if df:
-                Analysis_defend(url) 
+                    predic_df = pd.merge(exshoot, expassing, on='Player', how='inner')
+                    predic_df.rename(columns = {'xG':'Expected Goals', 'npxG':'NonPenalty Expected Goals', 'npxG/Sh':'NonPenalty Expected Goals/shots', 'G-xG':'Goals compare ExGoals', 'np:G-xG':'NonPen Goal compare with expected', 'xAG':'Expected Assist Goals', 'xA':'Expected Assists'}, inplace = True)
 
-            # analysis_bar = st.expander("Analysis Information")
-            st.header('Analysis Information')
+                    return predic_df 
 
-            row_wordx, row_wordy = st.columns((3.4, 2.3))
-            row_chartx, row_charty = st.columns((.2, 3))
-            # with analysis_bar: 
-            with row_wordy:
-                st.markdown('Investigate a variety of stats for each player. Top 10 players who score the most goals, assist, pass, or mistakes? How does players compare with each others?')
-                select_attr = st.selectbox('Which attribute do you want to analyze?', ('Goal','Assist','Playing time','Tackle Completed','Number of Tackled','Done Intercept','Number of Touches','Number of Touches in attacking area','Mistakes lead to goals','Goal per 90Mins','Passed per 90Mins', 'Total Yellow Cards', 'Total Red Cards', 'Total Penalty Goals'))
-            #     st.selectbox('Which measure do you want to analyze?', ('Mean','Median','Absolute','Maximum','Minimum'))
-            with row_wordx:
-            #     st.dataframe(plot_chart(select_attr))
-                plot_chart(select_attr, url)
+                def prediction_chart(attr):
 
-            st.header("Expected Information of the player")
-            see_predict_table = st.expander("Show prediction table 👉")
-            with see_predict_table: 
-                st.dataframe(prediction(url), width=2500, height=400)
+                    rc = {'figure.figsize':(8,4),
+                      'axes.facecolor':'#0e1117',
+                      'axes.edgecolor': '#0e1117',
+                      'axes.labelcolor': 'white',
+                      'figure.facecolor': '#0e1117',
+                      'patch.edgecolor': '#0e1117',
+                      'text.color': 'white',
+                      'xtick.color': 'white',
+                      'ytick.color': 'white',
+                      'grid.color': 'grey',
+                      'font.size' : 8,
+                      'axes.labelsize': 12,
+                      'xtick.labelsize': 8,
+                      'ytick.labelsize': 12}
+                    plt.rcParams.update(rc)
+                    fig, ax = plt.subplots()
+
+                    predic_df = prediction(url)
+                    if attr == "Expected Goals":
+                        xG = predic_df.sort_values(by='Expected Goals', ascending=False)
+                        xG = xG.head(10)
+                        xG_1 = pd.DataFrame()
+                        xG_1 = xG[["Player", "Expected Goals"]]
+                        ax = sns.barplot(x = xG_1["Player"], y = xG_1["Expected Goals"], data=xG_1.reset_index(), color = "#EEB422")
+                        ax.set(xlabel = "Players with Expected Goal", ylabel = "Expected Goals")
+                        plt.xticks(rotation=66,horizontalalignment="right")
+                        for p in ax.patches:
+                            ax.annotate(format(p.get_height(), '.2f'), 
+                                  (p.get_x() + p.get_width() / 2., p.get_height()),
+                                   ha = 'center',
+                                   va = 'center', 
+                                   xytext = (0, 10),
+                                   rotation = 0,
+                                   textcoords = 'offset points')
+                        st.pyplot(fig)
+
+                    if attr == "Expected Assists":
+                        xA = predic_df.sort_values(by='Expected Assists', ascending=False)
+                        xA = xA.head(10)
+                        xA_1 = pd.DataFrame()
+                        xA_1 = xA[["Player", "Expected Assists"]]
+                        ax = sns.barplot(x = xA_1["Player"], y = xA_1["Expected Assists"], data=xA_1.reset_index(), color = "#CD5C5C")
+                        ax.set(xlabel = "Players with Expected Assists", ylabel = "Expected Assists")
+                        plt.xticks(rotation=66,horizontalalignment="right")
+                        for p in ax.patches:
+                            ax.annotate(format(p.get_height(), '.2f'), 
+                                  (p.get_x() + p.get_width() / 2., p.get_height()),
+                                   ha = 'center',
+                                   va = 'center', 
+                                   xytext = (0, 10),
+                                   rotation = 0,
+                                   textcoords = 'offset points')
+                        st.pyplot(fig)
+                #button 
+                # if st.button('Squad Analysis'):
+
+                st.sidebar.header('PlayStyle') 
+                st.sidebar.markdown('Coach choose the requirements here') 
+
+                selected_squad = st.sidebar.selectbox('Squad',('4-4-2', '4-2-3-1', '4-3-3'))
+                selected_speed = st.sidebar.select_slider('Speed', options = range(101))
+                selected_pass = st.sidebar.select_slider('Passing speed', options = range(101))
+                selected_intercept = st.sidebar.select_slider('Intercept', options = range(101))
+                selected_style = st.sidebar.selectbox('Style',('Organizing', 'Liberal')) 
+                selected_squad_distance = st.sidebar.selectbox('Squad distance',('Narrow', 'Wide')) 
+                selected_match_approach = st.sidebar.selectbox('Match approach',('Defend', 'Attack', 'Possession')) 
+                selected_gk = st.sidebar.selectbox('Select GoalKkeeper',load_data(url)[0].loc[load_data(url)[0]["Pos"].str.contains('GK')]) 
 
 
-            see_predict_chart = st.expander("Show prediction Chart 👉")
-            with see_predict_chart:
-                st.markdown('Investigate a variety of prediction for each player. Top 10 players who predicted to score the most goals, assist, pass, or mistakes? How does players compare with each others?')
-                select_pre = st.selectbox('Which attribute do you want to see prediction?', ('Expected Goals','Expected Assists'))
-                prediction_chart(select_pre)
+                st.sidebar.button('Recommendations squad for the next match')
+                fw = st.checkbox("Statistics of Forward")
+                mf = st.checkbox("Statistics of Midfield")
+                df = st.checkbox("Statistics of Defensive")
+                if fw:   
+                    Analysis_Forward(url)
+                if mf:
+                    Analysis_Mid(url) 
+                if df:
+                    Analysis_defend(url) 
+
+                # analysis_bar = st.expander("Analysis Information")
+                st.header('Analysis Information')
+
+                row_wordx, row_wordy = st.columns((3.4, 2.3))
+                row_chartx, row_charty = st.columns((.2, 3))
+                # with analysis_bar: 
+                with row_wordy:
+                    st.markdown('Investigate a variety of stats for each player. Top 10 players who score the most goals, assist, pass, or mistakes? How does players compare with each others?')
+                    select_attr = st.selectbox('Which attribute do you want to analyze?', ('Goal','Assist','Playing time','Tackle Completed','Number of Tackled','Done Intercept','Number of Touches','Number of Touches in attacking area','Mistakes lead to goals','Goal per 90Mins','Passed per 90Mins', 'Total Yellow Cards', 'Total Red Cards', 'Total Penalty Goals'))
+                #     st.selectbox('Which measure do you want to analyze?', ('Mean','Median','Absolute','Maximum','Minimum'))
+                with row_wordx:
+                #     st.dataframe(plot_chart(select_attr))
+                    plot_chart(select_attr, url)
+
+                st.header("Expected Information of the player")
+                see_predict_table = st.expander("Show prediction table 👉")
+                with see_predict_table: 
+                    st.dataframe(prediction(url), width=2500, height=400)
+
+
+                see_predict_chart = st.expander("Show prediction Chart 👉")
+                with see_predict_chart:
+                    st.markdown('Investigate a variety of prediction for each player. Top 10 players who predicted to score the most goals, assist, pass, or mistakes? How does players compare with each others?')
+                    select_pre = st.selectbox('Which attribute do you want to see prediction?', ('Expected Goals','Expected Assists'))
+                    prediction_chart(select_pre)
     else:
         st.sidebar.warning("Incorrect password/username!")
 

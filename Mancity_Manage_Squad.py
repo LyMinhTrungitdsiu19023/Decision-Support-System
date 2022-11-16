@@ -21,6 +21,7 @@ Ly Minh Trung - Kieu Chi Huy - Truong Quoc An
 """)
 
 st.sidebar.header('PlayStyle') 
+st.sidebar.markdown('Coach choose the requirement here') 
 
 selected_squad = st.sidebar.selectbox('Squad',('4-4-2', '4-2-3-1', '4-3-3'))
 selected_speed = st.sidebar.select_slider('Speed', options = range(101))

@@ -11,7 +11,7 @@ st.set_page_config(page_title="Manage Squad", layout = 'wide')
 st.title('Welcome to Manchester City Login')
 username = st.sidebar.text_input("Username/coachname")
 password = st.sidebar.text_input("Password")
-if username == "pep guardiola" and password == "manutd"
+if username == "pep guardiola" and password == "manutd":
     image = Image.open('squad2223.jpg')
 
     st.image(image, caption='The Citizen', width=1000)

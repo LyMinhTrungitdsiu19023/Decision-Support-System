@@ -76,7 +76,7 @@ with see_pos:
     st.dataframe(df_selected_position) 
 
 
-def Analysis(url):
+def Analysis(url = "https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats"):
     #Forward
     data = pd.read_html(url, header = 1)
 

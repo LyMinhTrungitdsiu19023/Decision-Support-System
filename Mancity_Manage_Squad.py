@@ -76,7 +76,7 @@ with see_pos:
     st.dataframe(df_selected_position) 
 
 
-def Analysis(url = "https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats"):
+def Analysis(url):
     #Forward
     data = pd.read_html(url, header = 1)
 
@@ -634,6 +634,12 @@ with see_predict_chart:
     st.markdown('Investigate a variety of prediction for each player. Top 10 players who predicted to score the most goals, assist, pass, or mistakes? How does players compare with each others?')
     select_pre = st.selectbox('Which attribute do you want to see prediction?', ('Expected Goals','Expected Assists'))
     prediction_chart(select_pre)
+try:    
+    html = pd.read_html(url, header = 1)
+    error = html[9]
+    st.dataframe(error)
+except:
+    st.markdown("Copyright Mancity")
 # else:
 #     st.sidebar.warning("Incorrect password/username!")
 

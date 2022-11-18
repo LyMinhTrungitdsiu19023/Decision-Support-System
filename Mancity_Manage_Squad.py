@@ -38,12 +38,12 @@ def load_data(url):
     shoot = html[4]
     passing = html[5]
     df = html[8]
-    possesion = html[9]
+#     possesion = html[9]
     playerstats.drop(playerstats.tail(2).index, inplace = True)
     playerstats["Nation"] = playerstats["Nation"].str.replace('[a-z]', '')
 
 
-    return playerstats, shoot, passing, df, possesion
+    return playerstats, shoot, passing, df
 # playerstats = load_data(url)[0]
 
 
@@ -78,12 +78,12 @@ with see_pos:
 
 def Analysis(url):
     #Forward
-#     data = pd.read_html(url, header = 1)
+    data = pd.read_html(url, header = 1)
 
 
 
     #Shoot
-    shoot =  load_data(url)[1]
+    shoot =  data[4]
     shoot.drop(shoot.tail(2).index, inplace = True)
     shoot["Nation"] = shoot["Nation"].str.replace('[a-z]', '')
     shoot = shoot.drop(['SoT%', 'Sh/90', 'SoT/90', 'G/SoT', 'Dist', 'xG', 'npxG', 'npxG/Sh', 'G-xG', 'np:G-xG', 'Matches'], axis=1)
@@ -91,7 +91,7 @@ def Analysis(url):
     shoot = shoot.reset_index(drop = True) 
 
     #Pass
-    passing =  load_data(url)[2]
+    passing =  data[5]
     passing.drop(passing.tail(2).index, inplace = True)
     passing["Nation"] = passing["Nation"].str.replace('[a-z]', '')
     passing = passing.drop(['xAG','xA', 'A-xAG', 'KP', '1/3', 'PPA', 'CrsPA', 'Prog','Matches'], axis=1)
@@ -101,7 +101,7 @@ def Analysis(url):
 
 
     #Defend
-    df =  load_data(url)[3]
+    df =  data[8]
     df.drop(df.tail(2).index, inplace = True)
     df["Nation"] = df["Nation"].str.replace('[a-z]', '')
     df = df.drop(['Def 3rd','Mid 3rd', 'Att 3rd','Att','Past','Sh','Pass','Tkl+Int','Clr','Matches'], axis=1)
@@ -110,7 +110,7 @@ def Analysis(url):
     df = df.reset_index(drop = True)
 
     #Possesion
-    possesion = load_data(url)[4]
+    possesion = data[9]
     possesion.drop(possesion.tail(2).index, inplace = True)
     possesion["Nation"] = possesion["Nation"].str.replace('[a-z]', '')
     possesion_1 = pd.DataFrame()

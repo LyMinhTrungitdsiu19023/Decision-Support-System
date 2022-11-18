@@ -500,16 +500,16 @@ def plot_chart(attr, url):
                    textcoords = 'offset points')
         st.pyplot(fig)
 def prediction(url):
-#     data = pd.read_html(url, header = 1)
-    data = load_data(url)
-    shoot = data[1]
+    data = pd.read_html(url, header = 1)
+#     data = load_data(url)
+    shoot = data[4]
     shoot.drop(shoot.tail(2).index, inplace = True)
     shoot["Nation"] = shoot["Nation"].str.replace('[a-z]', '')
     exshoot = pd.DataFrame()
     exshoot = shoot[['Player','Nation','Age', 'Pos','xG', 'npxG', 'npxG/Sh', 'G-xG', 'np:G-xG']]
     exshoot = exshoot.reset_index(drop = True) 
 
-    passing = data[2]
+    passing = data[5]
     passing.drop(passing.tail(2).index, inplace = True)
     passing["Nation"] = passing["Nation"].str.replace('[a-z]', '')
     expassing = pd.DataFrame()

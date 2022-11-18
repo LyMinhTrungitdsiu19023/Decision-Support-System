@@ -43,7 +43,7 @@ def load_data(url):
     playerstats["Nation"] = playerstats["Nation"].str.replace('[a-z]', '')
 
 
-    return playerstats, shoot, passing, df
+    return playerstats, shoot, passing, df, html
 # playerstats = load_data(url)[0]
 
 
@@ -78,14 +78,10 @@ with see_pos:
 
 def Analysis(url):
     #Forward
-    data = pd.read_html(url, header = 1)
-    try:    
-        html = pd.read_html(url, header = 1)
-        error = html[9]
-        st.dataframe(error)
+    try:
+        data = pd.read_html(url, header = 1)
     except:
-        st.markdown("Copyright Mancity")
-
+        data = load_data(url)[4]
 
     #Shoot
     shoot =  data[4]

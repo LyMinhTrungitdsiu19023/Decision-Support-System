@@ -583,7 +583,7 @@ st.sidebar.header('PlayStyle')
 st.sidebar.markdown('Coach choose the requirements here') 
 
 selected_squad = st.sidebar.selectbox('Squad',('4-4-2', '4-2-3-1', '4-3-3'))
-selected_speed = st.sidebar.select_slider('Speed', options = range(101))
+selected_speed = st.sidebar.select_slider('Speed', options = [1,2,3,4])
 selected_pass = st.sidebar.select_slider('Passing speed', options = range(101))
 selected_intercept = st.sidebar.select_slider('Intercept', options = range(101))
 selected_style = st.sidebar.selectbox('Style',('Organizing', 'Liberal')) 

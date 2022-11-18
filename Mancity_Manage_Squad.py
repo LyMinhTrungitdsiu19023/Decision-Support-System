@@ -503,15 +503,15 @@ def prediction(url):
 #     data = pd.read_html(url, header = 1)
     data = load_data(url)
     shoot = data[1]
-#     shoot.drop(shoot.tail(2).index, inplace = True)
-#     shoot["Nation"] = shoot["Nation"].str.replace('[a-z]', '')
+    shoot.drop(shoot.tail(2).index, inplace = True)
+    shoot["Nation"] = shoot["Nation"].str.replace('[a-z]', '')
     exshoot = pd.DataFrame()
     exshoot = shoot[['Player','Nation','Age', 'Pos','xG', 'npxG', 'npxG/Sh', 'G-xG', 'np:G-xG']]
     exshoot = exshoot.reset_index(drop = True) 
 
     passing = data[2]
-#     passing.drop(passing.tail(2).index, inplace = True)
-#     passing["Nation"] = passing["Nation"].str.replace('[a-z]', '')
+    passing.drop(passing.tail(2).index, inplace = True)
+    passing["Nation"] = passing["Nation"].str.replace('[a-z]', '')
     expassing = pd.DataFrame()
     expassing = passing[['Player','xAG', 'xA']]
 

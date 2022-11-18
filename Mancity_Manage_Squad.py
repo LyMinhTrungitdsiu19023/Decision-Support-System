@@ -43,7 +43,7 @@ def load_data(url):
     playerstats["Nation"] = playerstats["Nation"].str.replace('[a-z]', '')
 
 
-    return playerstats, shoot, passing, df, html
+    return playerstats, shoot, passing, df
 # playerstats = load_data(url)[0]
 
 

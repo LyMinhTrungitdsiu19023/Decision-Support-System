@@ -78,10 +78,8 @@ with see_pos:
 
 def Analysis(url):
     #Forward
-    try:
-        data = pd.read_html(url, header = 1)
-    except:
-        data = load_data(url)[4]
+    data = pd.read_html(url, header = 1)
+
 
     #Shoot
     shoot =  data[4]

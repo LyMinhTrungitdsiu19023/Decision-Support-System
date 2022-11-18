@@ -546,7 +546,7 @@ def prediction_chart(attr):
         xG = xG.head(10)
         xG_1 = pd.DataFrame()
         xG_1 = xG[["Player", "Expected Goals"]]
-        ax = sns.barplot(x = xG_1["Player"], y = xG_1["Expected Goals"], data=xG_1.reset_index(), color = "#CD5C5C")
+        ax = sns.barplot(x = xG_1["Player"], y = xG_1["Expected Goals"], data=xG_1, color = "#CD5C5C")
         ax.set(xlabel = "Players with Expected Goal", ylabel = "Expected Goals")
         plt.xticks(rotation=66,horizontalalignment="right")
         for p in ax.patches:

@@ -711,7 +711,7 @@ def recommendation(url, squad, speed, intercept, style, squad_dis, approach, gk)
         mid = mid_df[['Player','Nation', 'Pos']]
 
         de_df = attack_approach(url)[2]
-        de_df = de_df.head(2)
+        de_df = de_df.head(4)
         de = de_df[['Player','Nation', 'Pos']]
         
         recommend_squad = pd.concat([gk,de, mid, fw], ignore_index=True) 

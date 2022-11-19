@@ -44,9 +44,7 @@ def load_data(url):
 #     possesion = html[9]
     playerstats.drop(playerstats.tail(2).index, inplace = True)
     playerstats["Nation"] = playerstats["Nation"].str.replace('[a-z]', '')
-    
-    playerstats = playerstats.replace('FW,DF', 'FW')
-
+   
     return playerstats, shoot, passing, df
 # playerstats = load_data(url)[0]
 

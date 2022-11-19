@@ -21,7 +21,7 @@ url = "https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats"
 # @st.cache
 @st.cache(allow_output_mutation=True)
 
-
+###Implement Roles for System
 def load_data(url):
 
     html = pd.read_html(url, header = 1)
@@ -662,19 +662,84 @@ def recommendation(url, squad, speed, intercept, style, squad_dis, approach, gk)
         de = de_df[['Player','Nation', 'Pos']]
         
         recommend_squad = pd.concat([gk,de, mid, fw], ignore_index=True) 
+
+    if squad == "4-2-3-1" and approach == "Defend":
+
+        squad_dis = squad_dis
+        gk_df = load_data(url)[0].loc[load_data(url)[0]["Player"] == gk]
+        gk = gk_df[['Player','Nation', 'Pos']]
+        
+        fw_df = defend_approach(url)[0]
+        fw_df = fw_df.head(1)
+        fw = fw_df[['Player','Nation', 'Pos']]
+        
+        mid_df = defend_approach(url)[1]
+        mid_df = mid_df.head(5)
+        mid = mid_df[['Player','Nation', 'Pos']]
+
+        de_df = defend_approach(url)[2]
+        de_df = de_df.head(4)
+        de = de_df[['Player','Nation', 'Pos']]
+        
+        recommend_squad = pd.concat([gk, de, mid, fw], ignore_index=True)
+        
+    if squad == "4-2-3-1" and approach == "Possesion":
+
+            
+        squad_dis = squad_dis
+        gk_df = load_data(url)[0].loc[load_data(url)[0]["Player"] == gk]
+        gk = gk_df[['Player','Nation', 'Pos']]
+        
+        fw_df = possesion_approach(url)[0]
+        fw_df = fw_df.head(1)
+        fw = fw_df[['Player','Nation', 'Pos']]
+        
+        mid_df = possesion_approach(url)[1]
+        mid_df = mid_df.head(5)
+        mid = mid_df[['Player','Nation', 'Pos']]
+
+        de_df = possesion_approach(url)[2]
+        de_df = de_df.head(4)
+        de = de_df[['Player','Nation', 'Pos']]
+        
+        recommend_squad = pd.concat([gk, de, mid, fw], ignore_index=True)
+     
+    if squad == "4-2-3-1" and approach == "Attack":
+            
+        squad_dis = squad_dis
+        gk_df = load_data(url)[0].loc[load_data(url)[0]["Player"] == gk]
+        gk = gk_df[['Player','Nation', 'Pos']]
+        
+        fw_df = attack_approach(url)[0]
+        fw_df = fw_df.head(1)
+        fw = fw_df[['Player','Nation', 'Pos']]
+        
+        mid_df = attack_approach(url)[1]
+        mid_df = mid_df.head(5)
+        mid = mid_df[['Player','Nation', 'Pos']]
+
+        de_df = attack_approach(url)[2]
+        de_df = de_df.head(4)
+        de = de_df[['Player','Nation', 'Pos']]
+        
+        recommend_squad = pd.concat([gk,de, mid, fw], ignore_index=True) 
         
     return recommend_squad
 
 
+
+
+
+##################################################################################################################################################################################################3
 ###Build GUI / Interface of the Web App
 
-st.set_page_config(page_title="Manage Squad", layout = 'wide')
+st.set_page_config(page_title="Manchester City Decision Support System", layout = 'wide')
 
 image = Image.open('squad2223.jpg')
 
 st.image(image, caption='The Citizen', width=1000)
 
-st.title('Manchester City Football Club Management Decision Support System - Manage Squad Field')
+st.title('Manchester City Football Club Management Decision Support System')
 
 st.markdown("""
 Project of Decision Support System course\n
@@ -759,9 +824,8 @@ if menu == "Squad":
     selected_gk = st.sidebar.selectbox('Select GoalKkeeper',load_data(url)[0].loc[load_data(url)[0]["Pos"].str.contains('GK')]) 
     
     if st.sidebar.button('Recommendations squad for the next match'):
-        see_recommend = st.expander("Show Recommended Squad 👉")
-        with see_recommend:
-            st.dataframe(recommendation(url, selected_squad, selected_speed, selected_intercept, selected_style, selected_squad_distance, selected_match_approach, selected_gk))
+        st.dataframe(recommendation(url, selected_squad, selected_speed, selected_intercept, selected_style, selected_squad_distance, selected_match_approach, selected_gk))
+
 if menu == "Transfer":
     st.sidebar.markdown("...Bulding...")
 

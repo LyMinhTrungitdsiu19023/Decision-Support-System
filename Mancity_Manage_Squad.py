@@ -734,7 +734,7 @@ def recommendation(url, squad, speed, intercept, style, squad_dis, approach, gk)
         de_df = de_df.head(2)
         de = de_df[['Player','Nation', 'Pos']]
         
-        recommend_squad = pd.concat([gk,de, mid, fw], ignore_index=True,) 
+        recommend_squad = pd.concat([gk,de, mid, fw], ignore_index=True) 
         
     return recommend_squad
 #button 

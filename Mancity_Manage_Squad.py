@@ -665,10 +665,10 @@ def recommendation(url, squad, speed, intercept, style, squad_dis, approach, gk)
         mid = mid_df[['Player','Nation', 'Pos']]
 
         de_df = defend_approach(url)[2]
-        de_df = de_df.head(2)
+        de_df = de_df.head(4)
         de = de_df[['Player','Nation', 'Pos']]
         
-        recommend_squad = pd.concat([gk, de, mid, fw], ignore_index=True)
+        recommend_squad = pd.concat([gk, fw, mid, de], ignore_index=True)
         
     if squad == "4-4-2" and approach == "Possesion":
 

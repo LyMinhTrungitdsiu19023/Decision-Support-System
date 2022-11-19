@@ -588,7 +588,7 @@ def prediction_chart(attr):
         
 def defend_approach(url):
     shoot = load_data(url)[1]
-    shoot.drop(df.tail(2).index, inplace = True)
+    shoot.drop(shoot.tail(2).index, inplace = True)
     shoot["Nation"] = shoot["Nation"].str.replace('[a-z]', '')
     fw = pd.DataFrame()
     fw = shoot[['Player','Nation','Pos', 'xG']]

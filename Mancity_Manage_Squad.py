@@ -691,7 +691,7 @@ def recommendation(url, squad, speed, intercept, style, squad_dis, approach, gk)
         de = de_df[['Player','Nation', 'Pos']]
         
         recommend_squad = pd.concat([gk, de, mid, fw], ignore_index=True)
-        
+     
     if squad == "4-4-2" and approach == "Attack":
             
         squad_dis = squad_dis
@@ -712,7 +712,7 @@ def recommendation(url, squad, speed, intercept, style, squad_dis, approach, gk)
         
         recommend_squad = pd.concat([gk,de, mid, fw], ignore_index=True) 
         
-   return recommend_squad
+     return recommend_squad
 #button 
 # if st.button('Squad Analysis'):
 

@@ -34,13 +34,13 @@ url = "https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats"
 @st.cache(allow_output_mutation=True)
 
 
-def clean_html(url):
+def clean_html(raw_html):
     cleaner = Cleaner(remove_tags=["sup"])
-    return cleaner.clean_html(url).decode("utf-8")
+    return cleaner.clean_html(raw_html).decode("utf-8")
 
 def load_data(url):
 
-    html = pd.read_html(clean_html(url), header = 1)
+    html = clean_html(pd.read_html(url, header = 1))
     playerstats = html[0]
     shoot = html[4]
     passing = html[5]

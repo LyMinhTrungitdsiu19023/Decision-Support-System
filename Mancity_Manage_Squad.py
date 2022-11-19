@@ -619,6 +619,8 @@ def possesion_approach(url):
     fw = fw.sort_values(by='Touches', ascending=False)
 
     mid_df = possesion.loc[possesion["Pos"].str.contains("MF")]
+    mid_df = mid_df[mid_df["Player"].str.contains("Bernardo Silva")==False]
+
     mid = pd.DataFrame()
     mid = mid_df[['Player','Nation','Pos', 'Touches']]
     mid = mid.sort_values(by='Touches', ascending=False)

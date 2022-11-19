@@ -662,15 +662,15 @@ def recommendation(url, squad, speed, intercept, style, squad_dis, approach, gk)
         gk_df = load_data(url)[0].loc[load_data(url)[0]["Player"] == gk]
         gk = gk_df[['Player','Nation', 'Pos']]
         
-        fw_df = attack_approach(url)[0]
+        fw_df = defend_approach(url)[0]
         fw_df = fw_df.head(2)
         fw = fw[['Player','Nation', 'Pos']]
         
-        mid_df = attack_approach(url)[1]
+        mid_df = defend_approach(url)[1]
         mid_df = mid_df.head(4)
         mid = mid[['Player','Nation', 'Pos']]
 
-        de_df = attack_approach(url)[2]
+        de_df = defend_approach(url)[2]
         de_df = de_df.head(2)
         de = de[['Player','Nation', 'Pos']]
         
@@ -691,15 +691,15 @@ def recommendation(url, squad, speed, intercept, style, squad_dis, approach, gk)
         gk_df = load_data(url)[0].loc[load_data(url)[0]["Player"] == gk]
         gk = gk_df[['Player','Nation', 'Pos']]
         
-        fw_df = attack_approach(url)[0]
+        fw_df = possesion_approach(url)[0]
         fw_df = fw_df.head(2)
         fw = fw[['Player','Nation', 'Pos']]
         
-        mid_df = attack_approach(url)[1]
+        mid_df = possesion_approach(url)[1]
         mid_df = mid_df.head(4)
         mid = mid[['Player','Nation', 'Pos']]
 
-        de_df = attack_approach(url)[2]
+        de_df = possesion_approach(url)[2]
         de_df = de_df.head(2)
         de = de[['Player','Nation', 'Pos']]
         
@@ -791,7 +791,7 @@ with see_predict_chart:
     select_pre = st.selectbox('Which attribute do you want to see prediction?', ('Expected Goals','Expected Assists'))
     prediction_chart(select_pre)
 if st.sidebar.button('Recommendations squad for the next match'):
-    st.dataframe(recommendation(url, selected_squad, selected_speed, selected_intercept, selected_style, squad_distance, match_approach, gk))
+    st.dataframe(recommendation(url, selected_squad, selected_speed, selected_intercept, selected_style, selected_squad_distance, selected_match_approach, selected_gk))
 
 # else:
 #     st.sidebar.warning("Incorrect password/username!")

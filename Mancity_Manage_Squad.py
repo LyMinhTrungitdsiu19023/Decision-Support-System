@@ -801,7 +801,9 @@ image = Image.open('squad2223.jpg')
 
 st.image(image, caption='The Citizen', width=1000)
 
-st.title("<h1 style='text-align: center; color: blue;'>Manchester City Football Club Management Decision Support System</h1>", unsafe_allow_html=True)
+colT1,colT2 = st.columns([1,8])
+with colT2:
+    st.title("Manchester City Football Club Management Decision Support System")
 
 st.markdown("""
 Project of Decision Support System course\n

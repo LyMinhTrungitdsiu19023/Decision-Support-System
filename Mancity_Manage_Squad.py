@@ -757,8 +757,10 @@ if menu == "Squad":
     selected_gk = st.sidebar.selectbox('Select GoalKkeeper',load_data(url)[0].loc[load_data(url)[0]["Pos"].str.contains('GK')]) 
     
     if st.sidebar.button('Recommendations squad for the next match'):
-        st.dataframe(recommendation(url, selected_squad, selected_speed, selected_intercept, selected_style, selected_squad_distance, selected_match_approach, selected_gk))
-    
+        see_recommend = st.expander("Show Recommended Squad 👉")
+        with see_recommend:
+            st.header("Recommended Squad")
+            st.dataframe(recommendation(url, selected_squad, selected_speed, selected_intercept, selected_style, selected_squad_distance, selected_match_approach, selected_gk))
 if menu == "Transfer":
     st.sidebar.markdown("...Bulding...")
 

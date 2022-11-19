@@ -4,6 +4,7 @@ import base64
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
+from lxml.html.clean import Cleaner
 
 from PIL import Image
 
@@ -31,6 +32,8 @@ Ly Minh Trung - Kieu Chi Huy - Truong Quoc An
 url = "https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats"
 # @st.cache
 @st.cache(allow_output_mutation=True)
+
+
 def load_data(url):
 
     html = pd.read_html(url, header = 1)
@@ -46,7 +49,12 @@ def load_data(url):
     return playerstats, shoot, passing, df
 # playerstats = load_data(url)[0]
 
-
+# def load_data_backup():
+#     playerstats = pd.read_csv("https://github.com/LyMinhTrungitdsiu19023/Decision-Support-System/blob/main/dataset/Standard%20Stats.csv",index_col=0)
+#     shoot = 
+#     passing = pd.read_csv("https://github.com/LyMinhTrungitdsiu19023/Decision-Support-System/blob/main/dataset/Passing.csv",index_col=0)
+#     df = pd.read_csv("https://github.com/LyMinhTrungitdsiu19023/Decision-Support-System/blob/main/dataset/Defensive%20Actions.csv",index_col=0)
+#     return playerstats, shoot, passing, df
 see_data = st.expander("Information of Manchester City's Players 👉")
 with see_data: 
     st.header("Information of Manchester City's Players")

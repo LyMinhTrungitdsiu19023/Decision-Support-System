@@ -1,1 +1,22 @@
-Player,Nation,Pos,Age,90s,Touches Touches,Touches Def Pen,Touches Def 3rd,Touches Mid 3rd,Touches Att 3rd,Touches Att Pen,Touches Live,Dribbles Succ,Dribbles Att,Dribbles Succ%,Dribbles Mis,Dribbles Dis,Receiving Rec,Receiving Prog,MatchesEderson,br BRA,GK,29-094,14,547,411,544,3,0,0,547,0,0,,0,0,345,0,MatchesJoão Cancelo,pt POR,DF,28-176,12.4,1188,16,202,601,393,42,1188,23,46,50,15,12,892,54,MatchesKevin De Bruyne,be BEL,MF,31-144,12.6,835,6,49,309,489,49,835,11,25,44,17,15,646,69,MatchesRodri,es ESP,MF,26-150,12.5,1316,44,273,794,256,19,1316,7,10,70,8,5,1004,16,MatchesBernardo Silva,pt POR,"MF,FW",28-101,11.9,832,15,113,374,352,49,832,15,34,44.1,17,18,632,55,MatchesErling Haaland,no NOR,FW,22-121,11.5,292,4,9,117,167,100,289,4,11,36.4,17,12,226,70,MatchesPhil Foden,eng ENG,"FW,DF",22-175,10.1,676,7,49,242,393,67,676,10,26,38.5,19,14,544,103,Matches?lkay Gündo?an,de GER,MF,32-026,9.9,675,11,79,363,236,37,675,4,17,23.5,12,8,543,49,MatchesRúben Dias,pt POR,DF,25-189,9.7,972,70,365,554,55,14,972,3,3,100,0,0,762,2,MatchesJohn Stones,eng ENG,DF,28-175,8.1,686,34,201,380,106,12,686,3,5,60,3,1,541,8,MatchesManuel Akanji,ch SUI,DF,27-123,7.8,676,35,242,365,72,13,676,3,4,75,4,2,531,5,MatchesNathan Aké,nl NED,DF,27-274,6.3,648,29,229,383,37,11,648,0,0,,3,0,538,2,MatchesKyle Walker,eng ENG,DF,32-175,6.2,629,11,114,422,96,2,629,3,4,75,1,2,513,7,MatchesJack Grealish,eng ENG,FW,27-070,6.1,361,1,29,128,213,32,361,12,24,50,9,8,300,34,MatchesRiyad Mahrez,dz ALG,"FW,MF",31-271,4.1,295,3,11,108,178,22,295,5,15,33.3,7,4,230,38,MatchesJulián Álvarez,ar ARG,"FW,MF",22-292,4,157,2,7,63,89,17,157,4,7,57.1,5,6,124,29,MatchesAymeric Laporte,es ESP,DF,28-176,3.2,279,28,87,137,56,7,279,1,2,50,1,0,216,1,MatchesSergio Gómez,es ESP,"DF,MF",22-076,1.2,103,5,20,56,27,7,103,0,0,,3,2,75,8,MatchesCole Palmer,eng ENG,"FW,MF",20-197,1.2,82,2,7,29,46,10,82,3,6,50,7,2,63,6,MatchesRico Lewis,eng ENG,"DF,MF",17-363,0.4,44,1,8,31,6,1,44,0,1,0,0,1,38,0,MatchesKalvin Phillips,eng ENG,MF,26-352,0,9,0,0,7,2,0,9,0,0,,0,0,7,0,Matches
+Player,Nation,Pos,Age,90s,Touches,Def Pen,Def 3rd,Mid 3rd,Att 3rd,Att Pen,Live,Succ,Att,Succ%,Mis,Dis,Rec,Prog,Matches
+Ederson,br BRA,GK,29-094,14,547,411,544,3,0,0,547,0,0,,0,0,345,0,Matches
+João Cancelo,pt POR,DF,28-176,12.4,1188,16,202,601,393,42,1188,23,46,50,15,12,892,54,Matches
+Kevin De Bruyne,be BEL,MF,31-144,12.6,835,6,49,309,489,49,835,11,25,44,17,15,646,69,Matches
+Rodri,es ESP,MF,26-150,12.5,1316,44,273,794,256,19,1316,7,10,70,8,5,1004,16,Matches
+Bernardo Silva,pt POR,"MF,FW",28-101,11.9,832,15,113,374,352,49,832,15,34,44.1,17,18,632,55,Matches
+Erling Haaland,no NOR,FW,22-121,11.5,292,4,9,117,167,100,289,4,11,36.4,17,12,226,70,Matches
+Phil Foden,eng ENG,"FW,DF",22-175,10.1,676,7,49,242,393,67,676,10,26,38.5,19,14,544,103,Matches
+?lkay Gündo?an,de GER,MF,32-026,9.9,675,11,79,363,236,37,675,4,17,23.5,12,8,543,49,Matches
+Rúben Dias,pt POR,DF,25-189,9.7,972,70,365,554,55,14,972,3,3,100,0,0,762,2,Matches
+John Stones,eng ENG,DF,28-175,8.1,686,34,201,380,106,12,686,3,5,60,3,1,541,8,Matches
+Manuel Akanji,ch SUI,DF,27-123,7.8,676,35,242,365,72,13,676,3,4,75,4,2,531,5,Matches
+Nathan Aké,nl NED,DF,27-274,6.3,648,29,229,383,37,11,648,0,0,,3,0,538,2,Matches
+Kyle Walker,eng ENG,DF,32-175,6.2,629,11,114,422,96,2,629,3,4,75,1,2,513,7,Matches
+Jack Grealish,eng ENG,FW,27-070,6.1,361,1,29,128,213,32,361,12,24,50,9,8,300,34,Matches
+Riyad Mahrez,dz ALG,"FW,MF",31-271,4.1,295,3,11,108,178,22,295,5,15,33.3,7,4,230,38,Matches
+Julián Álvarez,ar ARG,"FW,MF",22-292,4,157,2,7,63,89,17,157,4,7,57.1,5,6,124,29,Matches
+Aymeric Laporte,es ESP,DF,28-176,3.2,279,28,87,137,56,7,279,1,2,50,1,0,216,1,Matches
+Sergio Gómez,es ESP,"DF,MF",22-076,1.2,103,5,20,56,27,7,103,0,0,,3,2,75,8,Matches
+Cole Palmer,eng ENG,"FW,MF",20-197,1.2,82,2,7,29,46,10,82,3,6,50,7,2,63,6,Matches
+Rico Lewis,eng ENG,"DF,MF",17-363,0.4,44,1,8,31,6,1,44,0,1,0,0,1,38,0,Matches
+Kalvin Phillips,eng ENG,MF,26-352,0,9,0,0,7,2,0,9,0,0,,0,0,7,0,Matches

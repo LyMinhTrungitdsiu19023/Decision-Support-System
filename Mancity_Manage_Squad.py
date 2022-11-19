@@ -8,19 +8,6 @@ from lxml.html.clean import Cleaner
 
 from PIL import Image
 
-st.set_page_config(page_title="Manage Squad", layout = 'wide')
-
-image = Image.open('squad2223.jpg')
-
-st.image(image, caption='The Citizen', width=1000)
-
-st.title('Manchester City Football Club Management Decision Support System - Manage Squad Field')
-
-st.markdown("""
-Project of Decision Support System course\n
-by\n
-Ly Minh Trung - Kieu Chi Huy - Truong Quoc An
-""")
 # st.sidebar.markdown('Sign in') 
 # username = st.sidebar.text_input("Username/coachname")
 # password = st.sidebar.text_input("Password", type = "password")
@@ -29,6 +16,7 @@ Ly Minh Trung - Kieu Chi Huy - Truong Quoc An
 #     if st.sidebar.button("Log out"):
 #         st.header("Log out successfully")
 #     else:
+
 url = "https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats"
 # @st.cache
 @st.cache(allow_output_mutation=True)
@@ -45,35 +33,6 @@ def load_data(url):
     playerstats["Nation"] = playerstats["Nation"].str.replace('[a-z]', '')
    
     return playerstats, shoot, passing, df
-
-see_data = st.expander("Information of Manchester City's Players 👉")
-with see_data: 
-    st.header("Information of Manchester City's Players")
-    st.write('Data Dimension: ' + str(load_data(url)[0].shape[0]) + ' rows and ' + str(load_data(url)[0].shape[1]) + ' columns.')
-    st.dataframe(load_data(url)[0])
-
-
-see_nation = st.expander("Players by Nation 👉")
-with see_nation: 
-    st.header('Players by Nation')
-    unique_nation = load_data(url)[0]["Nation"].tolist()
-    selected_nation = st.selectbox('Nation', (unique_nation))
-
-    df_selected_nation = load_data(url)[0].loc[load_data(url)[0]["Nation"].str.contains(selected_nation)]  
-    st.dataframe(df_selected_nation) 
-
-
-
-see_pos = st.expander("Players by Posision 👉") 
-with see_pos: 
-
-    st.header('Players by Position')
-
-    unique_pos = load_data(url)[0]["Pos"].drop_duplicates().tolist()
-    selected_pos = st.selectbox('Posision',('GK', 'DF', 'MF', 'FW'))
-    df_selected_position = load_data(url)[0].loc[load_data(url)[0]["Pos"].str.contains(selected_pos)]
-    st.dataframe(df_selected_position) 
-
 
 def Analysis(url):
     #Forward
@@ -705,8 +664,84 @@ def recommendation(url, squad, speed, intercept, style, squad_dis, approach, gk)
         recommend_squad = pd.concat([gk,de, mid, fw], ignore_index=True) 
         
     return recommend_squad
-#button 
-# if st.button('Squad Analysis'):
+
+
+###Build GUI / Interface of the Web App
+
+st.set_page_config(page_title="Manage Squad", layout = 'wide')
+
+image = Image.open('squad2223.jpg')
+
+st.image(image, caption='The Citizen', width=1000)
+
+st.title('Manchester City Football Club Management Decision Support System - Manage Squad Field')
+
+st.markdown("""
+Project of Decision Support System course\n
+by\n
+Ly Minh Trung - Kieu Chi Huy - Truong Quoc An
+""")
+
+see_data = st.expander("Information of Manchester City's Players 👉")
+with see_data: 
+    st.header("Information of Manchester City's Players")
+    st.write('Data Dimension: ' + str(load_data(url)[0].shape[0]) + ' rows and ' + str(load_data(url)[0].shape[1]) + ' columns.')
+    st.dataframe(load_data(url)[0])
+
+
+see_nation = st.expander("Players by Nation 👉")
+with see_nation: 
+    st.header('Players by Nation')
+    unique_nation = load_data(url)[0]["Nation"].tolist()
+    selected_nation = st.selectbox('Nation', (unique_nation))
+    df_selected_nation = load_data(url)[0].loc[load_data(url)[0]["Nation"].str.contains(selected_nation)]  
+    st.dataframe(df_selected_nation) 
+
+    
+see_pos = st.expander("Players by Posision 👉") 
+with see_pos: 
+    st.header('Players by Position')
+    unique_pos = load_data(url)[0]["Pos"].drop_duplicates().tolist()
+    selected_pos = st.selectbox('Posision',('GK', 'DF', 'MF', 'FW'))
+    df_selected_position = load_data(url)[0].loc[load_data(url)[0]["Pos"].str.contains(selected_pos)]
+    st.dataframe(df_selected_position) 
+
+fw = st.checkbox("Statistics of Forward")
+mf = st.checkbox("Statistics of Midfield")
+df = st.checkbox("Statistics of Defensive")
+if fw:   
+    Analysis_Forward(url)
+if mf:
+    Analysis_Mid(url) 
+if df:
+    Analysis_defend(url) 
+
+st.header('Analysis Information')
+
+row_wordx, row_wordy = st.columns((3.4, 2.3))
+row_chartx, row_charty = st.columns((.2, 3))
+
+with row_wordy:
+    st.markdown('Investigate a variety of stats for each player. Top 10 players who score the most goals, assist, pass, or mistakes? How does players compare with each others?')
+    select_attr = st.selectbox('Which attribute do you want to analyze?', ('Goal','Assist','Playing time','Tackle Completed','Number of Tackled','Done Intercept','Number of Touches','Number of Touches in attacking area','Mistakes lead to goals','Goal per 90Mins','Passed per 90Mins', 'Total Yellow Cards', 'Total Red Cards', 'Total Penalty Goals'))
+
+with row_wordx:
+    plot_chart(select_attr, url)
+
+st.header("Expected Information of the player")
+
+see_predict_table = st.expander("Show prediction table 👉")
+with see_predict_table: 
+    st.dataframe(prediction(url), width=2500, height=400)
+
+    
+see_predict_chart = st.expander("Show prediction Chart 👉")
+with see_predict_chart:
+    st.markdown('Investigate a variety of prediction for each player. Top 10 players who predicted to score the most goals, assist, pass, or mistakes? How does players compare with each others?')
+    select_pre = st.selectbox('Which attribute do you want to see prediction?', ('Expected Goals','Expected Assists'))
+    prediction_chart(select_pre)
+
+    
 menu = st.sidebar.selectbox("Menu", ("Squad", "Transfer"))
 
 if menu == "Squad":
@@ -721,47 +756,11 @@ if menu == "Squad":
     selected_match_approach = st.sidebar.selectbox('Match approach',('Defend', 'Attack', 'Possesion')) 
     selected_gk = st.sidebar.selectbox('Select GoalKkeeper',load_data(url)[0].loc[load_data(url)[0]["Pos"].str.contains('GK')]) 
     
+    if st.sidebar.button('Recommendations squad for the next match'):
+        st.dataframe(recommendation(url, selected_squad, selected_speed, selected_intercept, selected_style, selected_squad_distance, selected_match_approach, selected_gk))
+    
 if menu == "Transfer":
     st.sidebar.markdown("...Bulding...")
-
-
-fw = st.checkbox("Statistics of Forward")
-mf = st.checkbox("Statistics of Midfield")
-df = st.checkbox("Statistics of Defensive")
-if fw:   
-    Analysis_Forward(url)
-if mf:
-    Analysis_Mid(url) 
-if df:
-    Analysis_defend(url) 
-
-# analysis_bar = st.expander("Analysis Information")
-st.header('Analysis Information')
-
-row_wordx, row_wordy = st.columns((3.4, 2.3))
-row_chartx, row_charty = st.columns((.2, 3))
-# with analysis_bar: 
-with row_wordy:
-    st.markdown('Investigate a variety of stats for each player. Top 10 players who score the most goals, assist, pass, or mistakes? How does players compare with each others?')
-    select_attr = st.selectbox('Which attribute do you want to analyze?', ('Goal','Assist','Playing time','Tackle Completed','Number of Tackled','Done Intercept','Number of Touches','Number of Touches in attacking area','Mistakes lead to goals','Goal per 90Mins','Passed per 90Mins', 'Total Yellow Cards', 'Total Red Cards', 'Total Penalty Goals'))
-#     st.selectbox('Which measure do you want to analyze?', ('Mean','Median','Absolute','Maximum','Minimum'))
-with row_wordx:
-#     st.dataframe(plot_chart(select_attr))
-    plot_chart(select_attr, url)
-
-st.header("Expected Information of the player")
-see_predict_table = st.expander("Show prediction table 👉")
-with see_predict_table: 
-    st.dataframe(prediction(url), width=2500, height=400)
-
-
-see_predict_chart = st.expander("Show prediction Chart 👉")
-with see_predict_chart:
-    st.markdown('Investigate a variety of prediction for each player. Top 10 players who predicted to score the most goals, assist, pass, or mistakes? How does players compare with each others?')
-    select_pre = st.selectbox('Which attribute do you want to see prediction?', ('Expected Goals','Expected Assists'))
-    prediction_chart(select_pre)
-if st.sidebar.button('Recommendations squad for the next match'):
-    st.dataframe(recommendation(url, selected_squad, selected_speed, selected_intercept, selected_style, selected_squad_distance, selected_match_approach, selected_gk))
 
 # else:
 #     st.sidebar.warning("Incorrect password/username!")

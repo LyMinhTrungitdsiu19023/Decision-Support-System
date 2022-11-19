@@ -652,14 +652,7 @@ def attack_approach(url):
 
 def recommendation(url, squad, speed, intercept, style, squad_dis, approach, gk):
     if squad == "4-4-2" and approach == "Defend":
-        if speed > 1:
-            speed = speed
-        else:
-            speed = 1
-        if intercept == 3 or intercept == 4:
-            intercept = intercept
-        else:
-            intercept = 3
+
         squad_dis = squad_dis
         gk_df = load_data(url)[0].loc[load_data(url)[0]["Player"] == gk]
         gk = gk_df[['Player','Nation', 'Pos']]
@@ -676,18 +669,10 @@ def recommendation(url, squad, speed, intercept, style, squad_dis, approach, gk)
         de_df = de_df.head(2)
         de = de_df[['Player','Nation', 'Pos']]
         
-        recommend_squad = pd.concat([gk, de, mid, fw], ignore_index=True,)
+        recommend_squad = pd.concat([gk, de, mid, fw], ignore_index=True)
         
     if squad == "4-4-2" and approach == "Possesion":
-        if speed > 1:
-            speed = speed
-        else:
-            speed = 1
-            
-        if intercept == 3 or intercept == 4:
-            intercept = intercept
-        else:
-            intercept = 2
+
             
         squad_dis = squad_dis
         gk_df = load_data(url)[0].loc[load_data(url)[0]["Player"] == gk]
@@ -705,18 +690,9 @@ def recommendation(url, squad, speed, intercept, style, squad_dis, approach, gk)
         de_df = de_df.head(2)
         de = de_df[['Player','Nation', 'Pos']]
         
-        recommend_squad = pd.concat([gk, de, mid, fw], ignore_index=True,)
+        recommend_squad = pd.concat([gk, de, mid, fw], ignore_index=True)
         
     if squad == "4-4-2" and approach == "Attack":
-        if speed > 1:
-            speed = speed
-        else:
-            speed = 1
-            
-        if intercept == 3 or intercept == 4:
-            intercept = intercept
-        else:
-            intercept = 1
             
         squad_dis = squad_dis
         gk_df = load_data(url)[0].loc[load_data(url)[0]["Player"] == gk]

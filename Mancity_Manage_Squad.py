@@ -906,7 +906,7 @@ if menu == "Squad":
 if menu == "Transfer":
     radio = st.sidebar.radio('Player type', ['Outfield players', 'Goal Keepers']) 
     player_name = st.sidebar.selectbox('Player Name', load_data(url)[0]["Player"]) 
-    
+    league = st.sidebar.selectbox('League', get_data(url_transfer)["Comp"]) 
     see_data = st.expander("Information of Players in Big 5 European Leagues 👉")
     with see_data: 
         st.header("Information of Players in Big 5 European Leagues")

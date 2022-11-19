@@ -674,7 +674,7 @@ def recommendation(url, squad, speed, intercept, style, squad_dis, approach, gk)
         de_df = de_df.head(2)
         de = de_df[['Player','Nation', 'Pos']]
         
-        recommend_squad = pd.concat([fw, mid, de], ignore_index=False,)
+        recommend_squad = pd.concat([gk, de, mid, fw], ignore_index=False,)
         
     if squad == "4-4-2" and approach == "Possesion":
         if speed > 1:
@@ -703,7 +703,7 @@ def recommendation(url, squad, speed, intercept, style, squad_dis, approach, gk)
         de_df = de_df.head(2)
         de = de_df[['Player','Nation', 'Pos']]
         
-        recommend_squad = pd.concat([fw, mid, de], ignore_index=False,)
+        recommend_squad = pd.concat([gk, de, mid, fw], ignore_index=False,)
         
     if squad == "4-4-2" and approach == "Attack":
         if speed > 1:
@@ -732,7 +732,7 @@ def recommendation(url, squad, speed, intercept, style, squad_dis, approach, gk)
         de_df = de_df.head(2)
         de = de_df[['Player','Nation', 'Pos']]
         
-        recommend_squad = pd.concat([fw, mid, de], ignore_index=False,) 
+        recommend_squad = pd.concat([gk,de, mid, fw], ignore_index=True,) 
         
     return recommend_squad
 #button 

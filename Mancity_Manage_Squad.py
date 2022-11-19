@@ -900,7 +900,7 @@ if menu == "Squad":
 
 if menu == "Transfer":
     st.sidebar.markdown("...Bulding...")
-    st.dataframe(get_data(url))
+    st.dataframe(get_data(url_transfer))
 
 # else:
 #     st.sidebar.warning("Incorrect password/username!")

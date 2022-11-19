@@ -796,7 +796,7 @@ def recommendation(url, squad, speed, intercept, style, squad_dis, approach, gk)
 def get_data(url):
     html = pd.read_html(url, header = 1)
     playerlist = html[0]
-    playerlist.drop["Rk"]
+    playerlist = playerlist.drop(["Rk"], axis = 1) 
     playerlist["Nation"] = playerlist["Nation"].str.replace('[a-z]', '')
     playerlist["Comp"] = playerlist["Comp"].str.replace('[a-z]', '')
 

@@ -604,7 +604,7 @@ def defend_approach(url):
     df.drop(df.tail(2).index, inplace = True)
     df["Nation"] = df["Nation"].str.replace('[a-z]', '')
     de = pd.DataFrame()
-    de = de[['Player','Nation','Pos', 'TklW']]
+    de = df[['Player','Nation','Pos','TklW']]
     de = de.sort_values(by='TklW', ascending=False)
     
     return fw, mid, de

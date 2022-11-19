@@ -798,9 +798,9 @@ def get_data(url):
     playerlist = html[0]
     playerlist = playerlist.drop(["Rk"], axis = 1) 
     playerlist["Nation"] = playerlist["Nation"].str.replace('[a-z]', '')
-    playerlist["Comp"] = playerlist["Comp"].str.replace(r'(eng)|(fr)', '')
+    playerlist["Comp"] = playerlist["Comp"].str.replace(r'(eng)|(fr)|(it)|(ger)|(esp)', '')
 
-    return playerlist.head(10)
+    return playerlist.head(50)
 
 
 ##################################################################################################################################################################################################3

@@ -801,10 +801,8 @@ image = Image.open('squad2223.jpg')
 
 st.image(image, caption='The Citizen', width=1000)
 
-colT1,colT2 = st.columns([1,8])
-with colT2:
-    st.title("Manchester City Football Club")
-    st.title("Management Decision Support System")
+
+st.title("Manchester City Football Club Management Decision Support System")
 
 
 st.markdown("""

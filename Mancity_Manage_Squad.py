@@ -41,19 +41,11 @@ def load_data(url):
     shoot = html[4]
     passing = html[5]
     df = html[8]
-#     possesion = html[9]
     playerstats.drop(playerstats.tail(2).index, inplace = True)
     playerstats["Nation"] = playerstats["Nation"].str.replace('[a-z]', '')
    
     return playerstats, shoot, passing, df
-# playerstats = load_data(url)[0]
 
-# def load_data_backup():
-#     playerstats = pd.read_csv("https://github.com/LyMinhTrungitdsiu19023/Decision-Support-System/blob/main/dataset/Standard%20Stats.csv",index_col=0)
-#     shoot = 
-#     passing = pd.read_csv("https://github.com/LyMinhTrungitdsiu19023/Decision-Support-System/blob/main/dataset/Passing.csv",index_col=0)
-#     df = pd.read_csv("https://github.com/LyMinhTrungitdsiu19023/Decision-Support-System/blob/main/dataset/Defensive%20Actions.csv",index_col=0)
-#     return playerstats, shoot, passing, df
 see_data = st.expander("Information of Manchester City's Players 👉")
 with see_data: 
     st.header("Information of Manchester City's Players")
@@ -209,12 +201,7 @@ def Analysis_defend(url):
     possesion = possesion.reset_index(drop = True)
     st.write('Stats of Possesion')
     st.dataframe(possesion)
-# def chart_analysis_information_goal(attr, playerstats):
-#     if attr == "Goal":
-#         goal_df = playerstats.sort_values(by='Gls', ascending=False)
-#         goal_df = goal_df.head(10)
 
-#     return goal_df
 def plot_chart(attr, url):
     playerstats = load_data(url)
     html = pd.read_html(url, header = 1)
@@ -720,22 +707,22 @@ def recommendation(url, squad, speed, intercept, style, squad_dis, approach, gk)
     return recommend_squad
 #button 
 # if st.button('Squad Analysis'):
+menu = st.sidebar.selectbox("Menu", ("Squad", "Transfer"))
 
-st.sidebar.header('PlayStyle') 
-st.sidebar.markdown('Coach choose the requirements here') 
+if menu == "Squad":
+    st.sidebar.header('PlayStyle') 
+    st.sidebar.markdown('Coach choose the requirements here') 
 
-selected_squad = st.sidebar.selectbox('Squad',('4-4-2', '4-2-3-1', '4-3-3'))
-selected_speed = st.sidebar.select_slider('Speed', options = [1,2,3,4])
-selected_intercept = st.sidebar.select_slider('Intercept', options = [1,2,3,4])
-selected_style = st.sidebar.selectbox('Style',('Organizing', 'Liberal')) 
-selected_squad_distance = st.sidebar.selectbox('Squad distance',('Narrow', 'Wide')) 
-selected_match_approach = st.sidebar.selectbox('Match approach',('Defend', 'Attack', 'Possesion')) 
-selected_gk = st.sidebar.selectbox('Select GoalKkeeper',load_data(url)[0].loc[load_data(url)[0]["Pos"].str.contains('GK')]) 
-
-#         def recommend_defend(selected_squad, selected_speed, selected_pass, selected_intercept):
-#             df = Analysis(url)[2]
-#             df = df.loc[df["Pos"].str.contains("DF")]
-#             df = df.sort_values(by='Tkl%', ascending=False)
+    selected_squad = st.sidebar.selectbox('Squad',('4-4-2', '4-2-3-1', '4-3-3'))
+    selected_speed = st.sidebar.select_slider('Speed', options = [1,2,3,4])
+    selected_intercept = st.sidebar.select_slider('Intercept', options = [1,2,3,4])
+    selected_style = st.sidebar.selectbox('Style',('Organizing', 'Liberal')) 
+    selected_squad_distance = st.sidebar.selectbox('Squad distance',('Narrow', 'Wide')) 
+    selected_match_approach = st.sidebar.selectbox('Match approach',('Defend', 'Attack', 'Possesion')) 
+    selected_gk = st.sidebar.selectbox('Select GoalKkeeper',load_data(url)[0].loc[load_data(url)[0]["Pos"].str.contains('GK')]) 
+    
+if menu == "Transfer":
+    st.sidebar.markdown("...Bulding...")
 
 
 fw = st.checkbox("Statistics of Forward")

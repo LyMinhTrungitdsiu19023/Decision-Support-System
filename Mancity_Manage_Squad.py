@@ -587,7 +587,7 @@ def prediction_chart(attr):
         
         
 def defend_approach(url):
-    shoot = load_data[1]
+    shoot = load_data(url)[1]
     shoot.drop(df.tail(2).index, inplace = True)
     shoot["Nation"] = shoot["Nation"].str.replace('[a-z]', '')
     fw = pd.DataFrame()
@@ -600,7 +600,7 @@ def defend_approach(url):
     mid = possesion[['Player','Nation','Pos', 'Mid 3rd']]
     mid = mid.sort_values(by='Mid 3rd', ascending=False)
 
-    df = load_data[3]
+    df = load_data(url)[3]
     df.drop(df.tail(2).index, inplace = True)
     df["Nation"] = df["Nation"].str.replace('[a-z]', '')
     de = pd.DataFrame()

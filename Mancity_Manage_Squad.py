@@ -796,7 +796,7 @@ def recommendation(url, squad, speed, intercept, style, squad_dis, approach, gk)
 def get_data(url):
     html = pd.read_html(url, header = 1)
     playerlist = html[0]
-    playerlist = playerlist.drop(["Rk"], axis = 1) 
+    playerlist = playerlist.drop(["Rk", "Matches"], axis = 1) 
     playerlist["Nation"] = playerlist["Nation"].str.replace('[a-z]', '')
     playerlist["Comp"] = playerlist["Comp"].str.replace(r'(eng)|(fr)|(it)|(de)|(es)', '')
 
@@ -904,9 +904,8 @@ if menu == "Squad":
         st.dataframe(recommendation(url, selected_squad, selected_speed, selected_intercept, selected_style, selected_squad_distance, selected_match_approach, selected_gk))
 
 if menu == "Transfer":
-    st.sidebar.markdown("...Bulding...")
     radio = st.sidebar.radio('Player type', ['Outfield players', 'Goal Keepers']) 
-    
+    player_name = st.sidebar.selectbox('Player Name', load_data(url)[0]["Player"]) 
     
     see_data = st.expander("Information of Players in Big 5 European Leagues 👉")
     with see_data: 

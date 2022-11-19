@@ -905,6 +905,7 @@ if menu == "Squad":
         st.dataframe(recommendation(url, selected_squad, selected_speed, selected_intercept, selected_style, selected_squad_distance, selected_match_approach, selected_gk))
 
 if menu == "Transfer":
+    st.sidebar.markdown("Recommend the most similar with your selection player")
     radio = st.sidebar.radio('Player type', ['Outfield players', 'Goal Keepers']) 
     player_name = st.sidebar.selectbox('Player Name', load_data(url)[0]["Player"]) 
     league = st.sidebar.selectbox('League', ["English Premier League", "Bundesliga","La Liga", "Ligue 1", "Serie A"]) 

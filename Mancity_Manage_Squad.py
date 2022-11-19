@@ -586,12 +586,11 @@ def prediction_chart(attr):
         
         
 def defend_approach(url):
-    shoot = load_data(url)[1]
-    shoot.drop(shoot.tail(2).index, inplace = True)
-    shoot["Nation"] = shoot["Nation"].str.replace('[a-z]', '')
+    expected = load_data(url)[0]
+    
+    fw_df = expected.loc[expected["Pos"].str.contains("FW")]
     fw = pd.DataFrame()
-    fw = shoot[['Player','Nation','Pos', 'xG']]
-    fw = fw.loc[fw["Pos"].str.contains("FW")]
+    fw = fw_df[['Player','Nation','Pos', 'xG']]
     fw = fw.sort_values(by='xG', ascending=False)
 
     possesion = Analysis(url)[3]
@@ -601,7 +600,7 @@ def defend_approach(url):
     mid = mid[mid["Player"].str.contains("Bernardo Silva")==False]
     mid = mid.sort_values(by='Mid 3rd', ascending=False)
 
-    df = load_data(url)[3]
+    df = Analysis(url)[2]
     df.drop(df.tail(2).index, inplace = True)
     df["Nation"] = df["Nation"].str.replace('[a-z]', '')
     de = pd.DataFrame()

@@ -798,9 +798,9 @@ def get_data(url):
     playerlist = html[0]
     playerlist = playerlist.drop(["Rk"], axis = 1) 
     playerlist["Nation"] = playerlist["Nation"].str.replace('[a-z]', '')
-    playerlist["Comp"] = playerlist["Comp"].str.replace(r'(eng)|(fr)|(it)|(ger)|(esp)', '')
+    playerlist["Comp"] = playerlist["Comp"].str.replace(r'(eng)|(fr)|(it)|(de)|(es)', '')
 
-    return playerlist.head(50)
+    return playerlist
 
 
 ##################################################################################################################################################################################################3
@@ -905,8 +905,15 @@ if menu == "Squad":
 
 if menu == "Transfer":
     st.sidebar.markdown("...Bulding...")
+    radio = st.sidebar.radio('Player type', ['Outfield players', 'Goal Keepers']) 
     
-    st.dataframe(get_data(url_transfer))
+    
+    see_data = st.expander("Information of Players in Big 5 European Leagues 👉")
+    with see_data: 
+        st.header("Information of Players in Big 5 European Leagues")
+        select_player = st.selectbox('Player',get_data(url_transfer)["Player"])
+        df_select_player = get_data(url_transfer).loc[get_data(url_transfer)["Player"].str.contains(select_player)]
+        st.dataframe(df_select_player)
 
 # else:
 #     st.sidebar.warning("Incorrect password/username!")

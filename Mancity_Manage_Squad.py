@@ -595,9 +595,9 @@ def defend_approach(url):
     fw = fw.sort_values(by='xG', ascending=False)
 
     possesion = Analysis(url)[3]
-    possesion = possesion.loc[possesion["Pos"].str.contains("MF")]
     mid = pd.DataFrame()
     mid = possesion[['Player','Nation','Pos', 'Mid 3rd']]
+    mid = possesion.loc[possesion["Pos"].str.contains("MF")]
     mid = mid.sort_values(by='Mid 3rd', ascending=False)
 
     df = load_data(url)[3]
@@ -624,6 +624,7 @@ def possesion_approach(url):
     mid = mid.sort_values(by='Touches', ascending=False)
     
     de_df = possesion.loc[possesion["Pos"].str.contains("DF")]
+    de_df = ~de_df[de_df["Player"] == "Phil Foden"]
     de = pd.DataFrame()
     de = de_df[['Player','Nation','Pos', 'Touches']]
     de = de.sort_values(by='Touches', ascending=False)

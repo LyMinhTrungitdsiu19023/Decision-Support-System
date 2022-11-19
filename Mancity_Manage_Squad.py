@@ -795,7 +795,7 @@ def recommendation(url, squad, speed, intercept, style, squad_dis, approach, gk)
 
 def get_data(url):
     html = pd.read_html(url, header = 1)
-    playerlist = html[1]
+    playerlist = html[0]
     
     return playerlist.head(10)
 

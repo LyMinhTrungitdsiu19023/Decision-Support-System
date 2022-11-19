@@ -18,10 +18,12 @@ from PIL import Image
 #     else:
 
 url = "https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats"
+
+url_transfer = "https://fbref.com/en/comps/Big5/stats/players/Big-5-European-Leagues-Stats"
 # @st.cache
 @st.cache(allow_output_mutation=True)
 
-###Implement Roles for System
+###Implement Squad Role for System
 def load_data(url):
 
     html = pd.read_html(url, header = 1)
@@ -789,7 +791,13 @@ def recommendation(url, squad, speed, intercept, style, squad_dis, approach, gk)
     return recommend_squad
 
 
+###Implement Transfer Role
 
+def get_data(url):
+    html = pd.read_html(url, header = 1)
+    playerlist = html[1]
+    
+    return playerlist.head(10)
 
 
 ##################################################################################################################################################################################################3
@@ -892,6 +900,7 @@ if menu == "Squad":
 
 if menu == "Transfer":
     st.sidebar.markdown("...Bulding...")
+    st.dataframe(get_data(url))
 
 # else:
 #     st.sidebar.warning("Incorrect password/username!")

@@ -723,7 +723,7 @@ selected_speed = st.sidebar.select_slider('Speed', options = [1,2,3,4])
 selected_intercept = st.sidebar.select_slider('Intercept', options = [1,2,3,4])
 selected_style = st.sidebar.selectbox('Style',('Organizing', 'Liberal')) 
 selected_squad_distance = st.sidebar.selectbox('Squad distance',('Narrow', 'Wide')) 
-selected_match_approach = st.sidebar.selectbox('Match approach',('Defend', 'Attack', 'Possession')) 
+selected_match_approach = st.sidebar.selectbox('Match approach',('Defend', 'Attack', 'Possesion')) 
 selected_gk = st.sidebar.selectbox('Select GoalKkeeper',load_data(url)[0].loc[load_data(url)[0]["Pos"].str.contains('GK')]) 
 
 #         def recommend_defend(selected_squad, selected_speed, selected_pass, selected_intercept):

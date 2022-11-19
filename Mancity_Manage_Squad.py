@@ -741,7 +741,9 @@ with see_predict_chart:
     select_pre = st.selectbox('Which attribute do you want to see prediction?', ('Expected Goals','Expected Assists'))
     prediction_chart(select_pre)
 
-    
+st.header("Recommended Squad")
+st.markdown('Please, Select attributes in sidebar')
+  
 menu = st.sidebar.selectbox("Menu", ("Squad", "Transfer"))
 
 if menu == "Squad":
@@ -759,7 +761,6 @@ if menu == "Squad":
     if st.sidebar.button('Recommendations squad for the next match'):
         see_recommend = st.expander("Show Recommended Squad 👉")
         with see_recommend:
-            st.header("Recommended Squad")
             st.dataframe(recommendation(url, selected_squad, selected_speed, selected_intercept, selected_style, selected_squad_distance, selected_match_approach, selected_gk))
 if menu == "Transfer":
     st.sidebar.markdown("...Bulding...")

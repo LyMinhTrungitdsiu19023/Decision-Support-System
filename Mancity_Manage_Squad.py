@@ -644,7 +644,7 @@ def attack_approach(url):
     mid = mid.sort_values(by='xAG', ascending=False)
     
     de_df = expected.loc[expected["Pos"].str.contains("DF")]
-    de = de.DataFrame()
+    de = pd.DataFrame()
     de = de_df[['Player','Nation','Pos', 'xAG']]
     de = de.sort_values(by='xAG', ascending=False)  
     

@@ -584,6 +584,157 @@ def prediction_chart(attr):
                    rotation = 0,
                    textcoords = 'offset points')
         st.pyplot(fig)
+        
+        
+def defend_approach(url):
+    shoot = load_data[1]
+    shoot.drop(df.tail(2).index, inplace = True)
+    shoot["Nation"] = shoot["Nation"].str.replace('[a-z]', '')
+    fw = pd.DataFrame()
+    fw = shoot[['Player','Nation','Pos', 'xG']]
+    fw = fw.sort_values(by='xG', ascending=False)
+
+    possesion = Analysis(url)[3]
+    possesion = possesion.loc[possesion["Pos"].str.contains("MF")]
+    mid = pd.DataFrame()
+    mid = possesion[['Player','Nation','Pos', 'Mid 3rd']]
+    mid = mid.sort_values(by='Mid 3rd', ascending=False)
+
+    df = load_data[3]
+    df.drop(df.tail(2).index, inplace = True)
+    df["Nation"] = df["Nation"].str.replace('[a-z]', '')
+    de = pd.DataFrame()
+    de = de[['Player','Nation','Pos', 'TklW']]
+    de = de.sort_values(by='TklW', ascending=False)
+    
+    return fw, mid, de
+
+def possesion_approach(url):
+
+    possesion = Analysis(url)[3]
+    fw_df = possesion.loc[possesion["Pos"].str.contains("FW")]
+    fw = pd.DataFrame()
+    fw = fw_df[['Player','Nation','Pos', 'Touches']]
+    fw = fw.sort_values(by='Touches', ascending=False)
+
+    mid_df = possesion.loc[possesion["Pos"].str.contains("MF")]
+    mid = pd.DataFrame()
+    mid = mid_df[['Player','Nation','Pos', 'Touches']]
+    mid = mid.sort_values(by='Touches', ascending=False)
+    
+    de_df = possesion.loc[possesion["Pos"].str.contains("DF")]
+    de = de.DataFrame()
+    de = de_df[['Player','Nation','Pos', 'Touches']]
+    de = de.sort_values(by='Touches', ascending=False)
+    return fw, mid, de
+
+def attack_approach(url):
+    expected = load_data(url)[0]
+    
+    fw_df = expected.loc[expected["Pos"].str.contains("FW")]
+    fw = pd.DataFrame()
+    fw = fw_df[['Player','Nation','Pos', 'xG']]
+    fw = fw.sort_values(by='Touches', ascending=False)
+
+    mid_df = expected.loc[expected["Pos"].str.contains("MF")]
+    mid = pd.DataFrame()
+    mid = mid_df[['Player','Nation','Pos', 'xAG']]
+    mid = mid.sort_values(by='Touches', ascending=False)
+    
+    de_df = expected.loc[expected["Pos"].str.contains("DF")]
+    de = de.DataFrame()
+    de = de_df[['Player','Nation','Pos', 'xAG']]
+    de = de.sort_values(by='Touches', ascending=False)  
+    
+    return fw, mid, de
+
+def recommendation(url, squad, speed, intercept, style, squad_dis, approach, gk):
+    if squad == "4-4-2" and approach == "Defend":
+        if speed > 1:
+            speed = speed
+        else:
+            speed = 1
+        if intercept == 3 or intercept == 4:
+            intercept = intercept
+        else:
+            intercept = 3
+        squad_dis = squad_dis
+        gk_df = load_data(url)[0].loc[load_data(url)[0]["Player"] == gk]
+        gk = gk_df[['Player','Nation', 'Pos']]
+        
+        fw_df = attack_approach(url)[0]
+        fw_df = fw_df.head(2)
+        fw = fw[['Player','Nation', 'Pos']]
+        
+        mid_df = attack_approach(url)[1]
+        mid_df = mid_df.head(4)
+        mid = mid[['Player','Nation', 'Pos']]
+
+        de_df = attack_approach(url)[2]
+        de_df = de_df.head(2)
+        de = de[['Player','Nation', 'Pos']]
+        
+        recommend_squad = pd.concat([fw, mid, de])
+        
+    if squad == "4-4-2" and approach == "Possesion":
+        if speed > 1:
+            speed = speed
+        else:
+            speed = 1
+            
+        if intercept == 3 or intercept == 4:
+            intercept = intercept
+        else:
+            intercept = 2
+            
+        squad_dis = squad_dis
+        gk_df = load_data(url)[0].loc[load_data(url)[0]["Player"] == gk]
+        gk = gk_df[['Player','Nation', 'Pos']]
+        
+        fw_df = attack_approach(url)[0]
+        fw_df = fw_df.head(2)
+        fw = fw[['Player','Nation', 'Pos']]
+        
+        mid_df = attack_approach(url)[1]
+        mid_df = mid_df.head(4)
+        mid = mid[['Player','Nation', 'Pos']]
+
+        de_df = attack_approach(url)[2]
+        de_df = de_df.head(2)
+        de = de[['Player','Nation', 'Pos']]
+        
+        recommend_squad = pd.concat([fw, mid, de])
+        
+    if squad == "4-4-2" and approach == "Attack":
+        if speed > 1:
+            speed = speed
+        else:
+            speed = 1
+            
+        if intercept == 3 or intercept == 4:
+            intercept = intercept
+        else:
+            intercept = 1
+            
+        squad_dis = squad_dis
+        gk_df = load_data(url)[0].loc[load_data(url)[0]["Player"] == gk]
+        gk = gk_df[['Player','Nation', 'Pos']]
+        
+        fw_df = attack_approach(url)[0]
+        fw_df = fw_df.head(2)
+        fw = fw[['Player','Nation', 'Pos']]
+        
+        mid_df = attack_approach(url)[1]
+        mid_df = mid_df.head(4)
+        mid = mid[['Player','Nation', 'Pos']]
+
+        de_df = attack_approach(url)[2]
+        de_df = de_df.head(2)
+        de = de[['Player','Nation', 'Pos']]
+        
+        recommend_squad = pd.concat([fw, mid, de]) 
+        
+    return recommend_squad
 #button 
 # if st.button('Squad Analysis'):
 
@@ -592,7 +743,6 @@ st.sidebar.markdown('Coach choose the requirements here')
 
 selected_squad = st.sidebar.selectbox('Squad',('4-4-2', '4-2-3-1', '4-3-3'))
 selected_speed = st.sidebar.select_slider('Speed', options = [1,2,3,4])
-selected_tempo = st.sidebar.select_slider('Passing speed', options = ['Slow','Normal','Hard'])
 selected_intercept = st.sidebar.select_slider('Intercept', options = [1,2,3,4])
 selected_style = st.sidebar.selectbox('Style',('Organizing', 'Liberal')) 
 selected_squad_distance = st.sidebar.selectbox('Squad distance',('Narrow', 'Wide')) 
@@ -605,7 +755,6 @@ selected_gk = st.sidebar.selectbox('Select GoalKkeeper',load_data(url)[0].loc[lo
 #             df = df.sort_values(by='Tkl%', ascending=False)
 
 
-st.sidebar.button('Recommendations squad for the next match')
 fw = st.checkbox("Statistics of Forward")
 mf = st.checkbox("Statistics of Midfield")
 df = st.checkbox("Statistics of Defensive")
@@ -641,6 +790,8 @@ with see_predict_chart:
     st.markdown('Investigate a variety of prediction for each player. Top 10 players who predicted to score the most goals, assist, pass, or mistakes? How does players compare with each others?')
     select_pre = st.selectbox('Which attribute do you want to see prediction?', ('Expected Goals','Expected Assists'))
     prediction_chart(select_pre)
+if st.sidebar.button('Recommendations squad for the next match'):
+    st.dataframe(recommendation(url, selected_squad, selected_speed, selected_intercept, selected_style, squad_distance, match_approach, gk))
 
 # else:
 #     st.sidebar.warning("Incorrect password/username!")

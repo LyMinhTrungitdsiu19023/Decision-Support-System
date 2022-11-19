@@ -908,7 +908,7 @@ if menu == "Transfer":
     radio = st.sidebar.radio('Player type', ['Outfield players', 'Goal Keepers']) 
     player_name = st.sidebar.selectbox('Player Name', load_data(url)[0]["Player"]) 
     league = st.sidebar.selectbox('League', ["English Premier League", "Bundesliga","La Liga", "Ligue 1", "Serie A"]) 
-    age = st.sidebar.slider('Age bracket', min_value=min(get_data(url_transfer)['Age']), max_value=max(get_data(url_transfer)['Age'])) 
+    age = st.sidebar.select_slider('Age bracket', options = range(50)) 
  
     see_data = st.expander("Information of Players in Big 5 European Leagues 👉")
     with see_data: 

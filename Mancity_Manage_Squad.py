@@ -592,6 +592,7 @@ def defend_approach(url):
     shoot["Nation"] = shoot["Nation"].str.replace('[a-z]', '')
     fw = pd.DataFrame()
     fw = shoot[['Player','Nation','Pos', 'xG']]
+    fw = fw.loc[fw["Pos"].str.contains("FW")]
     fw = fw.sort_values(by='xG', ascending=False)
 
     possesion = Analysis(url)[3]
@@ -605,6 +606,7 @@ def defend_approach(url):
     df["Nation"] = df["Nation"].str.replace('[a-z]', '')
     de = pd.DataFrame()
     de = df[['Player','Nation','Pos','TklW']]
+    de = de.loc[de["Pos"].str.contains("DF")]
     de = de.sort_values(by='TklW', ascending=False)
     
     return fw, mid, de

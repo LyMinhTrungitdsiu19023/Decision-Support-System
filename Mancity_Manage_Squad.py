@@ -641,11 +641,13 @@ def attack_approach(url):
     fw = fw.sort_values(by='xG', ascending=False)
 
     mid_df = expected.loc[expected["Pos"].str.contains("MF")]
+    mid_df = mid_df[mid_df["Player"].str.contains("Bernardo Silva")==False]
     mid = pd.DataFrame()
     mid = mid_df[['Player','Nation','Pos', 'xAG']]
     mid = mid.sort_values(by='xAG', ascending=False)
     
     de_df = expected.loc[expected["Pos"].str.contains("DF")]
+    de_df = de_df[de_df["Player"].str.contains("Phil Foden")==False]
     de = pd.DataFrame()
     de = de_df[['Player','Nation','Pos', 'xAG']]
     de = de.sort_values(by='xAG', ascending=False)  

@@ -535,6 +535,7 @@ def defend_approach(url):
     expected = load_data(url)[0]
     
     fw_df = expected.loc[expected["Pos"].str.contains("FW")]
+    fw_df = fw_df[fw_df["Player"].str.contains("Bernardo Silva")==False]
     fw = pd.DataFrame()
     fw = fw_df[['Player','Nation','Pos', 'xG']]
     fw = fw.sort_values(by='xG', ascending=False)
@@ -543,7 +544,6 @@ def defend_approach(url):
     mid = pd.DataFrame()
     mid = possesion[['Player','Nation','Pos', 'Mid 3rd']]
     mid = possesion.loc[possesion["Pos"].str.contains("MF")]
-    mid = mid[mid["Player"].str.contains("Bernardo Silva")==False]
     mid = mid.sort_values(by='Mid 3rd', ascending=False)
 
     df = Analysis(url)[2]
@@ -561,13 +561,12 @@ def possesion_approach(url):
 
     possesion = Analysis(url)[3]
     fw_df = possesion.loc[possesion["Pos"].str.contains("FW")]
+    fw_df = fw_df[fw_df["Player"].str.contains("Bernardo Silva")==False]
     fw = pd.DataFrame()
     fw = fw_df[['Player','Nation','Pos', 'Touches']]
     fw = fw.sort_values(by='Touches', ascending=False)
 
     mid_df = possesion.loc[possesion["Pos"].str.contains("MF")]
-    mid_df = mid_df[mid_df["Player"].str.contains("Bernardo Silva")==False]
-
     mid = pd.DataFrame()
     mid = mid_df[['Player','Nation','Pos', 'Touches']]
     mid = mid.sort_values(by='Touches', ascending=False)
@@ -583,12 +582,12 @@ def attack_approach(url):
     expected = load_data(url)[0]
     
     fw_df = expected.loc[expected["Pos"].str.contains("FW")]
+    fw_df = fw_df[fw_df["Player"].str.contains("Bernardo Silva")==False]
     fw = pd.DataFrame()
     fw = fw_df[['Player','Nation','Pos', 'xG']]
     fw = fw.sort_values(by='xG', ascending=False)
 
     mid_df = expected.loc[expected["Pos"].str.contains("MF")]
-    mid_df = mid_df[mid_df["Player"].str.contains("Bernardo Silva")==False]
     mid = pd.DataFrame()
     mid = mid_df[['Player','Nation','Pos', 'xAG']]
     mid = mid.sort_values(by='xAG', ascending=False)

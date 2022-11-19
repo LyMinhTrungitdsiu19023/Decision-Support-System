@@ -664,15 +664,15 @@ def recommendation(url, squad, speed, intercept, style, squad_dis, approach, gk)
         
         fw_df = defend_approach(url)[0]
         fw_df = fw_df.head(2)
-        fw = fw[['Player','Nation', 'Pos']]
+        fw = fw_df[['Player','Nation', 'Pos']]
         
         mid_df = defend_approach(url)[1]
         mid_df = mid_df.head(4)
-        mid = mid[['Player','Nation', 'Pos']]
+        mid = mid_df[['Player','Nation', 'Pos']]
 
         de_df = defend_approach(url)[2]
         de_df = de_df.head(2)
-        de = de[['Player','Nation', 'Pos']]
+        de = de_df[['Player','Nation', 'Pos']]
         
         recommend_squad = pd.concat([fw, mid, de])
         
@@ -693,15 +693,15 @@ def recommendation(url, squad, speed, intercept, style, squad_dis, approach, gk)
         
         fw_df = possesion_approach(url)[0]
         fw_df = fw_df.head(2)
-        fw = fw[['Player','Nation', 'Pos']]
+        fw = fw_df[['Player','Nation', 'Pos']]
         
         mid_df = possesion_approach(url)[1]
         mid_df = mid_df.head(4)
-        mid = mid[['Player','Nation', 'Pos']]
+        mid = mid_df[['Player','Nation', 'Pos']]
 
         de_df = possesion_approach(url)[2]
         de_df = de_df.head(2)
-        de = de[['Player','Nation', 'Pos']]
+        de = de_df[['Player','Nation', 'Pos']]
         
         recommend_squad = pd.concat([fw, mid, de])
         
@@ -722,15 +722,15 @@ def recommendation(url, squad, speed, intercept, style, squad_dis, approach, gk)
         
         fw_df = attack_approach(url)[0]
         fw_df = fw_df.head(2)
-        fw = fw[['Player','Nation', 'Pos']]
+        fw = fw_df[['Player','Nation', 'Pos']]
         
         mid_df = attack_approach(url)[1]
         mid_df = mid_df.head(4)
-        mid = mid[['Player','Nation', 'Pos']]
+        mid = mid_df[['Player','Nation', 'Pos']]
 
         de_df = attack_approach(url)[2]
         de_df = de_df.head(2)
-        de = de[['Player','Nation', 'Pos']]
+        de = de_df[['Player','Nation', 'Pos']]
         
         recommend_squad = pd.concat([fw, mid, de]) 
         

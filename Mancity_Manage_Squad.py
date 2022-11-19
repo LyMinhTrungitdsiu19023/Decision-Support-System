@@ -796,7 +796,10 @@ def recommendation(url, squad, speed, intercept, style, squad_dis, approach, gk)
 def get_data(url):
     html = pd.read_html(url, header = 1)
     playerlist = html[0]
-    
+    playerlist.drop["Rk"]
+    playerlist["Nation"] = playerlist["Nation"].str.replace('[a-z]', '')
+    playerlist["Comp"] = playerlist["Comp"].str.replace('[a-z]', '')
+
     return playerlist.head(10)
 
 
@@ -878,8 +881,10 @@ with see_predict_chart:
     select_pre = st.selectbox('Which attribute do you want to see prediction?', ('Expected Goals','Expected Assists'))
     prediction_chart(select_pre)
 
-st.header("Recommended Squad")
-st.markdown('Please, Select attributes in sidebar')
+st.header("Squad Recommendation")
+st.markdown('Please, Select attributes in Squad sidebar')
+st.header("Player Recommender")
+st.markdown('Please, Select attributes in Transfer sidebar')
   
 menu = st.sidebar.selectbox("Menu", ("Squad", "Transfer"))
 
@@ -900,6 +905,7 @@ if menu == "Squad":
 
 if menu == "Transfer":
     st.sidebar.markdown("...Bulding...")
+    
     st.dataframe(get_data(url_transfer))
 
 # else:

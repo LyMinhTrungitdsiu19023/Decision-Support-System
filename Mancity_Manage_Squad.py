@@ -913,8 +913,13 @@ if menu == "Transfer":
         player_name = st.sidebar.selectbox('Player',load_data(url)[0].loc[load_data(url)[0]["Pos"] == "GK"]["Player"])
     else:
         player_name = st.sidebar.selectbox('Player',load_data(url)[0][load_data(url)[0]["Pos"].str.contains("GK") == False]["Player"])
+        
     league = st.sidebar.selectbox('League', ["English Premier League", "Bundesliga","La Liga", "Ligue 1", "Serie A"]) 
-    age = st.sidebar.select_slider('Age bracket', options = range(15,51)) 
+    
+    age_default = (min(get_data(url_transfer)['Age']), max(get_data(url_transfer)['Age']))
+    age = st.sidebar.select_slider('Age bracket', min_value=age_default[0], max_value=age_default[1], value=age_default, 
+        help='Age range to get recommendations from. Drag the sliders on either side. \'All\' ages by default.')
+    
     st.header("Player Recommender")
     st.markdown('Please, Select attributes in Transfer sidebar')
     see_data = st.expander("Information of Players in Big 5 European Leagues 👉")

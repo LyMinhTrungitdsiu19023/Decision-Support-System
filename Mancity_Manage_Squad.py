@@ -5,6 +5,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 from numpy.linalg import norm
+from numpy import dot
+
 
 from PIL import Image
 
@@ -824,7 +826,7 @@ def filter_player_by_sidebar(url, url_transfer, player_name, league):
     
     for i in range(len(playerlist)):
         np_playerlist = playerlist.iloc[i][["Gls", "Ast", "xG", "xAG"]].to_numpy()  
-        similarity = np.dot(np_myplayer,np_playerlist)/(norm(np_myplayer)*norm(np_playerlist))
+        similarity = dot(np_myplayer,np_playerlist)/(norm(np_myplayer)*norm(np_playerlist))
         cosine_lst.append(similarity)
     playerlist['Similarity'] = cosine_lst
 

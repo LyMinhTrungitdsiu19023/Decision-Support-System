@@ -823,10 +823,10 @@ def filter_player_by_sidebar(url, url_transfer, player_name, league):
     
     playerlist = playerlist.reset_index(drop = True)
 
-    np_myplayer = my_player[["Gls", "Ast", "xG", "xAG"]].to_numpy()  
+    np_myplayer = my_player[["Gls", "Ast", "xG", "xAG"]].values.tolist()
     
     for i in range(len(playerlist)):
-        np_playerlist = playerlist.iloc[i][["Gls", "Ast", "xG", "xAG"]].to_numpy()  
+        np_playerlist = playerlist.iloc[i][["Gls", "Ast", "xG", "xAG"]].values.tolist()
         similarity = 1 - spatial.distance.cosine(np_myplayer, np_playerlist)
         cosine_lst.append(similarity)
     playerlist['Similarity'] = cosine_lst

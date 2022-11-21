@@ -807,7 +807,7 @@ def get_data(url):
     return playerlist
 
 
-def filter_player_by_sidebar(url, url_transfer, player_name, league, age):
+def filter_player_by_sidebar(url, url_transfer, player_name, league, age = age_default):
     my_player = load_data(url)[0].loc[load_data(url)[0]["Player"] == player_name]
     my_player = my_player[['Player','Nation','Pos','Age','Gls','Ast','xG','xAG']]
     playerlist = get_data(url_transfer)[['Player','Nation','Pos','Age','Squad','Comp','Gls','Ast','xG','xAG']] #All players
@@ -816,7 +816,7 @@ def filter_player_by_sidebar(url, url_transfer, player_name, league, age):
         pass
     else:
         playerlist = playerlist.loc[playerlist["Comp"].str.contains(str(league))] 
-    if age == (15,50):
+    if age == age_default:
         pass
     else:
         playerlist = playerlist[(playerlist['Age'] >= age[0]) & (playerlist['Age'] <= age[1])]
@@ -936,7 +936,8 @@ if menu == "Transfer":
         
     league = st.sidebar.selectbox('League', ["All", "Premier League", "Bundesliga","La Liga", "Ligue 1", "Serie A"]) 
     
-    age = st.sidebar.slider('Age bracket', min_value=15, max_value=50, value=(15,50), 
+    age_default = (get_data(url_transfer)['Age'].min()), get_data(url_transfer)['Age'].max())
+    age = st.sidebar.slider('Age bracket', min_value=age_default[0], max_value=age_default[1], value=age_default, 
         help='Age range to get recommendations from. Drag the sliders on either side. \'All\' ages by default.')
     
     

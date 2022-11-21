@@ -4,7 +4,7 @@ import base64
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
-from lxml.html.clean import Cleaner
+from numpy.linalg import norm
 
 from PIL import Image
 
@@ -808,6 +808,7 @@ def get_data(url):
 
 
 def filter_player_by_sidebar(url, url_transfer, player_name, league):
+    cosine_lst = []
     my_player = load_data(url)[0].loc[load_data(url)[0]["Player"] == player_name]
     my_player = my_player[['Player','Nation','Pos','Age','Gls','Ast','xG','xAG']]
     playerlist = get_data(url_transfer)[['Player','Nation','Pos','Age','Squad','Comp','Gls','Ast','xG','xAG']] #All players
@@ -817,7 +818,14 @@ def filter_player_by_sidebar(url, url_transfer, player_name, league):
     else:
         playerlist = playerlist.loc[playerlist["Comp"].str.contains(str(league))] 
 
-        
+    np_myplayer = my_player[["Gls", "Ast", "xG", "xAG"]].to_numpy()  
+    for i in range(len(playerlist)):
+        np_playerlist = playerlist.iloc[i][["Gls", "Ast", "xG", "xAG"]].to_numpy()  
+        similarity = np.dot(np_myplayer,np_playerlist)/(norm(np_myplayer)*norm(np_playerlist))
+        cosine_lst.append(similarity)
+    playerlist['Similarity'] = cosine_lst
+
+    playerlist = playerlist.sort_values(by='Similarity', ascending=False)
     playerlist = playerlist.head(10)
     playerlist = playerlist.reset_index(drop = True)
 

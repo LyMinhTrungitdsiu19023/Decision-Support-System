@@ -814,7 +814,7 @@ def filter_player_by_sidebar(url, url_transfer, player_name, league, age = (15,5
     if league == "All":
         pass
     else:
-        playerlist = playerlist.loc[playerlist['Comp'] == str(league)]
+        playerlist = playerlist.loc[playerlist['Comp'] == "La Liga"]
 #     if age == (15,50):
 #         pass
 #     else:

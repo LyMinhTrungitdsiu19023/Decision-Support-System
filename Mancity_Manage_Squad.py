@@ -948,9 +948,9 @@ if menu == "Transfer":
         df_select_player = get_data(url_transfer).loc[get_data(url_transfer)["Player"].str.contains(select_player)]
         st.dataframe(df_select_player)
         
-#     if st.sidebar.button("Find players",help = 'Suggestions for the top 10 players that match your criteria the most'):
-        st.header("_Top 10 recommended players for_ **{}**".format(player_name))
-
+    see_data = st.expander("Showing Recommended Players 👉")
+    with see_data:
+        st.markdown("_Top 10 recommended players for_ **{}**".format(player_name))
         st.dataframe(filter_player_by_sidebar(url, url_transfer, player_name, league, age = (15,50)))
 # else:
 #     st.sidebar.warning("Incorrect password/username!")

@@ -809,9 +809,9 @@ def get_data(url):
 def filter_player_by_sidebar(url, url_transfer, player_name, league, age = (15,50)):
     my_player = load_data(url)[0].loc[load_data(url)[0]["Player"] == player_name]
     my_player = my_player[['Player','Nation','Pos','Age','Gls','Ast','xG','xAG']]
-    
+    player_pos = str(my_player["Pos"])
     playerlist = get_data(url_transfer)[['Player','Nation','Pos','Age','Squad','Comp','Gls','Ast','xG','xAG']] #All players
-    playerlist = playerlist.loc[playerlist["Pos"].str.contains(str(my_player["Pos"]))]                          #Filter same possision with my player
+    playerlist = playerlist.loc[playerlist["Pos"].str.contains(player_pos)]                          #Filter same possision with my player
 #     if league == "All":
 #         pass
 #     else:

@@ -817,8 +817,11 @@ def filter_player_by_sidebar(url, url_transfer, player_name, league):
         pass
     else:
         playerlist = playerlist.loc[playerlist["Comp"].str.contains(str(league))] 
+    
+    playerlist = playerlist.reset_index(drop = True)
 
     np_myplayer = my_player[["Gls", "Ast", "xG", "xAG"]].to_numpy()  
+    
     for i in range(len(playerlist)):
         np_playerlist = playerlist.iloc[i][["Gls", "Ast", "xG", "xAG"]].to_numpy()  
         similarity = np.dot(np_myplayer,np_playerlist)/(norm(np_myplayer)*norm(np_playerlist))

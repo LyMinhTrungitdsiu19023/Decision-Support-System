@@ -806,12 +806,20 @@ def get_data(url):
     return playerlist
 
 
-# def filter_player_by_sidebar(url, url_transfer, player_name, league, age):
+# def filter_player_by_sidebar(url, url_transfer, player_name, league, age = [15,50]):
 #     my_player = load_data(url)[0].loc[load_data(url)[0]["Player"] == player_name]
 #     my_player = my_player[['Player','Nation','Pos','Age','Gls','Ast','xG','xAG']]
-#     playerlist = get_data(url_transfer)[['Player','Nation','Pos','Age','Gls','Ast','xG','xAG']]
-
-
+    
+#     playerlist = get_data(url_transfer)[['Player','Nation','Pos','Age','Squad','Comp','Gls','Ast','xG','xAG']] #All players
+#     playerlist = playerlist.loc[playerlist["Pos"] == my_player["Pos"]]                          #Filter same possision with my player
+#     if league == "All":
+#         pass
+#     else:
+#         playerlist = playerlist.loc[playerlist['Comp'] == league]
+#     if age == [15,50]:
+#         pass
+#     else:
+#         playerlist = playerlist[(playerlist['Age'] >= age[0]) & (df_res['Age'] <= age[1])]
 
 ##################################################################################################################################################################################################3
 ###Build GUI / Interface of the Web App
@@ -921,9 +929,9 @@ if menu == "Transfer":
     else:
         player_name = st.sidebar.selectbox('Player',load_data(url)[0][load_data(url)[0]["Pos"].str.contains("GK") == False]["Player"])
         
-    league = st.sidebar.selectbox('League', ["English Premier League", "Bundesliga","La Liga", "Ligue 1", "Serie A"]) 
+    league = st.sidebar.selectbox('League', ["All", "Premier League", "Bundesliga","La Liga", "Ligue 1", "Serie A"]) 
     
-    age = st.sidebar.slider('Age bracket', min_value=15, max_value=50, value=[15,50], 
+    age = st.sidebar.slider('Age bracket', min_value=15, max_value=50, value=(15,50), 
         help='Age range to get recommendations from. Drag the sliders on either side. \'All\' ages by default.')
     
     st.header("Player Recommender")

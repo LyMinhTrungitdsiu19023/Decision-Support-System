@@ -810,19 +810,19 @@ def filter_player_by_sidebar(url, url_transfer, player_name, league, age = (15,5
     my_player = load_data(url)[0].loc[load_data(url)[0]["Player"] == player_name]
     my_player = my_player[['Player','Nation','Pos','Age','Gls','Ast','xG','xAG']]
     
-    playerlist = get_data(url_transfer)[['Player','Nation','Pos','Age','Squad','Comp','Gls','Ast','xG','xAG']] #All players
-    playerlist = playerlist.loc[playerlist["Pos"] == my_player["Pos"]]                          #Filter same possision with my player
-    if league == "All":
-        pass
-    else:
-        playerlist = playerlist.loc[playerlist['Comp'] == league]
-    if age == (15,50):
-        pass
-    else:
-        playerlist = playerlist[(playerlist['Age'] >= age[0]) & (playerlist['Age'] <= age[1])]
-    playerlist = playerlist.head(10)
+#     playerlist = get_data(url_transfer)[['Player','Nation','Pos','Age','Squad','Comp','Gls','Ast','xG','xAG']] #All players
+#     playerlist = playerlist.loc[playerlist["Pos"] == my_player["Pos"]]                          #Filter same possision with my player
+#     if league == "All":
+#         pass
+#     else:
+#         playerlist = playerlist.loc[playerlist['Comp'] == league]
+#     if age == (15,50):
+#         pass
+#     else:
+#         playerlist = playerlist[(playerlist['Age'] >= age[0]) & (playerlist['Age'] <= age[1])]
+#     playerlist = playerlist.head(10)
     
-    return playerlist
+    return my_player
 
 ##################################################################################################################################################################################################3
 ###Build GUI / Interface of the Web App

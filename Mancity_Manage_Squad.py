@@ -807,7 +807,7 @@ def get_data(url):
     return playerlist
 
 
-def filter_player_by_sidebar(url, url_transfer, player_name, league, age = age_default):
+def filter_player_by_sidebar(url, url_transfer, player_name, league, age):
     my_player = load_data(url)[0].loc[load_data(url)[0]["Player"] == player_name]
     my_player = my_player[['Player','Nation','Pos','Age','Gls','Ast','xG','xAG']]
     playerlist = get_data(url_transfer)[['Player','Nation','Pos','Age','Squad','Comp','Gls','Ast','xG','xAG']] #All players
@@ -816,7 +816,7 @@ def filter_player_by_sidebar(url, url_transfer, player_name, league, age = age_d
         pass
     else:
         playerlist = playerlist.loc[playerlist["Comp"].str.contains(str(league))] 
-    if age == age_default:
+    if age == (get_data(url_transfer)['Age'].min(), get_data(url_transfer)['Age'].max()):
         pass
     else:
         playerlist = playerlist[(playerlist['Age'] >= age[0]) & (playerlist['Age'] <= age[1])]

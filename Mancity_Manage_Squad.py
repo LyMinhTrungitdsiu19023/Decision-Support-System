@@ -923,7 +923,6 @@ if menu == "Transfer":
           
         df_select_player = get_data(url_transfer).loc[get_data(url_transfer)["Player"].str.contains(select_player)]
         st.dataframe(df_select_player)
-        st.dataframe(gk)
 
 # else:
 #     st.sidebar.warning("Incorrect password/username!")

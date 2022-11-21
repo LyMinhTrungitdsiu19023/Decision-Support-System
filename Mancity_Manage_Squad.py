@@ -882,10 +882,8 @@ with see_predict_chart:
     select_pre = st.selectbox('Which attribute do you want to see prediction?', ('Expected Goals','Expected Assists'))
     prediction_chart(select_pre)
 
-st.header("Squad Recommendation")
-st.markdown('Please, Select attributes in Squad sidebar')
-st.header("Player Recommender")
-st.markdown('Please, Select attributes in Transfer sidebar')
+
+
   
 menu = st.sidebar.selectbox("Menu", ("Squad", "Transfer"))
 
@@ -900,7 +898,8 @@ if menu == "Squad":
     selected_squad_distance = st.sidebar.selectbox('Squad distance',('Narrow', 'Wide')) 
     selected_match_approach = st.sidebar.selectbox('Match approach',('Defend', 'Attack', 'Possesion')) 
     selected_gk = st.sidebar.selectbox('Select GoalKkeeper',load_data(url)[0].loc[load_data(url)[0]["Pos"].str.contains('GK')]) 
-    
+    st.header("Squad Recommendation")
+    st.markdown('Please, Select attributes in Squad sidebar')
     if st.sidebar.button('Recommendations squad for the next match'):
         st.dataframe(recommendation(url, selected_squad, selected_speed, selected_intercept, selected_style, selected_squad_distance, selected_match_approach, selected_gk))
 
@@ -910,7 +909,8 @@ if menu == "Transfer":
     player_name = st.sidebar.selectbox('Player Name', load_data(url)[0]["Player"]) 
     league = st.sidebar.selectbox('League', ["English Premier League", "Bundesliga","La Liga", "Ligue 1", "Serie A"]) 
     age = st.sidebar.select_slider('Age bracket', options = range(15,51)) 
- 
+    st.header("Player Recommender")
+    st.markdown('Please, Select attributes in Transfer sidebar')
     see_data = st.expander("Information of Players in Big 5 European Leagues 👉")
     with see_data: 
         st.header("Information of Players in Big 5 European Leagues")

@@ -909,7 +909,7 @@ if menu == "Transfer":
     player_name = st.sidebar.selectbox('Player Name', load_data(url)[0]["Player"])
     gk = load_data(url)[0].loc[load_data(url)[0]["Pos"] == "GK"]
     if radio == "Goal Keepers":
-        player_name = st.selectbox('Player',gk)
+        player_name = st.selectbox('Player',gk["Player"])
     else:
         player_name = st.selectbox('Player',load_data(url)[0][load_data(url)[0]["Pos"].str.contains("GK") == False])
     league = st.sidebar.selectbox('League', ["English Premier League", "Bundesliga","La Liga", "Ligue 1", "Serie A"]) 

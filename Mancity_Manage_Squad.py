@@ -800,7 +800,7 @@ def get_data(url):
     playerlist = playerlist.drop(["Rk", "Matches", 'Gls.1', 'Ast.1', 'G+A', 'G-PK.1', 'G+A-PK', 'npxG', 'npxG+xAG', 'xG.1', 'xAG.1', 'xG+xAG', 'npxG.1', 'npxG+xAG.1'], axis = 1) 
     playerlist["Nation"] = playerlist["Nation"].str.replace('[a-z]', '')
     playerlist["Age"] = playerlist["Age"].str.replace(r'(-\d\d\d)', '')
-    playerlist["Comp"] = playerlist["Comp"].str.replace(r'(eng)|(fr)|(it)|(de)|(es)', '')
+    playerlist["Comp"] = playerlist["Comp"].str.replace(r'(eng)|(fr)|(it)|(de\s)|(es)', '')
 
 
     return playerlist

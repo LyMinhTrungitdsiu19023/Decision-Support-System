@@ -907,8 +907,9 @@ if menu == "Transfer":
     st.sidebar.markdown("Recommend the most similar with your selection player")
     radio = st.sidebar.radio('Player type', ['Outfield players', 'Goal Keepers']) 
     player_name = st.sidebar.selectbox('Player Name', load_data(url)[0]["Player"])
+    gk = load_data(url)[0].loc[load_data(url)[0]["Pos"] == "GK"]
     if radio == "Goal Keepers":
-        player_name = st.selectbox('Player',load_data(url)[0].loc[load_data(url)[0]["Pos"] == "GK"])
+        player_name = st.selectbox('Player',gk)
     else:
         player_name = st.selectbox('Player',load_data(url)[0][load_data(url)[0]["Pos"].str.contains("GK") == False])
     league = st.sidebar.selectbox('League', ["English Premier League", "Bundesliga","La Liga", "Ligue 1", "Serie A"]) 
@@ -922,6 +923,7 @@ if menu == "Transfer":
           
         df_select_player = get_data(url_transfer).loc[get_data(url_transfer)["Player"].str.contains(select_player)]
         st.dataframe(df_select_player)
+        st.dataframe(gk)
 
 # else:
 #     st.sidebar.warning("Incorrect password/username!")

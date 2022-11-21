@@ -914,7 +914,11 @@ if menu == "Transfer":
     see_data = st.expander("Information of Players in Big 5 European Leagues 👉")
     with see_data: 
         st.header("Information of Players in Big 5 European Leagues")
-        select_player = st.selectbox('Player',get_data(url_transfer)["Player"])
+        if radio == "Goal Keepers":
+            select_player = st.selectbox('Player',get_data(url_transfer).loc[get_data(url_transfer)["Pos"] == "GK"])
+        else:
+            select_player = st.selectbox('Player',get_data(url_transfer)[get_data(url_transfer)["Pos"].str.contains("GK") == False])
+          
         df_select_player = get_data(url_transfer).loc[get_data(url_transfer)["Player"].str.contains(select_player)]
         st.dataframe(df_select_player)
 

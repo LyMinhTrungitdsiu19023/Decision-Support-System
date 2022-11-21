@@ -807,7 +807,7 @@ def get_data(url):
     return playerlist
 
 
-def filter_player_by_sidebar(url, url_transfer, player_name, league, age = (15,50)):
+def filter_player_by_sidebar(url, url_transfer, player_name, league, age):
     my_player = load_data(url)[0].loc[load_data(url)[0]["Player"] == player_name]
     my_player = my_player[['Player','Nation','Pos','Age','Gls','Ast','xG','xAG']]
     playerlist = get_data(url_transfer)[['Player','Nation','Pos','Age','Squad','Comp','Gls','Ast','xG','xAG']] #All players
@@ -953,7 +953,7 @@ if menu == "Transfer":
     see_data = st.expander("Showing Recommended Players 👉")
     with see_data:
         st.markdown("_Top 10 recommended players for_ **{}**".format(player_name))
-        st.dataframe(filter_player_by_sidebar(url, url_transfer, player_name, league, age = (15,50)))
+        st.dataframe(filter_player_by_sidebar(url, url_transfer, player_name, league, age))
 # else:
 #     st.sidebar.warning("Incorrect password/username!")
 

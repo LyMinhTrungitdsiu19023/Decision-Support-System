@@ -908,9 +908,9 @@ if menu == "Transfer":
     radio = st.sidebar.radio('Player type', ['Outfield players', 'Goal Keepers']) 
     player_name = st.sidebar.selectbox('Player Name', load_data(url)[0]["Player"])
     if radio == "Goal Keepers":
-        select_player = st.selectbox('Player',get_data(url_transfer).loc[get_data(url_transfer)["Pos"] == "GK"])
+        player_name = st.selectbox('Player',load_data(url)[0].loc[load_data(url)[0]["Pos"] == "GK"])
     else:
-        select_player = st.selectbox('Player',get_data(url_transfer)[get_data(url_transfer)["Pos"].str.contains("GK") == False])
+        player_name = st.selectbox('Player',load_data(url)[0][load_data(url)[0]["Pos"].str.contains("GK") == False])
     league = st.sidebar.selectbox('League', ["English Premier League", "Bundesliga","La Liga", "Ligue 1", "Serie A"]) 
     age = st.sidebar.select_slider('Age bracket', options = range(15,51)) 
     st.header("Player Recommender")

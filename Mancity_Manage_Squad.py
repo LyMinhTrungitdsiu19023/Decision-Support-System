@@ -822,7 +822,7 @@ def filter_player_by_sidebar(url, url_transfer, player_name, league, age = (15,5
 #         playerlist = playerlist[(playerlist['Age'] >= age[0]) & (playerlist['Age'] <= age[1])]
     playerlist = playerlist.head(10)
     
-    return playerlist
+    return my_player["Pos"]
 
 ##################################################################################################################################################################################################3
 ###Build GUI / Interface of the Web App

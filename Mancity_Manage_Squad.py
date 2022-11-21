@@ -906,7 +906,11 @@ if menu == "Squad":
 if menu == "Transfer":
     st.sidebar.markdown("Recommend the most similar with your selection player")
     radio = st.sidebar.radio('Player type', ['Outfield players', 'Goal Keepers']) 
-    player_name = st.sidebar.selectbox('Player Name', load_data(url)[0]["Player"]) 
+    player_name = st.sidebar.selectbox('Player Name', load_data(url)[0]["Player"])
+    if radio == "Goal Keepers":
+        select_player = st.selectbox('Player',get_data(url_transfer).loc[get_data(url_transfer)["Pos"] == "GK"])
+    else:
+        select_player = st.selectbox('Player',get_data(url_transfer)[get_data(url_transfer)["Pos"].str.contains("GK") == False])
     league = st.sidebar.selectbox('League', ["English Premier League", "Bundesliga","La Liga", "Ligue 1", "Serie A"]) 
     age = st.sidebar.select_slider('Age bracket', options = range(15,51)) 
     st.header("Player Recommender")
@@ -914,10 +918,7 @@ if menu == "Transfer":
     see_data = st.expander("Information of Players in Big 5 European Leagues 👉")
     with see_data: 
         st.header("Information of Players in Big 5 European Leagues")
-        if radio == "Goal Keepers":
-            select_player = st.selectbox('Player',get_data(url_transfer).loc[get_data(url_transfer)["Pos"] == "GK"])
-        else:
-            select_player = st.selectbox('Player',get_data(url_transfer)[get_data(url_transfer)["Pos"].str.contains("GK") == False])
+        select_player = st.selectbox('Player',get_data(url_transfer)["Player"])
           
         df_select_player = get_data(url_transfer).loc[get_data(url_transfer)["Player"].str.contains(select_player)]
         st.dataframe(df_select_player)

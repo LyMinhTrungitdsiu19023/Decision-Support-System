@@ -936,7 +936,7 @@ if menu == "Transfer":
         
     league = st.sidebar.selectbox('League', ["All", "Premier League", "Bundesliga","La Liga", "Ligue 1", "Serie A"]) 
     
-    age_default = (get_data(url_transfer)['Age'].min()), get_data(url_transfer)['Age'].max())
+    age_default = (get_data(url_transfer)['Age'].min()), get_data(url_transfer)['Age'].max()))
     age = st.sidebar.slider('Age bracket', min_value=age_default[0], max_value=age_default[1], value=age_default, 
         help='Age range to get recommendations from. Drag the sliders on either side. \'All\' ages by default.')
     

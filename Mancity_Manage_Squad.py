@@ -951,7 +951,7 @@ if menu == "Transfer":
     see_data = st.expander("Showing Recommended Players 👉")
     with see_data:
         st.markdown("_Top 10 recommended players for_ **{}**".format(player_name))
-        st.dataframe(filter_player_by_sidebar(url, url_transfer, player_name, league, age))
+        st.dataframe(filter_player_by_sidebar(url, url_transfer, player_name, league))
 # else:
 #     st.sidebar.warning("Incorrect password/username!")
 

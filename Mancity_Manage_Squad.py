@@ -33,7 +33,8 @@ def load_data(url):
     df = html[8]
     playerstats.drop(playerstats.tail(2).index, inplace = True)
     playerstats["Nation"] = playerstats["Nation"].str.replace('[a-z]', '')
-   
+    playerstats["Age"] = playerstats["Age"].str.replace(r'(-\d\d\d)', '')
+
     return playerstats, shoot, passing, df
 
 def Analysis(url):
@@ -805,6 +806,13 @@ def get_data(url):
     return playerlist
 
 
+# def filter_player_by_sidebar(url, url_transfer, player_name, league, age):
+#     my_player = load_data(url)[0].loc[load_data(url)[0]["Player"] == player_name]
+#     my_player = my_player[['Player','Nation','Pos','Age','Gls','Ast','xG','xAG']]
+#     playerlist = get_data(url_transfer)[['Player','Nation','Pos','Age','Gls','Ast','xG','xAG']]
+
+
+
 ##################################################################################################################################################################################################3
 ###Build GUI / Interface of the Web App
 
@@ -907,8 +915,7 @@ if menu == "Squad":
 if menu == "Transfer":
     st.sidebar.markdown("Recommend the most similar with your selection player")
     radio = st.sidebar.radio('Player type', ['Outfield players', 'Goal Keepers']) 
-#     player_name = st.sidebar.selectbox('Player Name', load_data(url)[0]["Player"])
-#     gk = load_data(url)[0].loc[load_data(url)[0]["Pos"] == "GK"]
+
     if radio == "Goal Keepers":
         player_name = st.sidebar.selectbox('Player',load_data(url)[0].loc[load_data(url)[0]["Pos"] == "GK"]["Player"])
     else:
@@ -916,7 +923,6 @@ if menu == "Transfer":
         
     league = st.sidebar.selectbox('League', ["English Premier League", "Bundesliga","La Liga", "Ligue 1", "Serie A"]) 
     
-#     age_default = (min(int(get_data(url_transfer)['Age'])), max(int(get_data(url_transfer)['Age'])))
     age = st.sidebar.slider('Age bracket', min_value=15, max_value=50, value=[15,50], 
         help='Age range to get recommendations from. Drag the sliders on either side. \'All\' ages by default.')
     

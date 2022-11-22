@@ -841,14 +841,14 @@ def filter_player_by_sidebar(url, url_transfer, url_defend, url_gk,player_name, 
             playerlist = playerlist.head(10)
 
         elif "FW" in my_player["Pos"].iloc[0]:
-            playerlist = playerlist.loc[playerlist["xG"].astype(float) >= float(my_player["xG"].iloc[0])]
-            if playerlist.empty:
+            playerlist_fw = playerlist.loc[playerlist["xG"].astype(float) >= float(my_player["xG"].iloc[0])]
+            if playerlist_fw.empty:
                 playerlist = playerlist.sort_values(by='xG', ascending=False)
-
+            else:
+                playerlist = playerlist_fw
             playerlist = playerlist.head(10)
 
-#         else:
-#             playerlist = playerlist.sapmle(n = 10)
+
         playerlist = playerlist.drop_duplicates(subset="Player")
         playerlist = playerlist.reset_index(drop = True)
     

@@ -810,11 +810,12 @@ def get_data(url):
     return playerlist
 
 
-def filter_player_by_sidebar(url, url_transfer, player_name, league):
+def filter_player_by_sidebar(url, url_transfer, url_defend, player_name, league):
     cosine_lst = []
     my_player = load_data(url)[0].loc[load_data(url)[0]["Player"] == player_name]
     my_player = my_player[['Player','Nation','Pos','Age','Gls','Ast','xG','xAG']]
     playerlist = get_data(url_transfer)[['Player','Nation','Pos','Age','Squad','Comp','Gls','Ast','xG','xAG']] #All players
+    playerlist = pd.concat([playerlist, get_player_defend_table(url_defend)])
     playerlist = playerlist.loc[playerlist["Pos"].str.contains(str(my_player["Pos"].iloc[0]))]                 #Filter same possision with my player
     if league == "All":
         pass
@@ -838,6 +839,20 @@ def filter_player_by_sidebar(url, url_transfer, player_name, league):
 
     return playerlist
 
+url_defend = "https://fbref.com/en/comps/Big5/defense/players/Big-5-European-Leagues-Stats"
+
+def get_player_defend_table(url_defend):
+    
+    html = pd.read_html(url, header = 1)
+    player_de = html[0]
+    player_de = player_de.drop(['Player', 'Nation', 'Age','Squad','Comp', "Rk", "Matches", 'Tkl', 'Def 3rd', 'Mid 3rd', 'Att 3rd', 'Tkl.1', 'Att', 'Tkl%', 'Past', 'Block', 'Sh', 'Tkl+Int', 'Clr', 'Err'], axis = 1) 
+#     player_de["Nation"] = player_de["Nation"].str.replace('[a-z]', '')
+#     player_de["Age"] = player_de["Age"].str.replace(r'(-\d\d\d)', '')
+#     player_de["Comp"] = player_de["Comp"].str.replace(r'(eng)|(fr)|(it)|(de)|(es)', '')
+#     player_de["Comp"] = player_de["Comp"].str.replace(r'Bunsliga', 'Bundesliga')
+    
+    return player_de
+    
 ##################################################################################################################################################################################################3
 ###Build GUI / Interface of the Web App
 
@@ -966,7 +981,7 @@ if menu == "Transfer":
     see_data = st.expander("Showing Recommended Players 👉")
     with see_data:
         st.markdown("_Top 10 recommended players for_ **{}**".format(player_name))
-        st.dataframe(filter_player_by_sidebar(url, url_transfer, player_name, league))
+        st.dataframe(filter_player_by_sidebar(url, url_transfer, url_defend, player_name, league))
 # else:
 #     st.sidebar.warning("Incorrect password/username!")
 

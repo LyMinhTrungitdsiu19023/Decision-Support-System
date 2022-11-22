@@ -819,7 +819,7 @@ def filter_player_by_sidebar(url, url_transfer, url_defend, player_name, league,
 
     playerlist = playerlist.loc[playerlist["Pos"].str.contains(str(my_player["Pos"].iloc[0]))]                 #Filter same possision with my player
     playerlist = playerlist[playerlist["Player"].str.contains(player_name)==False]
-    playerlist = playerlist[playerlist["Player"].str.contains("Manchester City")==False]
+    playerlist = playerlist[playerlist["Squad"].str.contains("Manchester City")==False]
 
     if league == "All":
         pass

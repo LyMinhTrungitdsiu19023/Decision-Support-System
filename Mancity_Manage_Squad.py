@@ -810,38 +810,49 @@ def get_data(url):
     return playerlist
 
 
-def filter_player_by_sidebar(url, url_transfer, url_defend, player_name, league):
-    cosine_lst = []
+def filter_player_by_sidebar(url, url_transfer, url_defend, player_name, league,radio):
     my_player = load_data(url)[0].loc[load_data(url)[0]["Player"] == player_name]
     my_player = my_player[['Player','Nation','Pos','Age','Gls','Ast','xG','xAG']]
     my_player = pd.concat([my_player, Analysis(url)[2].loc[Analysis(url)[2]["Player"] == player_name][['TklW','Intercept']]], axis = 1)
-    
     playerlist = get_data(url_transfer)[['Player','Nation','Pos','Age','Squad','Comp','Gls','Ast','xG','xAG']] #All players
     playerlist = pd.concat([playerlist, get_player_defend_table(url_defend)], axis=1)
-    
+
     playerlist = playerlist.loc[playerlist["Pos"].str.contains(str(my_player["Pos"].iloc[0]))]                 #Filter same possision with my player
     if league == "All":
         pass
     else:
         playerlist = playerlist.loc[playerlist["Comp"].str.contains(str(league))] 
+    if radio == "Outfield players":
+
+        if my_player["Pos"].iloc[0] == "DF":
+#             playerlist_tkl = playerlist.sort_values(by='TklW', ascending=False)
+            playerlist_tkl = playerlist.loc[playerlist["TklW"] >= my_player["TklW"].iloc[0]]
+            playerlist_int = playerlist.loc[playerlist["Int"] >= my_player["Int"].iloc[0]]
+
+            #playerlist_int = playerlist.sort_values(by='Int', ascending=False)
+            playerlist = pd.concat([playerlist_tkl, playerlist_int], axis = 0)
+        elif my_player["Pos"].iloc[0] == "MF":
+            playerlist = playerlist.sort_values(by='xAG', ascending=False)
+            playerlist = playerlist.head(10)
+
+        elif my_player["Pos"].iloc[0] == "FW":
+            playerlist = playerlist.sort_values(by='xG', ascending=False)
+            playerlist = playerlist.head(10)
+
+        else:
+            playerlist = playerlist.sapmle(n = 10)
+        
+        playerlist = playerlist.reset_index(drop = True)
     
-#     playerlist = playerlist.reset_index(drop = True)
+    else:
+        playerlist = playerlist.sapmle(n = 10)
 
-# #     np_myplayer = my_player[["Gls", "Ast", "xG", "xAG"]].values.tolist()
-# #     np_playerlist = playerlist.iloc[i][["Gls", "Ast", "xG", "xAG"]].values.tolist()
+    return playerlist
+        
+
     
-#     for i in range(len(playerlist)):
-#         np_playerlist = playerlist.iloc[i][["Gls", "Ast", "xG", "xAG"]].values.tolist()
-#         similarity = 1 - spatial.distance.cosine(np_myplayer, np_playerlist)
-#         cosine_lst.append(similarity)
-#     playerlist['Similarity'] = cosine_lst
-
-#     playerlist = playerlist.sort_values(by='Similarity', ascending=False)
-    playerlist = playerlist.head(10)
-    playerlist = playerlist.reset_index(drop = True)
-
-    return my_player
-
+    
+    
 url_defend = "https://fbref.com/en/comps/Big5/defense/players/Big-5-European-Leagues-Stats"
 
 def get_player_defend_table(url_defend):
@@ -984,8 +995,8 @@ if menu == "Transfer":
         
     see_data = st.expander("Showing Recommended Players 👉")
     with see_data:
-        st.markdown("_Top 10 recommended players for_ **{}**".format(player_name))
-        st.dataframe(filter_player_by_sidebar(url, url_transfer, url_defend, player_name, league))
+        st.markdown("_Top recommended players for_ **{}**".format(player_name))
+        st.dataframe(filter_player_by_sidebar(url, url_transfer, url_defend, player_name, league, radio))
 #         st.dataframe(get_player_defend_table(url_defend))
 # else:
 #     st.sidebar.warning("Incorrect password/username!")

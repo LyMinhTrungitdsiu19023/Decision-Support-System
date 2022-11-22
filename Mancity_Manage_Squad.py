@@ -849,12 +849,12 @@ def filter_player_by_sidebar(url, url_transfer, url_defend, url_gk,player_name, 
         playerlist = playerlist.reset_index(drop = True)
     
     else:
-        playerlist = get_goalkeeper_table(url_gk).sort_values(by='GA', ascending=False)
-        playerlist = playerlist[playerlist["Player"].str.contains("Player")==False]
         if league == "All":
             pass
         else:
-            playerlist = playerlist.loc[playerlist["Comp"].str.contains(str(league))] 
+            playerlist = get_goalkeeper_table(url_gk).loc[get_goalkeeper_table(url_gk)["Comp"].str.contains(str(league))] 
+        playerlist = get_goalkeeper_table(url_gk).sort_values(by='GA', ascending=False)
+        playerlist = playerlist[playerlist["Player"].str.contains("Player")==False]
         playerlist = playerlist.head(10)
         playerlist = playerlist.reset_index(drop = True)
 

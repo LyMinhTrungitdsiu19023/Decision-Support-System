@@ -849,6 +849,7 @@ def filter_player_by_sidebar(url, url_transfer, url_defend, url_gk,player_name, 
     
     else:
         playerlist = get_goalkeeper_table(url_gk).sort_values(by='GA', ascending=False)
+        playerlist = playerlist[playerlist["Player"].str.contains("Player")==False]
         playerlist = playerlist.head(10)
 
     return playerlist
@@ -863,6 +864,10 @@ def get_goalkeeper_table(url_gk):
         
     html = pd.read_html(url_gk, header = 1)
     gk = html[0]
+    gk["Nation"] = gk["Nation"].str.replace('[a-z]', '')
+    gk["Age"] = gk["Age"].str.replace(r'(-\d\d\d)', '')
+    gk["Comp"] = gk["Comp"].str.replace(r'(eng)|(fr)|(it)|(de)|(es)', '')
+    gk["Comp"] = gk["Comp"].str.replace(r'Bunsliga', 'Bundesliga')
     gk = gk[['Player','Nation','Pos','Age','GA']]
     return gk
 

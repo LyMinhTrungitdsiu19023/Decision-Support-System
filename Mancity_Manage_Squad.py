@@ -910,9 +910,11 @@ Project of Decision Support System course\n
 by\n
 Ly Minh Trung - Kieu Chi Huy - Truong Quoc An
 """)
-st.sidebar.markdown('Sign in') 
-username = st.sidebar.text_input("Username/coachname")
-password = st.sidebar.text_input("Password", type = "password")
+see_sign = st.sidebar.expander("Sign In 👉")
+with see_sign: 
+    st.sidebar.markdown('Sign in') 
+    username = st.sidebar.text_input("Username/coachname")
+    password = st.sidebar.text_input("Password", type = "password")
 # if st.sidebar.button("Login"):
 if username == "pepguardiola" and password == "manutd":
     if st.sidebar.button("Log out"):

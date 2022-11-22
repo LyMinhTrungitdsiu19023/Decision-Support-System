@@ -810,7 +810,7 @@ def get_data(url):
     return playerlist
 
 
-def filter_player_by_sidebar(url, url_transfer, url_defend, player_name, league,radio):
+def filter_player_by_sidebar(url, url_transfer, url_defend, url_gk,player_name, league,radio):
     my_player = load_data(url)[0].loc[load_data(url)[0]["Player"] == player_name]
     my_player = my_player[['Player','Nation','Pos','Age','Gls','Ast','xG','xAG']]
     my_player = pd.concat([my_player, Analysis(url)[2].loc[Analysis(url)[2]["Player"] == player_name][['TklW','Intercept']]], axis = 1)
@@ -848,7 +848,8 @@ def filter_player_by_sidebar(url, url_transfer, url_defend, player_name, league,
         playerlist = playerlist.reset_index(drop = True)
     
     else:
-        playerlist = playerlist.sapmle(n = 10)
+        playerlist = get_goalkeeper_table(url_gk).sort_values(by='GA', ascending=False)
+        playerlist = playerlist.head(10)
 
     return playerlist
         
@@ -857,6 +858,13 @@ def filter_player_by_sidebar(url, url_transfer, url_defend, player_name, league,
     
     
 url_defend = "https://fbref.com/en/comps/Big5/defense/players/Big-5-European-Leagues-Stats"
+url_gk = "https://fbref.com/en/comps/Big5/keepersadv/players/Big-5-European-Leagues-Stats"
+def get_goalkeeper_table(url_gk):
+        
+    html = pd.read_html(url_gk, header = 1)
+    gk = html[0]
+    gk = gk[['Player','Nation','Pos','Age','GA']]
+    return gk
 
 def get_player_defend_table(url_defend):
     
@@ -999,7 +1007,7 @@ if menu == "Transfer":
     see_data = st.expander("Showing Recommended Players 👉")
     with see_data:
         st.markdown("_Top recommended players for_ **{}**".format(player_name))
-        st.dataframe(filter_player_by_sidebar(url, url_transfer, url_defend, player_name, league, radio))
+        st.dataframe(filter_player_by_sidebar(url, url_transfer, url_defend,url_gk, player_name, league, radio))
 #         st.dataframe(get_player_defend_table(url_defend))
 # else:
 #     st.sidebar.warning("Incorrect password/username!")

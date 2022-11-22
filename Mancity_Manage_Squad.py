@@ -855,11 +855,13 @@ def filter_player_by_sidebar(url, url_transfer, url_defend, url_gk,player_name, 
         if league == "All":
             pass
         else:
-            playerlist = playerlist.loc[playerlist["Comp"].str.contains(str(league))] 
-        playerlist['GA'] = playerlist['GA'].astype(int)
-        playerlist = playerlist.sort_values(by='GA', ascending=False)
-        playerlist = playerlist.head(10)
-        playerlist = playerlist.reset_index(drop = True)
+            playerlist = playerlist.loc[playerlist["Comp"].str.contains(str(league))]
+        try:    
+            playerlist['GA'] = playerlist['GA'].astype(int)
+        except:
+            playerlist = playerlist.sort_values(by='GA', ascending=False)
+            playerlist = playerlist.head(10)
+            playerlist = playerlist.reset_index(drop = True)
 
     return playerlist
         

@@ -817,11 +817,11 @@ def filter_player_by_sidebar(url, url_transfer, url_defend, player_name, league)
     playerlist = get_data(url_transfer)[['Player','Nation','Pos','Age','Squad','Comp','Gls','Ast','xG','xAG']] #All players
     playerlist = pd.concat([playerlist, get_player_defend_table(url_defend)])
     
-    playerlist = playerlist.loc[playerlist["Pos"].str.contains(str(my_player["Pos"].iloc[0]))]                 #Filter same possision with my player
-    if league == "All":
-        pass
-    else:
-        playerlist = playerlist.loc[playerlist["Comp"].str.contains(str(league))] 
+#     playerlist = playerlist.loc[playerlist["Pos"].str.contains(str(my_player["Pos"].iloc[0]))]                 #Filter same possision with my player
+#     if league == "All":
+#         pass
+#     else:
+#         playerlist = playerlist.loc[playerlist["Comp"].str.contains(str(league))] 
     
 #     playerlist = playerlist.reset_index(drop = True)
 

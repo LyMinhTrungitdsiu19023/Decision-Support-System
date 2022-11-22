@@ -918,6 +918,7 @@ if username == "pepguardiola" and password == "manutd":
     if st.sidebar.button("Log out"):
         st.header("Log out successfully")
     else:
+        password = ''
         see_data = st.expander("Information of Manchester City's Players 👉")
         with see_data: 
             st.header("Information of Manchester City's Players")

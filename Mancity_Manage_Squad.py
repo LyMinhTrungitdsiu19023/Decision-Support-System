@@ -827,7 +827,7 @@ def filter_player_by_sidebar(url, url_transfer, url_defend, player_name, league,
         if my_player["Pos"].iloc[0] == "DF":
 #             playerlist_tkl = playerlist.sort_values(by='TklW', ascending=False)
             playerlist_tkl = playerlist.loc[playerlist["TklW"].astype(int) >= int(my_player["TklW"].iloc[0])]
-            playerlist_int = playerlist.loc[playerlist["Int"].astype(int) >= int(my_player["Int"].iloc[0])]
+            playerlist_int = playerlist.loc[playerlist["Int"].astype(int) >= int(my_player["Intercept"].iloc[0])]
 
             #playerlist_int = playerlist.sort_values(by='Int', ascending=False)
             playerlist = pd.concat([playerlist_tkl, playerlist_int], axis = 0)

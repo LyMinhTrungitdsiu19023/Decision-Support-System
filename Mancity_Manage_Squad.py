@@ -914,9 +914,8 @@ Ly Minh Trung - Kieu Chi Huy - Truong Quoc An
 st.sidebar.markdown('Sign in') 
 username = st.sidebar.text_input("Username/coachname")
 password = st.sidebar.text_input("Password", type = "password")
-# if st.sidebar.button("Login"):
-if username == "pepguardiola" and password == "manutd":
-    if st.sidebar.button("Login"):
+if st.sidebar.button("Login"):
+    if username == "pepguardiola" and password == "manutd":
         if st.sidebar.button("Log out"):
             st.header("Log out successfully")
         else:
@@ -1035,6 +1034,6 @@ if username == "pepguardiola" and password == "manutd":
                         st.markdown("_Top recommended players for_ **{}**".format(player_name))
                         st.dataframe(filter_player_by_sidebar(url, url_transfer, url_defend,url_gk, player_name, league, radio))
             #         st.dataframe(get_player_defend_table(url_defend))
-else:
-    st.sidebar.warning("Incorrect password/username!")
+    else:
+        st.sidebar.warning("Incorrect password/username!")
 

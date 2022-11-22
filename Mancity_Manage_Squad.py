@@ -869,7 +869,7 @@ def get_goalkeeper_table(url_gk):
     gk["Age"] = gk["Age"].str.replace(r'(-\d\d\d)', '')
     gk["Comp"] = gk["Comp"].str.replace(r'(eng)|(fr)|(it)|(de)|(es)', '')
     gk["Comp"] = gk["Comp"].str.replace(r'Bunsliga', 'Bundesliga')
-    gk = gk[['Player','Nation','Pos','Age','GA']]
+    gk = gk[['Player','Nation','Pos','Squad','Comp','Age','GA']]
     return gk
 
 def get_player_defend_table(url_defend):

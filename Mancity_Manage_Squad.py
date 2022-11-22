@@ -842,6 +842,9 @@ def filter_player_by_sidebar(url, url_transfer, url_defend, url_gk,player_name, 
 
         elif "FW" in my_player["Pos"].iloc[0]:
             playerlist = playerlist.loc[playerlist["xG"].astype(float) >= float(my_player["xG"].iloc[0])]
+            if playerlist.empty:
+                playerlist = playerlist.sort_values(by='xG', ascending=False)
+
             playerlist = playerlist.head(10)
 
 #         else:

@@ -814,7 +814,7 @@ def filter_player_by_sidebar(url, url_transfer, url_defend, player_name, league)
     cosine_lst = []
     my_player = load_data(url)[0].loc[load_data(url)[0]["Player"] == player_name]
     my_player = my_player[['Player','Nation','Pos','Age','Gls','Ast','xG','xAG']]
-    my_player = pd.concat([my_player, Analysis(url)[2][['TklW','Intercept']]], axis = 1)
+    my_player = pd.concat([my_player, Analysis(url)[2].loc[Analysis(url)[2]["Player"] == player_name][['TklW','Intercept']]], axis = 1)
     
     playerlist = get_data(url_transfer)[['Player','Nation','Pos','Age','Squad','Comp','Gls','Ast','xG','xAG']] #All players
     playerlist = pd.concat([playerlist, get_player_defend_table(url_defend)], axis=1)
@@ -840,7 +840,7 @@ def filter_player_by_sidebar(url, url_transfer, url_defend, player_name, league)
     playerlist = playerlist.head(10)
     playerlist = playerlist.reset_index(drop = True)
 
-    return playerlist
+    return my_player
 
 url_defend = "https://fbref.com/en/comps/Big5/defense/players/Big-5-European-Leagues-Stats"
 

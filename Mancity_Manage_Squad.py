@@ -846,7 +846,7 @@ def filter_player_by_sidebar(url, url_transfer, url_defend, url_gk,player_name, 
 
 #         else:
 #             playerlist = playerlist.sapmle(n = 10)
-        playerlist.drop_duplicates(subset="Player")
+        playerlist = playerlist.drop_duplicates(subset="Player")
         playerlist = playerlist.reset_index(drop = True)
     
     else:

@@ -816,6 +816,7 @@ def filter_player_by_sidebar(url, url_transfer, url_defend, player_name, league)
     my_player = my_player[['Player','Nation','Pos','Age','Gls','Ast','xG','xAG']]
     playerlist = get_data(url_transfer)[['Player','Nation','Pos','Age','Squad','Comp','Gls','Ast','xG','xAG']] #All players
     playerlist = pd.concat([playerlist, get_player_defend_table(url_defend)])
+    
     playerlist = playerlist.loc[playerlist["Pos"].str.contains(str(my_player["Pos"].iloc[0]))]                 #Filter same possision with my player
     if league == "All":
         pass
@@ -851,7 +852,7 @@ def get_player_defend_table(url_defend):
 #     player_de["Age"] = player_de["Age"].str.replace(r'(-\d\d\d)', '')
 #     player_de["Comp"] = player_de["Comp"].str.replace(r'(eng)|(fr)|(it)|(de)|(es)', '')
 #     player_de["Comp"] = player_de["Comp"].str.replace(r'Bunsliga', 'Bundesliga')
-    player_de = player_de.head(10)
+#     player_de = player_de.head(10)
     return player_de
     
 ##################################################################################################################################################################################################3
@@ -982,8 +983,8 @@ if menu == "Transfer":
     see_data = st.expander("Showing Recommended Players 👉")
     with see_data:
         st.markdown("_Top 10 recommended players for_ **{}**".format(player_name))
-#         st.dataframe(filter_player_by_sidebar(url, url_transfer, url_defend, player_name, league))
-        st.dataframe(get_player_defend_table(url_defend))
+        st.dataframe(filter_player_by_sidebar(url, url_transfer, url_defend, player_name, league))
+#         st.dataframe(get_player_defend_table(url_defend))
 # else:
 #     st.sidebar.warning("Incorrect password/username!")
 

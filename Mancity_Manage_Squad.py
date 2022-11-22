@@ -879,6 +879,8 @@ def get_goalkeeper_table(url_gk):
     gk["Comp"] = gk["Comp"].str.replace(r'Bunsliga', 'Bundesliga')
     gk = gk[['Player','Nation','Pos','Squad','Comp','Age','GA']]
     gk = gk[gk["Player"].str.contains("Player")==False]
+    gk = gk[gk["GA"].str.contains(r'[A-Za-z]')==False]
+
     gk['GA'] = gk['GA'].astype(int)
 
     return gk

@@ -818,6 +818,8 @@ def filter_player_by_sidebar(url, url_transfer, url_defend, player_name, league,
     playerlist = pd.concat([playerlist, get_player_defend_table(url_defend)], axis=1)
 
     playerlist = playerlist.loc[playerlist["Pos"].str.contains(str(my_player["Pos"].iloc[0]))]                 #Filter same possision with my player
+    playerlist = playerlist[playerlist["Player"].str.contains(player_name)==False]
+
     if league == "All":
         pass
     else:
@@ -841,7 +843,7 @@ def filter_player_by_sidebar(url, url_transfer, url_defend, player_name, league,
 
 #         else:
 #             playerlist = playerlist.sapmle(n = 10)
-        
+        playerlist.drop_duplicates()
         playerlist = playerlist.reset_index(drop = True)
     
     else:

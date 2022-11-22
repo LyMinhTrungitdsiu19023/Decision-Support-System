@@ -845,7 +845,8 @@ def get_player_defend_table(url_defend):
     
     html = pd.read_html(url, header = 1)
     player_de = html[0]
-    player_de = player_de.drop(['Player', 'Nation', 'Age','Squad','Comp', "Rk", "Matches", 'Tkl', 'Def 3rd', 'Mid 3rd', 'Att 3rd', 'Tkl.1', 'Att', 'Tkl%', 'Past', 'Block', 'Sh', 'Tkl+Int', 'Clr', 'Err'], axis = 1) 
+    player_de = player_de['TklW','Int']
+#     player_de = player_de.drop(['Player', 'Nation', 'Age','Squad','Comp', "Rk", "Matches", 'Tkl', 'Def 3rd', 'Mid 3rd', 'Att 3rd', 'Tkl.1', 'Att', 'Tkl%', 'Past', 'Block', 'Sh', 'Tkl+Int', 'Clr', 'Err'], axis = 1) 
 #     player_de["Nation"] = player_de["Nation"].str.replace('[a-z]', '')
 #     player_de["Age"] = player_de["Age"].str.replace(r'(-\d\d\d)', '')
 #     player_de["Comp"] = player_de["Comp"].str.replace(r'(eng)|(fr)|(it)|(de)|(es)', '')

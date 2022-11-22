@@ -819,6 +819,7 @@ def filter_player_by_sidebar(url, url_transfer, url_defend, player_name, league,
 
     playerlist = playerlist.loc[playerlist["Pos"].str.contains(str(my_player["Pos"].iloc[0]))]                 #Filter same possision with my player
     playerlist = playerlist[playerlist["Player"].str.contains(player_name)==False]
+    playerlist = playerlist[playerlist["Player"].str.contains("Manchester City")==False]
 
     if league == "All":
         pass
@@ -843,7 +844,7 @@ def filter_player_by_sidebar(url, url_transfer, url_defend, player_name, league,
 
 #         else:
 #             playerlist = playerlist.sapmle(n = 10)
-        playerlist.drop_duplicates()
+        playerlist.drop_duplicates(subset="Player")
         playerlist = playerlist.reset_index(drop = True)
     
     else:

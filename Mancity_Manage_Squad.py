@@ -824,23 +824,23 @@ def filter_player_by_sidebar(url, url_transfer, url_defend, player_name, league,
         playerlist = playerlist.loc[playerlist["Comp"].str.contains(str(league))] 
     if radio == "Outfield players":
 
-        if my_player["Pos"].iloc[0] == "DF":
+        if "DF" in my_player["Pos"].iloc[0]:
 #             playerlist_tkl = playerlist.sort_values(by='TklW', ascending=False)
             playerlist_tkl = playerlist.loc[playerlist["TklW"].astype(int) >= int(my_player["TklW"].iloc[0])]
             playerlist_int = playerlist.loc[playerlist["Int"].astype(int) >= int(my_player["Intercept"].iloc[0])]
 
             #playerlist_int = playerlist.sort_values(by='Int', ascending=False)
             playerlist = pd.concat([playerlist_tkl, playerlist_int], axis = 0)
-        elif my_player["Pos"].iloc[0] == "MF":
+        elif "MF" in my_player["Pos"].iloc[0]:
             playerlist = playerlist.loc[playerlist["xAG"].astype(float) >= float(my_player["xAG"].iloc[0])]
             playerlist = playerlist.head(10)
 
-        elif my_player["Pos"].iloc[0] == "FW":
+        elif "FW" in my_player["Pos"].iloc[0]:
             playerlist = playerlist.loc[playerlist["xG"].astype(float) >= float(my_player["xG"].iloc[0])]
             playerlist = playerlist.head(10)
 
-        else:
-            playerlist = playerlist.sapmle(n = 10)
+#         else:
+#             playerlist = playerlist.sapmle(n = 10)
         
         playerlist = playerlist.reset_index(drop = True)
     

@@ -48,7 +48,7 @@ def Analysis(url):
     passing =  data[5]
     passing.drop(passing.tail(2).index, inplace = True)
     passing["Nation"] = passing["Nation"].str.replace('[a-z]', '')
-    passing = passing.drop(['xAG','xA', 'A-xAG', 'KP', '1/3', 'PPA', 'CrsPA', 'Prog','Matches'], axis=1)
+#     passing = passing.drop(['xAG','xA', 'A-xAG', 'KP', '1/3', 'PPA', 'CrsPA', 'Prog','Matches'], axis=1)
     passing.rename(columns = {'Cmp':'Passed Completed', 'Att':'Passes Attempted', 'Cmp%':'%Completed'}, inplace = True)
     passing = passing.reset_index(drop = True)
 

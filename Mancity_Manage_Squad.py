@@ -13,6 +13,8 @@ from PIL import Image
 # url = "https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats"
 url_transfer = "https://fbref.com/en/comps/Big5/stats/players/Big-5-European-Leagues-Stats"
 # @st.cache
+st.set_page_config(page_title="Manchester City Decision Support System", layout = 'wide')
+
 @limits(calls=10, period = 900)
 @st.cache(allow_output_mutation=True)
 ###Implement Squad Role for System
@@ -901,7 +903,6 @@ def get_player_defend_table(url_defend):
 ##################################################################################################################################################################################################3
 ###Build GUI / Interface of the Web App
 
-st.set_page_config(page_title="Manchester City Decision Support System", layout = 'wide')
 
 image = Image.open('squad2223.jpg')
 

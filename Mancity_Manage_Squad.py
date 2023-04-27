@@ -28,12 +28,12 @@ def load_data(url):
     playerstats["Nation"] = playerstats["Nation"].str.replace('[a-z]', '')
     playerstats["Age"] = playerstats["Age"].str.replace(r'(-\d\d\d)', '')
 
-    return playerstats, shoot, passing, df
+    return playerstats, shoot, passing, df, html
 
 def Analysis(url):
     #Forward
-    data = pd.read_html(url, header = 1)
-
+#     data = pd.read_html(url, header = 1)
+    data = load_data(url)[4]
 
     #Shoot
     shoot =  data[4]

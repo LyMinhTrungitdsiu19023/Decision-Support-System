@@ -32,8 +32,8 @@ def load_data(url):
 
 def Analysis(url):
     #Forward
-#     data = pd.read_html(url, header = 1)
-    data = load_data(url)[4]
+    data = pd.read_html(url, header = 1)
+#     data = load_data(url)[4]
 
     #Shoot
     shoot =  data[4]

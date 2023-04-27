@@ -10,12 +10,11 @@ from scipy import spatial
 
 
 from PIL import Image
-
+@st.cache(allow_output_mutation=True)
 url = "https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats"
 
 url_transfer = "https://fbref.com/en/comps/Big5/stats/players/Big-5-European-Leagues-Stats"
 # @st.cache
-@st.cache(allow_output_mutation=True)
 
 ###Implement Squad Role for System
 def load_data(url):
@@ -58,10 +57,10 @@ def Analysis(url):
     df =  data[8]
     df.drop(df.tail(2).index, inplace = True)
     df["Nation"] = df["Nation"].str.replace('[a-z]', '')
-#     df = df.drop(['Def 3rd', 'Att 3rd','Att','Past','Sh','Pass','Tkl+Int','Clr','Matches'], axis=1)
-#     df.rename(columns = {'Tkl':'Number of Players Tackles', 'Tkl.1':'Number of Tackled by Competitors','Int':'Intercept', 'Err':'Mistakes lead to goals'}, inplace = True)
+    df = df.drop(['Def 3rd', 'Att 3rd','Att','Past','Sh','Pass','Tkl+Int','Clr','Matches'], axis=1)
+    df.rename(columns = {'Tkl':'Number of Players Tackles', 'Tkl.1':'Number of Tackled by Competitors','Int':'Intercept', 'Err':'Mistakes lead to goals'}, inplace = True)
 
-#     df = df.reset_index(drop = True)
+    df = df.reset_index(drop = True)
 
     #Possesion
     possesion = data[9]

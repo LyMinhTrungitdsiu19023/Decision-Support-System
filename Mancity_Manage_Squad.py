@@ -11,21 +11,23 @@ from ratelimit import limits
 import requests
 from PIL import Image
 # url = "https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats"
-url_transfer = "https://fbref.com/en/comps/Big5/stats/players/Big-5-European-Leagues-Stats"
+# url_transfer = "https://fbref.com/en/comps/Big5/stats/players/Big-5-European-Leagues-Stats"
 # @st.cache
 st.set_page_config(page_title="Manchester City Decision Support System", layout = 'wide')
 
 @limits(calls=10, period = 900)
 @st.cache(allow_output_mutation=True)
 ###Implement Squad Role for System
-def call_api(url):
-    response = requests.get(url)
+# def call_api(url):
+#     response = requests.get(url)
 
-    if response.status_code != 200:
-        raise Exception('API response: {}'.format(response.status_code))
-    return response
+#     if response.status_code != 200:
+#         raise Exception('API response: {}'.format(response.status_code))
+#     return response
 
-url = call_api("https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats")
+# url = call_api("https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats")
+url = "https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats"
+url_transfer = "https://fbref.com/en/comps/Big5/stats/players/Big-5-European-Leagues-Stats"
 def load_data(url):
 
     html = pd.read_html(url, header = 1)

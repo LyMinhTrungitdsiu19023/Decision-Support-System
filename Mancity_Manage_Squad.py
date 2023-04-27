@@ -13,7 +13,7 @@ from PIL import Image
 # url = "https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats"
 url_transfer = "https://fbref.com/en/comps/Big5/stats/players/Big-5-European-Leagues-Stats"
 # @st.cache
-@limit(calls=10, period = 900)
+@limits(calls=10, period = 900)
 @st.cache(allow_output_mutation=True)
 ###Implement Squad Role for System
 def call_api(url):

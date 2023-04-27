@@ -10,8 +10,8 @@ from scipy import spatial
 from ratelimit import limits
 import requests
 from PIL import Image
-# url = "https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats"
-# url_transfer = "https://fbref.com/en/comps/Big5/stats/players/Big-5-European-Leagues-Stats"
+url = "https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats"
+url_transfer = "https://fbref.com/en/comps/Big5/stats/players/Big-5-European-Leagues-Stats"
 # @st.cache
 st.set_page_config(page_title="Manchester City Decision Support System", layout = 'wide')
 
@@ -26,8 +26,8 @@ st.set_page_config(page_title="Manchester City Decision Support System", layout 
 #     return response
 
 # url = call_api("https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats")
-url = "https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats"
-url_transfer = "https://fbref.com/en/comps/Big5/stats/players/Big-5-European-Leagues-Stats"
+# url = "https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats"
+# url_transfer = "https://fbref.com/en/comps/Big5/stats/players/Big-5-European-Leagues-Stats"
 def load_data(url):
 
     html = pd.read_html(url, header = 1)

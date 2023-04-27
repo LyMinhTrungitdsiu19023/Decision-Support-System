@@ -10,12 +10,11 @@ from scipy import spatial
 
 
 from PIL import Image
-@st.cache(allow_output_mutation=True)
 url = "https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats"
 
 url_transfer = "https://fbref.com/en/comps/Big5/stats/players/Big-5-European-Leagues-Stats"
 # @st.cache
-
+@st.cache(allow_output_mutation=True)
 ###Implement Squad Role for System
 def load_data(url):
 

@@ -10,7 +10,7 @@ from scipy import spatial
 
 
 from PIL import Image
-# url = "https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats"
+url = "https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats"
 url_transfer = "https://fbref.com/en/comps/Big5/stats/players/Big-5-European-Leagues-Stats"
 # @st.cache
 @st.cache(allow_output_mutation=True)

@@ -9,10 +9,8 @@ import numpy as np
 from scipy import spatial
 
 
-from PIL import Image
-
+from PIL import Images
 url = "https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats"
-
 url_transfer = "https://fbref.com/en/comps/Big5/stats/players/Big-5-European-Leagues-Stats"
 # @st.cache
 @st.cache(allow_output_mutation=True)
@@ -32,8 +30,8 @@ def load_data(url):
 
 def Analysis(url):
     #Forward
-    data = pd.read_html(url, header = 1)
-#     data = load_data(url)[4]
+#     data = pd.read_html(url, header = 1)
+    data = load_data(url)[4]
 
     #Shoot
     shoot =  data[4]

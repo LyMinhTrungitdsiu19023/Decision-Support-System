@@ -10,13 +10,10 @@ from scipy import spatial
 from ratelimit import limits
 import requests
 from PIL import Image
+@st.cache_data(experimental_allow_widgets=True)
 url = "https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats"
 url_transfer = "https://fbref.com/en/comps/Big5/stats/players/Big-5-European-Leagues-Stats"
-# @st.cache
 st.set_page_config(page_title="Manchester City Decision Support System", layout = 'wide')
-
-@limits(calls=10, period = 900)
-@st.cache(allow_output_mutation=True)
 ###Implement Squad Role for System
 # def call_api(url):
 #     response = requests.get(url)
@@ -29,7 +26,6 @@ st.set_page_config(page_title="Manchester City Decision Support System", layout 
 # url = "https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats"
 # url_transfer = "https://fbref.com/en/comps/Big5/stats/players/Big-5-European-Leagues-Stats"
 def load_data(url):
-
     html = pd.read_html(url, header = 1)
     playerstats = html[0]
     shoot = html[4]

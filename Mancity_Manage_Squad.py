@@ -11,8 +11,7 @@ from ratelimit import limits
 import requests
 from PIL import Image
 
-url = "https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats"
-url_transfer = "https://fbref.com/en/comps/Big5/stats/players/Big-5-European-Leagues-Stats"
+
 st.set_page_config(page_title="Manchester City Decision Support System", layout = 'wide')
 ###Implement Squad Role for System
 
@@ -27,6 +26,8 @@ st.set_page_config(page_title="Manchester City Decision Support System", layout 
 # url = "https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats"
 # url_transfer = "https://fbref.com/en/comps/Big5/stats/players/Big-5-European-Leagues-Stats"
 @st.cache_data(experimental_allow_widgets=True)
+url = "https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats"
+url_transfer = "https://fbref.com/en/comps/Big5/stats/players/Big-5-European-Leagues-Stats"
 def load_data(url):
     html = pd.read_html(url, header = 1)
     playerstats = html[0]

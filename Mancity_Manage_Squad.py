@@ -28,7 +28,7 @@ st.set_page_config(page_title="Manchester City Decision Support System", layout 
 
 url = "https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats"
 url_transfer = "https://fbref.com/en/comps/Big5/stats/players/Big-5-European-Leagues-Stats"
-@st.cache_resource(experimental_allow_widgets=True)
+@st.cache_data(experimental_allow_widgets=True)
 def load_data(url):
     html = pd.read_html(url, header = 1)
     playerstats = html[0]

@@ -915,9 +915,9 @@ st.title("Manchester City Football Club Management Decision Support System")
 
 
 st.markdown("""
-Project of Decision Support System course\n
+Project of Information System Management course\n
 by\n
-Ly Minh Trung - Kieu Chi Huy - Truong Quoc An
+Ly Minh Trung - Kieu Chi Huy - Truong Thai Ngoc Toan - Nguyen Dao Trung Hieu - Nguyen Anh Tuan
 """)
 
 # st.sidebar.markdown('Sign in') 
@@ -1033,7 +1033,7 @@ if menu == "Transfer":
         st.dataframe(df_select_player)
     
     see_data = st.expander("Showing Recommended Players 👉")
-    if st.sidebar.button('Find players'):
+    if st.sidebar.button('##Find players##'):
         with see_data:
             if filter_player_by_sidebar(url, url_transfer, url_defend,url_gk, player_name, league, radio).empty:
                 st.markdown("_No recommended players for_ **{}**".format(player_name))

@@ -1,4 +1,4 @@
-# Decision-Support-System
+# Decision-Support-System & Information System Management
 Our Application here
 https://lyminhtrungitdsiu19023-decision-sup-mancity-manage-squad-oynep6.streamlit.app/ 
 

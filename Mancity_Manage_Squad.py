@@ -11,7 +11,7 @@ from PIL import Image
 import yaml
 from yaml.loader import SafeLoader
 import streamlit_authenticator as stauth
-
+import time 
 st.set_page_config(page_title="Manchester City Decision Support System", layout = 'wide')
 
 url = "https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats"

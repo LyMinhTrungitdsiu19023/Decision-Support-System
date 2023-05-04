@@ -7,4 +7,3 @@ numpy==1.22.0
 scipy == 1.6.0
 ratelimit == 2.2.1
 streamlit-authenticator == 0.2.1
-yaml == 1.2

@@ -4,8 +4,6 @@ import base64
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
-# from numpy.linalg import norm
-# from numpy import dot
 from scipy import spatial
 from ratelimit import limits
 import requests
@@ -13,18 +11,6 @@ from PIL import Image
 
 
 st.set_page_config(page_title="Manchester City Decision Support System", layout = 'wide')
-###Implement Squad Role for System
-
-# def call_api(url):
-#     response = requests.get(url)
-
-#     if response.status_code != 200:
-#         raise Exception('API response: {}'.format(response.status_code))
-#     return response
-
-# url = call_api("https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats")
-# url = "https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats"
-# url_transfer = "https://fbref.com/en/comps/Big5/stats/players/Big-5-European-Leagues-Stats"
 
 url = "https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats"
 url_transfer = "https://fbref.com/en/comps/Big5/stats/players/Big-5-European-Leagues-Stats"
@@ -43,7 +29,6 @@ def load_data(url):
 
 def Analysis(url):
     #Forward
-#     data = pd.read_html(url, header = 1)
     data = load_data(url)[4]
 
     #Shoot
@@ -894,12 +879,7 @@ def get_player_defend_table(url_defend):
     html = pd.read_html(url_defend, header = 1)
     player_de = html[0]
     player_de = player_de[['TklW','Int']]
-#     player_de = player_de.drop(['Player', 'Nation', 'Age','Squad','Comp', "Rk", "Matches", 'Tkl', 'Def 3rd', 'Mid 3rd', 'Att 3rd', 'Tkl.1', 'Att', 'Tkl%', 'Past', 'Block', 'Sh', 'Tkl+Int', 'Clr', 'Err'], axis = 1) 
-#     player_de["Nation"] = player_de["Nation"].str.replace('[a-z]', '')
-#     player_de["Age"] = player_de["Age"].str.replace(r'(-\d\d\d)', '')
-#     player_de["Comp"] = player_de["Comp"].str.replace(r'(eng)|(fr)|(it)|(de)|(es)', '')
-#     player_de["Comp"] = player_de["Comp"].str.replace(r'Bunsliga', 'Bundesliga')
-#     player_de = player_de.head(10)
+
     return player_de
     
 ##################################################################################################################################################################################################3
@@ -920,11 +900,6 @@ by\n
 Ly Minh Trung - Kieu Chi Huy - Truong Thai Ngoc Toan - Nguyen Dao Trung Hieu - Nguyen Anh Tuan
 """)
 
-# st.sidebar.markdown('Sign in') 
-# username = st.sidebar.text_input("Username/coachname")
-# password = st.sidebar.text_input("Password", type = "password")
-# # if st.sidebar.button("Login"):
-# if username == "pepguardiola" and password == "manutd":
 
 see_data = st.expander("Information of Manchester City's Players 👉")
 with see_data: 
@@ -1017,9 +992,6 @@ if menu == "Transfer":
 
     league = st.sidebar.selectbox('League', ["All", "Premier League", "Bundesliga","La Liga", "Ligue 1", "Serie A"]) 
 
-#     age_default = (get_data(url_transfer)['Age'].min(), get_data(url_transfer)['Age'].min())
-#     age = st.sidebar.slider('Age bracket', min_value=age_default[0], max_value=age_default[1], value=age_default, 
-#         help='Age range to get recommendations from. Drag the sliders on either side. \'All\' ages by default.')
 
 
     st.header("Player Recommender")
@@ -1040,7 +1012,5 @@ if menu == "Transfer":
             else:
                 st.markdown("_Top recommended players for_ **{}**".format(player_name))
                 st.dataframe(filter_player_by_sidebar(url, url_transfer, url_defend,url_gk, player_name, league, radio))
-#         st.dataframe(get_player_defend_table(url_defend))
-# else:
-#     st.sidebar.warning("Incorrect password/username!")
+
 

@@ -913,7 +913,7 @@ with open('Authen.yaml') as file:
             config['preauthorized']
         )
         name, authenticator_status, username = authenticator.login('Login', 'main')
- if authenticator_status == False:
+if authenticator_status == False:
     warn_error = st.error('Username/password is incorrect')
     time.sleep(1)
     warn_error.empty()

@@ -903,16 +903,16 @@ Ly Minh Trung - Kieu Chi Huy - Truong Thai Ngoc Toan - Nguyen Dao Trung Hieu - N
 """)
 
 with open('Authen.yaml') as file:
-            config = yaml.load(file,Loader=SafeLoader)
-        
-        authenticator = stauth.Authenticate(
-            config['credentials'],
-            config['cookie']['name'],
-            config['cookie']['key'],
-            config['cookie']['expiry_days'],
-            config['preauthorized']
-        )
-        name, authenticator_status, username = authenticator.login('Login', 'main')
+    config = yaml.load(file,Loader=SafeLoader)
+
+    authenticator = stauth.Authenticate(
+        config['credentials'],
+        config['cookie']['name'],
+        config['cookie']['key'],
+        config['cookie']['expiry_days'],
+        config['preauthorized']
+    )
+name, authenticator_status, username = authenticator.login('Login', 'main')
 if authenticator_status == False:
     warn_error = st.error('Username/password is incorrect')
     time.sleep(1)

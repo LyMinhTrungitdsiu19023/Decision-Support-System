@@ -1031,14 +1031,15 @@ if menu == "Transfer":
 
         df_select_player = get_data(url_transfer).loc[get_data(url_transfer)["Player"].str.contains(select_player)]
         st.dataframe(df_select_player)
-
+    
     see_data = st.expander("Showing Recommended Players 👉")
-    with see_data:
-        if filter_player_by_sidebar(url, url_transfer, url_defend,url_gk, player_name, league, radio).empty:
-            st.markdown("_No recommended players for_ **{}**".format(player_name))
-        else:
-            st.markdown("_Top recommended players for_ **{}**".format(player_name))
-            st.dataframe(filter_player_by_sidebar(url, url_transfer, url_defend,url_gk, player_name, league, radio))
+    if st.sidebar.button('Recommendations squad for the next match'):
+        with see_data:
+            if filter_player_by_sidebar(url, url_transfer, url_defend,url_gk, player_name, league, radio).empty:
+                st.markdown("_No recommended players for_ **{}**".format(player_name))
+            else:
+                st.markdown("_Top recommended players for_ **{}**".format(player_name))
+                st.dataframe(filter_player_by_sidebar(url, url_transfer, url_defend,url_gk, player_name, league, radio))
 #         st.dataframe(get_player_defend_table(url_defend))
 # else:
 #     st.sidebar.warning("Incorrect password/username!")

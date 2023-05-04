@@ -1033,7 +1033,7 @@ if menu == "Transfer":
         st.dataframe(df_select_player)
     
     see_data = st.expander("Showing Recommended Players 👉")
-    if st.sidebar.button('##Find players##'):
+    if st.sidebar.button('## Find players ##'):
         with see_data:
             if filter_player_by_sidebar(url, url_transfer, url_defend,url_gk, player_name, league, radio).empty:
                 st.markdown("_No recommended players for_ **{}**".format(player_name))

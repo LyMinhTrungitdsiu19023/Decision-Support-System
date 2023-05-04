@@ -1,0 +1,13 @@
+credentials:
+  usernames:
+    huy:
+      email: pep@gmail.com
+      name: pepmancity
+      password: '$2b$12$rTGvJMHd48NSfggWLAyUQu9Tu3wwM9dRNDE/5lqr935dRsBO3BHAm'
+cookie:
+  expiry_days: 30
+  key: random_signature_key 
+  name: random_cookie_name
+preauthorized:
+  emails:
+    - pep@gmail.com

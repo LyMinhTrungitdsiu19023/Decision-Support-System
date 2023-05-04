@@ -924,6 +924,7 @@ if authenticator_status == None:
     warn_missing.empty()
 
 if authenticator_status:
+    authenticator.logout("Log out","main")
     see_data = st.expander("Information of Manchester City's Players 👉")
     with see_data: 
         st.header("Information of Manchester City's Players")

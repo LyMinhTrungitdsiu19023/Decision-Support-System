@@ -10,7 +10,7 @@ import requests
 from PIL import Image
 import yaml
 from yaml.loader import SafeLoader
-
+import streamlit_authenticator as stauth
 
 st.set_page_config(page_title="Manchester City Decision Support System", layout = 'wide')
 

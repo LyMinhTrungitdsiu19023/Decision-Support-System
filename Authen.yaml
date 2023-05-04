@@ -2,7 +2,7 @@ credentials:
   usernames:
     huy:
       email: pep@gmail.com
-      name: pepmancity
+      name: pep
       password: '$2b$12$YaC0Zp4qW.QjH/qoaJ.Ga.X8BXvWDroEImggBcfu0S7fkI9KPgRLm'
 cookie:
   expiry_days: 30

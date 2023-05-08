@@ -784,7 +784,7 @@ def recommendation(url, squad, speed, intercept, style, squad_dis, approach, gk)
 
 
 ###Implement Transfer Role
-
+@st.cache_data(experimental_allow_widgets=True)
 def get_data(url):
     html = pd.read_html(url, header = 1)
     playerlist = html[0]

@@ -12,6 +12,8 @@ import yaml
 from yaml.loader import SafeLoader
 import streamlit_authenticator as stauth
 import time 
+from Analysis import *
+from Squad import *
 
 @st.cache_data(experimental_allow_widgets=True)
 def get_data(url):

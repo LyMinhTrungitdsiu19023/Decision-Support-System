@@ -898,7 +898,7 @@ st.title("Manchester City Football Club Management System")
 
 st.markdown("""
 _Project of Information System Management course_\n
-by\n
+_by_\n
 **Ly Minh Trung - Kieu Chi Huy - Truong Thai Ngoc Toan - Nguyen Dao Trung Hieu - Nguyen Anh Tuan**
 """)
 

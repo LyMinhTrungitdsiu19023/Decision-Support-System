@@ -888,7 +888,8 @@ def get_player_defend_table(url_defend):
 ###Build GUI / Interface of the Web App
 
 
-image = Image.open('squad2223.jpg')
+# image = Image.open('squad2223.jpg')
+image = Image.open('https://www.mancity.com/meta/media/0jxitagn/gettyimages-1398650540.jpg')
 
 st.image(image, caption='The Citizen', width=1200)
 

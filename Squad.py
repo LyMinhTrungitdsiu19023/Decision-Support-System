@@ -13,7 +13,8 @@ from yaml.loader import SafeLoader
 import streamlit_authenticator as stauth
 import time 
 
-
+from Analysis import *
+from Transfer import *
 
 def recommendation(url, squad, speed, intercept, style, squad_dis, approach, gk):
     

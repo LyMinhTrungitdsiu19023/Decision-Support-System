@@ -893,13 +893,13 @@ image = Image.open('squad2223.jpg')
 st.image(image, caption='The Citizen', width=1200)
 
 
-st.title("Manchester City Football Club Management Decision Support System")
+st.title("Manchester City Football Club Management System")
 
 
 st.markdown("""
-Project of Information System Management course\n
+_Project of Information System Management course_\n
 by\n
-Ly Minh Trung - Kieu Chi Huy - Truong Thai Ngoc Toan - Nguyen Dao Trung Hieu - Nguyen Anh Tuan
+**Ly Minh Trung - Kieu Chi Huy - Truong Thai Ngoc Toan - Nguyen Dao Trung Hieu - Nguyen Anh Tuan**
 """)
 
 with open('Authen.yaml') as file:

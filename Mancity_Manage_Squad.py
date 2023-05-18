@@ -890,7 +890,7 @@ def get_player_defend_table(url_defend):
 
 image = Image.open('squad2223.jpg')
 
-st.image(image, caption='The Citizen', width=1000)
+st.image(image, caption='The Citizen', width=1200)
 
 
 st.title("Manchester City Football Club Management Decision Support System")

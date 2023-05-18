@@ -82,3 +82,32 @@ def filter_player_by_sidebar(url, url_transfer, url_defend, url_gk,player_name, 
         playerlist = playerlist.reset_index(drop = True)
 
     return playerlist
+
+
+    
+url_defend = "https://fbref.com/en/comps/Big5/defense/players/Big-5-European-Leagues-Stats"
+url_gk = "https://fbref.com/en/comps/Big5/keepersadv/players/Big-5-European-Leagues-Stats"
+def get_goalkeeper_table(url_gk):
+        
+    html = pd.read_html(url_gk, header = 1)
+    gk = html[0]
+    gk["Nation"] = gk["Nation"].str.replace('[a-z]', '')
+    gk["Age"] = gk["Age"].str.replace(r'(-\d\d\d)', '')
+    gk["Comp"] = gk["Comp"].str.replace(r'(eng)|(fr)|(it)|(de)|(es)', '')
+    gk["Comp"] = gk["Comp"].str.replace(r'Bunsliga', 'Bundesliga')
+    gk = gk[['Player','Nation','Pos','Squad','Comp','Age','GA']]
+    gk = gk[gk["Player"].str.contains("Player")==False]
+    gk = gk[gk["GA"].str.contains(r'[A-Za-z]')==False]
+
+    gk['GA'] = gk['GA'].astype(int)
+
+    return gk
+
+def get_player_defend_table(url_defend):
+    
+    html = pd.read_html(url_defend, header = 1)
+    player_de = html[0]
+    player_de = player_de[['TklW','Int']]
+
+    return player_de
+    

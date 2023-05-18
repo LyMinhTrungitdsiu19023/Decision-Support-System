@@ -889,7 +889,7 @@ def get_player_defend_table(url_defend):
 
 
 # image = Image.open('squad2223.jpg')
-image = Image.open('https://www.mancity.com/meta/media/0jxitagn/gettyimages-1398650540.jpg')
+image = Image.open('stadium.jpg')
 
 st.image(image, caption='The Citizen', width=1200)
 

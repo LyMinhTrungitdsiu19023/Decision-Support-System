@@ -13,6 +13,20 @@ from yaml.loader import SafeLoader
 import streamlit_authenticator as stauth
 import time 
 
+url = "https://fbref.com/en/squads/b8fd03ef/Manchester-City-Stats"
+url_transfer = "https://fbref.com/en/comps/Big5/stats/players/Big-5-European-Leagues-Stats"
+@st.cache_data(experimental_allow_widgets=True)
+def load_data(url):
+    html = pd.read_html(url, header = 1)
+    playerstats = html[0]
+    shoot = html[4]
+    passing = html[5]
+    df = html[8]
+    playerstats.drop(playerstats.tail(2).index, inplace = True)
+    playerstats["Nation"] = playerstats["Nation"].str.replace('[a-z]', '')
+    playerstats["Age"] = playerstats["Age"].str.replace(r'(-\d\d\d)', '')
+
+    return playerstats, shoot, passing, df, html
 
 def Analysis(url):
     #Forward

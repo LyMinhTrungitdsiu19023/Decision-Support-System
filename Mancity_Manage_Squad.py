@@ -64,7 +64,7 @@ if authenticator_status:
     see_data = st.expander("Information of Manchester City's Players 👉")
     with see_data: 
         st.header("Information of Manchester City's Players")
-#         st.write('Data Dimension: ' + str(load_data(url)[0].shape[0]) + ' rows and ' + str(load_data(url)[0].shape[1]) + ' columns.')
+        st.write('Data Dimension: ' + str(load_data(url)[0].shape[0]) + ' rows and ' + str(load_data(url)[0].shape[1]) + ' columns.')
         st.dataframe(load_data(url)[0])
 
 

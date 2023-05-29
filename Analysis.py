@@ -23,8 +23,8 @@ def load_data(url):
     passing = html[5]
     df = html[8]
     playerstats.drop(playerstats.tail(2).index, inplace = True)
-    playerstats["Nation"] = playerstats["Nation"].str.replace('[a-z]', '')
-    playerstats["Age"] = playerstats["Age"].str.replace(r'(-\d\d\d)', '')
+#     playerstats["Nation"] = playerstats["Nation"].str.replace('[a-z]', '')
+#     playerstats["Age"] = playerstats["Age"].str.replace(r'(-\d\d\d)', '')
 
     return playerstats, shoot, passing, df, html
 
